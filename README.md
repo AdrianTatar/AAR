@@ -25,3 +25,14 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## NPM
+1) Angular Material
+https://material.angular.io/
+
+
+2) Ngx Translate
+https://medium.com/letsboot/translate-angular-4-apps-with-ngx-translate-83302fb6c10d
+
+npm install @ngx-translate/core --save
+npm install @ngx-translate/http-loader
