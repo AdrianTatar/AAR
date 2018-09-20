@@ -19,11 +19,8 @@
   <!-- This fills the remaining space of the current row -->
   <span class="fill-remaining-space"></span>
 
-  <button mat-button [matMenuTriggerFor]="menu" id="menu-btn">{{language}}</button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="switchLanguage('en')">EN</button>
-    <button mat-menu-item (click)="switchLanguage('de')">DE</button>
-  </mat-menu>
+  <button id= "english-btn" (click)="switchLanguage('en')"></button>
+  <button id= "german-btn" (click)="switchLanguage('de')"></button>
 
   <div class="logo"></div>
 </mat-toolbar>

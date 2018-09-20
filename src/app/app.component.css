@@ -1,6 +1,18 @@
+#nav-container{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+#table-container{
+  position: absolute;
+  top: 12%;
+  left: 0;
+  width: 100%;
+}
 #container{
   background-color: white;
-  position: fixed;
   left: 0;
   right: 0;
   top: 0;

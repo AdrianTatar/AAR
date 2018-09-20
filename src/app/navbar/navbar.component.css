@@ -21,7 +21,7 @@ a {
 
 #logout-btn-container{
   position: fixed;
-  right: 20%;
+  right: 19%;
 }
 
 #logout-btn{
@@ -32,6 +32,7 @@ a {
 }
 
 #menu-btn{
+  border: 2px solid #428bca;
   position: relative;
   right: 12%;
 }
@@ -40,9 +41,9 @@ a {
   position: fixed;
   right: 0;
   width: 10%;
-  height: 7%;
+  height: 6%;
   top: 1%;
-  background-image: url(C:\Users\vtt7613\Desktop\AAR\project\src\assets\resources\logo2.png);
+  background-image: url(src\assets\resources\logo2.png);
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -61,3 +62,30 @@ hr {
   height: 40px;
 }
 
+#english-btn{
+  position: fixed;
+  right: 15%;
+  width:40px;
+  height: 40px;
+  padding: 0 0 0 0 ;
+  border-radius: 20px;
+  background-color: white;
+  border: 0;
+  background-image: url(src\assets\resources\united-kingdom.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#german-btn{
+  position: fixed;
+  right: 11.5%;
+  width:40px;
+  height: 40px;
+  padding: 0 0 0 0 ;
+  border-radius: 20px;
+  background-color: white;
+  border: 0;
+  background-image: url(src\assets\resources\germany.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
