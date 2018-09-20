@@ -1,0 +1,12 @@
+<div class="left">
+  <button mat-raised-button class="export">
+    <mat-icon>save_alt</mat-icon>
+    {{ 'ExportButton' | translate }}
+  </button>
+</div>
+
+<div class="right">
+  <button (click)="openDialog()" mat-fab matTooltip="{{'AddRow' | translate}}" class="add-icon">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

@@ -1,0 +1,26 @@
+<div id="background-container">
+  <div id="logo-container">
+    <a id="logo"></a>
+  </div>
+  <div id="main-container">
+    <div id="second-container">
+      <mat-card-content>
+        <form id="login-form-container" class="example-form">
+          <div class="input-containers">
+            <input class="input-forms" placeholder="Username" [(ngModel)]="username" name="username" required>
+          </div>
+          <div class="input-containers">
+            <input class="input-forms" placeholder="Password" [(ngModel)]="password" type="password" name="password"
+              required>
+          </div>
+        </form>
+        <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+      </mat-card-content>
+      <div id="login-btn-container">
+        <button mat-raised-button id="login-btn" (click)="navigate()">Log in to URSS</button>
+      </div>
+      <div id="issue-container" onclick='alert("Credentials recover site");'>Can't log in?</div>
+    </div>
+  </div>
+</div>
+<div id="copyright-container">©2018 URSS, INC. ALL RIGHTS RESERVED.</div>

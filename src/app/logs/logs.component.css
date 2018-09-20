@@ -1,0 +1,17 @@
+table {
+  width: 100%;
+}
+
+.align-page {
+  padding: 10px;
+}
+
+.header {
+  background: #428bca;
+  color:white;
+}
+
+.highlight{
+  background-color:#cccccc;
+  }
+

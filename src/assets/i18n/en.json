@@ -1,0 +1,17 @@
+{
+  "FixedPricedProjects": "Fixed Priced Projects",
+  "SurchargeCustomers": "Surcharge Customers",
+  "Logs": "Logs",
+
+  "Number": "#",
+  "NameFPP": "Name",
+  "WeightFPP": "Weight",
+  "SymbolFPP": "Symbol",
+
+  "NameSC": "Name",
+  "WeightSC": "Weight",
+  "SymbolSC": "Symbol",
+
+  "ExportButton": "Export",
+  "AddRow": "Add Row"
+}

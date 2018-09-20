@@ -1,0 +1,31 @@
+<mat-toolbar>
+  <span>
+    <a [routerLink]="['/fixed-prices']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" mat-button
+      color="primary">{{'FixedPricedProjects' | translate}}</a>
+  </span>
+
+  <span>
+    <a [routerLink]="['/surcharge-customers']" routerLinkActive="active" mat-button color="primary">{{'SurchargeCustomers' | translate}}</a>
+  </span>
+
+  <span>
+    <a [routerLink]="['/logs']" routerLinkActive="active" mat-button color="primary">{{'Logs' | translate}}</a>
+  </span>
+
+  <span id="logout-btn-container">
+    <a id="logout-btn" [routerLink]="['/login']" routerLinkActive="active" mat-button color="primary">Log out</a>
+  </span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="fill-remaining-space"></span>
+
+  <button mat-button [matMenuTriggerFor]="menu" id="menu-btn">{{language}}</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="switchLanguage('en')">EN</button>
+    <button mat-menu-item (click)="switchLanguage('de')">DE</button>
+  </mat-menu>
+
+  <div class="logo"></div>
+</mat-toolbar>
+
+<hr>

@@ -1,0 +1,17 @@
+{
+  "FixedPricedProjects": "Projekte",
+  "SurchargeCustomers": "Aufschlags Kunden",
+  "Logs": "Protokolle",
+  "Number": "#",
+
+  "NameFPP": "Name",
+  "WeightFPP": "Gewicht",
+  "SymbolFPP": "Symbol",
+
+  "NameSC": "Name",
+  "WeightSC": "Gewicht",
+  "SymbolSC": "Symbol",
+
+  "ExportButton": "Exportieren",
+  "AddRow": "Zeile hinzufügen"
+}

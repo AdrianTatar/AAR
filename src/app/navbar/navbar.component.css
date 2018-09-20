@@ -1,0 +1,63 @@
+mat-toolbar {
+  background: white;
+}
+
+mat-form-field {
+  font-size: 15px;
+  width: 100px;
+  margin-right:10px;
+}
+
+a {
+  margin-right: 10px;
+  padding: 5px 30px 5px 30px;
+}
+
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+#logout-btn-container{
+  position: fixed;
+  right: 20%;
+}
+
+#logout-btn{
+  margin-right: 10px;
+  padding: 5px 30px 5px 30px;
+  background-color: #428bca ;
+  color: white;
+}
+
+#menu-btn{
+  position: relative;
+  right: 12%;
+}
+
+.logo {
+  position: fixed;
+  right: 0;
+  width: 10%;
+  height: 7%;
+  top: 1%;
+  background-image: url(C:\Users\vtt7613\Desktop\AAR\project\src\assets\resources\logo2.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.active {
+  color: white;
+  background: #428bca;
+}
+
+hr {
+  margin: 10px;
+}
+
+.language {
+  color: white;
+  height: 40px;
+}
+
