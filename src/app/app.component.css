@@ -7,10 +7,11 @@
 
 #table-container{
   position: absolute;
-  top: 12%;
+  top: 90px;
   left: 0;
   width: 100%;
 }
+
 #container{
   background-color: white;
   left: 0;

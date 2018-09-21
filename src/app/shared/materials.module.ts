@@ -3,7 +3,8 @@ import {
   MatButtonModule, MatCheckboxModule, MatIconModule,
   MatToolbarModule, MatMenuModule, MatDividerModule,
   MatTableModule, MatPaginatorModule, MatTooltipModule,
-  MatInputModule, MatFormFieldModule, MatDialogModule, MatSnackBarModule,
+  MatInputModule, MatFormFieldModule, MatDialogModule,
+  MatSnackBarModule, MatProgressSpinnerModule
 } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -26,7 +27,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatFormFieldModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatButtonModule,
@@ -44,7 +46,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatFormFieldModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ]
 })
 export class MaterialsModule { }

@@ -43,7 +43,7 @@ a {
   width: 10%;
   height: 6%;
   top: 1%;
-  background-image: url(src\assets\resources\logo2.png);
+  background-image: url(../../assets/resources/logo2.png);
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -54,7 +54,7 @@ a {
 }
 
 hr {
-  margin: 10px;
+  margin: 15px;
 }
 
 .language {
@@ -71,7 +71,7 @@ hr {
   border-radius: 20px;
   background-color: white;
   border: 0;
-  background-image: url(src\assets\resources\united-kingdom.png);
+  background-image: url(../../assets/resources/united-kingdom.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -85,7 +85,7 @@ hr {
   border-radius: 20px;
   background-color: white;
   border: 0;
-  background-image: url(src\assets\resources\germany.png);
+  background-image: url(../../assets/resources/germany.png);
   background-repeat: no-repeat;
   background-size: cover;
 }

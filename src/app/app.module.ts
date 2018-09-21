@@ -1,14 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './core/app.routing.module';
-import { CustomMaterialModule } from './core/materials.module';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FixedPricedProjectsComponent } from './fixed-priced-projects/fixed-priced-projects.component';
-import { LoginComponent } from './login/login.component';
-import { UserComponent } from './user/user.component';
 import { LogsComponent } from './logs/logs.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ButtonsComponent } from './shared/buttons/buttons.component';
@@ -23,6 +18,7 @@ import { MaterialsModule } from './shared/materials.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { AppComponent } from './app.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -34,7 +30,6 @@ export function createTranslateLoader(http: HttpClient) {
     NavbarComponent,
     FixedPricedProjectsComponent,
     routingComponents,
-    UserComponent,
     LogsComponent,
     NotFoundComponent,
     ButtonsComponent,
@@ -48,10 +43,7 @@ export function createTranslateLoader(http: HttpClient) {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    CustomMaterialModule,
     FormsModule,
-    AppRoutingModule,
-    RoutingModule,
     MaterialsModule,
     RoutingModule,
     FormsModule,
