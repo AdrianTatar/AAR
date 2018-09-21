@@ -5,7 +5,7 @@ mat-toolbar {
 mat-form-field {
   font-size: 15px;
   width: 100px;
-  margin-right:10px;
+  margin-right: 10px;
 }
 
 a {
@@ -19,33 +19,10 @@ a {
   flex: 1 1 auto;
 }
 
-#logout-btn-container{
-  position: fixed;
-  right: 19%;
-}
-
-#logout-btn{
-  margin-right: 10px;
-  padding: 5px 30px 5px 30px;
-  background-color: #428bca ;
-  color: white;
-}
-
-#menu-btn{
-  border: 2px solid #428bca;
-  position: relative;
-  right: 12%;
-}
-
 .logo {
-  position: fixed;
-  right: 0;
-  width: 10%;
-  height: 6%;
-  top: 1%;
-  background-image: url(../../assets/resources/logo2.png);
-  background-repeat: no-repeat;
-  background-size: contain;
+  padding: 0px;
+  width: 7%;
+  height: auto;
 }
 
 .active {
@@ -54,7 +31,7 @@ a {
 }
 
 hr {
-  margin: 15px;
+  margin: 10px;
 }
 
 .language {
@@ -62,30 +39,25 @@ hr {
   height: 40px;
 }
 
-#english-btn{
-  position: fixed;
-  right: 15%;
-  width:40px;
-  height: 40px;
-  padding: 0 0 0 0 ;
-  border-radius: 20px;
-  background-color: white;
-  border: 0;
-  background-image: url(../../assets/resources/united-kingdom.png);
-  background-repeat: no-repeat;
-  background-size: cover;
+.country {
+  width: 40px;
+  height: auto;
+  float: right;
 }
 
-#german-btn{
-  position: fixed;
-  right: 11.5%;
-  width:40px;
-  height: 40px;
-  padding: 0 0 0 0 ;
-  border-radius: 20px;
-  background-color: white;
-  border: 0;
-  background-image: url(../../assets/resources/germany.png);
-  background-repeat: no-repeat;
-  background-size: cover;
+.create-space {
+  margin-right: 20px;
+  padding-right: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, .87);
+}
+
+mat-menu {
+  padding-top: 40px;
+}
+
+.position-menu {
 }
