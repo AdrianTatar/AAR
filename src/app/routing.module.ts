@@ -8,21 +8,31 @@ import { SurchargeCustomersComponent } from './surcharge-customers/surcharge-cus
 import { NavbarComponent } from './navbar/navbar.component';
 
 const appRoutes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: LoginComponent, data: { page: 'one' } },
   { path: 'navbar', component: NavbarComponent },
-  { path: 'fixed-prices', component: FixedPricedProjectsComponent },
-  { path: 'surcharge-customers', component: SurchargeCustomersComponent },
-  { path: 'logs', component: LogsComponent },
+  {
+    path: 'fixed-prices',
+    component: FixedPricedProjectsComponent,
+    data: { page: 'two' }
+  },
+  {
+    path: 'surcharge-customers',
+    component: SurchargeCustomersComponent,
+    data: { page: 'three' },
+  },
+  {
+    path: 'logs',
+    component: LogsComponent,
+    data: { page: 'four' },
+  },
   { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(appRoutes),
-  ],
+  imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
-export class RoutingModule { }
+export class RoutingModule {}
 
 export const routingComponents = [
   LoginComponent,

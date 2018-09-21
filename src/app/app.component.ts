@@ -1,18 +1,15 @@
 import { Component } from '@angular/core';
-
-export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
-}
+import { fadeInOut } from './shared/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations: [fadeInOut]
 })
+
 export class AppComponent {
-  tiles: Tile[] = [
-  ];
+  getPage(outlet) {
+    return outlet.activatedRouteData['page'] || 'two';
+  }
 }
