@@ -1,30 +1,33 @@
-<mat-toolbar>
-  <span>
-    <a [routerLink]="['/fixed-prices']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" mat-button
-      color="primary">{{'FixedPricedProjects' | translate}}</a>
-  </span>
+<div [@languageChange]="language">
 
-  <span>
-    <a [routerLink]="['/surcharge-customers']" routerLinkActive="active" mat-button color="primary">{{'SurchargeCustomers'
-      | translate}}</a>
-  </span>
+  <mat-toolbar>
+    <span>
+      <a [routerLink]="['/fixed-prices']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+        mat-button color="primary">{{'FixedPricedProjects' | translate}}</a>
+    </span>
 
-  <span>
-    <a [routerLink]="['/logs']" routerLinkActive="active" mat-button color="primary">{{'Logs' | translate}}</a>
-  </span>
+    <span>
+      <a [routerLink]="['/surcharge-customers']" routerLinkActive="active" mat-button color="primary">{{'SurchargeCustomers'
+        | translate}}</a>
+    </span>
 
-  <!-- This fills the remaining space of the current row -->
-  <span class="fill-remaining-space"></span>
-  <button mat-button [matMenuTriggerFor]="menu">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <mat-menu xPosition="before" yPosition="above"  #menu="matMenu">
-    <button mat-menu-item (click)="switchLanguage('en')">EN <img class="country" src="../../assets/resources/united-kingdom.png"></button>
-    <button mat-menu-item (click)="switchLanguage('de')">DE <img class="country" src="../../assets/resources/germany.png"></button>
-    <button mat-menu-item> <a  [routerLink]="['']" color="primary">Log out</a></button>
-  </mat-menu>
+    <span>
+      <a [routerLink]="['/logs']" routerLinkActive="active" mat-button color="primary">{{'Logs' | translate}}</a>
+    </span>
 
-  <img class="logo" src="../../assets/resources/logo2.png" alt="">
-</mat-toolbar>
+    <!-- This fills the remaining space of the current row -->
+    <span class="fill-remaining-space"></span>
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu xPosition="before" yPosition="above" #menu="matMenu">
+      <button mat-menu-item (click)="switchLanguage('en')">EN <img class="country" src="../../assets/resources/united-kingdom.png"></button>
+      <button mat-menu-item (click)="switchLanguage('de')">DE <img class="country" src="../../assets/resources/germany.png"></button>
+      <button mat-menu-item> <a [routerLink]="['']" color="primary">Log out</a></button>
+    </mat-menu>
+
+    <img class="logo" src="../../assets/resources/logo2.png" alt="">
+  </mat-toolbar>
+</div>
 
 <hr>

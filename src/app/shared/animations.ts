@@ -3,7 +3,9 @@ import {
   trigger,
   query,
   style,
-  animate
+  animate,
+  state,
+  keyframes
 } from '@angular/animations';
 
 export const fadeAnimation = trigger('animRoutes', [
@@ -22,4 +24,12 @@ export const fadeAnimation = trigger('animRoutes', [
       { optional: true }
     )
   ])
+]);
+
+export const languageChange = trigger('languageChange', [
+  transition('* <=> *', animate('0.3s', keyframes([
+      style({ opacity: 0 }),
+      style({ opacity: 1 })
+    ])
+  )),
 ]);

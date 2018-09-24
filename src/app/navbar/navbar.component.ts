@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { MatSnackBar } from '@angular/material';
+import { languageChange } from '../shared/animations';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
+  animations: [languageChange]
 })
 export class NavbarComponent implements OnInit {
-  language = '';
+  language = 'EN';
   image = '';
 
   constructor(
