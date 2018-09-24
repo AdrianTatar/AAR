@@ -53,7 +53,6 @@ export class ButtonsComponent implements OnInit {
     });
   }
 
-
   private addFixedPricedProjectsRow(data) {
     console.log('Add Fixed Priced Projects Row.');
 
