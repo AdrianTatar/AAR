@@ -4,7 +4,6 @@ import {
   query,
   style,
   animate,
-  state,
   keyframes
 } from '@angular/animations';
 
