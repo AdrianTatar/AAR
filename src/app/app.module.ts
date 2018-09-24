@@ -14,7 +14,7 @@ import { AddDialogComponent } from './shared/buttons/add-dialog/add-dialog.compo
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialsModule } from './shared/materials.module';
 
-// Ngx-Translate -Multilangual
+// Ngx-Translate
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
