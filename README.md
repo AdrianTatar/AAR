@@ -3,7 +3,7 @@
 •	Adaugati inca 2 tabele –Zahlerknoten (din excel-ul mare, avem acolo un sheet "Zahlerknoten" cu primele 6 coloane "A-F"; pentru coloana Zahlerknoten Bezeichnung (coloana E) folosim un input de tip select (dropdown de-ala) unde valorile se trag din coloana J si K; 
 -deci da, tre sa facem deci rutari, componente noi)
 
-•	Culoarea stil zebra la tabele nu e prea practica –te zapaceste unpic, ceva mai simplu...chiar alb presupun . Atunci cand apasa pe o coloana sa fie evident (adica highlighted, colorata diferit, iar acolo sa se si faca update-ul -adica sa apara direct input-urile sa fie -Live Update Table) –ei sunt obisnuiti cu Excel
+•	Culoarea stil zebra la tabele nu e prea practica –te zapaceste unpic, ceva mai simplu...chiar alb presupun . Atunci cand apasa pe o coloana sa fie evident (adica highlighted, colorata diferit, iar acolo sa se si faca update-ul -adica sa apara direct input-urile sa fie -Live Update Table) –ei sunt obisnuiti cu Excel -IN LUCRU
 
 •	Spatiile la header (sus, jos) sunt unpic prea mari; la fel si la informatiile din tabel; adica sunt prea spatioase chestiile de acolo.
 
