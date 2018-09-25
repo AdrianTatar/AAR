@@ -1,30 +1,25 @@
-# Aar
+# TODO -25.09.2018
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+•	Adaugati inca 2 tabele –Zahlerknoten (din excel-ul mare, avem acolo un sheet "Zahlerknoten" cu primele 6 coloane "A-F"; pentru coloana Zahlerknoten Bezeichnung (coloana E) folosim un input de tip select (dropdown de-ala) unde valorile se trag din coloana J si K; 
+-deci da, tre sa facem deci rutari, componente noi)
 
-## Development server
+•	Culoarea stil zebra la tabele nu e prea practica –te zapaceste unpic, ceva mai simplu...chiar alb presupun . Atunci cand apasa pe o coloana sa fie evident (adica highlighted, colorata diferit, iar acolo sa se si faca update-ul -adica sa apara direct input-urile sa fie -Live Update Table) –ei sunt obisnuiti cu Excel
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+•	Spatiile la header (sus, jos) sunt unpic prea mari; la fel si la informatiile din tabel; adica sunt prea spatioase chestiile de acolo.
 
-## Code scaffolding
+•	Update-ul nu e intuitive deloc. Cred ca ar fi mai bine sa renunt la idea de select & unselect. E destul de neintuitiva. Probabil o chestie in care daca dai click pe tabel sa se modifice culoarea liniei si sa devina chestile cu insert field-uri. Si atunci ar trebui o sagetuta de confirm.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+•	Adauga filter –input-urile lor sa se afle pe header-uri -adica chiar langa numele coloanelor
 
-## Build
+•	Adauga input-uri validate la fiecare field din tabel (valideaza toate field-urile, unde e input number sa fie number, nu text.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+•	Zahlerknoten Bezeichnung sa fie cu preselectare (adica drop down list/ select de-ala, sa poata introduce doar ce ii stabilesc eu)
 
-## Running unit tests
+•	E un export general. Adica nu un buton separat pentru fiecare tabel, ci un export mare (deci il pun direct pe navbar). -DONE
+•	La LOGS tot ce il intereseaza pe Ionut e: user name, action –nu varianta clasica de log-uri.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+•	Probabil adaugarea unui element sa fie facut nu cu dialog –ci sa se adauge o noua linie in tabel cu validari acolo –sau probabil varianta cu dialog –ideea e sa fie ceva simplu, intuitiv, nu prea multe miliarde de click-uri ---- "da...cred ca facem asa, probabil e mai bine - John"
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ## NPM
 1) Angular Material
