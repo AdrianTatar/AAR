@@ -14,8 +14,7 @@
 
 •	Zahlerknoten Bezeichnung sa fie cu preselectare (adica drop down list/ select de-ala, sa poata introduce doar ce ii stabilesc eu)
 
-•	E un export general. Adica nu un buton separat pentru fiecare tabel, ci un export mare (deci il pun direct pe navbar). -DONE
-
+•	E un export general. Adica nu un buton separat pentru fiecare tabel, ci un export mare (deci il pun direct pe navbar). ![#c5f015] (-DONE) `#c5f015`
 •	La LOGS tot ce il intereseaza pe Ionut e: user name, action –nu varianta clasica de log-uri.
 
 •	Probabil adaugarea unui element sa fie facut nu cu dialog –ci sa se adauge o noua linie in tabel cu validari acolo –sau probabil varianta cu dialog –ideea e sa fie ceva simplu, intuitiv, nu prea multe miliarde de click-uri ---- "da...cred ca facem asa, probabil e mai bine - John"
