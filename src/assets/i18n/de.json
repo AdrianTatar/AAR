@@ -1,5 +1,5 @@
 {
-  "FixedPricedProjects": "Projekte",
+  "FixedPricedProjects": "Fixed Priced Projekte",
   "SurchargeCustomers": "Aufschlags Kunden",
   "Logs": "Protokolle",
   "Number": "#",
@@ -13,5 +13,6 @@
   "SymbolSC": "Symbol",
 
   "ExportButton": "Exportieren",
-  "AddRow": "Zeile hinzufügen"
+  "AddRow": "Zeile hinzufügen",
+  "Logout": "Ausloggen"
 }

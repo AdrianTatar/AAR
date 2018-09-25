@@ -2,35 +2,11 @@ button {
   margin-right: 8px;
 }
 
-.export {
-  width: 130px;
-  height: 50px;
-  background: #feed01;
-  color: black;
-}
-
-.left {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  margin: 0 0 60px 30px;
-}
-
 .right {
   position: fixed;
   bottom: 0;
   right: 0;
   margin: 0 30px 60px 0px;
-}
-
-.clear-icon {
-  background: #d9534f;
-  color: white;
-}
-
-.done-icon {
-  background: #46a546;
-  color: white;
 }
 
 .add-icon {

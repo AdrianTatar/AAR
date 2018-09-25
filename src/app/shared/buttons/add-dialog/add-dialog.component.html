@@ -6,11 +6,9 @@
 
   <mat-form-field *ngFor="let column of columns" class="full-width">
     <input [(ngModel)]="inputs[column]" [formControl]="form.controls[column]" matInput placeholder="{{column | titlecase}}">
-
     <mat-error *ngIf="form.controls[column].hasError('required')">
       Please enter a {{column}}.
     </mat-error>
-
   </mat-form-field>
 
 </mat-dialog-content>
