@@ -14,7 +14,10 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
             <mat-form-field class="example-full-width">
-              <input matInput [(ngModel)]="name" (keyup.enter)="confirmEdit()">
+              <input [formControl]="nameFormControl" matInput [(ngModel)]="name" (keyup.enter)="confirmEdit()">
+              <mat-error *ngIf="nameFormControl.hasError('required')">
+                Name is <strong>required</strong>
+              </mat-error>
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
@@ -31,7 +34,10 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
             <mat-form-field class="example-full-width">
-              <input matInput [(ngModel)]="weight" (keyup.enter)="confirmEdit()">
+              <input type="number" [formControl]="weightFormControl" matInput [(ngModel)]="weight" (keyup.enter)="confirmEdit()">
+              <mat-error *ngIf="weightFormControl.hasError('required')">
+                Weight is <strong>required</strong>
+              </mat-error>
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
@@ -48,7 +54,10 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
             <mat-form-field class="example-full-width">
-              <input matInput [(ngModel)]="symbol" (keyup.enter)="confirmEdit()">
+              <input [formControl]="symbolFormControl" matInput [(ngModel)]="symbol" (keyup.enter)="confirmEdit()">
+              <mat-error *ngIf="symbolFormControl.hasError('required')">
+                Symbol is <strong>required</strong>
+              </mat-error>
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, HostListener, AfterViewInit } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { PeriodicElement } from './../shared/models/PeriodicElement';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-fixed-priced-projects',
@@ -16,6 +17,10 @@ export class FixedPricedProjectsComponent implements OnInit, AfterViewInit {
   selectedRow = -1;
   selectedRowToEdit = -1;
 
+  nameFormControl;
+  weightFormControl;
+  symbolFormControl;
+
   // Values to Edit
   name = '';
   weight = 0;
@@ -26,13 +31,15 @@ export class FixedPricedProjectsComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.selectedRow = 0;
+
+    this.nameFormControl = new FormControl('', [Validators.required]);
+    this.weightFormControl = new FormControl('', [Validators.required]);
+    this.symbolFormControl = new FormControl('', [Validators.required]);
   }
 
   ngAfterViewInit() {
     document.addEventListener('click', function (event) {
-      if (document.getElementById('mat-select-0')) {
-        document.getElementById('mat-select-0').blur();
-      }
+      document.getElementById('mat-select-0').blur();
     });
   }
 
