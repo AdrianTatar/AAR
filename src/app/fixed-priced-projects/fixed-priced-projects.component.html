@@ -1,96 +1,95 @@
 <div class="align-page">
-    <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource">
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
 
-        <!-- Position Column -->
-        <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef class="header position-column"> {{ 'Number' | translate }} </th>
-          <td mat-cell *matCellDef="let element">{{element.position}}</td>
-        </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef class="header position-column"> {{ 'Number' | translate }} </th>
+        <td mat-cell *matCellDef="let element">{{element.position}}</td>
+      </ng-container>
 
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef class="header"> {{ 'NameFPP' | translate }} </th>
-          <td mat-cell *matCellDef="let element">
-
-            <div *ngIf="selection.isSelected(element); else simpleDisplay">
-              <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="dataSource.data[element.position-1].name" (keyup.enter)="selection.toggle(element)">
-              </mat-form-field>
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="header"> {{ 'NameFPP' | translate }} </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+            <mat-form-field class="example-full-width">
+              <input matInput [(ngModel)]="name" (keyup.enter)="confirmEdit()">
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{element.name}}
             </div>
+          </ng-template>
+        </td>
+      </ng-container>
 
-            <ng-template #simpleDisplay>
-              <div (click)="selection.toggle(element)">
-                {{element.name}}
-              </div>
-            </ng-template>
-
-          </td>
-        </ng-container>
-
-        <!-- Weight Column -->
-        <ng-container matColumnDef="weight">
-          <th mat-header-cell *matHeaderCellDef class="header"> {{ 'WeightFPP' | translate }} </th>
-          <td mat-cell *matCellDef="let element">
-
-            <div *ngIf="selection.isSelected(element); else simpleDisplay">
-              <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="dataSource.data[element.position-1].weight" (keyup.enter)="selection.toggle(element)">
-              </mat-form-field>
+      <!-- Weight Column -->
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef class="header"> {{ 'WeightFPP' | translate }} </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+            <mat-form-field class="example-full-width">
+              <input matInput [(ngModel)]="weight" (keyup.enter)="confirmEdit()">
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{element.weight}}
             </div>
+          </ng-template>
+        </td>
+      </ng-container>
 
-            <ng-template #simpleDisplay>
-              <div (click)="selection.toggle(element)">
-                {{element.weight}}
-              </div>
-            </ng-template>
-
-          </td>
-        </ng-container>
-
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="symbol">
-          <th mat-header-cell *matHeaderCellDef class="header"> {{ 'SymbolFPP' | translate }} </th>
-          <td mat-cell *matCellDef="let element">
-
-            <div *ngIf="selection.isSelected(element); else simpleDisplay">
-              <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="dataSource.data[element.position-1].symbol" (keyup.enter)="selection.toggle(element)">
-              </mat-form-field>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef class="header"> {{ 'SymbolFPP' | translate }} </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+            <mat-form-field class="example-full-width">
+              <input matInput [(ngModel)]="symbol" (keyup.enter)="confirmEdit()">
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{element.symbol}}
             </div>
+          </ng-template>
+        </td>
+      </ng-container>
 
-            <ng-template #simpleDisplay>
-              <div (click)="selection.toggle(element)">
-                {{element.symbol}}
-              </div>
-            </ng-template>
+      <!-- Name Column -->
+      <ng-container matColumnDef="menu">
+        <th mat-header-cell *matHeaderCellDef class="header options-menu"></th>
+        <td mat-cell *matCellDef="let element">
+          <ng-template #editButton>
+            <button mat-button (click)="editRow(element.position)" class="edit-icon">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </ng-template>
+          <div *ngIf="selectedRowToEdit === element.position; else editButton">
+            <button mat-button class="done-icon" (click)="confirmEdit()">
+              <mat-icon>check</mat-icon>
+            </button>
+            <button mat-button (click)="cancelEdit()" class="cancel-icon">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
 
-          </td>
-        </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row (click)="selectRow(index)" [ngClass]="{'highlight': index == selectedRow}" *matRowDef="let row; columns: displayedColumns; let index = index"></tr>
+    </table>
 
-        <!-- Checkbox Column -->
-        <ng-container matColumnDef="select">
-          <th mat-header-cell *matHeaderCellDef class="header selectionHeader">
-            <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
-            </mat-checkbox>
-          </th>
-          <td mat-cell *matCellDef="let row">
-            <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
-            </mat-checkbox>
-          </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-        <tr mat-row [ngClass]="{'highlight': index%2 == 1}" *matRowDef="let row; columns: displayedColumns; let index = index"></tr>
-      </table>
-
-      <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
-    </div>
-
-    <div class="space-for-buttons">
-    </div>
-
-    <div class="buttons">
-      <app-buttons [dataSource]="dataSource" [displayedColumns]="displayedColumns" title="{{ 'FixedPricedProjects' | translate}}"></app-buttons>
-    </div>
+    <mat-paginator (page)="test()" [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
   </div>
+
+  <!-- <div class="space-for-buttons">
+  </div> -->
+
+  <!-- <div class="buttons">
+      <app-buttons [dataSource]="dataSource" [displayedColumns]="displayedColumns" title="{{ 'FixedPricedProjects' | translate}}"></app-buttons>
+    </div> -->
+</div>

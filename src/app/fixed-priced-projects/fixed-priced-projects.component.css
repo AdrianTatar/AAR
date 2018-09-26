@@ -2,12 +2,9 @@ table {
   width: 100%;
 }
 
-input {
-  color: #d9534f;
-}
-
 .align-page {
-  padding: 10px;
+  margin: 30px;
+  /* margin: 20px 180px 0px 180px; */
 }
 
 .header {
@@ -16,7 +13,7 @@ input {
 }
 
 .highlight {
-  background-color: #cccccc;
+  background-color: #eeeeee;
 }
 
 .selectionHeader {
@@ -31,10 +28,20 @@ input {
   height: 130px;
 }
 
-::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, ::ng-deep .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
-  background-color: #74bdfd;
+.options-menu {
+  width: 10px;
 }
 
-::ng-deep .mat-checkbox:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-ripple .mat-ripple-element {
-  background-color: rgba(64, 210, 255, 0.26)
+.edit-icon {
+  color: #428bca;
+}
+
+.cancel-icon {
+  color: #d9534f;
+  /* color: white; */
+}
+
+.done-icon {
+  color: #46a546;
+  /* color: white; */
 }
