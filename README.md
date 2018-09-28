@@ -25,6 +25,8 @@
 •	Probabil adaugarea unui element sa fie facut nu cu dialog –ci sa se adauge o noua linie in tabel cu validari acolo –sau probabil varianta cu dialog –ideea e sa fie ceva simplu, intuitiv, nu prea multe miliarde de click-uri ---- "da...cred ca facem asa, probabil e mai bine - John" 
 -IN PROGRESS
 
+Logs -si time stamps; user; user actions; Implement infinite scroll la logs
+
 
 ## NPM
 1) Angular Material
