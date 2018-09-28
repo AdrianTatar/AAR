@@ -1,0 +1,52 @@
+<div class="header">
+  <h1 mat-dialog-title>{{'FixedPricedProjects' | translate }}</h1>
+</div>
+
+<mat-dialog-content>
+
+  <mat-form-field class="full-width">
+    <input type="text" [(ngModel)]="fppInputs.planmill_pnr" placeholder="Planmill Projekt Nummer" matInput
+      [formControl]="formPlanmill_pnr">
+    <mat-error *ngIf="formPlanmill_pnr.invalid">
+      Planmill Projektnummer is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input type="text" [(ngModel)]="fppInputs.tagetik_projektID" placeholder="Tagetik Projekt ID" [formControl]="formTagetik_ProjektID"
+      matInput (keyup.enter)="confirmEdit()">
+    <mat-error *ngIf="formTagetik_ProjektID.invalid">
+      Tagetik Projekt ID is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <textarea [(ngModel)]="fppInputs.projbez" type="text" matInput placeholder="Projekt Bezeichnung" [formControl]="formProjbez"></textarea>
+    <mat-error *ngIf="formProjbez.invalid">
+      Projekt Bezeichnung is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input type="number" [(ngModel)]="fppInputs.kundennr" matInput placeholder="Kunden Nummer" [formControl]="formKundennr">
+    <mat-error *ngIf="formKundennr.invalid">
+      Kunden Nummer is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input type="number" [(ngModel)]="fppInputs.fixpreis" matInput placeholder="Fixpreis" [formControl]="formFixpreis">
+    <mat-error *ngIf="formFixpreis.invalid">
+      Fixpreis is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-fab mat-dialog-close matTooltip="Cancel" class="clear-icon">
+    <mat-icon>clear</mat-icon>
+  </button>
+  <button (click)="save()" mat-fab matTooltip="Confirm" class="done-icon">
+    <mat-icon>done</mat-icon>
+  </button>
+</mat-dialog-actions>

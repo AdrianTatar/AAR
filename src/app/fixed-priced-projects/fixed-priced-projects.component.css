@@ -3,7 +3,6 @@ table {
 }
 
 .align-page {
-
   margin: 20px 10px 0px 10px;
 }
 
@@ -20,10 +19,6 @@ table {
   width: 40px;
 }
 
-.position-column {
-  width: 80px;
-}
-
 .space-for-buttons {
   height: 130px;
 }
@@ -38,10 +33,34 @@ table {
 
 .cancel-icon {
   color: #d9534f;
-  /* color: white; */
 }
 
 .done-icon {
   color: #46a546;
-  /* color: white; */
+}
+
+.right {
+  margin: 8px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 0 30px 60px 0px;
+}
+
+.add-icon {
+  background: #428bca;
+  color: white;
+}
+
+.input-fields {
+  margin-top: 15px;
+  float:right;
+}
+
+.mat-form-field {
+  margin: 20px;
+}
+
+.full-width {
+  width: 80%;
 }

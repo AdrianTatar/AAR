@@ -1,84 +1,122 @@
 <div class="align-page">
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
-
-      <!-- Position Column -->
-      <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef class="header position-column"> {{ 'Number' | translate }} </th>
-        <td mat-cell *matCellDef="let element">{{element.position}}</td>
-      </ng-container>
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef class="header"> {{ 'NameFPP' | translate }} </th>
+      <!-- Planmill Projektnummer Column -->
+      <ng-container matColumnDef="planmill_pnr">
+        <th mat-header-cell *matHeaderCellDef class="header position-column"> Planmill Projektnummer </th>
         <td mat-cell *matCellDef="let element">
           <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
-            <mat-form-field class="example-full-width">
-              <input [formControl]="nameFormControl" matInput [(ngModel)]="name" (keyup.enter)="confirmEdit()">
-              <mat-error *ngIf="nameFormControl.hasError('required')">
-                Name is <strong>required</strong>
+            <mat-form-field>
+              <input type="text" [(ngModel)]="fppInputs.planmill_pnr" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formPlanmill_pnr">
+              <mat-error *ngIf="formPlanmill_pnr.invalid">
+                Planmill Projektnummer is <strong>required</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
             <div>
-              {{element.name}}
+              {{ element.planmill_pnr }}
             </div>
           </ng-template>
         </td>
       </ng-container>
 
-      <!-- Weight Column -->
-      <ng-container matColumnDef="weight">
-        <th mat-header-cell *matHeaderCellDef class="header"> {{ 'WeightFPP' | translate }} </th>
+      <!-- Tagetik_Projekt-ID Column -->
+      <ng-container matColumnDef="tagetik_projektID">
+        <th mat-header-cell *matHeaderCellDef class="header"> Tagetik_Projekt-ID </th>
         <td mat-cell *matCellDef="let element">
           <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
-            <mat-form-field class="example-full-width">
-              <input type="number" [formControl]="weightFormControl" matInput [(ngModel)]="weight" (keyup.enter)="confirmEdit()">
-              <mat-error *ngIf="weightFormControl.hasError('required')">
-                Weight is <strong>required</strong>
+            <mat-form-field>
+              <input type="text" [(ngModel)]="fppInputs.tagetik_projektID" [formControl]="formTagetik_ProjektID"
+                matInput (keyup.enter)="confirmEdit()">
+              <mat-error *ngIf="formTagetik_ProjektID.invalid">
+                Tagetik Projekt ID is <strong>required</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
             <div>
-              {{element.weight}}
+              {{ element.tagetik_projektID }}
             </div>
           </ng-template>
         </td>
       </ng-container>
 
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="symbol">
-        <th mat-header-cell *matHeaderCellDef class="header"> {{ 'SymbolFPP' | translate }} </th>
+      <!-- ProjBez Column -->
+      <ng-container matColumnDef="projbez">
+        <th mat-header-cell *matHeaderCellDef class="header"> ProjBez </th>
         <td mat-cell *matCellDef="let element">
           <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
-            <mat-form-field class="example-full-width">
-              <input [formControl]="symbolFormControl" matInput [(ngModel)]="symbol" (keyup.enter)="confirmEdit()">
-              <mat-error *ngIf="symbolFormControl.hasError('required')">
-                Symbol is <strong>required</strong>
+            <mat-form-field class="full-width">
+              <textarea [(ngModel)]="fppInputs.projbez" type="text" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formProjbez"></textarea>
+              <mat-error *ngIf="formProjbez.invalid">
+                Projekt Bezeichnung is <strong>required</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
             <div>
-              {{element.symbol}}
+              {{ element.projbez }}
             </div>
           </ng-template>
         </td>
       </ng-container>
 
-      <!-- Name Column -->
+      <!-- Kundennr Column -->
+      <ng-container matColumnDef="kundennr">
+        <th mat-header-cell *matHeaderCellDef class="header"> KundenNr </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+            <mat-form-field class="example-full-width">
+              <input type="number" [(ngModel)]="fppInputs.kundennr" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formKundennr">
+              <mat-error *ngIf="formKundennr.invalid">
+                Kunden Number is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.kundennr }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Fixpreis Column -->
+      <ng-container matColumnDef="fixpreis">
+        <th mat-header-cell *matHeaderCellDef class="header"> Fixpreis [EUR] </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+            <mat-form-field class="example-full-width">
+              <input type="number" [(ngModel)]="fppInputs.fixpreis" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formFixpreis">
+              <mat-error *ngIf="formFixpreis.invalid">
+                Fixpreis is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.fixpreis }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Buttons Column -->
       <ng-container matColumnDef="menu">
         <th mat-header-cell *matHeaderCellDef class="header options-menu"></th>
         <td mat-cell *matCellDef="let element">
           <ng-template #editButton>
-            <button mat-button (click)="editRow(element.position)" class="edit-icon">
+            <button [disabled]="createNewRow === true" mat-button (click)="editRow(element.position)" class="edit-icon">
               <mat-icon>edit</mat-icon>
             </button>
           </ng-template>
           <div *ngIf="selectedRowToEdit === element.position; else editButton">
-            <button mat-button class="done-icon" (click)="confirmEdit()">
+            <button mat-button class="done-icon" (click)="confirmEdit()" [disabled]="fppForm.invalid">
               <mat-icon>check</mat-icon>
             </button>
             <button mat-button (click)="cancelEdit()" class="cancel-icon">
@@ -92,13 +130,15 @@
       <tr mat-row (click)="selectRow(index)" [ngClass]="{'highlight': index == selectedRow}" *matRowDef="let row; columns: displayedColumns; let index = index"></tr>
     </table>
 
-    <mat-paginator (page)="test()" [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
   </div>
 
-  <!-- <div class="space-for-buttons">
-  </div> -->
+  <div class="space-for-buttons">
+  </div>
 
-  <!-- <div class="buttons">
-      <app-buttons [dataSource]="dataSource" [displayedColumns]="displayedColumns" title="{{ 'FixedPricedProjects' | translate}}"></app-buttons>
-    </div> -->
+  <div class="right">
+    <button (click)="openDialog()" mat-fab matTooltip="{{'AddRow' | translate}}" class="add-icon">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 </div>
