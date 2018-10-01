@@ -135,6 +135,7 @@ export class FixedPricedProjectsComponent implements OnInit, AfterViewInit {
   }
 }
 
+// Mock-Up
 const ELEMENT_DATA: FixedPricedProjects[] = [
   {
     position: 1,
@@ -144,4 +145,20 @@ const ELEMENT_DATA: FixedPricedProjects[] = [
     kundennr: 80020,
     fixpreis: 477830
   },
+  {
+    position: 2,
+    planmill_pnr: 'R000004760',
+    tagetik_projektID: 'B12010_22_26',
+    projbez: 'Business Client',
+    kundennr: 80020,
+    fixpreis: 477830
+  },
+  {
+    position: 3,
+    planmill_pnr: 'R000004760',
+    tagetik_projektID: 'B12010_22_26',
+    projbez: 'ELBA Business Client',
+    kundennr: 80020,
+    fixpreis: 477830
+  }
 ];
