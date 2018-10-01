@@ -1,10 +1,23 @@
 <div class="align-page">
   <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
-      
+    <table mat-table [dataSource]="filteredDataSource">
+
       <!-- Planmill Projektnummer Column -->
       <ng-container matColumnDef="planmill_pnr">
-        <th mat-header-cell *matHeaderCellDef class="header position-column"> Planmill Projektnummer </th>
+        <th mat-header-cell *matHeaderCellDef class="header position-column">
+          Planmill Projektnummer
+
+          <button mat-icon-button (click)="planmillSearch = !planmillSearch">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="planmillSearch === true">
+            <mat-form-field>
+              <input [(ngModel)]="planmillSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
+            </mat-form-field>
+          </div>
+
+        </th>
+
         <td mat-cell *matCellDef="let element">
           <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
             <mat-form-field>
@@ -25,7 +38,21 @@
 
       <!-- Tagetik_Projekt-ID Column -->
       <ng-container matColumnDef="tagetik_projektID">
-        <th mat-header-cell *matHeaderCellDef class="header"> Tagetik_Projekt-ID </th>
+        <th mat-header-cell *matHeaderCellDef class="header">
+
+          Tagetik_Projekt-ID
+
+          <button mat-icon-button (click)="tagetikSearch = !tagetikSearch">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="tagetikSearch === true">
+            <mat-form-field>
+              <input [(ngModel)]="tagetikSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
+            </mat-form-field>
+          </div>
+
+
+        </th>
         <td mat-cell *matCellDef="let element">
           <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
             <mat-form-field>
@@ -46,7 +73,20 @@
 
       <!-- ProjBez Column -->
       <ng-container matColumnDef="projbez">
-        <th mat-header-cell *matHeaderCellDef class="header"> ProjBez </th>
+        <th mat-header-cell *matHeaderCellDef class="header">
+
+          ProjBez
+
+          <button mat-icon-button (click)="projbezSearch = !projbezSearch">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="projbezSearch === true">
+            <mat-form-field>
+              <input [(ngModel)]="projbezSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
+            </mat-form-field>
+          </div>
+
+        </th>
         <td mat-cell *matCellDef="let element">
           <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
             <mat-form-field class="full-width">
@@ -67,7 +107,21 @@
 
       <!-- Kundennr Column -->
       <ng-container matColumnDef="kundennr">
-        <th mat-header-cell *matHeaderCellDef class="header"> KundenNr </th>
+        <th mat-header-cell *matHeaderCellDef class="header">
+
+          KundenNr
+
+          <button mat-icon-button (click)="kundennrSearch = !kundennrSearch">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="kundennrSearch === true">
+            <mat-form-field>
+              <input type="number" [(ngModel)]="kundennrSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+                class="searchInput">
+            </mat-form-field>
+          </div>
+
+        </th>
         <td mat-cell *matCellDef="let element">
           <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
             <mat-form-field class="example-full-width">
@@ -88,7 +142,21 @@
 
       <!-- Fixpreis Column -->
       <ng-container matColumnDef="fixpreis">
-        <th mat-header-cell *matHeaderCellDef class="header"> Fixpreis [EUR] </th>
+        <th mat-header-cell *matHeaderCellDef class="header">
+
+          Fixpreis [EUR]
+
+          <button mat-icon-button (click)="fixpreisSearch = !fixpreisSearch">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="fixpreisSearch === true">
+            <mat-form-field>
+              <input type="number" [(ngModel)]="fixpreisSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+                class="searchInput">
+            </mat-form-field>
+          </div>
+
+        </th>
         <td mat-cell *matCellDef="let element">
           <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
             <mat-form-field class="example-full-width">

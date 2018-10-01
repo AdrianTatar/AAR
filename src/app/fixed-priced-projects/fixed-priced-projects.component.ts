@@ -14,10 +14,25 @@ import { FixedPricedProjects } from '../shared/models/FixedPricedProjects';
 export class FixedPricedProjectsComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['planmill_pnr', 'tagetik_projektID', 'projbez', 'kundennr', 'fixpreis', 'menu'];
+
   dataSource = new MatTableDataSource<FixedPricedProjects>(ELEMENT_DATA);
+  filteredDataSource = new MatTableDataSource<FixedPricedProjects>(ELEMENT_DATA);
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   selectedRowToEdit = -1;
   selectedRow = -1;
+
+  planmillSearch = false;
+  tagetikSearch = false;
+  projbezSearch = false;
+  kundennrSearch = false;
+  fixpreisSearch = false;
+
+  planmillSearchQuery = '';
+  tagetikSearchQuery = '';
+  projbezSearchQuery = '';
+  kundennrSearchQuery = 0;
+  fixpreisSearchQuery = 0;
 
   addNewElement = false;
 
@@ -34,6 +49,30 @@ export class FixedPricedProjectsComponent implements OnInit, AfterViewInit {
   constructor(
     public dialog: MatDialog
   ) { }
+
+  filter() {
+    this.filteredDataSource.data = (this.planmillSearchQuery) ?
+      this.dataSource.data.filter(p => p.planmill_pnr.toLocaleLowerCase().includes(this.planmillSearchQuery.toLocaleLowerCase()))
+      : this.dataSource.data;
+
+    this.filteredDataSource.data = (this.tagetikSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.tagetik_projektID.toLocaleLowerCase()
+        .includes(this.tagetikSearchQuery.toLocaleLowerCase()))
+      : this.filteredDataSource.data;
+
+    this.filteredDataSource.data = (this.projbezSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.projbez.toLocaleLowerCase()
+        .includes(this.projbezSearchQuery.toLocaleLowerCase()))
+      : this.filteredDataSource.data;
+
+    this.filteredDataSource.data = (this.kundennrSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.kundennr === this.kundennrSearchQuery)
+      : this.filteredDataSource.data;
+
+      this.filteredDataSource.data = (this.fixpreisSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.fixpreis === this.fixpreisSearchQuery)
+      : this.filteredDataSource.data;
+  }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
@@ -140,14 +179,14 @@ const ELEMENT_DATA: FixedPricedProjects[] = [
   {
     position: 1,
     planmill_pnr: 'R000004760',
-    tagetik_projektID: 'B12010_22_26',
+    tagetik_projektID: 'B12010_22_25',
     projbez: 'Wartung ELBA Business Client',
     kundennr: 80020,
     fixpreis: 477830
   },
   {
     position: 2,
-    planmill_pnr: 'R000004760',
+    planmill_pnr: 'R000004860',
     tagetik_projektID: 'B12010_22_26',
     projbez: 'Business Client',
     kundennr: 80020,
@@ -155,10 +194,10 @@ const ELEMENT_DATA: FixedPricedProjects[] = [
   },
   {
     position: 3,
-    planmill_pnr: 'R000004760',
-    tagetik_projektID: 'B12010_22_26',
+    planmill_pnr: 'R000004761',
+    tagetik_projektID: 'B12010_23_27',
     projbez: 'ELBA Business Client',
-    kundennr: 80020,
+    kundennr: 80021,
     fixpreis: 477830
   }
 ];
