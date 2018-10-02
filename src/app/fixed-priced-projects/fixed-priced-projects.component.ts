@@ -14,7 +14,6 @@ import { FixedPricedProjects } from '../shared/models/FixedPricedProjects';
 export class FixedPricedProjectsComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['planmill_pnr', 'tagetik_projektID', 'projbez', 'kundennr', 'fixpreis', 'menu'];
-
   dataSource = new MatTableDataSource<FixedPricedProjects>(ELEMENT_DATA);
   filteredDataSource = new MatTableDataSource<FixedPricedProjects>(ELEMENT_DATA);
 
@@ -51,6 +50,8 @@ export class FixedPricedProjectsComponent implements OnInit, AfterViewInit {
   ) { }
 
   filter() {
+    this.filteredDataSource.data = this.dataSource.data;
+
     this.filteredDataSource.data = (this.planmillSearchQuery) ?
       this.dataSource.data.filter(p => p.planmill_pnr.toLocaleLowerCase().includes(this.planmillSearchQuery.toLocaleLowerCase()))
       : this.dataSource.data;
@@ -137,6 +138,25 @@ export class FixedPricedProjectsComponent implements OnInit, AfterViewInit {
     });
   }
 
+  clearSearchInputBox() {
+    if (!this.planmillSearch) {
+      this.planmillSearchQuery = '';
+    }
+    if (!this.fixpreisSearch) {
+      this.fixpreisSearchQuery = 0;
+    }
+    if (!this.tagetikSearch) {
+      this.tagetikSearchQuery = '';
+    }
+    if (!this.projbezSearch) {
+      this.projbezSearchQuery = '';
+    }
+    if (!this.kundennrSearch) {
+      this.kundennrSearchQuery = 0;
+    }
+    this.filter();
+  }
+
   private pushObject(data: FixedPricedProjects) {
     data.position = this.dataSource.data[this.dataSource.data.length - 1].position + 1;
     this.dataSource.data.push(data);
@@ -157,12 +177,14 @@ export class FixedPricedProjectsComponent implements OnInit, AfterViewInit {
   }
 
   private confirmEdit() {
-    this.dataSource.data[this.selectedRowToEdit - 1].planmill_pnr = this.fppInputs.planmill_pnr;
-    this.dataSource.data[this.selectedRowToEdit - 1].tagetik_projektID = this.fppInputs.tagetik_projektID;
-    this.dataSource.data[this.selectedRowToEdit - 1].projbez = this.fppInputs.projbez;
-    this.dataSource.data[this.selectedRowToEdit - 1].kundennr = this.fppInputs.kundennr;
-    this.dataSource.data[this.selectedRowToEdit - 1].fixpreis = this.fppInputs.fixpreis;
-    this.selectedRowToEdit = -1;
+    if (this.fppForm.valid) {
+      this.dataSource.data[this.selectedRowToEdit - 1].planmill_pnr = this.fppInputs.planmill_pnr;
+      this.dataSource.data[this.selectedRowToEdit - 1].tagetik_projektID = this.fppInputs.tagetik_projektID;
+      this.dataSource.data[this.selectedRowToEdit - 1].projbez = this.fppInputs.projbez;
+      this.dataSource.data[this.selectedRowToEdit - 1].kundennr = this.fppInputs.kundennr;
+      this.dataSource.data[this.selectedRowToEdit - 1].fixpreis = this.fppInputs.fixpreis;
+      this.selectedRowToEdit = -1;
+    }
   }
 
   private setEditValues(rowNumber) {

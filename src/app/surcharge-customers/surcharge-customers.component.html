@@ -1,88 +1,353 @@
 <div class="align-page">
   <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
+    <table mat-table [dataSource]="filteredDataSource">
 
-      <!-- Position Column -->
-      <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef class="header position-column"> {{ 'Number' | translate }} </th>
-        <td mat-cell *matCellDef="let element">{{element.position}}</td>
-      </ng-container>
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef class="header"> {{ 'NameSC' | translate }} </th>
-        <td mat-cell *matCellDef="let element">
-
-          <div *ngIf="selection.isSelected(element); else simpleDisplay">
-            <mat-form-field class="example-full-width">
-              <input matInput [(ngModel)]="dataSource.data[element.position-1].name" (keyup.enter)="selection.toggle(element)">
+      <!-- Debitorennr Column -->
+      <ng-container matColumnDef="debitorennr">
+        <!-- Debitorennr Column Header -->
+        <th mat-header-cell *matHeaderCellDef class="header">
+          Debitorennr
+          <button mat-icon-button (click)="debitorennrSearch = !debitorennrSearch; clearSearchInputBox()">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="debitorennrSearch === true">
+            <mat-form-field>
+              <input type="number" [(ngModel)]="debitorennrSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+                class="searchInput">
             </mat-form-field>
           </div>
-
-          <ng-template #simpleDisplay>
-            <div (click)="selection.toggle(element)">
-              {{element.name}}
-            </div>
-          </ng-template>
-
-        </td>
-      </ng-container>
-
-      <!-- Weight Column -->
-      <ng-container matColumnDef="weight">
-        <th mat-header-cell *matHeaderCellDef class="header"> {{ 'WeightSC' | translate }} </th>
-        <td mat-cell *matCellDef="let element">
-
-          <div *ngIf="selection.isSelected(element); else simpleDisplay">
-            <mat-form-field class="example-full-width">
-              <input matInput [(ngModel)]="dataSource.data[element.position-1].weight" (keyup.enter)="selection.toggle(element)">
-            </mat-form-field>
-          </div>
-
-          <ng-template #simpleDisplay>
-            <div (click)="selection.toggle(element)">
-              {{element.weight}}
-            </div>
-          </ng-template>
-
-        </td>
-      </ng-container>
-
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="symbol">
-        <th mat-header-cell *matHeaderCellDef class="header"> {{ 'SymbolSC' | translate }} </th>
-        <td mat-cell *matCellDef="let element">
-
-          <div *ngIf="selection.isSelected(element); else simpleDisplay">
-            <mat-form-field class="example-full-width">
-              <input matInput [(ngModel)]="dataSource.data[element.position-1].symbol" (keyup.enter)="selection.toggle(element)">
-            </mat-form-field>
-          </div>
-
-          <ng-template #simpleDisplay>
-            <div (click)="selection.toggle(element)">
-              {{element.symbol}}
-            </div>
-          </ng-template>
-
-        </td>
-      </ng-container>
-
-      <!-- Checkbox Column -->
-      <ng-container matColumnDef="select">
-        <th mat-header-cell *matHeaderCellDef class="header selectionHeader">
-          <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
-            [indeterminate]="selection.hasValue() && !isAllSelected()">
-          </mat-checkbox>
         </th>
-        <td mat-cell *matCellDef="let row">
-          <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
-          </mat-checkbox>
+        <td mat-cell *matCellDef="let element">
+          <!-- Debitorennr Column Cell -->
+          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+            <mat-form-field>
+              <input [(ngModel)]="scInputs.debitorennr" matInput (keyup.enter)="confirmEdit()" [formControl]="formDebitorennr">
+              <mat-error *ngIf="formDebitorennr.invalid">
+                Debitorennr is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.debitorennr }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Debitor Column -->
+      <ng-container matColumnDef="debitor">
+        <th mat-header-cell *matHeaderCellDef class="header">
+          Debitor
+          <button mat-icon-button (click)="debitorSearch = !debitorSearch; clearSearchInputBox()">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="debitorSearch === true">
+            <mat-form-field>
+              <input [(ngModel)]="debitorSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
+            </mat-form-field>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+            <mat-form-field>
+              <input type="text" [(ngModel)]="scInputs.debitor" matInput (keyup.enter)="confirmEdit()" [formControl]="formDebitor">
+              <mat-error *ngIf="formDebitor.invalid">
+                Debitor is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.debitor }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Typ Column -->
+      <ng-container matColumnDef="typ">
+        <th mat-header-cell *matHeaderCellDef class="header">
+          Typ
+          <button mat-icon-button (click)="typSearch = !typSearch; clearSearchInputBox()">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="typSearch === true">
+
+            <mat-form-field>
+              <mat-select [(value)]="typSearchQuery" (selectionChange)="filter()" class="searchInput">
+                <mat-option>None</mat-option>
+                <mat-option value="fremdbanken">Fremdbanken</mat-option>
+                <mat-option value="sektorbanken">Sektorbanken</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+
+            <mat-form-field>
+              <mat-select [(ngModel)]="scInputs.typ" (keyup.enter)="confirmEdit()" [formControl]="formTyp">
+                <mat-option>None</mat-option>
+                <mat-option value="Fremdbanken">Fremdbanken</mat-option>
+                <mat-option value="Sektorbanken">Sektorbanken</mat-option>
+              </mat-select>
+              <mat-error *ngIf="formTyp.invalid">
+                Typ is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.typ }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Kundennr Column -->
+      <ng-container matColumnDef="kundennr">
+        <th mat-header-cell *matHeaderCellDef class="header">
+          Kundennr
+          <button mat-icon-button (click)="kundennrSearch = !kundennrSearch; clearSearchInputBox();">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="kundennrSearch === true">
+            <mat-form-field>
+              <input type="number" [(ngModel)]="kundennrSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+                class="searchInput">
+            </mat-form-field>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+            <mat-form-field>
+              <input type="number" [(ngModel)]="scInputs.kundennr" matInput (keyup.enter)="confirmEdit()" [formControl]="formKundennr">
+              <mat-error *ngIf="formKundennr.invalid">
+                Kunden Number is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.kundennr }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Kunde Column -->
+      <ng-container matColumnDef="kunde">
+        <th mat-header-cell *matHeaderCellDef class="header">
+          Kunde
+          <button mat-icon-button (click)="kundeSearch = !kundeSearch; clearSearchInputBox();">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="kundeSearch === true">
+            <mat-form-field>
+              <input [(ngModel)]="kundeSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
+            </mat-form-field>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+            <mat-form-field>
+              <input [(ngModel)]="scInputs.kunde" matInput (keyup.enter)="confirmEdit()" [formControl]="formKunde">
+              <mat-error *ngIf="formKunde.invalid">
+                Kunden is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.kunde }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- n2015 Column -->
+      <ng-container matColumnDef="n2015">
+        <th mat-header-cell *matHeaderCellDef class="header">
+          2015
+          <button mat-icon-button (click)="n2015Search = !n2015Search; clearSearchInputBox()">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="n2015Search === true">
+            <mat-form-field>
+              <input type="number" [(ngModel)]="n2015SearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+                class="searchInput">
+            </mat-form-field>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+            <mat-form-field>
+              <input type="number" [(ngModel)]="scInputs.n2015" matInput (keyup.enter)="confirmEdit()" [formControl]="formN2015">
+              <mat-error *ngIf="formN2015.invalid">
+                2015 number is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.n2015 }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+
+      <!-- n2016 Column -->
+      <ng-container matColumnDef="n2016">
+        <th mat-header-cell *matHeaderCellDef class="header">
+          2016
+          <button mat-icon-button (click)="n2016Search = !n2016Search; clearSearchInputBox();">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="n2016Search === true">
+            <mat-form-field>
+              <input type="number" [(ngModel)]="n2016SearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+                class="searchInput">
+            </mat-form-field>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+            <mat-form-field>
+              <input type="number" [(ngModel)]="scInputs.n2016" matInput (keyup.enter)="confirmEdit()" [formControl]="formN2016">
+              <mat-error *ngIf="formN2016.invalid">
+                2016 number is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.n2016 }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+
+      <!-- n2017 Column -->
+      <ng-container matColumnDef="n2017">
+        <th mat-header-cell *matHeaderCellDef class="header">
+          2017
+          <button mat-icon-button (click)="n2017Search = !n2017Search; clearSearchInputBox();">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="n2017Search === true">
+            <mat-form-field>
+              <input type="number" [(ngModel)]="n2017SearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+                class="searchInput">
+            </mat-form-field>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+            <mat-form-field>
+              <input type="number" [(ngModel)]="scInputs.n2017" matInput (keyup.enter)="confirmEdit()" [formControl]="formN2017">
+              <mat-error *ngIf="formN2017.invalid">
+                2017 number is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.n2017 }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+
+      <!-- n2018 Column -->
+      <ng-container matColumnDef="n2018">
+        <th mat-header-cell *matHeaderCellDef class="header">
+          2018
+          <button mat-icon-button (click)="n2018Search = !n2018Search; clearSearchInputBox();">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="n2018Search === true">
+            <mat-form-field>
+              <input type="number" [(ngModel)]="n2018SearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+                class="searchInput">
+            </mat-form-field>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+            <mat-form-field>
+              <input type="number" [(ngModel)]="scInputs.n2018" matInput (keyup.enter)="confirmEdit()" [formControl]="formN2018">
+              <mat-error *ngIf="formN2016.invalid">
+                2018 number is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.n2018 }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- aufschlag_2018 Column -->
+      <ng-container matColumnDef="aufschlag_2018">
+        <th mat-header-cell *matHeaderCellDef class="header">
+          Aufschlag 2018
+          <button mat-icon-button (click)="aufschlag_2018Search = !aufschlag_2018Search; clearSearchInputBox()">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="aufschlag_2018Search === true">
+            <mat-form-field>
+              <input type="number" [(ngModel)]="aufschlag_2018SearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+                class="searchInput">
+            </mat-form-field>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+            <mat-form-field>
+              <input type="number" [(ngModel)]="scInputs.aufschlag_2018" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formAufschlag_2018">
+              <mat-error *ngIf="formAufschlag_2018.invalid">
+                Aufschlag number is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.aufschlag_2018 }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Buttons Column -->
+      <ng-container matColumnDef="menu">
+        <th mat-header-cell *matHeaderCellDef class="header options-menu"></th>
+        <td mat-cell *matCellDef="let element">
+          <ng-template #editButton>
+            <button [disabled]="createNewRow === true" mat-button (click)="editRow(element.position)" class="edit-icon">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </ng-template>
+          <div *ngIf="selectedRowToEdit === element.position; else editButton">
+            <button mat-button class="done-icon" (click)="confirmEdit()" [disabled]="scForm.invalid">
+              <mat-icon>check</mat-icon>
+            </button>
+            <button mat-button (click)="cancelEdit()" class="cancel-icon">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </div>
         </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-      <tr mat-row [ngClass]="{'highlight': index%2 == 1}" *matRowDef="let row; columns: displayedColumns; let index = index"></tr>
+      <tr mat-row (click)="selectRow(index)" [ngClass]="{'highlight': index == selectedRow}" *matRowDef="let row; columns: displayedColumns; let index = index"></tr>
     </table>
 
     <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
