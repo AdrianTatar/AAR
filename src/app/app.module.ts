@@ -18,12 +18,9 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { FppAddDialogComponent } from './fixed-priced-projects/fpp-add-dialog/fpp-add-dialog.component';
-<<<<<<< HEAD
 import { ScAddDialogComponent } from './surcharge-customers/sc-add-dialog/sc-add-dialog.component';
-=======
 import { ZahlerknotenComponent } from './zahlerknoten/zahlerknoten.component';
 import { KundenstammComponent } from './kundenstamm/kundenstamm.component';
->>>>>>> 936b76d36096f81c6a1644eda456605aa659f781
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -42,12 +39,9 @@ export function createTranslateLoader(http: HttpClient) {
     NavbarComponent,
     routingComponents,
     FppAddDialogComponent,
-<<<<<<< HEAD
     ScAddDialogComponent,
-=======
     ZahlerknotenComponent,
     KundenstammComponent,
->>>>>>> 936b76d36096f81c6a1644eda456605aa659f781
   ],
   imports: [
     BrowserModule,
