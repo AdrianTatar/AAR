@@ -6,6 +6,8 @@ import { LogsComponent } from './logs/logs.component';
 import { FixedPricedProjectsComponent } from './fixed-priced-projects/fixed-priced-projects.component';
 import { SurchargeCustomersComponent } from './surcharge-customers/surcharge-customers.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ZahlerknotenComponent } from './zahlerknoten/zahlerknoten.component';
+import { KundenstammComponent } from './kundenstamm/kundenstamm.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent, data: { page: 'one' } },
@@ -21,9 +23,19 @@ const appRoutes: Routes = [
     data: { page: 'three' },
   },
   {
+    path: 'zahlerknoten',
+    component: ZahlerknotenComponent,
+    data: { page: 'four' },
+  },
+  {
+    path: 'kundenstamm',
+    component: KundenstammComponent,
+    data: { page: 'five' },
+  },
+  {
     path: 'logs',
     component: LogsComponent,
-    data: { page: 'four' },
+    data: { page: 'six' },
   },
   { path: '**', component: NotFoundComponent }
 ];
