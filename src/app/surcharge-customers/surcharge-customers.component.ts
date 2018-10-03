@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
 import { SurchargeCustomers } from '../shared/models/SurchargeCustomers';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ScAddDialogComponent } from './sc-add-dialog/sc-add-dialog.component';
 
 @Component({
   selector: 'app-surcharge-customers',
@@ -194,6 +195,26 @@ export class SurchargeCustomersComponent implements OnInit {
 
   private cancelEdit() {
     this.selectedRowToEdit = -1;
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ScAddDialogComponent, {
+      width: '600px',
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(data => {
+      if (data) {
+        this.pushObject(data);
+      }
+    });
+  }
+
+  private pushObject(data: SurchargeCustomers) {
+    data.position = this.dataSource.data[this.dataSource.data.length - 1].position + 1;
+    this.dataSource.data.push(data);
+    this.filteredDataSource.data = this.dataSource.data;
+    this.paginator._changePageSize(this.paginator.pageSize);
   }
 
   clearSearchInputBox() {

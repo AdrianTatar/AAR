@@ -160,6 +160,7 @@ export class FixedPricedProjectsComponent implements OnInit, AfterViewInit {
   private pushObject(data: FixedPricedProjects) {
     data.position = this.dataSource.data[this.dataSource.data.length - 1].position + 1;
     this.dataSource.data.push(data);
+    this.filteredDataSource.data = this.dataSource.data;
     this.paginator._changePageSize(this.paginator.pageSize);
   }
 

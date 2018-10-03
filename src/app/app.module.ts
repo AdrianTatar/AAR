@@ -18,6 +18,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { FppAddDialogComponent } from './fixed-priced-projects/fpp-add-dialog/fpp-add-dialog.component';
+import { ScAddDialogComponent } from './surcharge-customers/sc-add-dialog/sc-add-dialog.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -36,6 +37,7 @@ export function createTranslateLoader(http: HttpClient) {
     NavbarComponent,
     routingComponents,
     FppAddDialogComponent,
+    ScAddDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +58,9 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [FppAddDialogComponent]
+  entryComponents: [
+    FppAddDialogComponent,
+    ScAddDialogComponent
+  ]
 })
 export class AppModule { }

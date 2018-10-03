@@ -21,7 +21,7 @@
           <!-- Debitorennr Column Cell -->
           <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
             <mat-form-field>
-              <input [(ngModel)]="scInputs.debitorennr" matInput (keyup.enter)="confirmEdit()" [formControl]="formDebitorennr">
+              <input class="input-value" [(ngModel)]="scInputs.debitorennr" matInput (keyup.enter)="confirmEdit()" [formControl]="formDebitorennr">
               <mat-error *ngIf="formDebitorennr.invalid">
                 Debitorennr is <strong>required</strong>
               </mat-error>
@@ -281,7 +281,7 @@
           <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
             <mat-form-field>
               <input type="number" [(ngModel)]="scInputs.n2018" matInput (keyup.enter)="confirmEdit()" [formControl]="formN2018">
-              <mat-error *ngIf="formN2016.invalid">
+              <mat-error *ngIf="formN2018.invalid">
                 2018 number is <strong>required</strong>
               </mat-error>
             </mat-form-field>
@@ -356,9 +356,9 @@
   <div class="space-for-buttons">
   </div>
 
-  <!-- <div class="right">
+  <div class="right">
     <button (click)="openDialog()" mat-fab matTooltip="{{'AddRow' | translate}}" class="add-icon">
       <mat-icon>add</mat-icon>
     </button>
-  </div> -->
+  </div>
 </div>

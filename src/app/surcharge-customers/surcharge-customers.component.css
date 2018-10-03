@@ -1,5 +1,5 @@
 table {
-  width: 100%;
+  width: 100%; 
 }
 
 .align-page {
@@ -75,6 +75,6 @@ table {
   color: white;
 }
 
-.align-items {
-  float: left;
+.matInput {
+  width: 10px;
 }
