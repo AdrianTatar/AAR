@@ -1,0 +1,247 @@
+<div class="align-page">
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="filteredDataSource">
+
+      <!-- BLZ Column -->
+      <ng-container matColumnDef="blz_pnr">
+        <th mat-header-cell *matHeaderCellDef class="header position-column">
+          BLZ
+
+          <button mat-icon-button (click)="blzSearch = !blzSearch">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="blzSearch === true">
+            <mat-form-field>
+              <input [(ngModel)]="blzSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
+            </mat-form-field>
+          </div>
+
+        </th>
+
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+            <mat-form-field>
+              <input type="text" [(ngModel)]="fppInputs.blz_pnr" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formBLZ_pnr">
+              <mat-error *ngIf="formBLZ_pnr.invalid">
+                BLZ is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.blz_pnr }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Block Column -->
+      <ng-container matColumnDef="block_pnr">
+        <th mat-header-cell *matHeaderCellDef class="header">
+
+          Block
+
+          <button mat-icon-button (click)="blockSearch = !blockSearch">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="blockSearch === true">
+            <mat-form-field>
+              <input [(ngModel)]="blockSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
+            </mat-form-field>
+          </div>
+
+
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+            <mat-form-field>
+              <input type="text" [(ngModel)]="fppInputs.block_pnr" [formControl]="formblock" matInput (keyup.enter)="confirmEdit()">
+              <mat-error *ngIf="formblock.invalid">
+                Block is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.block_pnr }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Knoten Column -->
+      <ng-container matColumnDef="knoten_pnr">
+        <th mat-header-cell *matHeaderCellDef class="header">
+
+          Knoten
+
+          <button mat-icon-button (click)="knotenSearch = !knotenSearch">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="knotenSearch === true">
+            <mat-form-field>
+              <input [(ngModel)]="knotenSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
+            </mat-form-field>
+          </div>
+
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+            <mat-form-field class="full-width">
+              <textarea [(ngModel)]="fppInputs.knoten_pnr" type="text" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formKoten"></textarea>
+              <mat-error *ngIf="formKnoten.invalid">
+                Knoten is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.knoten_pnr }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Kundenname Column -->
+      <ng-container matColumnDef="kundenname_pnr">
+        <th mat-header-cell *matHeaderCellDef class="header">
+
+          Kundenname
+
+          <button mat-icon-button (click)="kundennameSearch = !kundennameSearch">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="kundennameSearch === true">
+            <mat-form-field>
+              <input type="number" [(ngModel)]="kundennameSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+                class="searchInput">
+            </mat-form-field>
+          </div>
+
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+            <mat-form-field class="example-full-width">
+              <input type="number" [(ngModel)]="fppInputs.kundenname_pnr" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formKundenname">
+              <mat-error *ngIf="formKundenname.invalid">
+                Kunden Name is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.kundenname_pnr }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- BkGr Column -->
+      <ng-container matColumnDef="bkgr_pnr">
+        <th mat-header-cell *matHeaderCellDef class="header">
+
+          Fixpreis [EUR]
+
+          <button mat-icon-button (click)="bkgrSearch = !bkgrSearch">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="bkgrSearch === true">
+            <mat-form-field>
+              <input type="number" [(ngModel)]="bkgrSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+                class="searchInput">
+            </mat-form-field>
+          </div>
+
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+            <mat-form-field class="example-full-width">
+              <input type="number" [(ngModel)]="fppInputs.bkgr_pnr" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formBkGr">
+              <mat-error *ngIf="formBkGr.invalid">
+                BkGr is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.bkgr_pnr }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Cluster Column -->
+      <ng-container matColumnDef="cluster_pnr">
+        <th mat-header-cell *matHeaderCellDef class="header">
+
+          Cluster
+
+          <button mat-icon-button (click)="clusterSearch = !clusterSearch">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="clusterSearch === true">
+            <mat-form-field>
+              <input type="number" [(ngModel)]="clusterSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+                class="searchInput">
+            </mat-form-field>
+          </div>
+
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+            <mat-form-field class="example-full-width">
+              <input type="number" [(ngModel)]="fppInputs.cluster_pnr" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formCluster">
+              <mat-error *ngIf="formCluster.invalid">
+                Cluster is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.cluster_pnr }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Buttons Column -->
+      <ng-container matColumnDef="menu">
+        <th mat-header-cell *matHeaderCellDef class="header options-menu"></th>
+        <td mat-cell *matCellDef="let element">
+          <ng-template #editButton>
+            <button [disabled]="createNewRow === true" mat-button (click)="editRow(element.position)" class="edit-icon">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </ng-template>
+          <div *ngIf="selectedRowToEdit === element.position; else editButton">
+            <button mat-button class="done-icon" (click)="confirmEdit()" [disabled]="fppForm.invalid">
+              <mat-icon>check</mat-icon>
+            </button>
+            <button mat-button (click)="cancelEdit()" class="cancel-icon">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row (click)="selectRow(index)" [ngClass]="{'highlight': index == selectedRow}" *matRowDef="let row; columns: displayedColumns; let index = index"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+  </div>
+
+  <div class="space-for-buttons">
+  </div>
+
+  <div class="right">
+    <button (click)="openDialog()" mat-fab matTooltip="{{'AddRow' | translate}}" class="add-icon">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

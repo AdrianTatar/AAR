@@ -18,6 +18,8 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { FppAddDialogComponent } from './fixed-priced-projects/fpp-add-dialog/fpp-add-dialog.component';
+import { ZahlerknotenComponent } from './zahlerknoten/zahlerknoten.component';
+import { KundenstammComponent } from './kundenstamm/kundenstamm.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -36,6 +38,8 @@ export function createTranslateLoader(http: HttpClient) {
     NavbarComponent,
     routingComponents,
     FppAddDialogComponent,
+    ZahlerknotenComponent,
+    KundenstammComponent,
   ],
   imports: [
     BrowserModule,
