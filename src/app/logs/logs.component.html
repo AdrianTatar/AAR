@@ -1,32 +1,78 @@
 <div class="align-page">
   <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
+    <table mat-table [dataSource]="filteredDataSource">
+
       <!-- Position ID Column -->
       <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef class="header"> # </th>
+        <th mat-header-cell *matHeaderCellDef class="header">
+          #
+
+          <button mat-icon-button (click)="logIdSearch = !logIdSearch; clearSearchInputBox()">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="logIdSearch === true">
+            <mat-form-field>
+              <input [(ngModel)]="logIdSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
+            </mat-form-field>
+          </div>
+        </th>
         <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+
       </ng-container>
 
       <!-- Timestamp Column -->
       <ng-container matColumnDef="timestamp">
-        <th mat-header-cell *matHeaderCellDef class="header"> Timestamp </th>
+        <th mat-header-cell *matHeaderCellDef class="header">
+          Timestamp
+
+          <button mat-icon-button (click)="timestampSearch = !timestampSearch; clearSearchInputBox()">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="timestampSearch === true">
+            <mat-form-field>
+              <input [(ngModel)]="timestampSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
+            </mat-form-field>
+          </div>
+        </th>
         <td mat-cell *matCellDef="let element"> {{element.timestamp}} </td>
       </ng-container>
 
-      <!-- Type Column -->
+      <!-- User Id Column -->
       <ng-container matColumnDef="uid">
-        <th mat-header-cell *matHeaderCellDef class="header"> User ID </th>
+        <th mat-header-cell *matHeaderCellDef class="header"> 
+          User ID 
+        
+          <button mat-icon-button (click)="userIdSearch = !userIdSearch; clearSearchInputBox()">
+              <mat-icon>search</mat-icon>
+            </button>
+            <div *ngIf="userIdSearch === true">
+              <mat-form-field>
+                <input [(ngModel)]="userIdSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
+              </mat-form-field>
+            </div>
+        </th>
         <td mat-cell *matCellDef="let element"> {{element.uid}} </td>
       </ng-container>
 
-      <!-- Date Column -->
+      <!-- Action Column -->
       <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef class="header"> Action </th>
+        <th mat-header-cell *matHeaderCellDef class="header"> 
+          Action 
+        
+          <button mat-icon-button (click)="actionSearch = !actionSearch; clearSearchInputBox()">
+              <mat-icon>search</mat-icon>
+            </button>
+            <div *ngIf="actionSearch === true">
+              <mat-form-field>
+                <input [(ngModel)]="actionSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
+              </mat-form-field>
+            </div>
+        </th>
         <td mat-cell *matCellDef="let element"> {{element.action}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-      <tr mat-row (click)="selectRow(index)" [ngClass]="{'highlight': index == selectedRow}"  *matRowDef="let row; columns: displayedColumns; let index = index"></tr>
+      <tr mat-row (click)="selectRow(index)" [ngClass]="{'highlight': index == selectedRow}" *matRowDef="let row; columns: displayedColumns; let index = index"></tr>
     </table>
 
     <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>

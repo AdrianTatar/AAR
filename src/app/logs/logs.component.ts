@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
 import { UserAction } from '../shared/models/UserActions';
 
 @Component({
@@ -11,10 +11,62 @@ export class LogsComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'timestamp', 'uid', 'action'];
   dataSource = new MatTableDataSource<UserAction>(USER_ACTIONS);
+  filteredDataSource = new MatTableDataSource<UserAction>(USER_ACTIONS);
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   selectedRow = -1;
 
-  constructor() {
+  logIdSearch = false;
+  timestampSearch = false;
+  userIdSearch = false;
+  actionSearch = false;
+
+  logIdSearchQuery = 0;
+  timestampSearchQuery = '';
+  userIdSearchQuery = '';
+  actionSearchQuery = '';
+
+  constructor(
+    public dialog: MatDialog
+  ) { }
+
+  filter() {
+    this.filteredDataSource.data = this.dataSource.data;
+
+    this.filteredDataSource.data = (this.logIdSearchQuery) ?
+      this.dataSource.data.filter(p => p.position === this.logIdSearchQuery)
+      : this.filteredDataSource.data;
+
+    this.filteredDataSource.data = (this.timestampSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.timestamp.toLocaleDateString()
+        .includes(this.timestampSearchQuery.toLocaleLowerCase()))
+      : this.filteredDataSource.data;
+
+    this.filteredDataSource.data = (this.userIdSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.uid.toLocaleLowerCase()
+        .includes(this.userIdSearchQuery.toLocaleLowerCase()))
+      : this.filteredDataSource.data;
+
+    this.filteredDataSource.data = (this.actionSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.action.toLocaleLowerCase()
+        .includes(this.actionSearchQuery.toLocaleLowerCase()))
+      : this.filteredDataSource.data;
+  }
+
+  clearSearchInputBox() {
+    if (!this.logIdSearch) {
+      this.logIdSearchQuery = 0;
+    }
+    if (!this.timestampSearch) {
+      this.timestampSearchQuery = '';
+    }
+    if (!this.userIdSearch) {
+      this.userIdSearchQuery = '';
+    }
+    if (!this.actionSearch) {
+      this.actionSearchQuery = '';
+    }
+    this.filter();
   }
 
   ngOnInit() {
