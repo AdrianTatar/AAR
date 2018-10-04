@@ -4,11 +4,11 @@ import { MatDialogRef } from '@angular/material';
 import { Kundenstamm } from '../../shared/models/Kundenstamm';
 
 @Component({
-  selector: 'app-fpp-add-dialog',
-  templateUrl: './fpp-add-dialog.component.html',
-  styleUrls: ['./fpp-add-dialog.component.css']
+  selector: 'app-kun-add-dialog',
+  templateUrl: './kun-add-dialog.component.html',
+  styleUrls: ['./kun-add-dialog.component.css']
 })
-export class FppAddDialogComponent {
+export class KunAddDialogComponent {
 
   fppForm;
   fppInputs: Kundenstamm = {
@@ -22,7 +22,7 @@ export class FppAddDialogComponent {
   };
 
   constructor(
-    private dialogRef: MatDialogRef<FppAddDialogComponent>
+    private dialogRef: MatDialogRef<KunAddDialogComponent>
   ) {
     this.fppForm = new FormGroup({
       blz_pnr: new FormControl('', Validators.required),

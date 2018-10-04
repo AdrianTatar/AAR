@@ -1,9 +1,9 @@
+import { KunAddDialogComponent } from './kun-add-dialog/kun-add-dialog.component';
 import { Kundenstamm } from './../shared/models/Kundenstamm';
 import { Component, OnInit, ViewChild, HostListener, AfterViewInit } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
-import { FppAddDialogComponent } from './fpp-add-dialog/fpp-add-dialog.component';
 
 @Component({
   selector: 'app-kundenstamm',
@@ -12,7 +12,7 @@ import { FppAddDialogComponent } from './fpp-add-dialog/fpp-add-dialog.component
 })
 export class KundenstammComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['blz_pnr', 'block_pnr', 'knoten_pnr', 'kundenname_pnr', 'bkgr_pnr', 'cluster_pnr'];
+  displayedColumns: string[] = ['blz_pnr', 'block_pnr', 'knoten_pnr', 'kundenname_pnr', 'bkgr_pnr', 'cluster_pnr', 'menu'];
 
   dataSource = new MatTableDataSource<Kundenstamm>(ELEMENT_DATA);
   filteredDataSource = new MatTableDataSource<Kundenstamm>(ELEMENT_DATA);
@@ -138,7 +138,7 @@ export class KundenstammComponent implements OnInit, AfterViewInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(FppAddDialogComponent, {
+    const dialogRef = this.dialog.open(KunAddDialogComponent, {
       width: '600px',
       disableClose: true
     });

@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, HostListener, AfterViewInit } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
-import { PeriodicElement } from './../shared/models/PeriodicElement';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { FppAddDialogComponent } from './fpp-add-dialog/fpp-add-dialog.component';

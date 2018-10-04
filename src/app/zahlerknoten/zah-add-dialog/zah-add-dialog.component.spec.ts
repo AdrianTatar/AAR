@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FppAddDialogComponent } from './fpp-add-dialog.component';
+import { ZahAddDialogComponent } from './zah-add-dialog.component';
 
-describe('FppAddDialogComponent', () => {
-  let component: FppAddDialogComponent;
-  let fixture: ComponentFixture<FppAddDialogComponent>;
+describe('ZahAddDialogComponent', () => {
+  let component: ZahAddDialogComponent;
+  let fixture: ComponentFixture<ZahAddDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FppAddDialogComponent ]
+      declarations: [ ZahAddDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FppAddDialogComponent);
+    fixture = TestBed.createComponent(ZahAddDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
