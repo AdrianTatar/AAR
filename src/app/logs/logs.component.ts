@@ -34,11 +34,11 @@ export class LogsComponent implements OnInit {
     this.filteredDataSource.data = this.dataSource.data;
 
     this.filteredDataSource.data = (this.logIdSearchQuery) ?
-      this.dataSource.data.filter(p => p.position === this.logIdSearchQuery)
+      this.filteredDataSource.data.filter(p => p.position === this.logIdSearchQuery)
       : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.timestampSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.timestamp.toLocaleDateString()
+      this.filteredDataSource.data.filter(p => p.timestamp.toDateString()
         .includes(this.timestampSearchQuery.toLocaleLowerCase()))
       : this.filteredDataSource.data;
 
@@ -71,6 +71,7 @@ export class LogsComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
+    this.selectedRow = 0;
   }
 
   @HostListener('document:keydown', ['$event']) handleKeyboardEvent(event: KeyboardEvent) {
@@ -93,5 +94,89 @@ const USER_ACTIONS: UserAction[] = [
   { position: 1, timestamp: new Date(), uid: 'vosi312', action: 'delete chestie' },
   { position: 2, timestamp: new Date(), uid: 'luis312', action: 'review chestie' },
   { position: 3, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
-  { position: 4, timestamp: new Date(), uid: 'toie312', action: 'add chestie' }
+  { position: 4, timestamp: new Date(), uid: 'toie312', action: 'add chestie' },
+  { position: 5, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 6, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 7, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 8, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 9, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 1, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 2, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 3, timestamp: new Date(), uid: 'vosi312', action: 'delete chestie' },
+  { position: 4, timestamp: new Date(), uid: 'luis312', action: 'review chestie' },
+  { position: 5, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 6, timestamp: new Date(), uid: 'toie312', action: 'add chestie' },
+  { position: 7, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 8, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 9, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 1, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 2, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 3, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 4, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 5, timestamp: new Date(), uid: 'vosi312', action: 'delete chestie' },
+  { position: 6, timestamp: new Date(), uid: 'luis312', action: 'review chestie' },
+  { position: 7, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 8, timestamp: new Date(), uid: 'toie312', action: 'add chestie' },
+  { position: 9, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 1, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 2, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 3, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 4, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 5, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 6, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 7, timestamp: new Date(), uid: 'vosi312', action: 'delete chestie' },
+  { position: 8, timestamp: new Date(), uid: 'luis312', action: 'review chestie' },
+  { position: 9, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 1, timestamp: new Date(), uid: 'toie312', action: 'add chestie' },
+  { position: 2, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 3, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 4, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 5, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 6, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 7, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 8, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 9, timestamp: new Date(), uid: 'vosi312', action: 'delete chestie' },
+  { position: 1, timestamp: new Date(), uid: 'luis312', action: 'review chestie' },
+  { position: 2, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 3, timestamp: new Date(), uid: 'toie312', action: 'add chestie' },
+  { position: 4, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 5, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 6, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 7, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 8, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 9, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 1, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 2, timestamp: new Date(), uid: 'vosi312', action: 'delete chestie' },
+  { position: 3, timestamp: new Date(), uid: 'luis312', action: 'review chestie' },
+  { position: 4, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 5, timestamp: new Date(), uid: 'toie312', action: 'add chestie' },
+  { position: 6, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 7, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 8, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 9, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 1, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 2, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 3, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 4, timestamp: new Date(), uid: 'vosi312', action: 'delete chestie' },
+  { position: 5, timestamp: new Date(), uid: 'luis312', action: 'review chestie' },
+  { position: 6, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 7, timestamp: new Date(), uid: 'toie312', action: 'add chestie' },
+  { position: 8, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 9, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 1, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 2, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 3, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 4, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 5, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 6, timestamp: new Date(), uid: 'vosi312', action: 'delete chestie' },
+  { position: 7, timestamp: new Date(), uid: 'luis312', action: 'review chestie' },
+  { position: 8, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 9, timestamp: new Date(), uid: 'toie312', action: 'add chestie' },
+  { position: 1, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 2, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 3, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 4, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 5, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 6, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  { position: 7, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' }
 ];

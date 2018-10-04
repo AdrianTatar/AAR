@@ -12,7 +12,7 @@
           </button>
           <div *ngIf="kundeSearch === true">
             <mat-form-field>
-              <input [(ngModel)]="kundeSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
+              <input type="number" [(ngModel)]="kundeSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
             </mat-form-field>
           </div>
 
@@ -183,7 +183,7 @@
           </button>
           <div *ngIf="knotenSearch === true">
             <mat-form-field>
-              <input type="number" [(ngModel)]="knotenSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+              <input type="text" [(ngModel)]="knotenSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
                 class="searchInput">
             </mat-form-field>
           </div>

@@ -7,12 +7,12 @@
         <th mat-header-cell *matHeaderCellDef class="header position-column">
           BLZ
 
-          <button mat-icon-button (click)="blzSearch = !blzSearch">
+          <button mat-icon-button (click)="blzSearch = !blzSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
           <div *ngIf="blzSearch === true">
             <mat-form-field>
-              <input [(ngModel)]="blzSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
+              <input type="number" [(ngModel)]="blzSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
             </mat-form-field>
           </div>
 
@@ -42,7 +42,7 @@
 
           Block
 
-          <button mat-icon-button (click)="blockSearch = !blockSearch">
+          <button mat-icon-button (click)="blockSearch = !blockSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
           <div *ngIf="blockSearch === true">
@@ -76,7 +76,7 @@
 
           Knoten
 
-          <button mat-icon-button (click)="knotenSearch = !knotenSearch">
+          <button mat-icon-button (click)="knotenSearch = !knotenSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
           <div *ngIf="knotenSearch === true">
@@ -109,7 +109,7 @@
 
           Kundenname
 
-          <button mat-icon-button (click)="kundennameSearch = !kundennameSearch">
+          <button mat-icon-button (click)="kundennameSearch = !kundennameSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
           <div *ngIf="kundennameSearch === true">
@@ -144,7 +144,7 @@
 
           BkGr
 
-          <button mat-icon-button (click)="bkgrSearch = !bkgrSearch">
+          <button mat-icon-button (click)="bkgrSearch = !bkgrSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
           <div *ngIf="bkgrSearch === true">
@@ -179,7 +179,7 @@
 
           Cluster
 
-          <button mat-icon-button (click)="clusterSearch = !clusterSearch">
+          <button mat-icon-button (click)="clusterSearch = !clusterSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
           <div *ngIf="clusterSearch === true">

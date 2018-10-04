@@ -221,5 +221,61 @@ const ELEMENT_DATA: FixedPricedProjects[] = [
     projbez: 'ELBA Business Client',
     kundennr: 80021,
     fixpreis: 477830
+  },
+  {
+    position: 2,
+    planmill_pnr: 'R000004860',
+    tagetik_projektID: 'B12010_22_26',
+    projbez: 'Business Client',
+    kundennr: 80020,
+    fixpreis: 477830
+  },
+  {
+    position: 2,
+    planmill_pnr: 'R000004860',
+    tagetik_projektID: 'B12010_22_26',
+    projbez: 'Business Client',
+    kundennr: 80020,
+    fixpreis: 477830
+  },
+  {
+    position: 2,
+    planmill_pnr: 'R000004860',
+    tagetik_projektID: 'B12010_22_26',
+    projbez: 'Business Client',
+    kundennr: 80020,
+    fixpreis: 477830
+  },
+  {
+    position: 2,
+    planmill_pnr: 'R000004860',
+    tagetik_projektID: 'B12010_22_26',
+    projbez: 'Business Client',
+    kundennr: 80020,
+    fixpreis: 477830
+  },
+  {
+    position: 2,
+    planmill_pnr: 'R000004860',
+    tagetik_projektID: 'B12010_22_26',
+    projbez: 'Business Client',
+    kundennr: 80020,
+    fixpreis: 477830
+  },
+  {
+    position: 2,
+    planmill_pnr: 'R000004860',
+    tagetik_projektID: 'B12010_22_26',
+    projbez: 'Business Client',
+    kundennr: 80020,
+    fixpreis: 477830
+  },
+  {
+    position: 2,
+    planmill_pnr: 'R000004860',
+    tagetik_projektID: 'B12010_22_26',
+    projbez: 'Business Client',
+    kundennr: 80020,
+    fixpreis: 477830
   }
 ];
