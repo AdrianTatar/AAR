@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
-import { UserAction } from '../shared/models/UserActions';
+import { UserAction } from '../shared/models/user.actions';
+import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-logs',
@@ -10,15 +12,25 @@ import { UserAction } from '../shared/models/UserActions';
 export class LogsComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'timestamp', 'uid', 'action'];
-  dataSource = new MatTableDataSource<UserAction>(USER_ACTIONS);
+  dataSource = new MatTableDataSource<UserAction>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   selectedRow = -1;
+  userActions: UserAction[];
 
-  constructor() {
+  constructor(private userService: UserService) {
   }
 
-  ngOnInit() {
+  testCreate() {
+    this.userService.createUser(USER_ACTIONS[0]);
+  }
+
+  async ngOnInit() {
     this.dataSource.paginator = this.paginator;
+    await this.userService.getUsers().subscribe( data => {
+      this.userActions = data;
+      // console.log("data: "+data);
+      this.dataSource.data = this.userActions;
+    });
   }
 
   @HostListener('document:keydown', ['$event']) handleKeyboardEvent(event: KeyboardEvent) {
@@ -38,8 +50,8 @@ export class LogsComponent implements OnInit {
 }
 
 const USER_ACTIONS: UserAction[] = [
-  { position: 1, timestamp: new Date(), uid: 'vosi312', action: 'delete chestie' },
-  { position: 2, timestamp: new Date(), uid: 'luis312', action: 'review chestie' },
-  { position: 3, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
-  { position: 4, timestamp: new Date(), uid: 'toie312', action: 'add chestie' }
+  { id: null, timestamp: new Date(), userid: 'vosi312', action: 'delete chestie' },
+  // { position: 2, timestamp: new Date(), uid: 'luis312', action: 'review chestie' },
+  // { position: 3, timestamp: new Date(), uid: 'ieto312', action: 'update chestie' },
+  // { position: 4, timestamp: new Date(), uid: 'toie312', action: 'add chestie' }
 ];

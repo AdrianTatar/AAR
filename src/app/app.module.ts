@@ -21,6 +21,7 @@ import { FppAddDialogComponent } from './fixed-priced-projects/fpp-add-dialog/fp
 import { ScAddDialogComponent } from './surcharge-customers/sc-add-dialog/sc-add-dialog.component';
 import { ZahlerknotenComponent } from './zahlerknoten/zahlerknoten.component';
 import { KundenstammComponent } from './kundenstamm/kundenstamm.component';
+import { UserService } from './user.service';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -60,7 +61,9 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [],
+  providers: [
+    UserService
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
     FppAddDialogComponent,

@@ -1,6 +1,6 @@
 export interface UserAction {
-    position: number;
+    id: number;
     timestamp: Date;
-    uid: string;
+    userid: string;
     action: string;
 }
