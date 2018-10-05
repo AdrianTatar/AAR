@@ -1,0 +1,59 @@
+<div class="header">
+  <h1 mat-dialog-title>{{'RegularCustomers' | translate }}</h1>
+</div>
+
+<mat-dialog-content>
+
+  <mat-form-field class="full-width">
+    <input type="number" [(ngModel)]="fppInputs.kunde" placeholder="Kunde" matInput (keyup.enter)="confirmEdit()"
+      [formControl]="formkunde">
+    <mat-error *ngIf="formkunde.invalid">
+      kunde is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input type="text" [(ngModel)]="fppInputs.bez_kunde" placeholder="Bezeichnung Kunde" [formControl]="formbez_kunde"
+      matInput>
+    <mat-error *ngIf="formbez_kunde.invalid">
+      Bezeichnung Kunde is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input type="text" [(ngModel)]="fppInputs.hierarchie" matInput placeholder="Hierarchie" [formControl]="formhierarchie">
+    <mat-error *ngIf="formhierarchie.invalid">
+      Hierarchie is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input type="number" [(ngModel)]="fppInputs.zahlerknoten_nr"  placeholder="Zahlerknoten Nr." matInput (keyup.enter)="confirmEdit()" [formControl]="formzahlerknoten_nr">
+    <mat-error *ngIf="formzahlerknoten_nr.invalid">
+      Zahlerknoten Nummer is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input type="text" [(ngModel)]="fppInputs.zahlerknoten_bez" matInput placeholder="Zahlerknoten Bezeichnung" [formControl]="formzahlerknoten_bez">
+    <mat-error *ngIf="formzahlerknoten_bez.invalid">
+      Zahlerknoten Bezeichnung is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input type="text" [(ngModel)]="fppInputs.knoten" matInput placeholder="Knoten" [formControl]="formknoten">
+    <mat-error *ngIf="formknoten.invalid">
+      Knoten is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-fab mat-dialog-close matTooltip="Cancel" class="clear-icon">
+    <mat-icon>clear</mat-icon>
+  </button>
+  <button (click)="save()" mat-fab matTooltip="Confirm" class="done-icon">
+    <mat-icon>done</mat-icon>
+  </button>
+</mat-dialog-actions>

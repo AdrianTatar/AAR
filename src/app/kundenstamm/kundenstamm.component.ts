@@ -1,9 +1,9 @@
+import { KunAddDialogComponent } from './kun-add-dialog/kun-add-dialog.component';
 import { Kundenstamm } from './../shared/models/Kundenstamm';
 import { Component, OnInit, ViewChild, HostListener, AfterViewInit } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
-import { FppAddDialogComponent } from './fpp-add-dialog/fpp-add-dialog.component';
 
 @Component({
   selector: 'app-kundenstamm',
@@ -12,7 +12,7 @@ import { FppAddDialogComponent } from './fpp-add-dialog/fpp-add-dialog.component
 })
 export class KundenstammComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['blz_pnr', 'block_pnr', 'knoten_pnr', 'kundenname_pnr', 'bkgr_pnr', 'cluster_pnr'];
+  displayedColumns: string[] = ['blz_pnr', 'block_pnr', 'knoten_pnr', 'kundenname_pnr', 'bkgr_pnr', 'cluster_pnr', 'menu'];
 
   dataSource = new MatTableDataSource<Kundenstamm>(ELEMENT_DATA);
   filteredDataSource = new MatTableDataSource<Kundenstamm>(ELEMENT_DATA);
@@ -39,12 +39,12 @@ export class KundenstammComponent implements OnInit, AfterViewInit {
   fppForm;
   fppInputs: Kundenstamm = {
     position: null,
-    blz_pnr : 0,
-    block_pnr : '',
-    knoten_pnr : '',
-    kundenname_pnr : '',
-    bkgr_pnr : '',
-    cluster_pnr : ''
+    blz_pnr: 0,
+    block_pnr: '',
+    knoten_pnr: '',
+    kundenname_pnr: '',
+    bkgr_pnr: '',
+    cluster_pnr: ''
   };
 
   constructor(
@@ -52,9 +52,11 @@ export class KundenstammComponent implements OnInit, AfterViewInit {
   ) { }
 
   filter() {
+    this.filteredDataSource.data = this.dataSource.data;
+
     this.filteredDataSource.data = (this.blzSearchQuery) ?
       this.filteredDataSource.data.filter(p => p.blz_pnr === this.blzSearchQuery)
-      : this.dataSource.data;
+      : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.blockSearchQuery) ?
       this.filteredDataSource.data.filter(p => p.block_pnr.toLocaleLowerCase()
@@ -80,6 +82,28 @@ export class KundenstammComponent implements OnInit, AfterViewInit {
       this.filteredDataSource.data.filter(p => p.cluster_pnr.toLocaleLowerCase()
         .includes(this.clusterSearchQuery.toLocaleLowerCase()))
       : this.filteredDataSource.data;
+  }
+
+  clearSearchInputBox() {
+    if (!this.blzSearch) {
+      this.blzSearchQuery = 0;
+    }
+    if (!this.blockSearch) {
+      this.blockSearchQuery = '';
+    }
+    if (!this.knotenSearch) {
+      this.knotenSearchQuery = '';
+    }
+    if (!this.kundennameSearch) {
+      this.kundennameSearchQuery = '';
+    }
+    if (!this.bkgrSearch) {
+      this.bkgrSearchQuery = '';
+    }
+    if (!this.clusterSearch) {
+      this.clusterSearchQuery = '';
+    }
+    this.filter();
   }
 
   ngOnInit() {
@@ -138,7 +162,7 @@ export class KundenstammComponent implements OnInit, AfterViewInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(FppAddDialogComponent, {
+    const dialogRef = this.dialog.open(KunAddDialogComponent, {
       width: '600px',
       disableClose: true
     });

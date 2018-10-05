@@ -1,4 +1,6 @@
 {
+  "RegularCustomers": "Zahlerknoten",
+  "CustomerBase": "Kundenstamm",
   "FixedPricedProjects": "Fixpreisprojekte",
   "SurchargeCustomers": "Aufschlags Kunden",
   "Logs": "Benutzeraktionen",

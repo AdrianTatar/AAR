@@ -1,13 +1,13 @@
 <div class="header">
-  <h1 mat-dialog-title>{{'Kundenstamm' | translate }}</h1>
+  <h1 mat-dialog-title>{{'CustomerBase' | translate }}</h1>
 </div>
 
 <mat-dialog-content>
 
   <mat-form-field class="full-width">
-    <input type="text" [(ngModel)]="fppInputs.blz_pnr" placeholder="BLZ" matInput
-      [formControl]="formBLZ_pnr">
-    <mat-error *ngIf="formBLZ_pnr.invalid">
+    <input type="number" [(ngModel)]="fppInputs.blz_pnr" placeholder="BLZ" matInput
+      [formControl]="formblz_pnr">
+    <mat-error *ngIf="formblz_pnr.invalid">
       BLZ is <strong>required</strong>
     </mat-error>
   </mat-form-field>
@@ -21,28 +21,28 @@
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <textarea [(ngModel)]="fppInputs.knoten_pnr" type="text" matInput placeholder="Knoten" [formControl]="formKnoten"></textarea>
-    <mat-error *ngIf="formProjbez.invalid">
+    <input type="text" [(ngModel)]="fppInputs.knoten_pnr" type="text" matInput placeholder="Knoten">
+    <mat-error *ngIf="formKnoten.invalid">
       Knoten is <strong>required</strong>
     </mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="number" [(ngModel)]="fppInputs.kundenname_pnr" matInput placeholder="Kundenname" [formControl]="formKundenname">
+    <textarea [(ngModel)]="fppInputs.kundenname_pnr" matInput placeholder="Kundenname" [formControl]="formKundenname"></textarea>
     <mat-error *ngIf="formKundenname.invalid">
       Kundenname is <strong>required</strong>
     </mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="number" [(ngModel)]="fppInputs.bkgr_pnr" matInput placeholder="BkGr" [formControl]="formBkGr">
+    <input type="text" [(ngModel)]="fppInputs.bkgr_pnr" matInput placeholder="BkGr" [formControl]="formBkGr">
     <mat-error *ngIf="formBkGr.invalid">
       BkGr is <strong>required</strong>
     </mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="number" [(ngModel)]="fppInputs.cluster_pnr" matInput placeholder="Cluster" [formControl]="formCluster">
+    <input type="text" [(ngModel)]="fppInputs.cluster_pnr" matInput placeholder="Cluster" [formControl]="formCluster">
     <mat-error *ngIf="formCluster.invalid">
       Cluster is <strong>required</strong>
     </mat-error>

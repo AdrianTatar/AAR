@@ -1,3 +1,5 @@
+import { ZahAddDialogComponent } from './zahlerknoten/zah-add-dialog/zah-add-dialog.component';
+import { KunAddDialogComponent } from './kundenstamm/kun-add-dialog/kun-add-dialog.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,8 +43,10 @@ export function createTranslateLoader(http: HttpClient) {
     routingComponents,
     FppAddDialogComponent,
     ScAddDialogComponent,
+    KunAddDialogComponent,
     ZahlerknotenComponent,
     KundenstammComponent,
+    ZahAddDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +71,9 @@ export function createTranslateLoader(http: HttpClient) {
   bootstrap: [AppComponent],
   entryComponents: [
     FppAddDialogComponent,
-    ScAddDialogComponent
+    ScAddDialogComponent,
+    KunAddDialogComponent,
+    ZahAddDialogComponent
   ]
 })
 export class AppModule { }

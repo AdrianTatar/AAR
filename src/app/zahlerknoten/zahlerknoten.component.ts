@@ -1,9 +1,9 @@
+import { ZahAddDialogComponent } from './zah-add-dialog/zah-add-dialog.component';
 import { Zahlerknoten } from './../shared/models/Zahlerknoten';
 import { Component, OnInit, ViewChild, HostListener, AfterViewInit } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
-import { FppAddDialogComponent } from './fpp-add-dialog/fpp-add-dialog.component';
 
 @Component({
   selector: 'app-zahlerknoten',
@@ -12,7 +12,7 @@ import { FppAddDialogComponent } from './fpp-add-dialog/fpp-add-dialog.component
 })
 export class ZahlerknotenComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['kunde', 'bez_kunde', 'hierarchie', 'zahlerknoten_nr', 'zahlerknoten_bez', 'hierarchie'];
+  displayedColumns: string[] = ['kunde', 'bez_kunde', 'hierarchie', 'zahlerknoten_nr', 'zahlerknoten_bez', 'knoten', 'menu'];
 
   dataSource = new MatTableDataSource<Zahlerknoten>(ELEMENT_DATA);
   filteredDataSource = new MatTableDataSource<Zahlerknoten>(ELEMENT_DATA);
@@ -137,7 +137,7 @@ export class ZahlerknotenComponent implements OnInit, AfterViewInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(FppAddDialogComponent, {
+    const dialogRef = this.dialog.open(ZahAddDialogComponent, {
       width: '600px',
       disableClose: true
     });

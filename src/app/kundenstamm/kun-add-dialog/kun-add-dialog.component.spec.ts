@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FppAddDialogComponent } from './fpp-add-dialog.component';
+import { KunAddDialogComponent } from './kun-add-dialog.component';
 
-describe('FppAddDialogComponent', () => {
-  let component: FppAddDialogComponent;
-  let fixture: ComponentFixture<FppAddDialogComponent>;
+describe('KunAddDialogComponent', () => {
+  let component: KunAddDialogComponent;
+  let fixture: ComponentFixture<KunAddDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FppAddDialogComponent ]
+      declarations: [ KunAddDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FppAddDialogComponent);
+    fixture = TestBed.createComponent(KunAddDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

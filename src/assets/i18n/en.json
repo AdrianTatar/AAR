@@ -1,4 +1,6 @@
 {
+  "RegularCustomers": "Regular Customers",
+  "CustomerBase": "Customer Base",
   "FixedPricedProjects": "Fixed Priced Projects",
   "SurchargeCustomers": "Surcharge Customers",
   "Logs": "User Actions",
