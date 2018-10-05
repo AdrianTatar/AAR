@@ -1,0 +1,11 @@
+{
+  "/userAction/readAll": {
+    "target": "http://localhost:8080/aarREST/rest/userAction/readAll",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite":{
+      "^/userAction/readAll":""
+    }
+  }
+}

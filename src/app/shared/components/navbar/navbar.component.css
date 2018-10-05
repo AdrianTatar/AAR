@@ -1,0 +1,73 @@
+mat-toolbar {
+  background: white;
+}
+
+mat-form-field {
+  font-size: 15px;
+  width: 100px;
+  margin-right: 10px;
+}
+
+a {
+  margin-right: 10px;
+  padding: 5px 30px 5px 30px;
+}
+
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+.logo {
+  padding: 0px;
+  width: 7%;
+  height: auto;
+}
+
+.active {
+  color: white;
+  background: #428bca;
+}
+
+hr {
+  margin: 10px;
+}
+
+.language {
+  color: white;
+  height: 40px;
+}
+
+.country {
+  width: 40px;
+  height: auto;
+  float: right;
+}
+
+.create-space {
+  margin-right: 20px;
+  padding-right: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, .87);
+}
+
+mat-menu {
+  padding-top: 40px;
+}
+
+.export {
+  background: #feed01;
+  color: black;
+}
+
+.white-icon {
+  color: white;
+}
+/* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
+.white-icon svg {
+  fill: white;
+}
