@@ -1,0 +1,39 @@
+table {
+  width: 100%;
+}
+
+.align-page {
+  padding: 10px;
+}
+
+.header {
+  background: #428bca;
+  color: white;
+}
+
+.highlight {
+  background-color: #eeeeee;
+}
+
+.space-for-buttons {
+  height: 130px;
+}
+
+.add-icon {
+  background: #428bca;
+  color: white;
+}
+
+::ng-deep .mat-icon{
+  height:20px !important;
+  width:20px !important;
+  font-size:20px !important;
+}
+
+.searchInput {
+  color: white;
+}
+
+.align-items {
+  float: left;
+}
