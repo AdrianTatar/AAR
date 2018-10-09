@@ -6,22 +6,19 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  // private userUrl = 'http://localhost:8080/aarREST/rest/userAction';
-  private userUrl = '/userAction';
+  private userActionUrl = '/userAction';
+  private readAllPath='/readAll';
 
-  public getUsers() {
-    console.log('URL=' + this.userUrl);
-    return this.http.get<UserAction[]>(this.userUrl + '/readAll');
+  public getUsers() {  
+    return this.http.get<UserAction[]>(this.userActionUrl + this.readAllPath);
   }
 
   public createUser(user) {
-    return this.http.post<UserAction>(this.userUrl, user);
+    return this.http.post<UserAction>(this.userActionUrl, user);
   }
 }

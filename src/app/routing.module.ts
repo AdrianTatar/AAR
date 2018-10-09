@@ -5,7 +5,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent, data: { page: 'one' } },
-  { path: 'fixed-prices', loadChildren: './pages/fixed-priced-projects/fpp.module#FppModule', data: { page: 'two' }},
+  { path: 'fixed-prices', loadChildren: './pages/fixed-price-projects/fpp.module#FppModule', data: { page: 'two' }},
   { path: 'surcharge-customers', loadChildren: './pages/surcharge-customers/sc.module#ScModule', data: { page: 'thre' }},
   { path: 'zahlerknoten', loadChildren: './pages/zahlerknoten/zk.module#ZkModule', data: { page: 'four' }},
   { path: 'kundenstamm', loadChildren: './pages/kundenstamm/kundenstamm.module#KundenstammModule', data: { page: 'five' }},

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { MaterialsModule } from '../shared/materials.module';
+import { MaterialsModule } from './materials.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Ngx-Translate

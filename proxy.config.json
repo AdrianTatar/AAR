@@ -1,11 +1,21 @@
 {
-  "/userAction/readAll": {
-    "target": "http://localhost:8080/aarREST/rest/userAction/readAll",
+  "/userAction": {
+    "target": "http://localhost:8080/aarREST/rest/userAction",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug",
     "pathRewrite":{
-      "^/userAction/readAll":""
+      "^/userAction":""
+    }
+  },
+
+  "/fixedPriceProject": {
+    "target": "http://localhost:8080/aarREST/rest/fixedPriceProject",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite":{
+      "^/fixedPriceProject":""
     }
   }
 }

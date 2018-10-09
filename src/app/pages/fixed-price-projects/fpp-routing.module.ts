@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { FixedPricedProjectsComponent } from './fixed-priced-projects.component';
+import { FixedPriceProjectsComponent } from './fixed-price-projects.component';
 import { Routes, RouterModule } from '@angular/router';
 
 const fppRoutes: Routes = [
-  { path: '', component: FixedPricedProjectsComponent },
+  { path: '', component: FixedPriceProjectsComponent },
 ];
 
 @NgModule({
@@ -14,4 +14,4 @@ const fppRoutes: Routes = [
 })
 
 export class FppRoutingModule { }
-export const fppRoutingComponents = [FixedPricedProjectsComponent];
+export const fppRoutingComponents = [FixedPriceProjectsComponent];

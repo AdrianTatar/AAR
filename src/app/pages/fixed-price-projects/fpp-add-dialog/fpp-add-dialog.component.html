@@ -1,42 +1,42 @@
 <div class="header">
-  <h1 mat-dialog-title>{{'FixedPricedProjects' | translate }}</h1>
+  <h1 mat-dialog-title>{{'FixedPriceProjects' | translate }}</h1>
 </div>
 
 <mat-dialog-content>
 
   <mat-form-field class="full-width">
     <input type="text" [(ngModel)]="fppInputs.planmill_pnr" placeholder="Planmill Projekt Nummer" matInput
-      [formControl]="formPlanmill_pnr">
-    <mat-error *ngIf="formPlanmill_pnr.invalid">
+      [formControl]="formProjectnumberplanmill">
+    <mat-error *ngIf="formProjectnumberplanmill.invalid">
       Planmill Projektnummer is <strong>required</strong>
     </mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="text" [(ngModel)]="fppInputs.tagetik_projektID" placeholder="Tagetik Projekt ID" [formControl]="formTagetik_ProjektID"
+    <input type="text" [(ngModel)]="fppInputs.projectidtagetik" placeholder="Tagetik Projekt ID" [formControl]="formProjectidtagetikD"
       matInput (keyup.enter)="confirmEdit()">
-    <mat-error *ngIf="formTagetik_ProjektID.invalid">
+    <mat-error *ngIf="formProjectidtagetik.invalid">
       Tagetik Projekt ID is <strong>required</strong>
     </mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <textarea [(ngModel)]="fppInputs.projbez" type="text" matInput placeholder="Projekt Bezeichnung" [formControl]="formProjbez"></textarea>
-    <mat-error *ngIf="formProjbez.invalid">
+    <textarea [(ngModel)]="fppInputs.projectdescription" type="text" matInput placeholder="Projekt Bezeichnung" [formControl]="formProjectdescription"></textarea>
+    <mat-error *ngIf="formProjectdescription.invalid">
       Projekt Bezeichnung is <strong>required</strong>
     </mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="number" [(ngModel)]="fppInputs.kundennr" matInput placeholder="Kunden Nummer" [formControl]="formKundennr">
-    <mat-error *ngIf="formKundennr.invalid">
+    <input type="number" [(ngModel)]="fppInputs.customernumber" matInput placeholder="Kunden Nummer" [formControl]="formCustomernumber">
+    <mat-error *ngIf="formCustomernumber.invalid">
       Kunden Nummer is <strong>required</strong>
     </mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="number" [(ngModel)]="fppInputs.fixpreis" matInput placeholder="Fixpreis" [formControl]="formFixpreis">
-    <mat-error *ngIf="formFixpreis.invalid">
+    <input type="number" [(ngModel)]="fppInputs.price" matInput placeholder="Fixpreis" [formControl]="formPrice">
+    <mat-error *ngIf="formPrice.invalid">
       Fixpreis is <strong>required</strong>
     </mat-error>
   </mat-form-field>

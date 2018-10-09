@@ -38,8 +38,7 @@ export class LogsComponent implements OnInit {
     this.selectedRow = 0;
 
     await this.userService.getUsers().subscribe(data => {
-      this.userActions = data;
-      console.log('data: ' + data);
+      this.userActions = data;    
       this.dataSource.data = this.userActions;
       this.filteredDataSource.data = this.userActions;
     });
