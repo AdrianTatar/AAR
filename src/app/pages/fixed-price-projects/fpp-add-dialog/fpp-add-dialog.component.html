@@ -5,7 +5,7 @@
 <mat-dialog-content>
 
   <mat-form-field class="full-width">
-    <input type="text" [(ngModel)]="fppInputs.planmill_pnr" placeholder="Planmill Projekt Nummer" matInput
+    <input type="text" [(ngModel)]="fppInputs.projectnumberplanmill" placeholder="Planmill Projekt Nummer" matInput
       [formControl]="formProjectnumberplanmill">
     <mat-error *ngIf="formProjectnumberplanmill.invalid">
       Planmill Projektnummer is <strong>required</strong>

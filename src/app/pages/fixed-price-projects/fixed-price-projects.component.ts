@@ -55,6 +55,7 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
     this.filteredDataSource.data = this.dataSource.data;
 
     this.filteredDataSource.data = (this.projectnumberplanmillSearchQuery) ?
+      // tslint:disable-next-line:max-line-length
       this.dataSource.data.filter(p => p.projectnumberplanmill.toLocaleLowerCase().includes(this.projectnumberplanmillSearchQuery.toLocaleLowerCase()))
       : this.dataSource.data;
 
@@ -197,6 +198,7 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
   }
 
   private setEditValues(rowNumber) {
+    rowNumber -= 10;
     this.fppInputs.projectnumberplanmill = this.dataSource.data[rowNumber - 1].projectnumberplanmill;
     this.fppInputs.projectidtagetik = this.dataSource.data[rowNumber - 1].projectidtagetik;
     this.fppInputs.projectdescription = this.dataSource.data[rowNumber - 1].projectdescription;
