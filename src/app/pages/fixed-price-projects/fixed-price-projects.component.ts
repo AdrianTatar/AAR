@@ -178,8 +178,8 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
   }
 
   private editRow(rowNumber) {
-    this.setEditValues(rowNumber);
-    this.selectedRowToEdit = rowNumber;
+    this.selectedRowToEdit = this.mapToDataSource(rowNumber);
+    this.setEditValues(this.selectedRowToEdit);
   }
 
   private cancelEdit() {
@@ -198,11 +198,20 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
   }
 
   private setEditValues(rowNumber) {
-    rowNumber -= 10;
     this.fppInputs.projectnumberplanmill = this.dataSource.data[rowNumber - 1].projectnumberplanmill;
     this.fppInputs.projectidtagetik = this.dataSource.data[rowNumber - 1].projectidtagetik;
     this.fppInputs.projectdescription = this.dataSource.data[rowNumber - 1].projectdescription;
     this.fppInputs.customernumber = this.dataSource.data[rowNumber - 1].customernumber;
     this.fppInputs.price = this.dataSource.data[rowNumber - 1].price;
+  }
+
+  private mapToDataSource(elementId) {
+    let pos = 0;
+    for (let i = 0; i < this.dataSource.data.length; i++) {
+      if (this.dataSource.data[i].id === elementId) {
+        pos = i;
+      }
+    }
+    return pos + 1;
   }
 }

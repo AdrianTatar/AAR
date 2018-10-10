@@ -9,16 +9,17 @@ const httpOptions = {
 @Injectable()
 export class FixedPriceProjectService {
 
-  private fixedPriceProjectUrl='/fixedPriceProject';
-  private readAllPath='/readAll';
+  private fixedPriceProjectUrl = '/fixedPriceProject';
+  private readAllPath = '/readAll';
+  private savePath = '/create';
 
   constructor(private http: HttpClient) { }
 
-  public getFixedPriceProjects(){
-    return this.http.get<FixedPriceProject[]>(this.fixedPriceProjectUrl+this.readAllPath);
+  public getFixedPriceProjects() {
+    return this.http.get<FixedPriceProject[]>(this.fixedPriceProjectUrl + this.readAllPath);
   }
 
-  public createFixedPriceProject(fixedPriceProject){
-    return this.http.post<FixedPriceProject>(this.fixedPriceProjectUrl, fixedPriceProject);
+  public createFixedPriceProject(fixedPriceProject) {
+    return this.http.post<FixedPriceProject>(this.fixedPriceProjectUrl + this.savePath, fixedPriceProject);
   }
 }
