@@ -1,5 +1,5 @@
 <div class="header">
-  <h1 mat-dialog-title>{{'FixedPriceProjects' | translate }}</h1>
+  <h1 mat-dialog-title>{{'FixedPricedProjects' | translate }}</h1>
 </div>
 
 <mat-dialog-content>
@@ -7,13 +7,13 @@
   <mat-form-field class="full-width">
     <input type="text" [(ngModel)]="fppInputs.projectnumberplanmill" placeholder="Planmill Projekt Nummer" matInput
       [formControl]="formProjectnumberplanmill">
-    <mat-error *ngIf="formProjectnumberplanmill.invalid">
+    <mat-error *ngIf="formProjectnumberplanmill">
       Planmill Projektnummer is <strong>required</strong>
     </mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="text" [(ngModel)]="fppInputs.projectidtagetik" placeholder="Tagetik Projekt ID" [formControl]="formProjectidtagetikD"
+    <input type="text" [(ngModel)]="fppInputs.projectidtagetik" placeholder="Tagetik Projekt ID" [formControl]="formProjectidtagetik"
       matInput (keyup.enter)="confirmEdit()">
     <mat-error *ngIf="formProjectidtagetik.invalid">
       Tagetik Projekt ID is <strong>required</strong>

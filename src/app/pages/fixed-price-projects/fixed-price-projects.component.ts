@@ -142,6 +142,8 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(data => {
       if (data) {
+        console.log(data);
+        this.fixedPriceProjectService.createFixedPriceProject(data);
         this.pushObject(data);
       }
     });
@@ -193,6 +195,7 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
       this.dataSource.data[this.selectedRowToEdit - 1].projectdescription = this.fppInputs.projectdescription;
       this.dataSource.data[this.selectedRowToEdit - 1].customernumber = this.fppInputs.customernumber;
       this.dataSource.data[this.selectedRowToEdit - 1].price = this.fppInputs.price;
+      this.fixedPriceProjectService.updateFixedPriceProject(this.dataSource.data[this.selectedRowToEdit - 1]);
       this.selectedRowToEdit = -1;
     }
   }
