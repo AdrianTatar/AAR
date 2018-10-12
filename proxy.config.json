@@ -17,5 +17,35 @@
     "pathRewrite":{
       "^/fixedPriceProject":""
     }
+  },
+
+  "/surchargeCustomer": {
+    "target": "http://localhost:8080/aarREST/rest/surchargeCustomer",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite":{
+      "^/surchargeCustomer":""
+    }
+  },
+
+  "/customerBase": {
+    "target": "http://localhost:8080/aarREST/rest/customerBase",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite":{
+      "^/customerBase":""
+    }
+  },
+
+  "/payerNode": {
+    "target": "http://localhost:8080/aarREST/rest/payerNode",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite":{
+      "^/payerNode":""
+    }
   }
 }

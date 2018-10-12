@@ -14,9 +14,7 @@ export class FixedPriceProjectService {
   private savePath = '/create';
   private updatePath = '/update';
 
-  constructor(private http: HttpClient) { 
-    this.http
-  }
+  constructor(private http: HttpClient) { }
 
   public getFixedPriceProjects() {
     return this.http.get<FixedPriceProject[]>(this.fixedPriceProjectUrl + this.readAllPath);
@@ -24,14 +22,15 @@ export class FixedPriceProjectService {
 
   public createFixedPriceProject(fixedPriceProject) {
     console.log(fixedPriceProject);
-    return this.http.post<FixedPriceProject>(this.fixedPriceProjectUrl + this.savePath, JSON.stringify(fixedPriceProject), httpOptions)
+    return this.http.post<FixedPriceProject>(this.fixedPriceProjectUrl + this.savePath, 
+      JSON.stringify(fixedPriceProject), httpOptions)
     .subscribe(res => console.log(res));
   }
 
   public updateFixedPriceProject(fixedPriceProject: FixedPriceProject) {
     console.log(fixedPriceProject);  
     console.log(JSON.stringify(fixedPriceProject));  
-    return this.http.put<FixedPriceProject>("http://localhost:8080/aarREST/rest/fixedPriceProject/update", 
+    return this.http.put<FixedPriceProject>(this.fixedPriceProjectUrl + this.updatePath, 
       JSON.stringify(fixedPriceProject), httpOptions)
     .subscribe(response => console.log(response));
   }

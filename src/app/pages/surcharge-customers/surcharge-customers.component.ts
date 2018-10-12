@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
-import { SurchargeCustomers } from '../../shared/models/surcharge.customers';
+import { SurchargeCustomer } from '../../shared/models/surcharge.customer';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ScAddDialogComponent } from './sc-add-dialog/sc-add-dialog.component';
 
@@ -11,33 +11,33 @@ import { ScAddDialogComponent } from './sc-add-dialog/sc-add-dialog.component';
 })
 export class SurchargeCustomersComponent implements OnInit {
 
-  displayedColumns: string[] = ['debitorennr', 'debitor',
-    'typ', 'kundennr', 'kunde', 'n2015',
+  displayedColumns: string[] = ['debitornumber', 'debitorname',
+    'type', 'customernumber', 'customername', 'n2015',
     'n2016', 'n2017', 'n2018', 'aufschlag_2018',
     'menu'];
-  dataSource = new MatTableDataSource<SurchargeCustomers>(ELEMENT_DATA);
-  filteredDataSource = new MatTableDataSource<SurchargeCustomers>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<SurchargeCustomer>(ELEMENT_DATA);
+  filteredDataSource = new MatTableDataSource<SurchargeCustomer>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   selectedRowToEdit = -1;
   selectedRow = -1;
 
-  debitorennrSearch = false;
-  debitorSearch = false;
-  typSearch = false;
-  kundennrSearch = false;
-  kundeSearch = false;
+  debitornumberSearch = false;
+  debitornameSearch = false;
+  typeSearch = false;
+  customernumberSearch = false;
+  customernameSearch = false;
   n2015Search = false;
   n2016Search = false;
   n2017Search = false;
   n2018Search = false;
   aufschlag_2018Search = false;
 
-  debitorennrSearchQuery = 0;
-  debitorSearchQuery = '';
-  typSearchQuery = '';
-  kundennrSearchQuery = 0;
-  kundeSearchQuery = '';
+  debitornumberSearchQuery = 0;
+  debitornameSearchQuery = '';
+  typeSearchQuery = '';
+  customernumberSearchQuery = 0;
+  customernameSearchQuery = '';
   n2015SearchQuery = 0;
   n2016SearchQuery = 0;
   n2017SearchQuery = 0;
@@ -47,13 +47,13 @@ export class SurchargeCustomersComponent implements OnInit {
   addNewElement = false;
 
   scForm;
-  scInputs: SurchargeCustomers = {
-    position: null,
-    debitorennr: null,
-    debitor: '',
-    typ: '',
-    kundennr: null,
-    kunde: '',
+  scInputs: SurchargeCustomer = {
+    id: null,
+    debitornumber: null,
+    debitorname: '',
+    type: '',
+    customernumber: null,
+    customername: '',
     n2015: 0,
     n2016: 0,
     n2017: 0,
@@ -68,27 +68,27 @@ export class SurchargeCustomersComponent implements OnInit {
   filter() {
     this.filteredDataSource.data = this.dataSource.data;
 
-    this.filteredDataSource.data = (this.debitorennrSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.debitorennr === this.debitorennrSearchQuery)
+    this.filteredDataSource.data = (this.debitornumberSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.debitornumber === this.debitornumberSearchQuery)
       : this.dataSource.data;
 
-    this.filteredDataSource.data = (this.debitorSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.debitor.toLocaleLowerCase()
-        .includes(this.debitorSearchQuery.toLocaleLowerCase()))
+    this.filteredDataSource.data = (this.debitornameSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.debitorname.toLocaleLowerCase()
+        .includes(this.debitornameSearchQuery.toLocaleLowerCase()))
       : this.filteredDataSource.data;
 
-    this.filteredDataSource.data = (this.typSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.typ.toLocaleLowerCase()
-        .includes(this.typSearchQuery.toLocaleLowerCase()))
+    this.filteredDataSource.data = (this.typeSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.type.toLocaleLowerCase()
+        .includes(this.typeSearchQuery.toLocaleLowerCase()))
       : this.filteredDataSource.data;
 
-    this.filteredDataSource.data = (this.kundennrSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.kundennr === this.kundennrSearchQuery)
+    this.filteredDataSource.data = (this.customernumberSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.customernumber === this.customernumberSearchQuery)
       : this.filteredDataSource.data;
 
-    this.filteredDataSource.data = (this.kundeSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.kunde.toLocaleLowerCase()
-        .includes(this.kundeSearchQuery.toLocaleLowerCase()))
+    this.filteredDataSource.data = (this.customernameSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.customername.toLocaleLowerCase()
+        .includes(this.customernameSearchQuery.toLocaleLowerCase()))
       : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.n2015SearchQuery) ?
@@ -128,11 +128,11 @@ export class SurchargeCustomersComponent implements OnInit {
     this.selectedRow = 0;
 
     this.scForm = new FormGroup({
-      debitorennr: new FormControl('', Validators.required),
-      debitor: new FormControl('', Validators.required),
-      typ: new FormControl('', Validators.required),
-      kundennr: new FormControl('', Validators.required),
-      kunde: new FormControl('', Validators.required),
+      debitornumber: new FormControl('', Validators.required),
+      debitorname: new FormControl('', Validators.required),
+      type: new FormControl('', Validators.required),
+      customernumber: new FormControl('', Validators.required),
+      customername: new FormControl('', Validators.required),
       n2015: new FormControl('', Validators.required),
       n2016: new FormControl('', Validators.required),
       n2017: new FormControl('', Validators.required),
@@ -141,24 +141,24 @@ export class SurchargeCustomersComponent implements OnInit {
     });
   }
 
-  get formDebitorennr() {
-    return this.scForm.get('debitorennr');
+  get formDebitornumber() {
+    return this.scForm.get('debitornumber');
   }
 
-  get formDebitor() {
-    return this.scForm.get('debitor');
+  get formDebitorname() {
+    return this.scForm.get('debitorname');
   }
 
-  get formTyp() {
-    return this.scForm.get('typ');
+  get formType() {
+    return this.scForm.get('type');
   }
 
-  get formKundennr() {
-    return this.scForm.get('kundennr');
+  get formCustomernumber() {
+    return this.scForm.get('customernumber');
   }
 
-  get formKunde() {
-    return this.scForm.get('kunde');
+  get formCustomername() {
+    return this.scForm.get('customername');
   }
 
   get formN2015() {
@@ -207,28 +207,28 @@ export class SurchargeCustomersComponent implements OnInit {
     });
   }
 
-  private pushObject(data: SurchargeCustomers) {
-    data.position = this.dataSource.data[this.dataSource.data.length - 1].position + 1;
+  private pushObject(data: SurchargeCustomer) {
+    data.id = this.dataSource.data[this.dataSource.data.length - 1].id + 1;
     this.dataSource.data.push(data);
     this.filteredDataSource.data = this.dataSource.data;
     this.paginator._changePageSize(this.paginator.pageSize);
   }
 
   clearSearchInputBox() {
-    if (!this.debitorennrSearch) {
-      this.debitorennrSearchQuery = 0;
+    if (!this.debitornumberSearch) {
+      this.debitornumberSearchQuery = 0;
     }
-    if (!this.debitorSearch) {
-      this.debitorSearchQuery = '';
+    if (!this.debitornameSearch) {
+      this.debitornameSearchQuery = '';
     }
-    if (!this.typSearch) {
-      this.typSearchQuery = '';
+    if (!this.typeSearch) {
+      this.typeSearchQuery = '';
     }
-    if (!this.kundennrSearch) {
-      this.kundennrSearchQuery = 0;
+    if (!this.customernumberSearch) {
+      this.customernumberSearchQuery = 0;
     }
-    if (!this.kundeSearch) {
-      this.kundeSearchQuery = '';
+    if (!this.customernameSearch) {
+      this.customernameSearchQuery = '';
     }
     if (!this.n2015Search) {
       this.n2015SearchQuery = 0;
@@ -250,12 +250,12 @@ export class SurchargeCustomersComponent implements OnInit {
 
   private confirmEdit() {
     if (this.scForm.valid) {
-      this.dataSource.data[this.selectedRowToEdit - 1].debitorennr = this.scInputs.debitorennr;
-      this.dataSource.data[this.selectedRowToEdit - 1].debitor = this.scInputs.debitor;
-      this.dataSource.data[this.selectedRowToEdit - 1].typ = this.scInputs.typ;
-      this.dataSource.data[this.selectedRowToEdit - 1].kundennr = this.scInputs.kundennr;
-      this.dataSource.data[this.selectedRowToEdit - 1].kunde = this.scInputs.kunde;
-      this.dataSource.data[this.selectedRowToEdit - 1].kunde = this.scInputs.kunde;
+      this.dataSource.data[this.selectedRowToEdit - 1].debitornumber = this.scInputs.debitornumber;
+      this.dataSource.data[this.selectedRowToEdit - 1].debitorname = this.scInputs.debitorname;
+      this.dataSource.data[this.selectedRowToEdit - 1].type = this.scInputs.type;
+      this.dataSource.data[this.selectedRowToEdit - 1].customernumber = this.scInputs.customernumber;
+      this.dataSource.data[this.selectedRowToEdit - 1].customername = this.scInputs.customername;
+      this.dataSource.data[this.selectedRowToEdit - 1].customername = this.scInputs.customername;
       this.dataSource.data[this.selectedRowToEdit - 1].n2015 = this.scInputs.n2015;
       this.dataSource.data[this.selectedRowToEdit - 1].n2015 = this.scInputs.n2015;
       this.dataSource.data[this.selectedRowToEdit - 1].n2016 = this.scInputs.n2016;
@@ -270,12 +270,12 @@ export class SurchargeCustomersComponent implements OnInit {
   }
 
   private setEditValues(rowNumber) {
-    this.scInputs.debitorennr = this.dataSource.data[rowNumber - 1].debitorennr;
-    this.scInputs.debitor = this.dataSource.data[rowNumber - 1].debitor;
-    this.scInputs.typ = this.dataSource.data[rowNumber - 1].typ;
-    this.scInputs.kundennr = this.dataSource.data[rowNumber - 1].kundennr;
-    this.scInputs.kunde = this.dataSource.data[rowNumber - 1].kunde;
-    this.scInputs.kunde = this.dataSource.data[rowNumber - 1].kunde;
+    this.scInputs.debitornumber = this.dataSource.data[rowNumber - 1].debitornumber;
+    this.scInputs.debitorname = this.dataSource.data[rowNumber - 1].debitorname;
+    this.scInputs.type = this.dataSource.data[rowNumber - 1].type;
+    this.scInputs.customernumber = this.dataSource.data[rowNumber - 1].customernumber;
+    this.scInputs.customername = this.dataSource.data[rowNumber - 1].customername;
+    this.scInputs.customername = this.dataSource.data[rowNumber - 1].customername;
     this.scInputs.n2015 = this.dataSource.data[rowNumber - 1].n2015;
     this.scInputs.n2015 = this.dataSource.data[rowNumber - 1].n2015;
     this.scInputs.n2016 = this.dataSource.data[rowNumber - 1].n2016;
@@ -289,20 +289,20 @@ export class SurchargeCustomersComponent implements OnInit {
 
 }
 
-const ELEMENT_DATA: SurchargeCustomers[] = [
+const ELEMENT_DATA: SurchargeCustomer[] = [
   {
-    position: 1, debitorennr: 80020, debitor: 'Raiffeisen e-force',
-    typ: 'Fremdbanken', kundennr: 19690, kunde: 'ERSTE Bank',
+    id: 1, debitornumber: 80020, debitorname: 'Raiffeisen e-force',
+    type: 'Fremdbanken', customernumber: 19690, customername: 'ERSTE Bank',
     n2015: 991, n2016: 1005, n2017: 1018, n2018: 1038, aufschlag_2018: 233
   },
   {
-    position: 2, debitorennr: 19690, debitor: 'Vakif',
-    typ: 'Fremdbanken', kundennr: 19685, kunde: 'Vakif',
+    id: 2, debitornumber: 19690, debitorname: 'Vakif',
+    type: 'Fremdbanken', customernumber: 19685, customername: 'Vakif',
     n2015: 872, n2016: 872, n2017: 872, n2018: 872, aufschlag_2018: 67
   },
   {
-    position: 3, debitorennr: 31100, debitor: 'Raiffeisen Factor Bank AG',
-    typ: 'Sektorbanken', kundennr: 31100, kunde: 'Raiffeisen Factor Bank AG',
+    id: 3, debitornumber: 31100, debitorname: 'Raiffeisen Factor Bank AG',
+    type: 'Sektorbanken', customernumber: 31100, customername: 'Raiffeisen Factor Bank AG',
     n2015: 833, n2016: 864, n2017: 845, n2018: 845, aufschlag_2018: 40
   },
 ];

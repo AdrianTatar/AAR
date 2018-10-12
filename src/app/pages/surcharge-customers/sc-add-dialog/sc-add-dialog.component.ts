@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SurchargeCustomers } from '../../../shared/models/surcharge.customers';
+import { SurchargeCustomer } from '../../../shared/models/surcharge.customer';
 import { MatDialogRef } from '@angular/material';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -11,13 +11,13 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class ScAddDialogComponent {
 
   scForm;
-  scInputs: SurchargeCustomers = {
-    position: null,
-    debitorennr: null,
-    debitor: '',
-    typ: '',
-    kundennr: null,
-    kunde: '',
+  scInputs: SurchargeCustomer = {
+    id: null,
+    debitornumber: null,
+    debitorname: '',
+    type: '',
+    customernumber: null,
+    customername: '',
     n2015: 0,
     n2016: 0,
     n2017: 0,

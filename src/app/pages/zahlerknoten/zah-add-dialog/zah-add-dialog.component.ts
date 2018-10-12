@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
-import { Zahlerknoten } from '../../../shared/models/Zahlerknoten';
+import { PayerNode } from '../../../shared/models/payernode';
 
 @Component({
   selector: 'app-zah-add-dialog',
@@ -11,26 +11,26 @@ import { Zahlerknoten } from '../../../shared/models/Zahlerknoten';
 export class ZahAddDialogComponent {
 
   fppForm;
-  fppInputs: Zahlerknoten = {
-    position: null,
-    kunde: 0,
-    bez_kunde: '',
-    hierarchie: '',
-    zahlerknoten_nr: 0,
-    zahlerknoten_bez: '',
-    knoten: ''
+  fppInputs: PayerNode = {
+    id: null,
+    customernumber: '',
+    customername: '',
+    hierarchy: '',
+    payernodenumber: 0,
+    payernodedescription: '',
+    payernodecode: ''
   };
 
   constructor(
     private dialogRef: MatDialogRef<ZahAddDialogComponent>
   ) {
     this.fppForm = new FormGroup({
-      kunde: new FormControl('', Validators.required),
-      bez_kunde: new FormControl('', Validators.required),
-      hierarchie: new FormControl('', Validators.required),
-      zahlerknoten_nr: new FormControl('', Validators.required),
-      zahlerknoten_bez: new FormControl('', Validators.required),
-      knoten: new FormControl('', Validators.required)
+      customernumber: new FormControl('', Validators.required),
+      customername: new FormControl('', Validators.required),
+      hierarchy: new FormControl('', Validators.required),
+      payernodenumber: new FormControl('', Validators.required),
+      payernodedescription: new FormControl('', Validators.required),
+      payernodecode: new FormControl('', Validators.required)
     });
   }
 
@@ -38,27 +38,27 @@ export class ZahAddDialogComponent {
     this.dialogRef.close(this.fppInputs);
   }
 
-  get formkunde() {
-    return this.fppForm.get('kunde');
+  get formcustomernumber() {
+    return this.fppForm.get('customernumber');
   }
 
-  get formbez_kunde() {
-    return this.fppForm.get('bez_kunde');
+  get formcustomername() {
+    return this.fppForm.get('customername');
   }
 
-  get formhierarchie() {
-    return this.fppForm.get('hierarchie');
+  get formhierarchy() {
+    return this.fppForm.get('hierarchy');
   }
 
-  get formzahlerknoten_nr() {
-    return this.fppForm.get('zahlerknoten_nr');
+  get formpayernodenumber() {
+    return this.fppForm.get('payernodenumber');
   }
 
-  get formzahlerknoten_bez() {
-    return this.fppForm.get('zahlerknoten_bez');
+  get formpayernodedescription() {
+    return this.fppForm.get('payernodedescription');
   }
 
-  get formknoten() {
-    return this.fppForm.get('knoten');
+  get formpayernodecode() {
+    return this.fppForm.get('payernodecode');
   }
 }

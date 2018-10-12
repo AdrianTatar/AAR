@@ -1,5 +1,5 @@
 import { ZahAddDialogComponent } from './zah-add-dialog/zah-add-dialog.component';
-import { Zahlerknoten } from '../../shared/models/Zahlerknoten';
+import { PayerNode } from '../../shared/models/payernode';
 import { Component, OnInit, ViewChild, HostListener, AfterViewInit } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
@@ -12,39 +12,39 @@ import { MatDialog } from '@angular/material';
 })
 export class ZahlerknotenComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['kunde', 'bez_kunde', 'hierarchie', 'zahlerknoten_nr', 'zahlerknoten_bez', 'knoten', 'menu'];
+  displayedColumns: string[] = ['customernumber', 'customername', 'hierarchy', 'payernodenumber', 'payernodedescription', 'payernodecode', 'menu'];
 
-  dataSource = new MatTableDataSource<Zahlerknoten>(ELEMENT_DATA);
-  filteredDataSource = new MatTableDataSource<Zahlerknoten>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<PayerNode>(ELEMENT_DATA);
+  filteredDataSource = new MatTableDataSource<PayerNode>(ELEMENT_DATA);
   @ViewChild(MatPaginator) paginator: MatPaginator;
   selectedRowToEdit = -1;
   selectedRow = -1;
 
-  kundeSearch = false;
-  bez_kundeSearch = false;
-  hierarchieSearch = false;
-  zahlerknoten_nrSearch = false;
-  zahlerknoten_bezSearch = false;
-  knotenSearch = false;
+  customernumberSearch = false;
+  customernameSearch = false;
+  hierarchySearch = false;
+  payernodenumberSearch = false;
+  payernodedescriptionSearch = false;
+  payernodecodeSearch = false;
 
-  kundeSearchQuery = 0;
-  bez_kundeSearchQuery = '';
-  hierarchieSearchQuery = '';
-  zahlerknoten_nrSearchQuery = 0;
-  zahlerknoten_bezSearchQuery = '';
-  knotenSearchQuery = '';
+  customernumberSearchQuery = '';
+  customernameSearchQuery = '';
+  hierarchySearchQuery = '';
+  payernodenumberSearchQuery = 0;
+  payernodedescriptionSearchQuery = '';
+  payernodecodeSearchQuery = '';
 
   addNewElement = false;
 
   fppForm;
-  fppInputs: Zahlerknoten = {
-    position: null,
-    kunde : 0,
-    bez_kunde: '',
-    hierarchie : '',
-    zahlerknoten_nr : 0,
-    zahlerknoten_bez : '',
-    knoten : ''
+  fppInputs: PayerNode = {
+    id: null,
+    customernumber : '',
+    customername : '',
+    hierarchy : '',
+    payernodenumber : 0,
+    payernodedescription : '',
+    payernodecode : ''
   };
 
   constructor(
@@ -52,32 +52,33 @@ export class ZahlerknotenComponent implements OnInit, AfterViewInit {
   ) { }
 
   filter() {
-    this.filteredDataSource.data = (this.kundeSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.kunde === this.kundeSearchQuery)
+    this.filteredDataSource.data = (this.customernumberSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.customernumber.toLocaleLowerCase()
+      .includes(this.customernumberSearchQuery.toLocaleLowerCase()))
       : this.dataSource.data;
 
-    this.filteredDataSource.data = (this.bez_kundeSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.bez_kunde.toLocaleLowerCase()
-        .includes(this.bez_kundeSearchQuery.toLocaleLowerCase()))
+    this.filteredDataSource.data = (this.customernameSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.customername.toLocaleLowerCase()
+        .includes(this.customernameSearchQuery.toLocaleLowerCase()))
       : this.filteredDataSource.data;
 
-    this.filteredDataSource.data = (this.hierarchieSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.hierarchie.toLocaleLowerCase()
-        .includes(this.hierarchieSearchQuery.toLocaleLowerCase()))
+    this.filteredDataSource.data = (this.hierarchySearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.hierarchy.toLocaleLowerCase()
+        .includes(this.hierarchySearchQuery.toLocaleLowerCase()))
       : this.filteredDataSource.data;
 
-    this.filteredDataSource.data = (this.zahlerknoten_nrSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.zahlerknoten_nr === this.zahlerknoten_nrSearchQuery)
+    this.filteredDataSource.data = (this.payernodenumberSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.payernodenumber === this.payernodenumberSearchQuery)
       : this.filteredDataSource.data;
 
-    this.filteredDataSource.data = (this.zahlerknoten_bezSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.zahlerknoten_bez.toLocaleLowerCase()
-        .includes(this.zahlerknoten_bezSearchQuery.toLocaleLowerCase()))
+    this.filteredDataSource.data = (this.payernodedescriptionSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.payernodedescription.toLocaleLowerCase()
+        .includes(this.payernodedescriptionSearchQuery.toLocaleLowerCase()))
       : this.filteredDataSource.data;
 
-    this.filteredDataSource.data = (this.knotenSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.knoten.toLocaleLowerCase()
-        .includes(this.knotenSearchQuery.toLocaleLowerCase()))
+    this.filteredDataSource.data = (this.payernodecodeSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.payernodecode.toLocaleLowerCase()
+        .includes(this.payernodecodeSearchQuery.toLocaleLowerCase()))
       : this.filteredDataSource.data;
   }
 
@@ -86,37 +87,37 @@ export class ZahlerknotenComponent implements OnInit, AfterViewInit {
     this.selectedRow = 0;
 
     this.fppForm = new FormGroup({
-      kunde: new FormControl('', Validators.required),
-      bez_kunde: new FormControl('', Validators.required),
-      hierarchie: new FormControl('', Validators.required),
-      zahlerknoten_nr: new FormControl('', Validators.required),
-      zahlerknoten_bez: new FormControl('', Validators.required),
-      knoten: new FormControl('', Validators.required)
+      customernumber: new FormControl('', Validators.required),
+      customername: new FormControl('', Validators.required),
+      hierarchy: new FormControl('', Validators.required),
+      payernodenumber: new FormControl('', Validators.required),
+      payernodedescription: new FormControl('', Validators.required),
+      payernodecode: new FormControl('', Validators.required)
     });
   }
 
-  get formkunde() {
-    return this.fppForm.get('kunde');
+  get formcustomernumber() {
+    return this.fppForm.get('customernumber');
   }
 
-  get formbez_kunde() {
-    return this.fppForm.get('bez_kunde');
+  get formcustomername() {
+    return this.fppForm.get('customername');
   }
 
-  get formhierarchie() {
-    return this.fppForm.get('hierarchie');
+  get formhierarchy() {
+    return this.fppForm.get('hierarchy');
   }
 
-  get formzahlerknoten_nr() {
-    return this.fppForm.get('zahlerknoten_nr');
+  get formpayernodenumber() {
+    return this.fppForm.get('payernodenumber');
   }
 
-  get formzahlerknoten_bez() {
-    return this.fppForm.get('zahlerknoten_bez');
+  get formpayernodedescription() {
+    return this.fppForm.get('payernodedescription');
   }
 
-  get formknoten() {
-    return this.fppForm.get('knoten');
+  get formpayernodecode() {
+    return this.fppForm.get('payernodecode');
   }
 
   ngAfterViewInit() {
@@ -149,8 +150,8 @@ export class ZahlerknotenComponent implements OnInit, AfterViewInit {
     });
   }
 
-  private pushObject(data: Zahlerknoten) {
-    data.position = this.dataSource.data[this.dataSource.data.length - 1].position + 1;
+  private pushObject(data: PayerNode) {
+    data.id = this.dataSource.data[this.dataSource.data.length - 1].id + 1;
     this.dataSource.data.push(data);
     this.paginator._changePageSize(this.paginator.pageSize);
   }
@@ -169,52 +170,52 @@ export class ZahlerknotenComponent implements OnInit, AfterViewInit {
   }
 
   private confirmEdit() {
-    this.dataSource.data[this.selectedRowToEdit - 1].kunde = this.fppInputs.kunde;
-    this.dataSource.data[this.selectedRowToEdit - 1].bez_kunde = this.fppInputs.bez_kunde;
-    this.dataSource.data[this.selectedRowToEdit - 1].hierarchie = this.fppInputs.hierarchie;
-    this.dataSource.data[this.selectedRowToEdit - 1].zahlerknoten_nr = this.fppInputs.zahlerknoten_nr;
-    this.dataSource.data[this.selectedRowToEdit - 1].zahlerknoten_bez = this.fppInputs.zahlerknoten_bez;
-    this.dataSource.data[this.selectedRowToEdit - 1].knoten = this.fppInputs.knoten;
+    this.dataSource.data[this.selectedRowToEdit - 1].customernumber = this.fppInputs.customernumber;
+    this.dataSource.data[this.selectedRowToEdit - 1].customername = this.fppInputs.customername;
+    this.dataSource.data[this.selectedRowToEdit - 1].hierarchy = this.fppInputs.hierarchy;
+    this.dataSource.data[this.selectedRowToEdit - 1].payernodenumber = this.fppInputs.payernodenumber;
+    this.dataSource.data[this.selectedRowToEdit - 1].payernodedescription = this.fppInputs.payernodedescription;
+    this.dataSource.data[this.selectedRowToEdit - 1].payernodecode = this.fppInputs.payernodecode;
     this.selectedRowToEdit = -1;
   }
 
   private setEditValues(rowNumber) {
-    this.fppInputs.kunde = this.dataSource.data[rowNumber - 1].kunde;
-    this.fppInputs.bez_kunde = this.dataSource.data[rowNumber - 1].bez_kunde;
-    this.fppInputs.hierarchie = this.dataSource.data[rowNumber - 1].hierarchie;
-    this.fppInputs.zahlerknoten_nr = this.dataSource.data[rowNumber - 1].zahlerknoten_nr;
-    this.fppInputs.zahlerknoten_bez = this.dataSource.data[rowNumber - 1].zahlerknoten_bez;
-    this.fppInputs.knoten = this.dataSource.data[rowNumber - 1].knoten;
+    this.fppInputs.customernumber = this.dataSource.data[rowNumber - 1].customernumber;
+    this.fppInputs.customername = this.dataSource.data[rowNumber - 1].customername;
+    this.fppInputs.hierarchy = this.dataSource.data[rowNumber - 1].hierarchy;
+    this.fppInputs.payernodenumber = this.dataSource.data[rowNumber - 1].payernodenumber;
+    this.fppInputs.payernodedescription = this.dataSource.data[rowNumber - 1].payernodedescription;
+    this.fppInputs.payernodecode = this.dataSource.data[rowNumber - 1].payernodecode;
   }
 }
 
 // Mock-Up
-const ELEMENT_DATA: Zahlerknoten[] = [
+const ELEMENT_DATA: PayerNode[] = [
   {
-    position: 1,
-    kunde: 34738,
-    bez_kunde: 'TOKIO',
-    hierarchie: 'Tirol',
-    zahlerknoten_nr: 21,
-    zahlerknoten_bez: 'RBG TIR',
-    knoten: 'Primärebene'
+    id: 1,
+    customernumber: '34738',
+    customername: 'TOKIO',
+    hierarchy: 'Tirol',
+    payernodenumber: 21,
+    payernodedescription: 'RBG TIR',
+    payernodecode: 'Primärebene'
   },
   {
-    position: 2,
-    kunde: 36215,
-    bez_kunde: 'SIENA',
-    hierarchie: 'NÖW',
-    zahlerknoten_nr: 22,
-    zahlerknoten_bez: 'RBG TIR',
-    knoten: 'Primärebene'
+    id: 2,
+    customernumber: '36215',
+    customername: 'SIENA',
+    hierarchy: 'NÖW',
+    payernodenumber: 22,
+    payernodedescription: 'RBG TIR',
+    payernodecode: 'Primärebene'
   },
   {
-    position: 3,
-    kunde: 36215,
-    bez_kunde: 'SBG',
-    hierarchie: 'Tirol',
-    zahlerknoten_nr: 23,
-    zahlerknoten_bez: 'RBG TIR',
-    knoten: 'Primärebene'
+    id: 3,
+    customernumber: '36215',
+    customername: 'SBG',
+    hierarchy: 'Tirol',
+    payernodenumber: 23,
+    payernodedescription: 'RBG TIR',
+    payernodecode: 'Primärebene'
   }
 ];
