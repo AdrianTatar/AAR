@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material';
 import { FppAddDialogComponent } from './fpp-add-dialog/fpp-add-dialog.component';
 import { FixedPriceProject } from '../../shared/models/fixed.price.project';
 import { FixedPriceProjectService } from './services/fixed-price-project.service';
+
 @Component({
   selector: 'app-fixed-price-projects',
   templateUrl: './fixed-price-projects.component.html',
@@ -14,11 +15,10 @@ import { FixedPriceProjectService } from './services/fixed-price-project.service
 export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['projectnumberplanmill', 'projectidtagetik', 'projectdescription', 'customernumber', 'price', 'menu'];
+
   dataSource = new MatTableDataSource<FixedPriceProject>();
   filteredDataSource = new MatTableDataSource<FixedPriceProject>();
-
   fixedPriceProjects: FixedPriceProject[];
-
   @ViewChild(MatPaginator) paginator: MatPaginator;
   selectedRowToEdit = -1;
   selectedRow = -1;

@@ -1,15 +1,14 @@
+import { PayerNodeService } from './payernode.service';
 import { TestBed, inject } from '@angular/core/testing';
-
-import { ZahlerknotenService } from './zahlerknoten.service';
 
 describe('ZahlerknotenService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ZahlerknotenService]
+      providers: [PayerNodeService]
     });
   });
 
-  it('should be created', inject([ZahlerknotenService], (service: ZahlerknotenService) => {
+  it('should be created', inject([PayerNodeService], (service: PayerNodeService) => {
     expect(service).toBeTruthy();
   }));
 });

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ZahAddDialogComponent } from './zah-add-dialog.component';
+import { PayerNodesComponent } from './payernodes.component';
 
-describe('ZahAddDialogComponent', () => {
-  let component: ZahAddDialogComponent;
-  let fixture: ComponentFixture<ZahAddDialogComponent>;
+describe('PayerNodesComponent', () => {
+  let component: PayerNodesComponent;
+  let fixture: ComponentFixture<PayerNodesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ZahAddDialogComponent ]
+      declarations: [ PayerNodesComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ZahAddDialogComponent);
+    fixture = TestBed.createComponent(PayerNodesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

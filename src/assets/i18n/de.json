@@ -1,5 +1,5 @@
 {
-  "RegularCustomers": "Zahlerknoten",
+  "PayerNodes": "Zahlerknoten",
   "CustomerBase": "Kundenstamm",
   "FixedPriceProjects": "Fixpreisprojekte",
   "SurchargeCustomers": "Aufschlags Kunden",

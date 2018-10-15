@@ -22,16 +22,16 @@ export class FixedPriceProjectService {
 
   public createFixedPriceProject(fixedPriceProject) {
     console.log(fixedPriceProject);
-    return this.http.post<FixedPriceProject>(this.fixedPriceProjectUrl + this.savePath, 
+    return this.http.post<FixedPriceProject>(this.fixedPriceProjectUrl + this.savePath,
       JSON.stringify(fixedPriceProject), httpOptions)
-    .subscribe(res => console.log(res));
+      .subscribe(res => console.log(res));
   }
 
   public updateFixedPriceProject(fixedPriceProject: FixedPriceProject) {
-    console.log(fixedPriceProject);  
-    console.log(JSON.stringify(fixedPriceProject));  
-    return this.http.put<FixedPriceProject>(this.fixedPriceProjectUrl + this.updatePath, 
+    console.log(fixedPriceProject);
+    console.log(JSON.stringify(fixedPriceProject));
+    return this.http.put<FixedPriceProject>(this.fixedPriceProjectUrl + this.updatePath,
       JSON.stringify(fixedPriceProject), httpOptions)
-    .subscribe(response => console.log(response));
+      .subscribe(response => console.log(response));
   }
 }

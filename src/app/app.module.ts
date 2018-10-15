@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { routingComponents } from './routing.module';
 import { RoutingModule } from './routing.module';
-
+import { HttpModule} from '@angular/http';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 
@@ -19,7 +19,8 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     BrowserAnimationsModule,
     RoutingModule,
-    SharedModule
+    SharedModule,
+    HttpModule
   ],
   bootstrap: [AppComponent]
 })

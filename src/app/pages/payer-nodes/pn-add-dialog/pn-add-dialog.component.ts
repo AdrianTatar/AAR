@@ -4,14 +4,14 @@ import { MatDialogRef } from '@angular/material';
 import { PayerNode } from '../../../shared/models/payernode';
 
 @Component({
-  selector: 'app-zah-add-dialog',
-  templateUrl: './zah-add-dialog.component.html',
-  styleUrls: ['./zah-add-dialog.component.css']
+  selector: 'app-pn-add-dialog',
+  templateUrl: './pn-add-dialog.component.html',
+  styleUrls: ['./pn-add-dialog.component.css']
 })
-export class ZahAddDialogComponent {
+export class PnAddDialogComponent {
 
-  fppForm;
-  fppInputs: PayerNode = {
+  pnForm;
+  pnInputs: PayerNode = {
     id: null,
     customernumber: '',
     customername: '',
@@ -22,9 +22,9 @@ export class ZahAddDialogComponent {
   };
 
   constructor(
-    private dialogRef: MatDialogRef<ZahAddDialogComponent>
+    private dialogRef: MatDialogRef<PnAddDialogComponent>
   ) {
-    this.fppForm = new FormGroup({
+    this.pnForm = new FormGroup({
       customernumber: new FormControl('', Validators.required),
       customername: new FormControl('', Validators.required),
       hierarchy: new FormControl('', Validators.required),
@@ -35,30 +35,30 @@ export class ZahAddDialogComponent {
   }
 
   save() {
-    this.dialogRef.close(this.fppInputs);
+    this.dialogRef.close(this.pnInputs);
   }
 
   get formcustomernumber() {
-    return this.fppForm.get('customernumber');
+    return this.pnForm.get('customernumber');
   }
 
   get formcustomername() {
-    return this.fppForm.get('customername');
+    return this.pnForm.get('customername');
   }
 
   get formhierarchy() {
-    return this.fppForm.get('hierarchy');
+    return this.pnForm.get('hierarchy');
   }
 
   get formpayernodenumber() {
-    return this.fppForm.get('payernodenumber');
+    return this.pnForm.get('payernodenumber');
   }
 
   get formpayernodedescription() {
-    return this.fppForm.get('payernodedescription');
+    return this.pnForm.get('payernodedescription');
   }
 
   get formpayernodecode() {
-    return this.fppForm.get('payernodecode');
+    return this.pnForm.get('payernodecode');
   }
 }

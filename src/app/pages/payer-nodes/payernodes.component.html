@@ -1,0 +1,246 @@
+<div class="align-page">
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="filteredDataSource">
+
+      <!-- Customer Number Column -->
+      <ng-container matColumnDef="customernumber">
+        <th mat-header-cell *matHeaderCellDef class="header">
+          Customer Number
+
+          <button mat-icon-button (click)="customernumberSearch = !customernumberSearch; clearSearchInputBox()">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="customernumberSearch === true">
+            <mat-form-field>
+              <input type="text" [(ngModel)]="customernumberSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+                class="searchInput">
+            </mat-form-field>
+          </div>
+
+        </th>
+
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
+            <mat-form-field>
+              <input type="text" [(ngModel)]="pnInputs.customernumber" matInput (keyup.enter)="confirmEdit()" [formControl]="formcustomernumber">
+              <mat-error *ngIf="formcustomernumber.invalid">
+                customer number is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.customernumber }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Customer Name Column -->
+      <ng-container matColumnDef="customername">
+        <th mat-header-cell *matHeaderCellDef class="header">
+
+          Customer Name
+
+          <button mat-icon-button (click)="customernameSearch = !customernameSearch; clearSearchInputBox()">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="customernameSearch === true">
+            <mat-form-field>
+              <input [(ngModel)]="customernameSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
+            </mat-form-field>
+          </div>
+
+
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
+            <mat-form-field>
+              <textarea [(ngModel)]="pnInputs.customername" [formControl]="formcustomername" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formcustomername"></textarea>
+              <mat-error *ngIf="formcustomername.invalid">
+                customer name is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.customername }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Hierarchy Column -->
+      <ng-container matColumnDef="hierarchy">
+        <th mat-header-cell *matHeaderCellDef class="header">
+
+          Hierarchy
+
+          <button mat-icon-button (click)="hierarchySearch = !hierarchySearch; clearSearchInputBox()">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="hierarchySearch === true">
+            <mat-form-field>
+              <input [(ngModel)]="hierarchySearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
+            </mat-form-field>
+          </div>
+
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
+            <mat-form-field class="full-width">
+              <input type="text" [(ngModel)]="pnInputs.hierarchy" type="text" matInput (keyup.enter)="confirmEdit()">
+              <mat-error *ngIf="formhierarchy.invalid">
+                hierarchy is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.hierarchy }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Payernode Number Column -->
+      <ng-container matColumnDef="payernodenumber">
+        <th mat-header-cell *matHeaderCellDef class="header">
+
+          Payernode Number
+
+          <button mat-icon-button (click)="payernodenumberSearch = !payernodenumberSearch; clearSearchInputBox()">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="payernodenumberSearch === true">
+            <mat-form-field>
+              <input type="number" [(ngModel)]="payernodenumberSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+                class="searchInput">
+            </mat-form-field>
+          </div>
+
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
+            <mat-form-field class="example-full-width">
+              <input type="number" [(ngModel)]="pnInputs.payernodenumber" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formpayernodenumber">
+              <mat-error *ngIf="formpayernodenumber.invalid">
+                payernode number is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.payernodenumber }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Payernode Description Column -->
+      <ng-container matColumnDef="payernodedescription">
+        <th mat-header-cell *matHeaderCellDef class="header">
+
+          Payernode Description
+
+          <button mat-icon-button (click)="payernodedescriptionSearch = !payernodedescriptionSearch; clearSearchInputBox()">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="payernodedescriptionSearch === true">
+            <mat-form-field>
+              <input type="text" [(ngModel)]="payernodedescriptionSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+                class="searchInput">
+            </mat-form-field>
+          </div>
+
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
+            <mat-form-field class="example-full-width">
+              <input type="text" [(ngModel)]="pnInputs.payernodedescription" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formpayernodedescription">
+              <mat-error *ngIf="formpayernodedescription.invalid">
+                payernode description is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.payernodedescription }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Payernode Code Column -->
+      <ng-container matColumnDef="payernodecode">
+        <th mat-header-cell *matHeaderCellDef class="header">
+
+          Payernode code
+
+          <button mat-icon-button (click)="payernodecodeSearch = !payernodecodeSearch; clearSearchInputBox()">
+            <mat-icon>search</mat-icon>
+          </button>
+          <div *ngIf="payernodecodeSearch === true">
+            <mat-form-field>
+              <input type="text" [(ngModel)]="payernodecodeSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+                class="searchInput">
+            </mat-form-field>
+          </div>
+
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
+            <mat-form-field class="example-full-width">
+              <input type="text" [(ngModel)]="pnInputs.payernodecode" matInput (keyup.enter)="confirmEdit()" [formControl]="formpayernodecode">
+              <mat-error *ngIf="formpayernodecode.invalid">
+                payernode code is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <ng-template #simpleDisplay>
+            <div>
+              {{ element.payernodecode }}
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Buttons Column -->
+      <ng-container matColumnDef="menu">
+        <th mat-header-cell *matHeaderCellDef class="header options-menu"></th>
+        <td mat-cell *matCellDef="let element">
+          <ng-template #editButton>
+            <button [disabled]="createNewRow === true" mat-button (click)="editRow(element.id)" class="edit-icon">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </ng-template>
+          <div *ngIf="selectedRowToEdit === element.id; else editButton">
+            <button mat-button class="done-icon" (click)="confirmEdit()" [disabled]="pnForm.invalid">
+              <mat-icon>check</mat-icon>
+            </button>
+            <button mat-button (click)="cancelEdit()" class="cancel-icon">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row (click)="selectRow(index)" [ngClass]="{'highlight': index == selectedRow}" *matRowDef="let row; columns: displayedColumns; let index = index"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+  </div>
+
+  <div class="space-for-buttons">
+  </div>
+
+  <div class="right">
+    <button (click)="openDialog()" mat-fab matTooltip="{{'AddRow' | translate}}" class="add-icon">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

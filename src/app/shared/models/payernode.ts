@@ -1,4 +1,4 @@
-export interface Zahlerknoten {
+export interface PayerNode {
     id: number;
     customernumber: string;
     customername: string;

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ZahlerknotenComponent } from './zahlerknoten.component';
+import { PnAddDialogComponent } from './pn-add-dialog.component';
 
-describe('ZahlerknotenComponent', () => {
-  let component: ZahlerknotenComponent;
-  let fixture: ComponentFixture<ZahlerknotenComponent>;
+describe('PnAddDialogComponent', () => {
+  let component: PnAddDialogComponent;
+  let fixture: ComponentFixture<PnAddDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ZahlerknotenComponent ]
+      declarations: [ PnAddDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ZahlerknotenComponent);
+    fixture = TestBed.createComponent(PnAddDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,4 +1,5 @@
-import { ZahAddDialogComponent } from './zah-add-dialog/zah-add-dialog.component';
+import { PayerNodeService } from './services/payernode.service';
+import { PnAddDialogComponent } from './pn-add-dialog/pn-add-dialog.component';
 import { PayerNode } from '../../shared/models/payernode';
 import { Component, OnInit, ViewChild, HostListener, AfterViewInit } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
@@ -6,16 +7,18 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 
 @Component({
-  selector: 'app-zahlerknoten',
-  templateUrl: './zahlerknoten.component.html',
-  styleUrls: ['./zahlerknoten.component.css']
+  selector: 'app-payernodes',
+  templateUrl: './payernodes.component.html',
+  styleUrls: ['./payernodes.component.css']
 })
-export class ZahlerknotenComponent implements OnInit, AfterViewInit {
+export class PayerNodesComponent implements OnInit, AfterViewInit {
 
+  // tslint:disable-next-line:max-line-length
   displayedColumns: string[] = ['customernumber', 'customername', 'hierarchy', 'payernodenumber', 'payernodedescription', 'payernodecode', 'menu'];
 
-  dataSource = new MatTableDataSource<PayerNode>(ELEMENT_DATA);
-  filteredDataSource = new MatTableDataSource<PayerNode>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<PayerNode>();
+  filteredDataSource = new MatTableDataSource<PayerNode>();
+  payerNodes: PayerNode[];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   selectedRowToEdit = -1;
   selectedRow = -1;
@@ -36,25 +39,25 @@ export class ZahlerknotenComponent implements OnInit, AfterViewInit {
 
   addNewElement = false;
 
-  fppForm;
-  fppInputs: PayerNode = {
+  pnForm;
+  pnInputs: PayerNode = {
     id: null,
-    customernumber : '',
-    customername : '',
-    hierarchy : '',
-    payernodenumber : 0,
-    payernodedescription : '',
-    payernodecode : ''
+    customernumber: '',
+    customername: '',
+    hierarchy: '',
+    payernodenumber: 0,
+    payernodedescription: '',
+    payernodecode: ''
   };
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog, private payerNodeService: PayerNodeService
   ) { }
 
   filter() {
     this.filteredDataSource.data = (this.customernumberSearchQuery) ?
       this.filteredDataSource.data.filter(p => p.customernumber.toLocaleLowerCase()
-      .includes(this.customernumberSearchQuery.toLocaleLowerCase()))
+        .includes(this.customernumberSearchQuery.toLocaleLowerCase()))
       : this.dataSource.data;
 
     this.filteredDataSource.data = (this.customernameSearchQuery) ?
@@ -82,11 +85,11 @@ export class ZahlerknotenComponent implements OnInit, AfterViewInit {
       : this.filteredDataSource.data;
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.selectedRow = 0;
 
-    this.fppForm = new FormGroup({
+    this.pnForm = new FormGroup({
       customernumber: new FormControl('', Validators.required),
       customername: new FormControl('', Validators.required),
       hierarchy: new FormControl('', Validators.required),
@@ -94,30 +97,37 @@ export class ZahlerknotenComponent implements OnInit, AfterViewInit {
       payernodedescription: new FormControl('', Validators.required),
       payernodecode: new FormControl('', Validators.required)
     });
+
+    await this.payerNodeService.getPayerNodes().subscribe(data => {
+      this.payerNodes = data;
+      this.dataSource.data = this.payerNodes;
+      this.filteredDataSource.data = this.payerNodes;
+    });
+
   }
 
   get formcustomernumber() {
-    return this.fppForm.get('customernumber');
+    return this.pnForm.get('customernumber');
   }
 
   get formcustomername() {
-    return this.fppForm.get('customername');
+    return this.pnForm.get('customername');
   }
 
   get formhierarchy() {
-    return this.fppForm.get('hierarchy');
+    return this.pnForm.get('hierarchy');
   }
 
   get formpayernodenumber() {
-    return this.fppForm.get('payernodenumber');
+    return this.pnForm.get('payernodenumber');
   }
 
   get formpayernodedescription() {
-    return this.fppForm.get('payernodedescription');
+    return this.pnForm.get('payernodedescription');
   }
 
   get formpayernodecode() {
-    return this.fppForm.get('payernodecode');
+    return this.pnForm.get('payernodecode');
   }
 
   ngAfterViewInit() {
@@ -138,21 +148,46 @@ export class ZahlerknotenComponent implements OnInit, AfterViewInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(ZahAddDialogComponent, {
+    const dialogRef = this.dialog.open(PnAddDialogComponent, {
       width: '600px',
       disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(data => {
       if (data) {
+        console.log(data);
+        this.payerNodeService.createPayerNode(data);
         this.pushObject(data);
       }
     });
   }
 
+  clearSearchInputBox() {
+    if (!this.customernameSearch) {
+      this.customernameSearchQuery = '';
+    }
+    if (!this.customernumberSearch) {
+      this.customernumberSearchQuery = '';
+    }
+    if (!this.hierarchySearch) {
+      this.hierarchySearchQuery = '';
+    }
+    if (!this.payernodedescriptionSearch) {
+      this.payernodedescriptionSearchQuery = '';
+    }
+    if (!this.payernodecodeSearch) {
+      this.payernodecodeSearchQuery = '';
+    }
+    if (!this.payernodenumberSearch) {
+      this.payernodenumberSearchQuery = 0;
+    }
+    this.filter();
+  }
+
   private pushObject(data: PayerNode) {
     data.id = this.dataSource.data[this.dataSource.data.length - 1].id + 1;
     this.dataSource.data.push(data);
+    this.filteredDataSource.data = this.dataSource.data;
     this.paginator._changePageSize(this.paginator.pageSize);
   }
 
@@ -161,8 +196,8 @@ export class ZahlerknotenComponent implements OnInit, AfterViewInit {
   }
 
   private editRow(rowNumber) {
-    this.setEditValues(rowNumber);
-    this.selectedRowToEdit = rowNumber;
+    this.selectedRowToEdit = this.mapToDataSource(rowNumber);
+    this.setEditValues(this.selectedRowToEdit);
   }
 
   private cancelEdit() {
@@ -170,52 +205,34 @@ export class ZahlerknotenComponent implements OnInit, AfterViewInit {
   }
 
   private confirmEdit() {
-    this.dataSource.data[this.selectedRowToEdit - 1].customernumber = this.fppInputs.customernumber;
-    this.dataSource.data[this.selectedRowToEdit - 1].customername = this.fppInputs.customername;
-    this.dataSource.data[this.selectedRowToEdit - 1].hierarchy = this.fppInputs.hierarchy;
-    this.dataSource.data[this.selectedRowToEdit - 1].payernodenumber = this.fppInputs.payernodenumber;
-    this.dataSource.data[this.selectedRowToEdit - 1].payernodedescription = this.fppInputs.payernodedescription;
-    this.dataSource.data[this.selectedRowToEdit - 1].payernodecode = this.fppInputs.payernodecode;
-    this.selectedRowToEdit = -1;
+    if (this.pnForm.Validators) {
+      this.dataSource.data[this.selectedRowToEdit - 1].customernumber = this.pnInputs.customernumber;
+      this.dataSource.data[this.selectedRowToEdit - 1].customername = this.pnInputs.customername;
+      this.dataSource.data[this.selectedRowToEdit - 1].hierarchy = this.pnInputs.hierarchy;
+      this.dataSource.data[this.selectedRowToEdit - 1].payernodenumber = this.pnInputs.payernodenumber;
+      this.dataSource.data[this.selectedRowToEdit - 1].payernodedescription = this.pnInputs.payernodedescription;
+      this.dataSource.data[this.selectedRowToEdit - 1].payernodecode = this.pnInputs.payernodecode;
+      this.payerNodeService.updatePayerNode(this.dataSource.data[this.selectedRowToEdit - 1]);
+      this.selectedRowToEdit = -1;
+    }
   }
 
   private setEditValues(rowNumber) {
-    this.fppInputs.customernumber = this.dataSource.data[rowNumber - 1].customernumber;
-    this.fppInputs.customername = this.dataSource.data[rowNumber - 1].customername;
-    this.fppInputs.hierarchy = this.dataSource.data[rowNumber - 1].hierarchy;
-    this.fppInputs.payernodenumber = this.dataSource.data[rowNumber - 1].payernodenumber;
-    this.fppInputs.payernodedescription = this.dataSource.data[rowNumber - 1].payernodedescription;
-    this.fppInputs.payernodecode = this.dataSource.data[rowNumber - 1].payernodecode;
+    this.pnInputs.customernumber = this.dataSource.data[rowNumber - 1].customernumber;
+    this.pnInputs.customername = this.dataSource.data[rowNumber - 1].customername;
+    this.pnInputs.hierarchy = this.dataSource.data[rowNumber - 1].hierarchy;
+    this.pnInputs.payernodenumber = this.dataSource.data[rowNumber - 1].payernodenumber;
+    this.pnInputs.payernodedescription = this.dataSource.data[rowNumber - 1].payernodedescription;
+    this.pnInputs.payernodecode = this.dataSource.data[rowNumber - 1].payernodecode;
+  }
+
+  private mapToDataSource(elementId) {
+    let pos = 0;
+    for (let i = 0; i < this.dataSource.data.length; i++) {
+      if (this.dataSource.data[i].id === elementId) {
+        pos = i;
+      }
+    }
+    return pos + 1;
   }
 }
-
-// Mock-Up
-const ELEMENT_DATA: PayerNode[] = [
-  {
-    id: 1,
-    customernumber: '34738',
-    customername: 'TOKIO',
-    hierarchy: 'Tirol',
-    payernodenumber: 21,
-    payernodedescription: 'RBG TIR',
-    payernodecode: 'Primärebene'
-  },
-  {
-    id: 2,
-    customernumber: '36215',
-    customername: 'SIENA',
-    hierarchy: 'NÖW',
-    payernodenumber: 22,
-    payernodedescription: 'RBG TIR',
-    payernodecode: 'Primärebene'
-  },
-  {
-    id: 3,
-    customernumber: '36215',
-    customername: 'SBG',
-    hierarchy: 'Tirol',
-    payernodenumber: 23,
-    payernodedescription: 'RBG TIR',
-    payernodecode: 'Primärebene'
-  }
-];

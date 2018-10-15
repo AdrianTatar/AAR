@@ -5,7 +5,7 @@
 <mat-dialog-content>
 
   <mat-form-field class="full-width">
-    <input type="number" [(ngModel)]="fppInputs.customernumber" placeholder="customernumber" matInput (keyup.enter)="confirmEdit()"
+    <input type="number" [(ngModel)]="pnInputs.customernumber" placeholder="customernumber" matInput (keyup.enter)="confirmEdit()"
       [formControl]="formcustomernumber">
     <mat-error *ngIf="formcustomernumber.invalid">
       Customernumber is <strong>required</strong>
@@ -13,7 +13,7 @@
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="text" [(ngModel)]="fppInputs.customername" placeholder="Bezeichnung Kunde" [formControl]="formcustomername"
+    <input type="text" [(ngModel)]="pnInputs.customername" placeholder="Bezeichnung Kunde" [formControl]="formcustomername"
       matInput>
     <mat-error *ngIf="formcustomername.invalid">
       Customername is <strong>required</strong>
@@ -21,28 +21,28 @@
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="text" [(ngModel)]="fppInputs.hierarchy" matInput placeholder="Hierarchy" [formControl]="formhierarchy">
+    <input type="text" [(ngModel)]="pnInputs.hierarchy" matInput placeholder="Hierarchy" [formControl]="formhierarchy">
     <mat-error *ngIf="formhierarchy.invalid">
       Hierarchy is <strong>required</strong>
     </mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="number" [(ngModel)]="fppInputs.payernodenumber"  placeholder="Payernodenumber" matInput (keyup.enter)="confirmEdit()" [formControl]="formpayernodenumber">
+    <input type="number" [(ngModel)]="pnInputs.payernodenumber"  placeholder="Payernodenumber" matInput (keyup.enter)="confirmEdit()" [formControl]="formpayernodenumber">
     <mat-error *ngIf="formpayernodenumber.invalid">
       Payernodenumber is <strong>required</strong>
     </mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="text" [(ngModel)]="fppInputs.payernodedescription" matInput placeholder="Payernodedescription" [formControl]="formpayernodedescription">
+    <input type="text" [(ngModel)]="pnInputs.payernodedescription" matInput placeholder="Payernodedescription" [formControl]="formpayernodedescription">
     <mat-error *ngIf="formpayernodedescription.invalid">
       Payernodedescription is <strong>required</strong>
     </mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="text" [(ngModel)]="fppInputs.payernodecode" matInput placeholder="Payernodecode" [formControl]="formpayernodecode">
+    <input type="text" [(ngModel)]="pnInputs.payernodecode" matInput placeholder="Payernodecode" [formControl]="formpayernodecode">
     <mat-error *ngIf="formpayernodecode.invalid">
       Payernodecode is <strong>required</strong>
     </mat-error>
