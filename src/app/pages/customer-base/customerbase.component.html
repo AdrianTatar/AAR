@@ -3,8 +3,8 @@
     <table mat-table [dataSource]="filteredDataSource">
 
       <!-- BLZ Column -->
-      <ng-container matColumnDef="blz_pnr">
-        <th mat-header-cell *matHeaderCellDef class="header position-column">
+      <ng-container matColumnDef="blz">
+        <th mat-header-cell *matHeaderCellDef class="header id-column">
           BLZ
 
           <button mat-icon-button (click)="blzSearch = !blzSearch; clearSearchInputBox()">
@@ -19,25 +19,25 @@
         </th>
 
         <td mat-cell *matCellDef="let element">
-          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field>
-              <input type="number" [(ngModel)]="fppInputs.blz_pnr" matInput (keyup.enter)="confirmEdit()"
-                [formControl]="formBLZ_pnr">
-              <mat-error *ngIf="formBLZ_pnr.invalid">
+              <input type="number" [(ngModel)]="cbInputs.blz" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formblz">
+              <mat-error *ngIf="formblz.invalid">
                 BLZ is <strong>required</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
             <div>
-              {{ element.blz_pnr }}
+              {{ element.blz }}
             </div>
           </ng-template>
         </td>
       </ng-container>
 
       <!-- Block Column -->
-      <ng-container matColumnDef="block_pnr">
+      <ng-container matColumnDef="block">
         <th mat-header-cell *matHeaderCellDef class="header">
 
           Block
@@ -54,9 +54,9 @@
 
         </th>
         <td mat-cell *matCellDef="let element">
-          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field>
-              <input type="text" [(ngModel)]="fppInputs.block_pnr" [formControl]="formblock" matInput (keyup.enter)="confirmEdit()">
+              <input type="text" [(ngModel)]="cbInputs.block" [formControl]="formblock" matInput (keyup.enter)="confirmEdit()">
               <mat-error *ngIf="formblock.invalid">
                 Block is <strong>required</strong>
               </mat-error>
@@ -64,117 +64,117 @@
           </div>
           <ng-template #simpleDisplay>
             <div>
-              {{ element.block_pnr }}
+              {{ element.block }}
             </div>
           </ng-template>
         </td>
       </ng-container>
 
-      <!-- Knoten Column -->
-      <ng-container matColumnDef="knoten_pnr">
+      <!-- Nodes Column -->
+      <ng-container matColumnDef="node">
         <th mat-header-cell *matHeaderCellDef class="header">
 
-          Knoten
+          Node
 
-          <button mat-icon-button (click)="knotenSearch = !knotenSearch; clearSearchInputBox()">
+          <button mat-icon-button (click)="nodeSearch = !nodeSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="knotenSearch === true">
+          <div *ngIf="nodeSearch === true">
             <mat-form-field>
-              <input [(ngModel)]="knotenSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
+              <input [(ngModel)]="nodeSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
             </mat-form-field>
           </div>
 
         </th>
         <td mat-cell *matCellDef="let element">
-          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="full-width">
-              <input type="text" [(ngModel)]="fppInputs.knoten_pnr" type="text" matInput (keyup.enter)="confirmEdit()">
-              <mat-error *ngIf="formKnoten.invalid">
-                Knoten is <strong>required</strong>
+              <input type="text" [(ngModel)]="cbInputs.node" type="text" matInput (keyup.enter)="confirmEdit()">
+              <mat-error *ngIf="formnode.invalid">
+                Node is <strong>required</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
             <div>
-              {{ element.knoten_pnr }}
+              {{ element.node }}
             </div>
           </ng-template>
         </td>
       </ng-container>
 
-      <!-- Kundenname Column -->
-      <ng-container matColumnDef="kundenname_pnr">
+      <!-- Customer Name Column -->
+      <ng-container matColumnDef="customername">
         <th mat-header-cell *matHeaderCellDef class="header">
 
-          Kundenname
+          Customer Name
 
-          <button mat-icon-button (click)="kundennameSearch = !kundennameSearch; clearSearchInputBox()">
+          <button mat-icon-button (click)="customernameSearch = !customernameSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="kundennameSearch === true">
+          <div *ngIf="customernameSearch === true">
             <mat-form-field>
-              <input type="text" [(ngModel)]="kundennameSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+              <input type="text" [(ngModel)]="customernameSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
                 class="searchInput">
             </mat-form-field>
           </div>
 
         </th>
         <td mat-cell *matCellDef="let element">
-          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="example-full-width">
-              <textarea [(ngModel)]="fppInputs.kundenname_pnr" matInput (keyup.enter)="confirmEdit()"
-                [formControl]="formKundenname"></textarea>
-              <mat-error *ngIf="formKundenname.invalid">
-                Kunden Name is <strong>required</strong>
+              <textarea [(ngModel)]="cbInputs.customername" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formcustomername"></textarea>
+              <mat-error *ngIf="formcustomername.invalid">
+                customer name is <strong>required</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
             <div>
-              {{ element.kundenname_pnr }}
+              {{ element.customername }}
             </div>
           </ng-template>
         </td>
       </ng-container>
 
-      <!-- BkGr Column -->
-      <ng-container matColumnDef="bkgr_pnr">
+      <!-- Bank Group Column -->
+      <ng-container matColumnDef="bankgroup">
         <th mat-header-cell *matHeaderCellDef class="header">
 
-          BkGr
+          Bank Group
 
-          <button mat-icon-button (click)="bkgrSearch = !bkgrSearch; clearSearchInputBox()">
+          <button mat-icon-button (click)="bankgroupSearch = !bankgroupSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="bkgrSearch === true">
+          <div *ngIf="bankgroupSearch === true">
             <mat-form-field>
-              <input type="text" [(ngModel)]="bkgrSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+              <input type="text" [(ngModel)]="bankgroupSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
                 class="searchInput">
             </mat-form-field>
           </div>
 
         </th>
         <td mat-cell *matCellDef="let element">
-          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="example-full-width">
-              <input type="text" [(ngModel)]="fppInputs.bkgr_pnr" matInput (keyup.enter)="confirmEdit()"
-                [formControl]="formBkGr">
-              <mat-error *ngIf="formBkGr.invalid">
-                BkGr is <strong>required</strong>
+              <input type="text" [(ngModel)]="cbInputs.bankgroup" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formbankgroup">
+              <mat-error *ngIf="formbankgroup.invalid">
+                bank group is <strong>required</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
             <div>
-              {{ element.bkgr_pnr }}
+              {{ element.bankgroup }}
             </div>
           </ng-template>
         </td>
       </ng-container>
 
       <!-- Cluster Column -->
-      <ng-container matColumnDef="cluster_pnr">
+      <ng-container matColumnDef="cluster">
         <th mat-header-cell *matHeaderCellDef class="header">
 
           Cluster
@@ -191,18 +191,18 @@
 
         </th>
         <td mat-cell *matCellDef="let element">
-          <div *ngIf="element.position === selectedRowToEdit; else simpleDisplay">
+          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="example-full-width">
-              <input type="text" [(ngModel)]="fppInputs.cluster_pnr" matInput (keyup.enter)="confirmEdit()"
-                [formControl]="formCluster">
-              <mat-error *ngIf="formCluster.invalid">
-                Cluster is <strong>required</strong>
+              <input type="text" [(ngModel)]="cbInputs.cluster" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formcluster">
+              <mat-error *ngIf="formcluster.invalid">
+                cluster is <strong>required</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
             <div>
-              {{ element.cluster_pnr }}
+              {{ element.cluster }}
             </div>
           </ng-template>
         </td>
@@ -213,12 +213,12 @@
         <th mat-header-cell *matHeaderCellDef class="header options-menu"></th>
         <td mat-cell *matCellDef="let element">
           <ng-template #editButton>
-            <button [disabled]="createNewRow === true" mat-button (click)="editRow(element.position)" class="edit-icon">
+            <button [disabled]="createNewRow === true" mat-button (click)="editRow(element.id)" class="edit-icon">
               <mat-icon>edit</mat-icon>
             </button>
           </ng-template>
-          <div *ngIf="selectedRowToEdit === element.position; else editButton">
-            <button mat-button class="done-icon" (click)="confirmEdit()" [disabled]="fppForm.invalid">
+          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else editButton">
+            <button mat-button class="done-icon" (click)="confirmEdit()" [disabled]="cbForm.invalid">
               <mat-icon>check</mat-icon>
             </button>
             <button mat-button (click)="cancelEdit()" class="cancel-icon">

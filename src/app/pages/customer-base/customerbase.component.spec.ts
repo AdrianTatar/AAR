@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KunAddDialogComponent } from './kun-add-dialog.component';
+import { CustomerBaseComponent } from './customerbase.component';
 
-describe('KunAddDialogComponent', () => {
-  let component: KunAddDialogComponent;
-  let fixture: ComponentFixture<KunAddDialogComponent>;
+describe('CustomerBaseComponent', () => {
+  let component: CustomerBaseComponent;
+  let fixture: ComponentFixture<CustomerBaseComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ KunAddDialogComponent ]
+      declarations: [ CustomerBaseComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(KunAddDialogComponent);
+    fixture = TestBed.createComponent(CustomerBaseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

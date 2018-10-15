@@ -10,7 +10,7 @@ const httpOptions = {
 @Injectable()
 export class PayerNodeService {
 
-  private payerNodeUrl = '/payerNodeService';
+  private payerNodeUrl = '/payerNode';
   private readAllPath = '/readAll';
   private savePath = '/create';
   private updatePath = '/update';

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KundenstammComponent } from './kundenstamm.component';
+import { CbAddDialogComponent } from './cb-add-dialog.component';
 
-describe('KundenstammComponent', () => {
-  let component: KundenstammComponent;
-  let fixture: ComponentFixture<KundenstammComponent>;
+describe('KunAddDialogComponent', () => {
+  let component: CbAddDialogComponent;
+  let fixture: ComponentFixture<CbAddDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ KundenstammComponent ]
+      declarations: [ CbAddDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(KundenstammComponent);
+    fixture = TestBed.createComponent(CbAddDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

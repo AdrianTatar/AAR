@@ -18,7 +18,7 @@ import { FixedPriceProjectService } from './services/fixed-price-project.service
   entryComponents: [
     FppAddDialogComponent
   ],
-  providers:[
+  providers: [
     FixedPriceProjectService
   ]
 })

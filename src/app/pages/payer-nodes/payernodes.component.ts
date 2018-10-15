@@ -51,7 +51,7 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
   };
 
   constructor(
-    public dialog: MatDialog, private payerNodeService: PayerNodeService
+    public dialog: MatDialog, private payerNode: PayerNodeService
   ) { }
 
   filter() {
@@ -98,7 +98,7 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
       payernodecode: new FormControl('', Validators.required)
     });
 
-    await this.payerNodeService.getPayerNodes().subscribe(data => {
+    await this.payerNode.getPayerNodes().subscribe(data => {
       this.payerNodes = data;
       this.dataSource.data = this.payerNodes;
       this.filteredDataSource.data = this.payerNodes;
@@ -156,7 +156,7 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(data => {
       if (data) {
         console.log(data);
-        this.payerNodeService.createPayerNode(data);
+        this.payerNode.createPayerNode(data);
         this.pushObject(data);
       }
     });
@@ -212,7 +212,7 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
       this.dataSource.data[this.selectedRowToEdit - 1].payernodenumber = this.pnInputs.payernodenumber;
       this.dataSource.data[this.selectedRowToEdit - 1].payernodedescription = this.pnInputs.payernodedescription;
       this.dataSource.data[this.selectedRowToEdit - 1].payernodecode = this.pnInputs.payernodecode;
-      this.payerNodeService.updatePayerNode(this.dataSource.data[this.selectedRowToEdit - 1]);
+      this.payerNode.updatePayerNode(this.dataSource.data[this.selectedRowToEdit - 1]);
       this.selectedRowToEdit = -1;
     }
   }
