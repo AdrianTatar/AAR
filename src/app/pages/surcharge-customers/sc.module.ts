@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
 import { scRoutingComponents, ScRoutingModule } from './sc-routing.module';
 import { ScAddDialogComponent } from './sc-add-dialog/sc-add-dialog.component';
+import { ScEditDialogComponent } from './sc-edit-dialog/sc-edit-dialog.component';
+import { SurchargeCustomersService } from './services/surcharge-customers.service';
 
 @NgModule({
   imports: [
@@ -12,10 +14,15 @@ import { ScAddDialogComponent } from './sc-add-dialog/sc-add-dialog.component';
   ],
   declarations: [
     scRoutingComponents,
-    ScAddDialogComponent
+    ScAddDialogComponent,
+    ScEditDialogComponent
   ],
   entryComponents: [
-    ScAddDialogComponent
+    ScAddDialogComponent,
+    ScEditDialogComponent
+  ],
+  providers: [
+    SurchargeCustomersService
   ]
 })
 export class ScModule { }

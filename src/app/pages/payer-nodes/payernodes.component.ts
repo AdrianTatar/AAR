@@ -205,7 +205,7 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
   }
 
   private confirmEdit() {
-    if (this.pnForm.Validators) {
+    if (this.pnForm.valid) {
       this.dataSource.data[this.selectedRowToEdit - 1].customernumber = this.pnInputs.customernumber;
       this.dataSource.data[this.selectedRowToEdit - 1].customername = this.pnInputs.customername;
       this.dataSource.data[this.selectedRowToEdit - 1].hierarchy = this.pnInputs.hierarchy;

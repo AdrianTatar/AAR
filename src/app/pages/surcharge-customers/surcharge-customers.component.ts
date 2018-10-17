@@ -1,8 +1,10 @@
+import { SurchargeCustomersService } from './services/surcharge-customers.service';
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
 import { SurchargeCustomer } from '../../shared/models/surcharge.customer';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ScAddDialogComponent } from './sc-add-dialog/sc-add-dialog.component';
+import { ScEditDialogComponent } from './sc-edit-dialog/sc-edit-dialog.component';
 
 @Component({
   selector: 'app-surcharge-customers',
@@ -15,9 +17,9 @@ export class SurchargeCustomersComponent implements OnInit {
     'type', 'customernumber', 'customername', 'n2015',
     'n2016', 'n2017', 'n2018', 'aufschlag_2018',
     'menu'];
-  dataSource = new MatTableDataSource<SurchargeCustomer>(ELEMENT_DATA);
-  filteredDataSource = new MatTableDataSource<SurchargeCustomer>(ELEMENT_DATA);
-
+  dataSource = new MatTableDataSource<SurchargeCustomer>();
+  filteredDataSource = new MatTableDataSource<SurchargeCustomer>();
+  surchargeCustomer: SurchargeCustomer[];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   selectedRowToEdit = -1;
   selectedRow = -1;
@@ -62,7 +64,7 @@ export class SurchargeCustomersComponent implements OnInit {
   };
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog, private surchargeCustomerService: SurchargeCustomersService
   ) { }
 
   filter() {
@@ -123,7 +125,7 @@ export class SurchargeCustomersComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.selectedRow = 0;
 
@@ -138,6 +140,12 @@ export class SurchargeCustomersComponent implements OnInit {
       n2017: new FormControl('', Validators.required),
       n2018: new FormControl('', Validators.required),
       aufschlag_2018: new FormControl('', Validators.required),
+    });
+
+    await this.surchargeCustomerService.getSurchargeCustomers().subscribe(data => {
+      this.surchargeCustomer = data;
+      this.dataSource.data = this.surchargeCustomer;
+      this.filteredDataSource.data = this.surchargeCustomer;
     });
   }
 
@@ -186,8 +194,8 @@ export class SurchargeCustomersComponent implements OnInit {
   }
 
   private editRow(rowNumber) {
-    this.setEditValues(rowNumber);
-    this.selectedRowToEdit = rowNumber;
+    this.selectedRowToEdit = this.mapToDataSource(rowNumber);
+    this.setEditValues(this.selectedRowToEdit);
   }
 
   private cancelEdit() {
@@ -196,6 +204,19 @@ export class SurchargeCustomersComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ScAddDialogComponent, {
+      width: '600px',
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(data => {
+      if (data) {
+        this.pushObject(data);
+      }
+    });
+  }
+
+  openEditDialog(): void {
+    const dialogRef = this.dialog.open(ScEditDialogComponent, {
       width: '600px',
       disableClose: true
     });
@@ -265,6 +286,7 @@ export class SurchargeCustomersComponent implements OnInit {
       this.dataSource.data[this.selectedRowToEdit - 1].n2018 = this.scInputs.n2018;
       this.dataSource.data[this.selectedRowToEdit - 1].n2018 = this.scInputs.n2018;
       this.dataSource.data[this.selectedRowToEdit - 1].aufschlag_2018 = this.scInputs.aufschlag_2018;
+      this.surchargeCustomerService.updateFixedPriceProject(this.dataSource.data[this.selectedRowToEdit - 1]);
       this.selectedRowToEdit = -1;
     }
   }
@@ -286,23 +308,13 @@ export class SurchargeCustomersComponent implements OnInit {
     this.scInputs.n2018 = this.dataSource.data[rowNumber - 1].n2018;
     this.scInputs.aufschlag_2018 = this.dataSource.data[rowNumber - 1].aufschlag_2018;
   }
-
+  private mapToDataSource(elementId) {
+    let pos = 0;
+    for (let i = 0; i < this.dataSource.data.length; i++) {
+      if (this.dataSource.data[i].id === elementId) {
+        pos = i;
+      }
+    }
+    return pos + 1;
+  }
 }
-
-const ELEMENT_DATA: SurchargeCustomer[] = [
-  {
-    id: 1, debitornumber: 80020, debitorname: 'Raiffeisen e-force',
-    type: 'Fremdbanken', customernumber: 19690, customername: 'ERSTE Bank',
-    n2015: 991, n2016: 1005, n2017: 1018, n2018: 1038, aufschlag_2018: 233
-  },
-  {
-    id: 2, debitornumber: 19690, debitorname: 'Vakif',
-    type: 'Fremdbanken', customernumber: 19685, customername: 'Vakif',
-    n2015: 872, n2016: 872, n2017: 872, n2018: 872, aufschlag_2018: 67
-  },
-  {
-    id: 3, debitornumber: 31100, debitorname: 'Raiffeisen Factor Bank AG',
-    type: 'Sektorbanken', customernumber: 31100, customername: 'Raiffeisen Factor Bank AG',
-    n2015: 833, n2016: 864, n2017: 845, n2018: 845, aufschlag_2018: 40
-  },
-];

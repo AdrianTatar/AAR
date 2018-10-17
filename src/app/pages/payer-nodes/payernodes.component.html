@@ -22,7 +22,8 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field>
-              <input type="text" [(ngModel)]="pnInputs.customernumber" matInput (keyup.enter)="confirmEdit()" [formControl]="formcustomernumber">
+              <input type="text" [(ngModel)]="pnInputs.customernumber" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formcustomernumber">
               <mat-error *ngIf="formcustomernumber.invalid">
                 customer number is <strong>required</strong>
               </mat-error>
@@ -194,7 +195,8 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="example-full-width">
-              <input type="text" [(ngModel)]="pnInputs.payernodecode" matInput (keyup.enter)="confirmEdit()" [formControl]="formpayernodecode">
+              <input type="text" [(ngModel)]="pnInputs.payernodecode" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formpayernodecode">
               <mat-error *ngIf="formpayernodecode.invalid">
                 payernode code is <strong>required</strong>
               </mat-error>
@@ -217,7 +219,7 @@
               <mat-icon>edit</mat-icon>
             </button>
           </ng-template>
-          <div *ngIf="selectedRowToEdit === element.id; else editButton">
+          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else editButton">
             <button mat-button class="done-icon" (click)="confirmEdit()" [disabled]="pnForm.invalid">
               <mat-icon>check</mat-icon>
             </button>

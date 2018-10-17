@@ -4,11 +4,11 @@ import { MatDialogRef } from '@angular/material';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-sc-add-dialog',
-  templateUrl: './sc-add-dialog.component.html',
-  styleUrls: ['./sc-add-dialog.component.css']
+  selector: 'app-sc-edit-dialog',
+  templateUrl: './sc-edit-dialog.component.html',
+  styleUrls: ['./sc-edit-dialog.component.css']
 })
-export class ScAddDialogComponent {
+export class ScEditDialogComponent {
 
   scForm;
   scInputs: SurchargeCustomer = {
@@ -26,7 +26,7 @@ export class ScAddDialogComponent {
   };
 
   constructor(
-    private dialogRef: MatDialogRef<ScAddDialogComponent>
+    private dialogRef: MatDialogRef<ScEditDialogComponent>
   ) {
     this.scForm = new FormGroup({
       debitorenumber: new FormControl('', Validators.required),

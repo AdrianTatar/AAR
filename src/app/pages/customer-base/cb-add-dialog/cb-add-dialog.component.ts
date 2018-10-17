@@ -25,12 +25,12 @@ export class CbAddDialogComponent {
     private dialogRef: MatDialogRef<CbAddDialogComponent>
   ) {
     this.cbForm = new FormGroup({
-      blz_pnr: new FormControl('', Validators.required),
-      block_pnr: new FormControl('', Validators.required),
-      knoten_pnr: new FormControl('', Validators.required),
-      kundenname_pnr: new FormControl('', Validators.required),
-      bkgr_pnr: new FormControl('', Validators.required),
-      cluster_pnr: new FormControl('', Validators.required)
+      blz: new FormControl('', Validators.required),
+      block: new FormControl('', Validators.required),
+      node: new FormControl('', Validators.required),
+      customername: new FormControl('', Validators.required),
+      bankgroup: new FormControl('', Validators.required),
+      cluster: new FormControl('', Validators.required)
     });
   }
 
@@ -38,27 +38,27 @@ export class CbAddDialogComponent {
     this.dialogRef.close(this.cbInputs);
   }
 
-  get formblz_pnr() {
-    return this.cbForm.get('blz_pnr');
+  get formblz() {
+    return this.cbForm.get('blz');
   }
 
   get formblock() {
-    return this.cbForm.get('block_pnr');
+    return this.cbForm.get('block');
   }
 
-  get formKnoten() {
-    return this.cbForm.get('knoten_pnr');
+  get formnode() {
+    return this.cbForm.get('node');
   }
 
-  get formKundenname() {
-    return this.cbForm.get('kundenname_pnr');
+  get formcustomername() {
+    return this.cbForm.get('customername');
   }
 
-  get formBkGr() {
-    return this.cbForm.get('bkgr_pnr');
+  get formbankgroup() {
+    return this.cbForm.get('bankgroup');
   }
 
-  get formCluster() {
-    return this.cbForm.get('cluster_pnr');
+  get formcluster() {
+    return this.cbForm.get('cluster');
   }
 }

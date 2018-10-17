@@ -1,5 +1,5 @@
-import { CustomerBase } from './../../shared/models/customerbase';
 import { CbAddDialogComponent } from './cb-add-dialog/cb-add-dialog.component';
+import { CustomerBase } from './../../shared/models/customerbase';
 import { Component, OnInit, ViewChild, HostListener, AfterViewInit } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
@@ -56,14 +56,10 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
   filter() {
     this.filteredDataSource.data = this.dataSource.data;
 
-    this.filteredDataSource.data = (this.blzSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.blz === this.blzSearchQuery)
-      : this.filteredDataSource.data;
-
     this.filteredDataSource.data = (this.blockSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.block.toLocaleLowerCase()
-        .includes(this.blockSearchQuery.toLocaleLowerCase()))
-      : this.filteredDataSource.data;
+      // tslint:disable-next-line:max-line-length
+      this.dataSource.data.filter(p => p.block.toLocaleLowerCase().includes(this.blockSearchQuery.toLocaleLowerCase()))
+      : this.dataSource.data;
 
     this.filteredDataSource.data = (this.nodeSearchQuery) ?
       this.filteredDataSource.data.filter(p => p.node.toLocaleLowerCase()
@@ -84,28 +80,10 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
       this.filteredDataSource.data.filter(p => p.cluster.toLocaleLowerCase()
         .includes(this.clusterSearchQuery.toLocaleLowerCase()))
       : this.filteredDataSource.data;
-  }
 
-  clearSearchInputBox() {
-    if (!this.blzSearch) {
-      this.blzSearchQuery = 0;
-    }
-    if (!this.blockSearch) {
-      this.blockSearchQuery = '';
-    }
-    if (!this.nodeSearch) {
-      this.nodeSearchQuery = '';
-    }
-    if (!this.customernameSearch) {
-      this.customernameSearchQuery = '';
-    }
-    if (!this.bankgroupSearch) {
-      this.bankgroupSearchQuery = '';
-    }
-    if (!this.clusterSearch) {
-      this.clusterSearchQuery = '';
-    }
-    this.filter();
+    this.filteredDataSource.data = (this.blzSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.blz === this.blzSearchQuery)
+      : this.filteredDataSource.data;
   }
 
   async ngOnInit() {
@@ -184,12 +162,35 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
     });
   }
 
+  clearSearchInputBox() {
+    if (!this.blzSearch) {
+      this.blzSearchQuery = 0;
+    }
+    if (!this.blockSearch) {
+      this.blockSearchQuery = '';
+    }
+    if (!this.nodeSearch) {
+      this.nodeSearchQuery = '';
+    }
+    if (!this.customernameSearch) {
+      this.customernameSearchQuery = '';
+    }
+    if (!this.bankgroupSearch) {
+      this.bankgroupSearchQuery = '';
+    }
+    if (!this.clusterSearch) {
+      this.clusterSearchQuery = '';
+    }
+    this.filter();
+  }
+
   private pushObject(data: CustomerBase) {
     data.id = this.dataSource.data[this.dataSource.data.length - 1].id + 1;
     this.dataSource.data.push(data);
     this.filteredDataSource.data = this.dataSource.data;
     this.paginator._changePageSize(this.paginator.pageSize);
   }
+
 
   private selectRow(rowNumber) {
     this.selectedRow = rowNumber;
@@ -216,7 +217,6 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
       this.selectedRowToEdit = -1;
     }
   }
-
   private setEditValues(rowNumber) {
     this.cbInputs.blz = this.dataSource.data[rowNumber - 1].blz;
     this.cbInputs.block = this.dataSource.data[rowNumber - 1].block;
