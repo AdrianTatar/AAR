@@ -91,7 +91,7 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="full-width">
-              <input type="text" [(ngModel)]="cbInputs.node" type="text" matInput (keyup.enter)="confirmEdit()">
+              <input type="text" [(ngModel)]="cbInputs.node" [formControl] = "formnode" type="text" matInput (keyup.enter)="confirmEdit()">
               <mat-error *ngIf="formnode.invalid">
                 Node is <strong>required</strong>
               </mat-error>
@@ -125,7 +125,7 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="example-full-width">
-              <textarea [(ngModel)]="cbInputs.customername" matInput (keyup.enter)="confirmEdit()" [formControl]="formcustomername"></textarea>
+              <textarea type = "text" [(ngModel)]="cbInputs.customername" matInput (keyup.enter)="confirmEdit()" [formControl]="formcustomername"></textarea>
               <mat-error *ngIf="formcustomername.invalid">
                 customer name is <strong>required</strong>
               </mat-error>

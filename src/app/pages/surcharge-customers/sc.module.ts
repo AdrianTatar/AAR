@@ -1,3 +1,5 @@
+import { SurchargeCustomersRateService } from './surchargecustomersrates/services/surcharge-customers-rates.service';
+import { SurchargeCustomersRateComponent } from './surchargecustomersrates/surchargecustomersrate.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
@@ -15,14 +17,16 @@ import { SurchargeCustomersService } from './services/surcharge-customers.servic
   declarations: [
     scRoutingComponents,
     ScAddDialogComponent,
-    ScEditDialogComponent
+    ScEditDialogComponent,
+    SurchargeCustomersRateComponent
   ],
   entryComponents: [
     ScAddDialogComponent,
     ScEditDialogComponent
   ],
   providers: [
-    SurchargeCustomersService
+    SurchargeCustomersService,
+    SurchargeCustomersRateService
   ]
 })
 export class ScModule { }

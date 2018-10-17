@@ -14,8 +14,7 @@ import { ScEditDialogComponent } from './sc-edit-dialog/sc-edit-dialog.component
 export class SurchargeCustomersComponent implements OnInit {
 
   displayedColumns: string[] = ['debitornumber', 'debitorname',
-    'type', 'customernumber', 'customername', 'n2015',
-    'n2016', 'n2017', 'n2018', 'aufschlag_2018',
+    'type', 'customernumber', 'customername', 'year',
     'menu'];
   dataSource = new MatTableDataSource<SurchargeCustomer>();
   filteredDataSource = new MatTableDataSource<SurchargeCustomer>();
@@ -29,22 +28,12 @@ export class SurchargeCustomersComponent implements OnInit {
   typeSearch = false;
   customernumberSearch = false;
   customernameSearch = false;
-  n2015Search = false;
-  n2016Search = false;
-  n2017Search = false;
-  n2018Search = false;
-  aufschlag_2018Search = false;
 
   debitornumberSearchQuery = 0;
   debitornameSearchQuery = '';
   typeSearchQuery = '';
   customernumberSearchQuery = 0;
   customernameSearchQuery = '';
-  n2015SearchQuery = 0;
-  n2016SearchQuery = 0;
-  n2017SearchQuery = 0;
-  n2018SearchQuery = 0;
-  aufschlag_2018SearchQuery = 0;
 
   addNewElement = false;
 
@@ -55,12 +44,7 @@ export class SurchargeCustomersComponent implements OnInit {
     debitorname: '',
     type: '',
     customernumber: null,
-    customername: '',
-    n2015: 0,
-    n2016: 0,
-    n2017: 0,
-    n2018: 0,
-    aufschlag_2018: 0
+    customername: ''
   };
 
   constructor(
@@ -92,26 +76,6 @@ export class SurchargeCustomersComponent implements OnInit {
       this.filteredDataSource.data.filter(p => p.customername.toLocaleLowerCase()
         .includes(this.customernameSearchQuery.toLocaleLowerCase()))
       : this.filteredDataSource.data;
-
-    this.filteredDataSource.data = (this.n2015SearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.n2015 === this.n2015SearchQuery)
-      : this.filteredDataSource.data;
-
-    this.filteredDataSource.data = (this.n2016SearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.n2016 === this.n2016SearchQuery)
-      : this.filteredDataSource.data;
-
-    this.filteredDataSource.data = (this.n2017SearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.n2017 === this.n2017SearchQuery)
-      : this.filteredDataSource.data;
-
-    this.filteredDataSource.data = (this.n2018SearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.n2018 === this.n2018SearchQuery)
-      : this.filteredDataSource.data;
-
-    this.filteredDataSource.data = (this.aufschlag_2018SearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.aufschlag_2018 === this.aufschlag_2018SearchQuery)
-      : this.filteredDataSource.data;
   }
 
   @HostListener('document:keydown', ['$event']) handleKeyboardEvent(event: KeyboardEvent) {
@@ -135,11 +99,6 @@ export class SurchargeCustomersComponent implements OnInit {
       type: new FormControl('', Validators.required),
       customernumber: new FormControl('', Validators.required),
       customername: new FormControl('', Validators.required),
-      n2015: new FormControl('', Validators.required),
-      n2016: new FormControl('', Validators.required),
-      n2017: new FormControl('', Validators.required),
-      n2018: new FormControl('', Validators.required),
-      aufschlag_2018: new FormControl('', Validators.required),
     });
 
     await this.surchargeCustomerService.getSurchargeCustomers().subscribe(data => {
@@ -167,26 +126,6 @@ export class SurchargeCustomersComponent implements OnInit {
 
   get formCustomername() {
     return this.scForm.get('customername');
-  }
-
-  get formN2015() {
-    return this.scForm.get('n2015');
-  }
-
-  get formN2016() {
-    return this.scForm.get('n2016');
-  }
-
-  get formN2017() {
-    return this.scForm.get('n2017');
-  }
-
-  get formN2018() {
-    return this.scForm.get('n2018');
-  }
-
-  get formAufschlag_2018() {
-    return this.scForm.get('aufschlag_2018');
   }
 
   private selectRow(rowNumber) {
@@ -251,21 +190,6 @@ export class SurchargeCustomersComponent implements OnInit {
     if (!this.customernameSearch) {
       this.customernameSearchQuery = '';
     }
-    if (!this.n2015Search) {
-      this.n2015SearchQuery = 0;
-    }
-    if (!this.n2016Search) {
-      this.n2016SearchQuery = 0;
-    }
-    if (!this.n2017Search) {
-      this.n2017SearchQuery = 0;
-    }
-    if (!this.n2018Search) {
-      this.n2018SearchQuery = 0;
-    }
-    if (!this.aufschlag_2018Search) {
-      this.aufschlag_2018SearchQuery = 0;
-    }
     this.filter();
   }
 
@@ -276,16 +200,6 @@ export class SurchargeCustomersComponent implements OnInit {
       this.dataSource.data[this.selectedRowToEdit - 1].type = this.scInputs.type;
       this.dataSource.data[this.selectedRowToEdit - 1].customernumber = this.scInputs.customernumber;
       this.dataSource.data[this.selectedRowToEdit - 1].customername = this.scInputs.customername;
-      this.dataSource.data[this.selectedRowToEdit - 1].customername = this.scInputs.customername;
-      this.dataSource.data[this.selectedRowToEdit - 1].n2015 = this.scInputs.n2015;
-      this.dataSource.data[this.selectedRowToEdit - 1].n2015 = this.scInputs.n2015;
-      this.dataSource.data[this.selectedRowToEdit - 1].n2016 = this.scInputs.n2016;
-      this.dataSource.data[this.selectedRowToEdit - 1].n2016 = this.scInputs.n2016;
-      this.dataSource.data[this.selectedRowToEdit - 1].n2017 = this.scInputs.n2017;
-      this.dataSource.data[this.selectedRowToEdit - 1].n2017 = this.scInputs.n2017;
-      this.dataSource.data[this.selectedRowToEdit - 1].n2018 = this.scInputs.n2018;
-      this.dataSource.data[this.selectedRowToEdit - 1].n2018 = this.scInputs.n2018;
-      this.dataSource.data[this.selectedRowToEdit - 1].aufschlag_2018 = this.scInputs.aufschlag_2018;
       this.surchargeCustomerService.updateFixedPriceProject(this.dataSource.data[this.selectedRowToEdit - 1]);
       this.selectedRowToEdit = -1;
     }
@@ -297,16 +211,6 @@ export class SurchargeCustomersComponent implements OnInit {
     this.scInputs.type = this.dataSource.data[rowNumber - 1].type;
     this.scInputs.customernumber = this.dataSource.data[rowNumber - 1].customernumber;
     this.scInputs.customername = this.dataSource.data[rowNumber - 1].customername;
-    this.scInputs.customername = this.dataSource.data[rowNumber - 1].customername;
-    this.scInputs.n2015 = this.dataSource.data[rowNumber - 1].n2015;
-    this.scInputs.n2015 = this.dataSource.data[rowNumber - 1].n2015;
-    this.scInputs.n2016 = this.dataSource.data[rowNumber - 1].n2016;
-    this.scInputs.n2016 = this.dataSource.data[rowNumber - 1].n2016;
-    this.scInputs.n2017 = this.dataSource.data[rowNumber - 1].n2017;
-    this.scInputs.n2017 = this.dataSource.data[rowNumber - 1].n2017;
-    this.scInputs.n2018 = this.dataSource.data[rowNumber - 1].n2018;
-    this.scInputs.n2018 = this.dataSource.data[rowNumber - 1].n2018;
-    this.scInputs.aufschlag_2018 = this.dataSource.data[rowNumber - 1].aufschlag_2018;
   }
   private mapToDataSource(elementId) {
     let pos = 0;

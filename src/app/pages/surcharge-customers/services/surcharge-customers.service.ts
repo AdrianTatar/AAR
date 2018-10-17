@@ -22,15 +22,15 @@ export class SurchargeCustomersService {
 
   public createSurchargeCustomer(surchargeCustomer) {
     console.log(surchargeCustomer);
-    return this.http.post<SurchargeCustomer>(this.surchargeCustomerUrl + this.savePath, 
+    return this.http.post<SurchargeCustomer>(this.surchargeCustomerUrl + this.savePath,
       JSON.stringify(surchargeCustomer), httpOptions)
     .subscribe(res => console.log(res));
   }
 
   public updateFixedPriceProject(surchargeCustomer: SurchargeCustomer) {
-    console.log(surchargeCustomer);  
-    console.log(JSON.stringify(surchargeCustomer));  
-    return this.http.put<SurchargeCustomer>(this.surchargeCustomerUrl + this.updatePath, 
+    console.log(surchargeCustomer);
+    console.log(JSON.stringify(surchargeCustomer));
+    return this.http.put<SurchargeCustomer>(this.surchargeCustomerUrl + this.updatePath,
       JSON.stringify(surchargeCustomer), httpOptions)
     .subscribe(response => console.log(response));
   }
