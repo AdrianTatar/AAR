@@ -7,6 +7,7 @@ import { scRoutingComponents, ScRoutingModule } from './sc-routing.module';
 import { ScAddDialogComponent } from './sc-add-dialog/sc-add-dialog.component';
 import { ScEditDialogComponent } from './sc-edit-dialog/sc-edit-dialog.component';
 import { SurchargeCustomersService } from './services/surcharge-customers.service';
+import { ScrAddDialogComponent } from './surchargecustomersrates/scr-add-dialog/scr-add-dialog.component';
 
 @NgModule({
   imports: [
@@ -15,12 +16,14 @@ import { SurchargeCustomersService } from './services/surcharge-customers.servic
     SharedModule
   ],
   declarations: [
+    ScrAddDialogComponent,
     scRoutingComponents,
     ScAddDialogComponent,
     ScEditDialogComponent,
     SurchargeCustomersRateComponent
   ],
   entryComponents: [
+    ScrAddDialogComponent,
     ScAddDialogComponent,
     ScEditDialogComponent
   ],

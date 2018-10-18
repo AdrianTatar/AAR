@@ -1,0 +1,38 @@
+button {
+    margin-right: 8px;
+}
+
+.header {
+    padding: 5px;
+    margin-bottom: 5px;
+    background-color: #428bca;
+    color: white;
+}
+
+h1 {
+    margin-top: 17px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.clear-icon {
+    background: #d9534f;
+    color: white;
+}
+
+.done-icon {
+    background: #46a546;
+    color: white;
+}
+
+.full-width {
+    width: 100%;
+}
+
+mat-dialog-actions {
+    float: right;
+}
+
+.value-input {
+    width: 25%;
+}

@@ -4,7 +4,6 @@
 
       <!-- Debitornumber Column -->
       <ng-container matColumnDef="debitornumber">
-        <!-- Debitornumber Column Header -->
         <th mat-header-cell *matHeaderCellDef class="header">
           Debitor Number
           <button mat-icon-button (click)="debitornumberSearch = !debitornumberSearch; clearSearchInputBox()">
@@ -18,8 +17,7 @@
           </div>
         </th>
         <td mat-cell *matCellDef="let element">
-          <!-- Debitornumber Column Cell -->
-          <div *ngIf="element.id === selectedRowToEdit; else simpleDisplay">
+          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field>
               <input class="input-value" [(ngModel)]="scInputs.debitornumber" matInput (keyup.enter)="confirmEdit()"
                 [formControl]="formDebitornumber">
@@ -50,7 +48,7 @@
           </div>
         </th>
         <td mat-cell *matCellDef="let element">
-          <div *ngIf="element.id === selectedRowToEdit; else simpleDisplay">
+          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field>
               <input type="text" [(ngModel)]="scInputs.debitorname" matInput (keyup.enter)="confirmEdit()"
                 [formControl]="formDebitorname">
@@ -87,7 +85,7 @@
           </div>
         </th>
         <td mat-cell *matCellDef="let element">
-          <div *ngIf="element.id === selectedRowToEdit; else simpleDisplay">
+          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
 
             <mat-form-field>
               <mat-select [(ngModel)]="scInputs.type" (keyup.enter)="confirmEdit()" [formControl]="formType">
@@ -123,7 +121,7 @@
           </div>
         </th>
         <td mat-cell *matCellDef="let element">
-          <div *ngIf="element.id === selectedRowToEdit; else simpleDisplay">
+          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field>
               <input type="number" [(ngModel)]="scInputs.customernumber" matInput (keyup.enter)="confirmEdit()"
                 [formControl]="formCustomernumber">
@@ -154,7 +152,7 @@
           </div>
         </th>
         <td mat-cell *matCellDef="let element">
-          <div *ngIf="element.id === selectedRowToEdit; else simpleDisplay">
+          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field>
               <input [(ngModel)]="scInputs.customername" matInput (keyup.enter)="confirmEdit()" [formControl]="formCustomername">
               <mat-error *ngIf="formCustomername.invalid">
@@ -172,13 +170,13 @@
 
       <!-- Year Column -->
       <ng-container matColumnDef="year">
-          <th mat-header-cell *matHeaderCellDef class="header-year">
-            2018
-          </th>
-          <td mat-cell *matCellDef="let row">
-              <app-surcharge-customers-rates></app-surcharge-customers-rates>
-          </td>
-        </ng-container>
+        <th mat-header-cell *matHeaderCellDef class="header-year">
+          2018
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <app-surcharge-customers-rates></app-surcharge-customers-rates>
+        </td>
+      </ng-container>
 
 
       <!-- Buttons Column -->
@@ -186,12 +184,17 @@
         <th mat-header-cell *matHeaderCellDef class="header options-menu"></th>
         <td mat-cell *matCellDef="let element">
           <ng-template #editButton>
-            <button [disabled]="createNewRow === true" mat-button (click)="openEditDialog()" matTooltip="{{'Edit' | translate}}"
-              class="edit-icon">
+            <button [disabled]="createNewRow === true" mat-button (click)="editRow(element.id)" class="edit-icon">
               <mat-icon>edit</mat-icon>
             </button>
           </ng-template>
-          <div *ngIf="selectedRowToEdit === element.id; else editButton">
+          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else editButton">
+            <button mat-button class="done-icon" (click)="confirmEdit()" [disabled]="scForm.invalid">
+              <mat-icon>check</mat-icon>
+            </button>
+            <button mat-button (click)="cancelEdit()" class="cancel-icon">
+              <mat-icon>cancel</mat-icon>
+            </button>
           </div>
         </td>
       </ng-container>

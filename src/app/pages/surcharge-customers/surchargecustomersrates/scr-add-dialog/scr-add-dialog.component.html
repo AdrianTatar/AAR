@@ -1,0 +1,30 @@
+<div class="header">
+  <h1 mat-dialog-title>{{'SurchargeCustomersRate' | translate }}</h1>
+</div>
+
+<mat-dialog-content>
+
+  <mat-form-field class="full-width">
+    <input type="number" [(ngModel)]="scInputs.year" matInput placeholder="Year" [formControl]="formyear">
+    <mat-error *ngIf="formyear.invalid">
+      year is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input type="number" [(ngModel)]="scInputs.dailyrate" matInput placeholder="Dailyrate" [formControl]="formdailyrate">
+    <mat-error *ngIf="formdailyrate.invalid">
+      dailyrate is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-fab mat-dialog-close matTooltip="Cancel" class="clear-icon">
+    <mat-icon>clear</mat-icon>
+  </button>
+  <button [disabled]="scForm.invalid" (click)="save()" mat-fab matTooltip="Confirm" class="done-icon">
+    <mat-icon>done</mat-icon>
+  </button>
+</mat-dialog-actions>

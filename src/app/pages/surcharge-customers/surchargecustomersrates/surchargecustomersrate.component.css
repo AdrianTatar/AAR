@@ -1,14 +1,14 @@
-table {
+  table {
     width: 100%; 
   }
   
   .align-page {
-    margin: 10px 10px 10px 10px;
+    margin: 30px 10px 10px 10px;
   }
   
   .header {
-    background: #428bca;
-    color: white;
+    background: lightslategrey;
+    color: black;
     text-align: center;
   }
   
@@ -78,4 +78,33 @@ table {
   
   .matInput {
     width: 10px;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  table, th, td {
+    border: 1px solid black;
+  }
+
+  td{
+    width: 50%;
+    text-align: center;
+    padding: 5px 0px 5px 0px;
+  }
+
+  th{
+    font-weight: bold;
+  }
+
+  #buttons-container{
+    margin-top: 15px;
+    text-align: center;
+  }
+
+  .add-icon{
+    background-color: #eeeeee;
+    color: #428bca;
+    width: 30px;
   }

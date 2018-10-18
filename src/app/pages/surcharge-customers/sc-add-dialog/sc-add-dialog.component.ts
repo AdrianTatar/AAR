@@ -17,7 +17,8 @@ export class ScAddDialogComponent {
     debitorname: '',
     type: '',
     customernumber: 0,
-    customername: ''
+    customername: '',
+    rates: null
   };
 
   constructor(

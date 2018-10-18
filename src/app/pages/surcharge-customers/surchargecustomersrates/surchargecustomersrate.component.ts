@@ -3,6 +3,7 @@ import { SurchargeCustomersRateService } from './services/surcharge-customers-ra
 import { MatTableDataSource, MatDialog, MatPaginator } from '@angular/material';
 import { SurchargeCustomerRate } from '../../../shared/models/surcharge.customer.rate';
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import { ScrAddDialogComponent } from './scr-add-dialog/scr-add-dialog.component';
 
 @Component({
     selector: 'app-surcharge-customers-rates',
@@ -11,7 +12,7 @@ import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 })
 export class SurchargeCustomersRateComponent implements OnInit {
 
-    displayedColumns: string[] = ['surchargecustomer_id', 'year', 'dailyrate'];
+    displayedColumns: string[] = ['year', 'dailyrate'];
     dataSource = new MatTableDataSource<SurchargeCustomerRate>();
     filteredDataSource = new MatTableDataSource<SurchargeCustomerRate>();
     surchargeCustomerRate: SurchargeCustomerRate[];
@@ -31,12 +32,9 @@ export class SurchargeCustomersRateComponent implements OnInit {
 
     scrForm;
     scrInputs: SurchargeCustomerRate = {
-        rates: [{
-            id: null,
-            surchargecustomer_id: null,
-            year: null,
-            dailyrate: null
-        }]
+        id: null,
+        year: null,
+        dailyrate: null
     };
 
     constructor(
@@ -58,10 +56,6 @@ export class SurchargeCustomersRateComponent implements OnInit {
             this.dataSource.data = this.surchargeCustomerRate;
             this.filteredDataSource.data = this.surchargeCustomerRate;
         });
-    }
-
-    get formCustomerId() {
-        return this.scrForm.get('surchargecustomer_id');
     }
 
     get formYear() {
@@ -114,13 +108,26 @@ export class SurchargeCustomersRateComponent implements OnInit {
     private confirmEdit() {
     }
 
-    /*private pushObject(data: SurchargeCustomerRate) {
+    openDialog(): void {
+        const dialogRef = this.dialog.open(ScrAddDialogComponent, {
+            width: '800px',
+            disableClose: true
+        });
+
+        dialogRef.afterClosed().subscribe(data => {
+            if (data) {
+                this.pushObject(data);
+            }
+        });
+    }
+
+    private pushObject(data: SurchargeCustomerRate) {
         data.id = this.dataSource.data[this.dataSource.data.length - 1].id + 1;
         this.dataSource.data.push(data);
         this.filteredDataSource.data = this.dataSource.data;
-        this.paginator._changePageSize(this.paginator.pageSize);
     }
 
+    /*
     private mapToDataSource(elementId) {
         let pos = 0;
         for (let i = 0; i < this.dataSource.data.length; i++) {
@@ -129,5 +136,5 @@ export class SurchargeCustomersRateComponent implements OnInit {
             }
         }
         return pos + 1;
-    }*/
+    } */
 }

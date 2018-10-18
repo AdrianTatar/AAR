@@ -1,6 +1,6 @@
+import { SurchargeCustomer } from './../../../shared/models/surcharge.customer';
 import { Component } from '@angular/core';
-import { SurchargeCustomer } from '../../../shared/models/surcharge.customer';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MatTableDataSource } from '@angular/material';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ScEditDialogComponent {
 
+  dataSource = new MatTableDataSource<SurchargeCustomer>();
+
   scForm;
   scInputs: SurchargeCustomer = {
     id: null,
@@ -17,7 +19,8 @@ export class ScEditDialogComponent {
     debitorname: '',
     type: '',
     customernumber: 0,
-    customername: ''
+    customername: '',
+    rates: null
   };
 
   constructor(

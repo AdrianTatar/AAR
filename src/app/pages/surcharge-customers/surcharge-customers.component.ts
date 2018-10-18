@@ -1,3 +1,4 @@
+import { SurchargeCustomerRate } from './../../shared/models/surcharge.customer.rate';
 import { SurchargeCustomersService } from './services/surcharge-customers.service';
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
@@ -44,7 +45,8 @@ export class SurchargeCustomersComponent implements OnInit {
     debitorname: '',
     type: '',
     customernumber: null,
-    customername: ''
+    customername: '',
+    rates: null
   };
 
   constructor(
@@ -143,7 +145,7 @@ export class SurchargeCustomersComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ScAddDialogComponent, {
-      width: '600px',
+      width: '800px',
       disableClose: true
     });
 
@@ -156,7 +158,7 @@ export class SurchargeCustomersComponent implements OnInit {
 
   openEditDialog(): void {
     const dialogRef = this.dialog.open(ScEditDialogComponent, {
-      width: '600px',
+      width: '800px',
       disableClose: true
     });
 
