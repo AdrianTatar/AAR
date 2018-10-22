@@ -1,0 +1,58 @@
+<div class="header">
+  <h1 mat-dialog-title>{{'SurchargeCustomers' | translate }}</h1>
+</div>
+
+<mat-dialog-content>
+
+  <mat-form-field class="full-width">
+    <input [readonly]="true" [(ngModel)]="scInputs.debitornumber" matInput placeholder="Debitor Number" [formControl]="formdebitornumber">
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input [readonly]="true" [(ngModel)]="scInputs.debitorname" matInput placeholder="Debitor" (keyup.enter)="confirmEdit()"
+      [formControl]="formdebitorname">
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input [readonly]="true" [(ngModel)]="scInputs.type" matInput placeholder="Type" [formControl]="formtype">
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input [readonly]="true" [(ngModel)]="scInputs.customernumber" placeholder="Customer Number" matInput [formControl]="formcustomernumber">
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input [readonly]="true" [(ngModel)]="scInputs.customername" placeholder="Customer Name" matInput [formControl]="formcustomername">
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<div class="align-page">
+  <div class="mat-elevation-z8">
+    <table >
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Daily Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rate of scInputs.rates; index as i">
+          <td>
+            {{rate.year}}
+          </td>
+          <td>
+            {{rate.dailyrate}}
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+</div>
+
+<mat-dialog-actions>
+  <button mat-fab mat-dialog-close matTooltip="Cancel" class="clear-icon">
+    <mat-icon>clear</mat-icon>
+  </button>
+</mat-dialog-actions>

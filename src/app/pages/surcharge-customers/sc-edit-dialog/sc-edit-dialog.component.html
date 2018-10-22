@@ -5,51 +5,70 @@
 <mat-dialog-content>
 
   <mat-form-field class="full-width">
-    <input type="number" [(ngModel)]="scInputs.debitorenumber" matInput placeholder="Debitoren nr" [formControl]="formdebitornumber">
-    <mat-error *ngIf="formdebitornumber.invalid">
-      debitor number is <strong>required</strong>
-    </mat-error>
+    <input [(ngModel)]="scInputs.debitornumber" matInput placeholder="Debitor Number" [formControl]="formdebitornumber">
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="text" [(ngModel)]="scInputs.debitorname" matInput placeholder="Debitor" (keyup.enter)="confirmEdit()" [formControl]="formdebitorname">
-    <mat-error *ngIf="formdebitorname.invalid">
-      Debitor is <strong>required</strong>
-    </mat-error>
+    <input [(ngModel)]="scInputs.debitorname" matInput placeholder="Debitor" (keyup.enter)="confirmEdit()"
+      [formControl]="formdebitorname">
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <mat-select [(ngModel)]="scInputs.type" placeholder="Type" [formControl]="formtype">
-      <mat-option>None</mat-option>
-      <mat-option value="Fremdbanken">Fremdbanken</mat-option>
-      <mat-option value="Sektorbanken">Sektorbanken</mat-option>
-    </mat-select>
-    <mat-error *ngIf="formtype.invalid">
-      Typ is <strong>required</strong>
-    </mat-error>
+    <input [(ngModel)]="scInputs.type" matInput placeholder="Type" [formControl]="formtype">
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="number" [(ngModel)]="scInputs.customernumber" placeholder="Customer Number" matInput [formControl]="formcustomernumber">
-    <mat-error *ngIf="formcustomernumber.invalid">
-      Customer Number is <strong>required</strong>
-    </mat-error>
+    <input [(ngModel)]="scInputs.customernumber" placeholder="Customer Number" matInput [formControl]="formcustomernumber">
   </mat-form-field>
 
   <mat-form-field class="full-width">
     <input [(ngModel)]="scInputs.customername" placeholder="Customer Name" matInput [formControl]="formcustomername">
-    <mat-error *ngIf="formcustomername.invalid">
-      Customer Name is <strong>required</strong>
-    </mat-error>
   </mat-form-field>
+
+  <form id="rates-inputs">
+    <mat-form-field class="half-width">
+      <input [(ngModel)]="scrInputs.year" placeholder="Year" matInput [formControl]="formratesyear">
+    </mat-form-field>
+
+    <mat-form-field class="half-width">
+      <input [(ngModel)]="scrInputs.dailyrate" placeholder="Daily Rate" matInput [formControl]="formratesdailyrate">
+    </mat-form-field>
+    <button (click)="save()" mat-mini-fab matTooltip="{{'AddRow' | translate}}" class="add-icon">
+      <mat-icon>add</mat-icon>
+    </button>
+  </form>
 
 </mat-dialog-content>
 
+<div class="align-page">
+  <div class="mat-elevation-z8">
+    <table>
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Daily Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rate of scInputs.rates; index as i">
+          <td>
+            {{rate.year}}
+          </td>
+          <td>
+            {{rate.dailyrate}}
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+</div>
+
 <mat-dialog-actions>
-  <button mat-fab mat-dialog-close matTooltip="Cancel" class="clear-icon">
-    <mat-icon>clear</mat-icon>
-  </button>
   <button [disabled]="scForm.invalid" (click)="save()" mat-fab matTooltip="Confirm" class="done-icon">
     <mat-icon>done</mat-icon>
+  </button>
+  <button mat-fab mat-dialog-close matTooltip="Cancel" class="clear-icon">
+    <mat-icon>clear</mat-icon>
   </button>
 </mat-dialog-actions>

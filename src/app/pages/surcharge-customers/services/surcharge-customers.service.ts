@@ -27,7 +27,7 @@ export class SurchargeCustomersService {
     .subscribe(res => console.log(res));
   }
 
-  public updateFixedPriceProject(surchargeCustomer: SurchargeCustomer) {
+  public updateSurchargeCustomer(surchargeCustomer: SurchargeCustomer) {
     console.log(surchargeCustomer);
     console.log(JSON.stringify(surchargeCustomer));
     return this.http.put<SurchargeCustomer>(this.surchargeCustomerUrl + this.updatePath,

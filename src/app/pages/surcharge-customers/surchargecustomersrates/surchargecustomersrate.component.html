@@ -1,53 +1,42 @@
 <div class="align-page">
-    <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="filteredDataSource">
-
-            <!-- Year Column-->
-            <ng-container matColumnDef="year">
-                <th mat-header-cell *matHeaderCellDef class="header">
-                    Year
-                </th>
-
-                <td mat-cell *matCellDef="let element">
-                    <div *ngFor="let rate of element.rates; index as i">
-                        <div *ngIf="element.id === selectedRowToEdit; else simpleDisplay">
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="filteredDataSource">
+    
+                <!-- Year Column-->
+                <ng-container matColumnDef="year">
+                    <th mat-header-cell *matHeaderCellDef class="header">
+                        Year
+                    </th>
+    
+                    <td mat-cell *matCellDef="let element">
+                        <div *ngFor="let rate of element.rates; index as i">
+                            <div *ngIf="element.id === selectedRowToEdit; else simpleDisplay">
+                            </div>
+                            <div>
+                                {{ rate.year }}
+                            </div>
                         </div>
-                        <div>
-                            {{ rate.year }}
+                    </td>
+                </ng-container>
+    
+                <!-- Dailyrates Column-->
+                <ng-container matColumnDef="dailyrate">
+                    <th mat-header-cell *matHeaderCellDef class="header">
+                        Daily Rates
+                    </th>
+    
+                    <td mat-cell *matCellDef="let element">
+                        <div *ngFor="let rate of element.rates; index as i">
+                            <div *ngIf="element.id === selectedRowToEdit; else simpleDisplay">
+                            </div>
+                            <div>
+                                {{ rate.dailyrate }}
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </ng-container>
-
-            <!-- Dailyrates Column-->
-            <ng-container matColumnDef="dailyrate">
-                <th mat-header-cell *matHeaderCellDef class="header">
-                    Daily Rates
-                </th>
-
-                <td mat-cell *matCellDef="let element">
-                    <div *ngFor="let rate of element.rates; index as i">
-                        <div *ngIf="element.id === selectedRowToEdit; else simpleDisplay">
-                        </div>
-                        <div>
-                            {{ rate.dailyrate }}
-                        </div>
-                    </div>
-                </td>
-            </ng-container>
-            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-            <tr mat-row (click)="selectRow(index)" [ngClass]="{'highlight': index == selectedRow}" *matRowDef="let row; columns: displayedColumns; let index = index"></tr>
-        </table>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row (click)="selectRow(index)" [ngClass]="{'highlight': index == selectedRow}" *matRowDef="let row; columns: displayedColumns; let index = index"></tr>
+            </table>
+        </div>
     </div>
-    <div id = "buttons-container">
-        <button (click)="openDialog()" mat-button class="add-icon">
-            <mat-icon>add</mat-icon>
-        </button>
-        <button mat-button class="edit-icon">
-            <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-button class="cancel-icon">
-            <mat-icon>delete</mat-icon>
-        </button>
-    </div>
-</div>

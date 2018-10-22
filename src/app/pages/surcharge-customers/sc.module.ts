@@ -1,3 +1,4 @@
+import { ScViewDialogComponent } from './sc-view-dialog/sc-view-dialog.component';
 import { SurchargeCustomersRateService } from './surchargecustomersrates/services/surcharge-customers-rates.service';
 import { SurchargeCustomersRateComponent } from './surchargecustomersrates/surchargecustomersrate.component';
 import { NgModule } from '@angular/core';
@@ -20,10 +21,12 @@ import { ScrAddDialogComponent } from './surchargecustomersrates/scr-add-dialog/
     scRoutingComponents,
     ScAddDialogComponent,
     ScEditDialogComponent,
+    ScViewDialogComponent,
     SurchargeCustomersRateComponent
   ],
   entryComponents: [
     ScrAddDialogComponent,
+    ScViewDialogComponent,
     ScAddDialogComponent,
     ScEditDialogComponent
   ],

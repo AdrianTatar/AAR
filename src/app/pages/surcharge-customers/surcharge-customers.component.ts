@@ -6,6 +6,7 @@ import { SurchargeCustomer } from '../../shared/models/surcharge.customer';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ScAddDialogComponent } from './sc-add-dialog/sc-add-dialog.component';
 import { ScEditDialogComponent } from './sc-edit-dialog/sc-edit-dialog.component';
+import { ScViewDialogComponent } from './sc-view-dialog/sc-view-dialog.component';
 
 @Component({
   selector: 'app-surcharge-customers',
@@ -159,12 +160,35 @@ export class SurchargeCustomersComponent implements OnInit {
   openEditDialog(): void {
     const dialogRef = this.dialog.open(ScEditDialogComponent, {
       width: '800px',
-      disableClose: true
+      disableClose: true,
+      data: {
+        debitorNameData: this.dataSource.data[this.selectedRow].debitorname,
+        debitorNumberData: this.dataSource.data[this.selectedRow].debitornumber,
+        typeData: this.dataSource.data[this.selectedRow].type,
+        customerNameData: this.dataSource.data[this.selectedRow].customername,
+        customerNumberData: this.dataSource.data[this.selectedRow].customernumber,
+        rateData: this.dataSource.data[this.selectedRow].rates
+      }
     });
 
     dialogRef.afterClosed().subscribe(data => {
       if (data) {
         this.pushObject(data);
+      }
+    });
+  }
+
+  openViewDialog(): void {
+    const dialogRef = this.dialog.open(ScViewDialogComponent, {
+      width: '800px',
+      disableClose: true,
+      data: {
+        debitorNameData: this.dataSource.data[this.selectedRow].debitorname,
+        debitorNumberData: this.dataSource.data[this.selectedRow].debitornumber,
+        typeData: this.dataSource.data[this.selectedRow].type,
+        customerNameData: this.dataSource.data[this.selectedRow].customername,
+        customerNumberData: this.dataSource.data[this.selectedRow].customernumber,
+        rateData: this.dataSource.data[this.selectedRow].rates
       }
     });
   }
@@ -202,7 +226,7 @@ export class SurchargeCustomersComponent implements OnInit {
       this.dataSource.data[this.selectedRowToEdit - 1].type = this.scInputs.type;
       this.dataSource.data[this.selectedRowToEdit - 1].customernumber = this.scInputs.customernumber;
       this.dataSource.data[this.selectedRowToEdit - 1].customername = this.scInputs.customername;
-      this.surchargeCustomerService.updateFixedPriceProject(this.dataSource.data[this.selectedRowToEdit - 1]);
+      this.surchargeCustomerService.updateSurchargeCustomer(this.dataSource.data[this.selectedRowToEdit - 1]);
       this.selectedRowToEdit = -1;
     }
   }

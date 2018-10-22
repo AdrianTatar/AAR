@@ -1,110 +1,38 @@
-  table {
-    width: 100%; 
-  }
-  
-  .align-page {
-    margin: 30px 10px 10px 10px;
-  }
-  
-  .header {
-    background: lightslategrey;
-    color: black;
-    text-align: center;
-  }
-  
-  .highlight {
-    background-color: #eeeeee;
-  }
-  
-  .selectionHeader {
-    width: 40px;
-  }
-  
-  .space-for-buttons {
-    height: 130px;
-  }
-  
-  .options-menu {
-    width: 10px;
-  }
-  
-  .edit-icon {
-    color: #428bca;
-  }
-  
-  .cancel-icon {
-    color: #d9534f;
-  }
-  
-  .done-icon {
-    color: #46a546;
-  }
-  
-  .right {
-    margin: 8px;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    margin: 0 30px 60px 0px;
-  }
-  
-  .add-icon {
-    background: #428bca;
-    color: white;
-  }
-  
-  .input-fields {
-    margin-top: 15px;
-    float:right;
-  }
-  
-  .mat-form-field {
-    float: left;
-  }
-  
-  .full-width {
-    width: 80%;
-  }
-  
-  ::ng-deep .mat-icon{
-    height:20px !important;
-    width:20px !important;
-    font-size:20px !important;
-  }
-  
-  .searchInput {
-    color: white;
-  }
-  
-  .matInput {
-    width: 10px;
-  }
+table {
+  width: 100%; 
+}
 
-  table {
-    border-collapse: collapse;
-  }
+.align-page {
+  margin: 30px 10px 10px 10px;
+}
 
-  table, th, td {
-    border: 1px solid black;
-  }
+.header {
+  background: lightslategrey;
+  color: black;
+  text-align: center;
+}
 
-  td{
-    width: 50%;
-    text-align: center;
-    padding: 5px 0px 5px 0px;
-  }
+table, th, td {
+  border: 1px solid black;
+}
 
-  th{
-    font-weight: bold;
-  }
+td{
+  width: 50%;
+  text-align: center;
+  padding: 5px 0px 5px 0px;
+}
 
-  #buttons-container{
-    margin-top: 15px;
-    text-align: center;
-  }
+th{
+  font-weight: bold;
+}
 
-  .add-icon{
-    background-color: #eeeeee;
-    color: #428bca;
-    width: 30px;
-  }
+#buttons-container{
+  margin-top: 15px;
+  text-align: center;
+}
+
+.add-icon{
+  background-color: #eeeeee;
+  color: #428bca;
+  width: 30px;
+}
