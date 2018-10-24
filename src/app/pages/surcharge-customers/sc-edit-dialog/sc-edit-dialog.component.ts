@@ -12,8 +12,11 @@ import { MAT_DIALOG_DATA } from '@angular/material';
   templateUrl: './sc-edit-dialog.component.html',
   styleUrls: ['./sc-edit-dialog.component.css']
 })
-export class ScEditDialogComponent {
+export class ScEditDialogComponent implements OnInit {
+  displayedColumns: String[] = ['year', 'dailyrate'];
   dataSource = new MatTableDataSource<SurchargeCustomer>();
+  filteredDataSource = new MatTableDataSource<SurchargeCustomer>();
+  surchargeCustomer: SurchargeCustomer[];
   selectedRowToEdit = -1;
   scForm;
   scInputs: SurchargeCustomer = {
@@ -58,8 +61,23 @@ export class ScEditDialogComponent {
     this.scInputs.rates = this.data.rateData;
   }
 
+  async ngOnInit() {
+
+    this.scrForm = new FormGroup({
+      surchargecustomer_id: new FormControl('', Validators.required),
+      year: new FormControl('', Validators.required),
+      dailyrate: new FormControl('', Validators.required)
+    });
+
+    await this.surchargeCustomersService.getSurchargeCustomers().subscribe(data => {
+      this.surchargeCustomer = data;
+      this.dataSource.data = this.surchargeCustomer;
+      this.filteredDataSource.data = this.surchargeCustomer;
+    });
+  }
   save() {
-    this.dialogRef.close(this.scInputs);
+    this.scInputs.rates.push(this.scrInputs);
+    console.log(this.scInputs.rates);
   }
 
   get formdebitornumber() {
@@ -95,14 +113,13 @@ export class ScEditDialogComponent {
   }
 
   private addRates() {
-      const rates = this.scrInputs;
-      this.surchargeCustomersService.updateSurchargeCustomer(this.dataSource.data[this.selectedRowToEdit - 1]);
-      this.selectedRowToEdit = -1;
-      console.log(this.scInputs);
+    const rates = this.scrInputs;
+    this.surchargeCustomersService.updateSurchargeCustomer(this.dataSource.data[this.selectedRowToEdit - 1]);
+    this.selectedRowToEdit = -1;
+    console.log(this.scInputs);
   }
   private pushObject(data: SurchargeCustomer) {
     data.id = this.dataSource.data[this.dataSource.data.length - 1].id + 1;
-    //this.dataSource.data.push(this.scrInputs);
   }
 
   private mapToDataSource(elementId) {

@@ -69,3 +69,7 @@ button {
     background: #428bca;
     color: white;
   }
+  .cell-container{
+    background-color: red;
+    size: 100%;
+  }

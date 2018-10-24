@@ -40,29 +40,57 @@
 
 </mat-dialog-content>
 
-<div class="align-page">
-  <div class="mat-elevation-z8">
-    <table>
-      <thead>
-        <tr>
-          <th>Year</th>
-          <th>Daily Rate</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let rate of scInputs.rates; index as i">
-          <td>
-            {{rate.year}}
-          </td>
-          <td>
-            {{rate.dailyrate}}
-          </td>
-        </tr>
-      </tbody>
 
-    </table>
-  </div>
-</div>
+<table mat-table [dataSource]="filteredDataSource">
+  <ng-container matColumnDef="year">
+    <th mat-header-cell *matHeaderCellDef clss="header">
+      Year
+    </th>
+    <td mat-cell *matCellDef="let element">
+      <div *ngFor="let rate of element.rates">
+        {{rate.year}}
+      </div>
+
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="dailyrate">
+    <th mat-header-cell *matHeaderCellDef clss="header">
+      Daily Rate
+    </th>
+    <td mat-cell *matCellDef="let element">
+      <div *ngFor="let rate of element.rates">
+        {{rate.dailyrate}}
+      </div>
+
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns; let index = index;"></tr>
+</table>
+
+<!--<div class="align-page">
+    <div class="mat-elevation-z8">
+      <table>
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Daily Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let element">
+            <td>
+              {{element.rates[1].year}}
+            </td>
+            <td>
+              {{element.rates[1].dailyrate}}
+            </td>
+          </tr>
+        </tbody>
+  
+      </table>
+    </div>
+  </div>-->
 
 <mat-dialog-actions>
   <button [disabled]="scForm.invalid" (click)="save()" mat-fab matTooltip="Confirm" class="done-icon">

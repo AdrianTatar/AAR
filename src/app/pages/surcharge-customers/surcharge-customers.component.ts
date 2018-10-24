@@ -173,6 +173,8 @@ export class SurchargeCustomersComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(data => {
       if (data) {
+        console.log(data);
+        this.surchargeCustomerService.createSurchargeCustomer(data);
         this.pushObject(data);
       }
     });
