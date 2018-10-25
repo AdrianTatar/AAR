@@ -52,10 +52,10 @@ button {
   #rates-inputs{
     margin: 20px;
   }
-   th, td{
-     text-align: center;
-     width: 50%;
-   }
+  th, td{
+   text-align: center;
+   width: 50%;
+  }
    table {
     font-size: 20px;
     border-collapse: collapse;
@@ -64,12 +64,10 @@ button {
    table, th, td {
     border: 1px solid #428bca;
   }
-  
   th{
     background: #428bca;
     color: white;
   }
   .cell-container{
-    background-color: red;
-    size: 100%;
+    border: 1px solid #428bca;
   }

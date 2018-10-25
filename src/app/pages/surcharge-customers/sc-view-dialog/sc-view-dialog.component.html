@@ -27,29 +27,20 @@
 
 </mat-dialog-content>
 
-<div class="align-page">
-  <div class="mat-elevation-z8">
-    <table >
-      <thead>
-        <tr>
-          <th>Year</th>
-          <th>Daily Rate</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let rate of scInputs.rates; index as i">
-          <td>
-            {{rate.year}}
-          </td>
-          <td>
-            {{rate.dailyrate}}
-          </td>
-        </tr>
-      </tbody>
-
-    </table>
-  </div>
-</div>
+<table>
+    <thead>
+      <tr>
+        <th>Year</th>
+        <th>Daily Rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let array of ratesArray; let i = index">
+        <td>{{array.year}}</td>
+        <td>{{array.dailyrate}}</td>
+      </tr>
+    </tbody>
+</table>
 
 <mat-dialog-actions>
   <button mat-fab mat-dialog-close matTooltip="Cancel" class="clear-icon">

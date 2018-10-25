@@ -23,7 +23,7 @@ export class SurchargeCustomersComponent implements OnInit {
   surchargeCustomer: SurchargeCustomer[];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   selectedRowToEdit = -1;
-  selectedRow = -1;
+  selectedRow = 0;
 
   debitornumberSearch = false;
   debitornameSearch = false;
@@ -94,7 +94,6 @@ export class SurchargeCustomersComponent implements OnInit {
 
   async ngOnInit() {
     this.dataSource.paginator = this.paginator;
-    this.selectedRow = 0;
 
     this.scForm = new FormGroup({
       debitornumber: new FormControl('', Validators.required),
@@ -157,17 +156,18 @@ export class SurchargeCustomersComponent implements OnInit {
     });
   }
 
-  openEditDialog(): void {
+  openEditDialog(selectedRow): void {
+    console.log(selectedRow);
     const dialogRef = this.dialog.open(ScEditDialogComponent, {
       width: '800px',
       disableClose: true,
       data: {
-        debitorNameData: this.dataSource.data[this.selectedRow].debitorname,
-        debitorNumberData: this.dataSource.data[this.selectedRow].debitornumber,
-        typeData: this.dataSource.data[this.selectedRow].type,
-        customerNameData: this.dataSource.data[this.selectedRow].customername,
-        customerNumberData: this.dataSource.data[this.selectedRow].customernumber,
-        rateData: this.dataSource.data[this.selectedRow].rates
+        debitorNameData: this.dataSource.data[selectedRow - 1].debitorname,
+        debitorNumberData: this.dataSource.data[selectedRow - 1].debitornumber,
+        typeData: this.dataSource.data[selectedRow - 1].type,
+        customerNameData: this.dataSource.data[selectedRow - 1].customername,
+        customerNumberData: this.dataSource.data[selectedRow - 1].customernumber,
+        rateData: this.dataSource.data[selectedRow - 1].rates
       }
     });
 
@@ -180,17 +180,17 @@ export class SurchargeCustomersComponent implements OnInit {
     });
   }
 
-  openViewDialog(): void {
+  openViewDialog(selectedRow): void {
     const dialogRef = this.dialog.open(ScViewDialogComponent, {
       width: '800px',
       disableClose: true,
       data: {
-        debitorNameData: this.dataSource.data[this.selectedRow].debitorname,
-        debitorNumberData: this.dataSource.data[this.selectedRow].debitornumber,
-        typeData: this.dataSource.data[this.selectedRow].type,
-        customerNameData: this.dataSource.data[this.selectedRow].customername,
-        customerNumberData: this.dataSource.data[this.selectedRow].customernumber,
-        rateData: this.dataSource.data[this.selectedRow].rates
+        debitorNameData: this.dataSource.data[selectedRow - 1].debitorname,
+        debitorNumberData: this.dataSource.data[selectedRow - 1].debitornumber,
+        typeData: this.dataSource.data[selectedRow - 1].type,
+        customerNameData: this.dataSource.data[selectedRow - 1].customername,
+        customerNumberData: this.dataSource.data[selectedRow - 1].customernumber,
+        rateData: this.dataSource.data[selectedRow - 1].rates
       }
     });
   }

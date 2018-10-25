@@ -14,6 +14,12 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 })
 export class ScEditDialogComponent implements OnInit {
   displayedColumns: String[] = ['year', 'dailyrate'];
+  ratesArray: Object = [{
+    year: 0,
+    dailyrate: 0
+
+  }];
+  dataSource1;
   dataSource = new MatTableDataSource<SurchargeCustomer>();
   filteredDataSource = new MatTableDataSource<SurchargeCustomer>();
   surchargeCustomer: SurchargeCustomer[];
@@ -59,6 +65,9 @@ export class ScEditDialogComponent implements OnInit {
     this.scInputs.debitorname = this.data.debitorNameData;
     this.scInputs.debitornumber = this.data.debitorNumberData;
     this.scInputs.rates = this.data.rateData;
+    for (let index = 0; index < this.scInputs.rates.length; index++) {
+      this.ratesArray[index] = this.scInputs.rates[index];
+    }
   }
 
   async ngOnInit() {
@@ -76,8 +85,6 @@ export class ScEditDialogComponent implements OnInit {
     });
   }
   save() {
-    this.scInputs.rates.push(this.scrInputs);
-    console.log(this.scInputs.rates);
   }
 
   get formdebitornumber() {
