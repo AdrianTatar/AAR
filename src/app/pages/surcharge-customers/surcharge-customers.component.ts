@@ -23,7 +23,7 @@ export class SurchargeCustomersComponent implements OnInit {
   surchargeCustomer: SurchargeCustomer[];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   selectedRowToEdit = -1;
-  selectedRow = 0;
+  selectedRow = -1;
 
   debitornumberSearch = false;
   debitornameSearch = false;
@@ -105,6 +105,8 @@ export class SurchargeCustomersComponent implements OnInit {
 
     await this.surchargeCustomerService.getSurchargeCustomers().subscribe(data => {
       this.surchargeCustomer = data;
+      console.log(data);
+      console.log(this.surchargeCustomer);
       this.dataSource.data = this.surchargeCustomer;
       this.filteredDataSource.data = this.surchargeCustomer;
     });
@@ -151,31 +153,38 @@ export class SurchargeCustomersComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(data => {
       if (data) {
+        console.log(data);
+        this.surchargeCustomerService.createSurchargeCustomer(data);
         this.pushObject(data);
       }
     });
   }
 
-  openEditDialog(selectedRow): void {
-    console.log(selectedRow);
+  openEditDialog(rowNumber): void {
+    this.selectedRowToEdit = this.mapToDataSource(rowNumber);
+    console.log(this.selectedRowToEdit);
     const dialogRef = this.dialog.open(ScEditDialogComponent, {
       width: '800px',
       disableClose: true,
       data: {
-        debitorNameData: this.dataSource.data[selectedRow - 1].debitorname,
-        debitorNumberData: this.dataSource.data[selectedRow - 1].debitornumber,
-        typeData: this.dataSource.data[selectedRow - 1].type,
-        customerNameData: this.dataSource.data[selectedRow - 1].customername,
-        customerNumberData: this.dataSource.data[selectedRow - 1].customernumber,
-        rateData: this.dataSource.data[selectedRow - 1].rates
+        customerId: this.dataSource.data[this.selectedRowToEdit - 1].id,
+        debitorNameData: this.dataSource.data[this.selectedRowToEdit - 1].debitorname,
+        debitorNumberData: this.dataSource.data[this.selectedRowToEdit - 1].debitornumber,
+        typeData: this.dataSource.data[this.selectedRowToEdit - 1].type,
+        customerNameData: this.dataSource.data[this.selectedRowToEdit - 1].customername,
+        customerNumberData: this.dataSource.data[this.selectedRowToEdit - 1].customernumber,
+        rateData: this.dataSource.data[this.selectedRowToEdit - 1].rates,
       }
     });
 
     dialogRef.afterClosed().subscribe(data => {
       if (data) {
         console.log(data);
-        this.surchargeCustomerService.createSurchargeCustomer(data);
-        this.pushObject(data);
+        this.filteredDataSource.data[this.selectedRowToEdit - 1] = data;
+        console.log('Mergeeeee');
+        console.log(this.dataSource.data[this.selectedRowToEdit - 1]);
+        this.surchargeCustomerService.updateSurchargeCustomer(this.filteredDataSource.data[this.selectedRowToEdit - 1]);
+        this.selectedRowToEdit = -1;
       }
     });
   }
@@ -196,9 +205,8 @@ export class SurchargeCustomersComponent implements OnInit {
   }
 
   private pushObject(data: SurchargeCustomer) {
-    data.id = this.dataSource.data[this.dataSource.data.length - 1].id + 1;
+    data.id = this.dataSource.data[this.dataSource.data.length - 1].id;
     this.dataSource.data.push(data);
-    this.filteredDataSource.data = this.dataSource.data;
     this.paginator._changePageSize(this.paginator.pageSize);
   }
 
@@ -228,6 +236,7 @@ export class SurchargeCustomersComponent implements OnInit {
       this.dataSource.data[this.selectedRowToEdit - 1].type = this.scInputs.type;
       this.dataSource.data[this.selectedRowToEdit - 1].customernumber = this.scInputs.customernumber;
       this.dataSource.data[this.selectedRowToEdit - 1].customername = this.scInputs.customername;
+      this.dataSource.data[this.selectedRowToEdit - 1].rates = this.scInputs.rates;
       this.surchargeCustomerService.updateSurchargeCustomer(this.dataSource.data[this.selectedRowToEdit - 1]);
       this.selectedRowToEdit = -1;
     }

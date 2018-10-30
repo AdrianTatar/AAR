@@ -37,20 +37,22 @@ mat-dialog-actions {
   margin-top: 20px;
   float: right;
 }
- th, td{
-   text-align: center;
-   width: 50%;
+th, td{
+  text-align: center;
+  width: 50%;
  }
- table {
-  font-size: 20px;
-  border-collapse: collapse;
-  margin-top: 35px;
-}
- table, th, td {
-  border: 1px solid #428bca;
-}
-
-th{
-  background: #428bca;
-  color: white;
-}
+  table {
+   border-collapse: collapse;
+   margin-top: 35px;
+ }
+ th{
+   background: #428bca;
+   color: white;
+   height: 30px;
+ }
+ td{
+   padding: 8px;   
+ }
+ tr{
+   border-bottom: lightgray 1px solid;
+ }

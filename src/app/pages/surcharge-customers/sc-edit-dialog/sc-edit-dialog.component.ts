@@ -14,16 +14,25 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 })
 export class ScEditDialogComponent implements OnInit {
   displayedColumns: String[] = ['year', 'dailyrate'];
-  ratesArray: Object = [{
-    year: 0,
-    dailyrate: 0
-
-  }];
-  dataSource1;
   dataSource = new MatTableDataSource<SurchargeCustomer>();
   filteredDataSource = new MatTableDataSource<SurchargeCustomer>();
   surchargeCustomer: SurchargeCustomer[];
   selectedRowToEdit = -1;
+
+  ratesArray: Object = [{
+    id: null,
+    year: 0,
+    dailyrate: 0
+  }];
+  addedElement: SurchargeCustomer = {
+    id: null,
+    debitornumber: 0,
+    debitorname: '',
+    type: '',
+    customernumber: 0,
+    customername: '',
+    rates: null
+  };
   scForm;
   scInputs: SurchargeCustomer = {
     id: null,
@@ -34,6 +43,8 @@ export class ScEditDialogComponent implements OnInit {
     customername: '',
     rates: null
   };
+
+  l;
 
   scrForm;
   scrInputs: SurchargeCustomerRate = {
@@ -59,6 +70,7 @@ export class ScEditDialogComponent implements OnInit {
       year: new FormControl('', Validators.required),
       dailyrate: new FormControl('', Validators.required)
     });
+    this.scInputs.id = this.data.customerId;
     this.scInputs.customernumber = this.data.customerNumberData;
     this.scInputs.customername = this.data.customerNameData;
     this.scInputs.type = this.data.typeData;
@@ -68,9 +80,19 @@ export class ScEditDialogComponent implements OnInit {
     for (let index = 0; index < this.scInputs.rates.length; index++) {
       this.ratesArray[index] = this.scInputs.rates[index];
     }
+    this.l = this.scInputs.rates.length;
   }
 
   async ngOnInit() {
+
+    this.scForm = new FormGroup({
+      debitorenumber: new FormControl('', Validators.required),
+      debitorname: new FormControl('', Validators.required),
+      type: new FormControl('', Validators.required),
+      customernumber: new FormControl('', Validators.required),
+      customername: new FormControl('', Validators.required),
+      rates: new FormControl('', Validators.required)
+    });
 
     this.scrForm = new FormGroup({
       surchargecustomer_id: new FormControl('', Validators.required),
@@ -84,7 +106,27 @@ export class ScEditDialogComponent implements OnInit {
       this.filteredDataSource.data = this.surchargeCustomer;
     });
   }
+
+  editRatesTable() {
+    this.addedElement = this.scInputs;
+    console.log(this.addedElement);
+    this.addedElement.rates.push(this.scrInputs);
+    for (let index = 0; index < this.addedElement.rates.length; index++) {
+      this.ratesArray[index] = this.addedElement.rates[index];
+    }
+    for (let index = this.l; index < this.addedElement.rates.length; index++) {
+      this.ratesArray[index].id = this.addedElement.rates[index - 1].id + 2;
+    }
+  }
+
   save() {
+    this.addedElement = this.scInputs;
+    this.addedElement.customername = this.scInputs.customername;
+    this.addedElement.customernumber = this.scInputs.customernumber;
+    this.addedElement.type = this.scInputs.type;
+    this.addedElement.debitorname = this.scInputs.debitorname;
+    this.addedElement.debitornumber = this.scInputs.debitornumber;
+    this.dialogRef.close(this.addedElement);
   }
 
   get formdebitornumber() {
@@ -111,20 +153,6 @@ export class ScEditDialogComponent implements OnInit {
     return this.scForm.get('rates');
   }
 
-  get formratesyear() {
-    return this.scrForm.get('year');
-  }
-
-  get formratesdailyrate() {
-    return this.scrForm.get('dailyrate');
-  }
-
-  private addRates() {
-    const rates = this.scrInputs;
-    this.surchargeCustomersService.updateSurchargeCustomer(this.dataSource.data[this.selectedRowToEdit - 1]);
-    this.selectedRowToEdit = -1;
-    console.log(this.scInputs);
-  }
   private pushObject(data: SurchargeCustomer) {
     data.id = this.dataSource.data[this.dataSource.data.length - 1].id + 1;
   }

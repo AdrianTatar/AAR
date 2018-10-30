@@ -57,17 +57,18 @@ button {
    width: 50%;
   }
    table {
-    font-size: 20px;
     border-collapse: collapse;
     margin-top: 35px;
   }
-   table, th, td {
-    border: 1px solid #428bca;
-  }
   th{
+    font-size: 15px;
     background: #428bca;
     color: white;
+    height: 30px;
   }
-  .cell-container{
-    border: 1px solid #428bca;
+  td{
+    padding: 8px;   
+  }
+  tr{
+    border-bottom: lightgray 1px solid;
   }

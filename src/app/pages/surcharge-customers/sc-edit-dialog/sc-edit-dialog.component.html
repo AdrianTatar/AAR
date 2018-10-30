@@ -5,7 +5,8 @@
 <mat-dialog-content>
 
   <mat-form-field class="full-width">
-    <input [(ngModel)]="scInputs.debitornumber" matInput placeholder="Debitor Number" [formControl]="formdebitornumber">
+    <input [(ngModel)]="scInputs.debitornumber" matInput placeholder="Debitor Number" [formControl]="formdebitornumber"
+      [formControl]="formdebitornumber">
   </mat-form-field>
 
   <mat-form-field class="full-width">
@@ -14,7 +15,7 @@
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input [(ngModel)]="scInputs.type" matInput placeholder="Type" [formControl]="formtype">
+    <input [(ngModel)]="scInputs.type" matInput placeholder="Type" [formControl]="formtype" [formControl]="formtype">
   </mat-form-field>
 
   <mat-form-field class="full-width">
@@ -27,22 +28,23 @@
 
   <form id="rates-inputs">
     <mat-form-field class="half-width">
-      <input [(ngModel)]="scrInputs.year" placeholder="Year" matInput [formControl]="formratesyear">
+      <input [(ngModel)]="scrInputs.year" placeholder="Year" matInput [formControl]="formrates">
     </mat-form-field>
 
     <mat-form-field class="half-width">
-      <input [(ngModel)]="scrInputs.dailyrate" placeholder="Daily Rate" matInput [formControl]="formratesdailyrate">
+      <input [(ngModel)]="scrInputs.dailyrate" placeholder="Daily Rate" matInput [formControl]="formrates">
     </mat-form-field>
-    <button (click)="save()" mat-mini-fab matTooltip="{{'AddRow' | translate}}" class="add-icon">
+
+    <button (click)="editRatesTable()" mat-mini-fab matTooltip="{{'AddRow' | translate}}" class="add-icon">
       <mat-icon>add</mat-icon>
     </button>
   </form>
 
 </mat-dialog-content>
 
-
-<table>
-    <thead>
+<div class="mat-elevation-z8">
+  <table>
+    <thead mat-header>
       <tr>
         <th>Year</th>
         <th>Daily Rate</th>
@@ -54,31 +56,8 @@
         <td>{{array.dailyrate}}</td>
       </tr>
     </tbody>
-</table>
-
-<!--<div class="align-page">
-    <div class="mat-elevation-z8">
-      <table>
-        <thead>
-          <tr>
-            <th>Year</th>
-            <th>Daily Rate</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let element">
-            <td>
-              {{element.rates[1].year}}
-            </td>
-            <td>
-              {{element.rates[1].dailyrate}}
-            </td>
-          </tr>
-        </tbody>
-  
-      </table>
-    </div>
-  </div>-->
+  </table>
+</div>
 
 <mat-dialog-actions>
   <button [disabled]="scForm.invalid" (click)="save()" mat-fab matTooltip="Confirm" class="done-icon">
