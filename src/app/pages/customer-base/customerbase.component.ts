@@ -199,6 +199,7 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
     data.id = this.dataSource.data[this.dataSource.data.length - 1].id + 1;
     this.dataSource.data.push(data);
     this.filteredDataSource.data = this.dataSource.data;
+    this.dataSource._updatePaginator(this.dataSource.data.length);
     this.paginator._changePageSize(this.paginator.pageSize);
   }
 

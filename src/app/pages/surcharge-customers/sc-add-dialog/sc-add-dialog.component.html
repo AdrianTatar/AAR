@@ -5,19 +5,27 @@
 <mat-dialog-content>
 
   <mat-form-field class="full-width">
-    <input [(ngModel)]="scInputs.debitornumber" matInput placeholder="Debitor Number" [formControl]="formdebitornumber">
+    <input type="number" [(ngModel)]="scInputs.debitornumber" matInput placeholder="Debitor Number" [formControl]="formdebitornumber">
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input [(ngModel)]="scInputs.debitorname" matInput placeholder="Debitor" [formControl]="formdebitorname">
+    <input type="text" [(ngModel)]="scInputs.debitorname" matInput placeholder="Debitor" [formControl]="formdebitorname">
   </mat-form-field>
 
   <mat-form-field class="full-width">
+    <mat-select [(ngModel)]="scInputs.type" placeholder="Type" [formControl]="formtype">
+      <mat-option>None</mat-option>
+      <mat-option value="fremdbanken">Fremdbanken</mat-option>
+      <mat-option value="sektorbanken">Sektorbanken</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- <mat-form-field class="full-width">
     <input [(ngModel)]="scInputs.type" matInput placeholder="Type" [formControl]="formtype">
-  </mat-form-field>
+  </mat-form-field> -->
 
   <mat-form-field class="full-width">
-    <input [(ngModel)]="scInputs.customernumber" placeholder="Customer Number" matInput [formControl]="formcustomernumber">
+    <input type="number" [(ngModel)]="scInputs.customernumber" placeholder="Customer Number" matInput [formControl]="formcustomernumber">
   </mat-form-field>
 
   <mat-form-field class="full-width">

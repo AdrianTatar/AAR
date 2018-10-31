@@ -169,7 +169,6 @@ export class SurchargeCustomersComponent implements OnInit, AfterViewInit {
       if (data) {
         console.log(data);
         this.surchargeCustomerService.createSurchargeCustomer(data);
-        this.ngOnInit();
         this.pushObject(data);
       }
     });
@@ -220,6 +219,8 @@ export class SurchargeCustomersComponent implements OnInit, AfterViewInit {
   private pushObject(data: SurchargeCustomer) {
     data.id = this.dataSource.data[this.dataSource.data.length - 1].id;
     this.dataSource.data.push(data);
+    this.filteredDataSource.data = this.dataSource.data;
+    this.dataSource._updatePaginator(this.dataSource.data.length);
     this.paginator._changePageSize(this.paginator.pageSize);
   }
 
