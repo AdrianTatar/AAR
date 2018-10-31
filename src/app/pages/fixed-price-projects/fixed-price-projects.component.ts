@@ -30,7 +30,7 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
   priceSearch = false;
 
   projectnumberplanmillSearchQuery = '';
-  projectidtagetikSearchQuery = '';
+  tagetikSearchQuery = '';
   projectdescriptionSearchQuery = '';
   customernumberSearchQuery = 0;
   priceSearchQuery = 0;
@@ -78,26 +78,40 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
     this.filteredDataSource.data = this.dataSource.data;
 
     this.filteredDataSource.data = (this.projectnumberplanmillSearchQuery) ?
-      // tslint:disable-next-line:max-line-length
-      this.dataSource.data.filter(p => p.projectnumberplanmill.toLocaleLowerCase().includes(this.projectnumberplanmillSearchQuery.toLocaleLowerCase()))
+      this.dataSource.data.filter(p => p.projectnumberplanmill
+        .toLocaleLowerCase()
+        .trim()
+        .includes(this.projectnumberplanmillSearchQuery.toLocaleLowerCase().trim()))
       : this.dataSource.data;
 
-    this.filteredDataSource.data = (this.projectidtagetikSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.projectidtagetik.toLocaleLowerCase()
-        .includes(this.projectidtagetikSearchQuery.toLocaleLowerCase()))
+    this.filteredDataSource.data = (this.tagetikSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.projectidtagetik
+        .toLocaleLowerCase()
+        .trim()
+        .includes(this.tagetikSearchQuery.toLocaleLowerCase().trim()))
       : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.projectdescriptionSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.projectdescription.toLocaleLowerCase()
-        .includes(this.projectdescriptionSearchQuery.toLocaleLowerCase()))
+      this.filteredDataSource.data.filter(p => p.projectdescription
+        .toLocaleLowerCase()
+        .trim()
+        .includes(this.projectdescriptionSearchQuery.toLocaleLowerCase().trim()))
       : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.customernumberSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.customernumber === this.customernumberSearchQuery)
+      this.filteredDataSource.data
+      .sort(function(a: FixedPriceProject, b: FixedPriceProject) { return a.customernumber - b.customernumber; })
+      .filter(p => p.customernumber
+        .toString()
+        .includes(this.customernumberSearchQuery.toString()))
       : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.priceSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.price === this.priceSearchQuery)
+      this.filteredDataSource.data
+      .sort(function(a: FixedPriceProject, b: FixedPriceProject) { return a.price - b.price; })
+      .filter(p => p.price
+        .toString()
+        .includes(this.priceSearchQuery.toString()))
       : this.filteredDataSource.data;
   }
 
@@ -155,7 +169,7 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
       this.priceSearchQuery = 0;
     }
     if (!this.projectidtagetikSearch) {
-      this.projectidtagetikSearchQuery = '';
+      this.tagetikSearchQuery = '';
     }
     if (!this.projectdescriptionSearch) {
       this.projectdescriptionSearchQuery = '';

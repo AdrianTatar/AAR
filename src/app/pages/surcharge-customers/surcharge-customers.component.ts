@@ -79,26 +79,39 @@ export class SurchargeCustomersComponent implements OnInit, AfterViewInit {
     this.filteredDataSource.data = this.dataSource.data;
 
     this.filteredDataSource.data = (this.debitornumberSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.debitornumber === this.debitornumberSearchQuery)
+      this.filteredDataSource.data
+      .sort(function(a: SurchargeCustomer, b: SurchargeCustomer) { return a.debitornumber - b.debitornumber; })
+      .filter(p => p.debitornumber.toString()
+      .includes(this.debitornumberSearchQuery.toString().trim()))
       : this.dataSource.data;
 
     this.filteredDataSource.data = (this.debitornameSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.debitorname.toLocaleLowerCase()
-        .includes(this.debitornameSearchQuery.toLocaleLowerCase()))
+      this.filteredDataSource.data.filter(p => p.debitorname
+        .toLocaleLowerCase()
+        .trim()
+        .includes(this.debitornameSearchQuery.toLocaleLowerCase().trim()))
       : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.typeSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.type.toLocaleLowerCase()
-        .includes(this.typeSearchQuery.toLocaleLowerCase()))
+      this.filteredDataSource.data.filter(p => p.type
+        .toLocaleLowerCase()
+        .trim()
+        .includes(this.typeSearchQuery.toLocaleLowerCase().trim()))
       : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.customernumberSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.customernumber === this.customernumberSearchQuery)
+      this.filteredDataSource.data
+      .sort(function(a: SurchargeCustomer, b: SurchargeCustomer) { return a.customernumber - b.customernumber; })
+      .filter(p => p.customernumber
+        .toString()
+        .includes(this.customernumberSearchQuery.toString().trim()))
       : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.customernameSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.customername.toLocaleLowerCase()
-        .includes(this.customernameSearchQuery.toLocaleLowerCase()))
+      this.filteredDataSource.data.filter(p => p.customername
+        .toLocaleLowerCase()
+        .trim()
+        .includes(this.customernameSearchQuery.toLocaleLowerCase().trim()))
       : this.filteredDataSource.data;
   }
 

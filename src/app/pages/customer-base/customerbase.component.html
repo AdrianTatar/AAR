@@ -12,7 +12,7 @@
           </button>
           <div *ngIf="blzSearch === true">
             <mat-form-field>
-              <input [(ngModel)]="blzSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+              <input type="number" [(ngModel)]="blzSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
                 class="searchInput">
             </mat-form-field>
           </div>

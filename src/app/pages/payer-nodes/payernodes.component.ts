@@ -30,7 +30,7 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
   payernodedescriptionSearch = false;
   payernodecodeSearch = false;
 
-  customernumberSearchQuery = '';
+  customernumberSearchQuery = 0;
   customernameSearchQuery = '';
   hierarchySearchQuery = '';
   payernodenumberSearchQuery = 0;
@@ -78,33 +78,44 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
   ) { }
 
   filter() {
+    /* In cazul in care Customer Number din baza de date se va transforma din STRING in INT aici o sa avem o eroare in cod.*/
     this.filteredDataSource.data = (this.customernumberSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.customernumber.toLocaleLowerCase()
-        .includes(this.customernumberSearchQuery.toLocaleLowerCase()))
+      this.filteredDataSource.data
+      .sort(function(a: PayerNode, b: PayerNode) { return parseInt(a.customernumber, 10) - parseInt(b.customernumber, 10); })
+      .filter(p => p.customernumber
+        .toString()
+        .toLocaleLowerCase()
+        .includes(this.customernumberSearchQuery.toString().toLocaleLowerCase()))
       : this.dataSource.data;
 
     this.filteredDataSource.data = (this.customernameSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.customername.toLocaleLowerCase()
-        .includes(this.customernameSearchQuery.toLocaleLowerCase()))
+      this.filteredDataSource.data.filter(p => p.customername
+        .toLocaleLowerCase()
+        .trim()
+        .includes(this.customernameSearchQuery.toLocaleLowerCase().trim()))
       : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.hierarchySearchQuery) ?
       this.filteredDataSource.data.filter(p => p.hierarchy.toLocaleLowerCase()
-        .includes(this.hierarchySearchQuery.toLocaleLowerCase()))
+        .includes(this.hierarchySearchQuery.toLocaleLowerCase().trim()))
       : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.payernodenumberSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.payernodenumber === this.payernodenumberSearchQuery)
+      this.filteredDataSource.data
+        .sort(function(a: PayerNode, b: PayerNode) { return a.payernodenumber - b.payernodenumber; })
+        .filter(p => p.payernodenumber
+          .toString()
+          .includes(this.payernodenumberSearchQuery.toString()))
       : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.payernodedescriptionSearchQuery) ?
       this.filteredDataSource.data.filter(p => p.payernodedescription.toLocaleLowerCase()
-        .includes(this.payernodedescriptionSearchQuery.toLocaleLowerCase()))
+        .includes(this.payernodedescriptionSearchQuery.toLocaleLowerCase().trim()))
       : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.payernodecodeSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.payernodecode.toLocaleLowerCase()
-        .includes(this.payernodecodeSearchQuery.toLocaleLowerCase()))
+      this.filteredDataSource.data.filter(p => p.payernodecode.toString().toLocaleLowerCase()
+        .includes(this.payernodecodeSearchQuery.toLocaleLowerCase().trim()))
       : this.filteredDataSource.data;
   }
 
@@ -163,7 +174,7 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
       this.customernameSearchQuery = '';
     }
     if (!this.customernumberSearch) {
-      this.customernumberSearchQuery = '';
+      this.customernumberSearchQuery = 0;
     }
     if (!this.hierarchySearch) {
       this.hierarchySearchQuery = '';

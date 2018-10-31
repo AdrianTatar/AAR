@@ -85,33 +85,41 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
   filter() {
     this.filteredDataSource.data = this.dataSource.data;
 
+    // console.log(this.blzSearchQuery);
+
     this.filteredDataSource.data = (this.blockSearchQuery) ?
       // tslint:disable-next-line:max-line-length
-      this.dataSource.data.filter(p => p.block.toLocaleLowerCase().includes(this.blockSearchQuery.toLocaleLowerCase()))
+      this.dataSource.data
+       .filter(p => p.block
+        .toLocaleLowerCase()
+        .includes(this.blockSearchQuery.trim().toLocaleLowerCase()))
       : this.dataSource.data;
 
     this.filteredDataSource.data = (this.nodeSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.node.toLocaleLowerCase()
-        .includes(this.nodeSearchQuery.toLocaleLowerCase()))
+      this.filteredDataSource.data.filter(p => p.node
+        .toLocaleLowerCase()
+        .includes(this.nodeSearchQuery.trim().toLocaleLowerCase()))
       : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.customernameSearchQuery) ?
       this.filteredDataSource.data.filter(p => p.customername.toLocaleLowerCase()
-        .includes(this.customernameSearchQuery.toLocaleLowerCase()))
+        .includes(this.customernameSearchQuery.trim().toLocaleLowerCase()))
       : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.bankgroupSearchQuery) ?
       this.filteredDataSource.data.filter(p => p.bankgroup.toLocaleLowerCase()
-        .includes(this.bankgroupSearchQuery.toLocaleLowerCase()))
+        .includes(this.bankgroupSearchQuery.trim().toLocaleLowerCase()))
       : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.clusterSearchQuery) ?
       this.filteredDataSource.data.filter(p => p.cluster.toLocaleLowerCase()
-        .includes(this.clusterSearchQuery.toLocaleLowerCase()))
+        .includes(this.clusterSearchQuery.trim().toLocaleLowerCase()))
       : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.blzSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.blz === this.blzSearchQuery)
+      this.filteredDataSource.data
+      .sort(function(a: CustomerBase, b: CustomerBase) { return a.blz - b.blz; })
+      .filter(p => p.blz.toString().includes(this.blzSearchQuery.toString()))
       : this.filteredDataSource.data;
   }
 
