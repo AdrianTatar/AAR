@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, AfterViewInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { languageChange } from '../../animations';
 
 @Component({
@@ -9,11 +9,16 @@ import { languageChange } from '../../animations';
   styleUrls: ['./navbar.component.css'],
   animations: [languageChange]
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, AfterViewInit {
+
   language = 'EN';
   image = '';
+  ngAfterViewInit(): void {
+  }
+
 
   constructor(
+    public dialog: MatDialog,
     private translate: TranslateService,
     public snackBar: MatSnackBar
   ) {
@@ -42,5 +47,5 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

@@ -32,6 +32,6 @@ export function createTranslateLoader(http: HttpClient) {
     ReactiveFormsModule,
     MaterialsModule,
     TranslateModule
-  ]
+  ],
 })
 export class SharedModule { }

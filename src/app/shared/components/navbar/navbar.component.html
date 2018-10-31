@@ -20,6 +20,9 @@
     <span>
       <a [routerLink]="['/logs']" routerLinkActive="active" mat-button color="primary">{{'Logs' | translate}}</a>
     </span>
+    <span>
+      <a [routerLink]="['/export']" routerLinkActive="active" mat-button color="primary">{{'Export' | translate}}</a>
+    </span>
   </div>
 
   <!-- This fills the remaining space of the current row -->
@@ -31,7 +34,6 @@
   <mat-menu xPosition="before" yPosition="above" #menu="matMenu">
     <button mat-menu-item (click)="switchLanguage('en')">EN <img class="country" src="../../assets/resources/united-kingdom.png"></button>
     <button mat-menu-item (click)="switchLanguage('de')">DE <img class="country" src="../../assets/resources/germany.png"></button>
-    <button mat-menu-item class="export"><mat-icon [attr.color]="'black'">save_alt</mat-icon>{{ 'ExportButton' | translate }}</button>
     <button mat-menu-item [routerLink]="['']"><a color="primary">{{ 'Logout' | translate }}</a></button>
   </mat-menu>
 

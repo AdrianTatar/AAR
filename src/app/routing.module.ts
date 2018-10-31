@@ -10,6 +10,7 @@ const appRoutes: Routes = [
   { path: 'payer-nodes', loadChildren: './pages/payer-nodes/pn.module#PnModule', data: { page: 'four' }},
   { path: 'customer-base', loadChildren: './pages/customer-base/customerbase.module#CustomerBaseModule', data: { page: 'five' }},
   { path: 'logs', loadChildren: './pages/logs/logs.module#LogsModule', data: { page: 'six' } },
+  { path: 'export', loadChildren: './pages/export/export.module#ExpModule', data: { page: 'seven'}},
   { path: '**', component: NotFoundComponent }
 ];
 
