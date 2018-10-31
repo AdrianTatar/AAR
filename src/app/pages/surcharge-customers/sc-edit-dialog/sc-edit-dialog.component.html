@@ -5,17 +5,15 @@
 <mat-dialog-content>
 
   <mat-form-field class="full-width">
-    <input [(ngModel)]="scInputs.debitornumber" matInput placeholder="Debitor Number" [formControl]="formdebitornumber"
-      [formControl]="formdebitornumber">
+    <input [(ngModel)]="scInputs.debitornumber" matInput placeholder="Debitor Number" [formControl]="formdebitornumber">
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input [(ngModel)]="scInputs.debitorname" matInput placeholder="Debitor" (keyup.enter)="confirmEdit()"
-      [formControl]="formdebitorname">
+    <input [(ngModel)]="scInputs.debitorname" matInput placeholder="Debitor" [formControl]="formdebitorname">
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input [(ngModel)]="scInputs.type" matInput placeholder="Type" [formControl]="formtype" [formControl]="formtype">
+    <input [(ngModel)]="scInputs.type" matInput placeholder="Type" [formControl]="formtype">
   </mat-form-field>
 
   <mat-form-field class="full-width">
@@ -46,8 +44,8 @@
   <table>
     <thead mat-header>
       <tr>
-        <th>Year</th>
-        <th>Daily Rate</th>
+        <th class="headers">Year</th>
+        <th class="headers">Daily Rate</th>
       </tr>
     </thead>
     <tbody>

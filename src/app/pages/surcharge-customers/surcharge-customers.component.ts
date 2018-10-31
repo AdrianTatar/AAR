@@ -7,6 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ScAddDialogComponent } from './sc-add-dialog/sc-add-dialog.component';
 import { ScEditDialogComponent } from './sc-edit-dialog/sc-edit-dialog.component';
 import { ScViewDialogComponent } from './sc-view-dialog/sc-view-dialog.component';
+import { delay } from 'q';
 
 @Component({
   selector: 'app-surcharge-customers',
@@ -94,7 +95,6 @@ export class SurchargeCustomersComponent implements OnInit {
 
   async ngOnInit() {
     this.dataSource.paginator = this.paginator;
-
     this.scForm = new FormGroup({
       debitornumber: new FormControl('', Validators.required),
       debitorname: new FormControl('', Validators.required),
@@ -105,8 +105,6 @@ export class SurchargeCustomersComponent implements OnInit {
 
     await this.surchargeCustomerService.getSurchargeCustomers().subscribe(data => {
       this.surchargeCustomer = data;
-      console.log(data);
-      console.log(this.surchargeCustomer);
       this.dataSource.data = this.surchargeCustomer;
       this.filteredDataSource.data = this.surchargeCustomer;
     });
@@ -148,13 +146,14 @@ export class SurchargeCustomersComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(ScAddDialogComponent, {
       width: '800px',
-      disableClose: true
+      disableClose: true,
     });
 
     dialogRef.afterClosed().subscribe(data => {
       if (data) {
         console.log(data);
         this.surchargeCustomerService.createSurchargeCustomer(data);
+        this.ngOnInit();
         this.pushObject(data);
       }
     });
@@ -179,11 +178,9 @@ export class SurchargeCustomersComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(data => {
       if (data) {
-        console.log(data);
         this.filteredDataSource.data[this.selectedRowToEdit - 1] = data;
-        console.log('Mergeeeee');
-        console.log(this.dataSource.data[this.selectedRowToEdit - 1]);
         this.surchargeCustomerService.updateSurchargeCustomer(this.filteredDataSource.data[this.selectedRowToEdit - 1]);
+        this.ngOnInit();
         this.selectedRowToEdit = -1;
       }
     });

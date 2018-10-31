@@ -1,4 +1,3 @@
-import { SurchargeCustomersRateService } from './../surchargecustomersrates/services/surcharge-customers-rates.service';
 import { SurchargeCustomerRate } from './../../../shared/models/surcharge.customer.rate';
 import { SurchargeCustomersService } from './../services/surcharge-customers.service';
 import { SurchargeCustomer } from './../../../shared/models/surcharge.customer';
@@ -13,7 +12,6 @@ import { MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./sc-add-dialog.component.css']
 })
 export class ScAddDialogComponent implements OnInit {
-  l;
   displayedColumns: String[] = ['year', 'dailyrate'];
   dataSource = new MatTableDataSource<SurchargeCustomer>();
   filteredDataSource = new MatTableDataSource<SurchargeCustomer>();
@@ -34,6 +32,12 @@ export class ScAddDialogComponent implements OnInit {
     customername: '',
     rates: null
   };
+  scrForm;
+  scrInputs: SurchargeCustomerRate = {
+    id: null,
+    year: 0,
+    dailyrate: 0
+  };
   scForm;
   scInputs: SurchargeCustomer = {
     id: null,
@@ -42,15 +46,10 @@ export class ScAddDialogComponent implements OnInit {
     type: '',
     customernumber: 0,
     customername: '',
-    rates: null
+    rates: [this.scrInputs]
   };
 
-  scrForm;
-  scrInputs: SurchargeCustomerRate = {
-    id: null,
-    year: 0,
-    dailyrate: 0
-  };
+  l;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -73,6 +72,15 @@ export class ScAddDialogComponent implements OnInit {
 
   async ngOnInit() {
 
+    this.scForm = new FormGroup({
+      debitorenumber: new FormControl('', Validators.required),
+      debitorname: new FormControl('', Validators.required),
+      type: new FormControl('', Validators.required),
+      customernumber: new FormControl('', Validators.required),
+      customername: new FormControl('', Validators.required),
+      rates: new FormControl('', Validators.required)
+    });
+
     this.scrForm = new FormGroup({
       surchargecustomer_id: new FormControl('', Validators.required),
       year: new FormControl('', Validators.required),
@@ -85,14 +93,34 @@ export class ScAddDialogComponent implements OnInit {
       this.filteredDataSource.data = this.surchargeCustomer;
     });
   }
+
   editRatesTable() {
     this.addedElement = this.scInputs;
-    console.log(this.addedElement);
-    this.addedElement.rates.push(this.scrInputs);
-    console.log(this.addedElement);
+    if (this.ratesArray[0].id == null) {
+      this.ratesArray[0].id = 1;
+      this.ratesArray[0].year = this.scrInputs.year;
+      this.ratesArray[0].dailyrate = this.scrInputs.dailyrate;
+      this.addedElement.rates[0].year = this.ratesArray[0].year;
+      this.addedElement.rates[0].dailyrate = this.ratesArray[0].dailyrate;
+      this.addedElement.rates[0].id = 1;
+      console.log(this.addedElement.rates[0]);
+    } else {
+      this.addedElement.rates.push(this.scrInputs);
+      for (let index = 1; index < this.addedElement.rates.length; index++) {
+        this.addedElement.rates[index].id = this.ratesArray[index - 1].id + 2;
+        this.ratesArray[index] = this.addedElement.rates[index];
+        console.log(this.addedElement);
+      }
+    }
   }
 
   save() {
+    this.addedElement = this.scInputs;
+    this.addedElement.customername = this.scInputs.customername;
+    this.addedElement.customernumber = this.scInputs.customernumber;
+    this.addedElement.type = this.scInputs.type;
+    this.addedElement.debitorname = this.scInputs.debitorname;
+    this.addedElement.debitornumber = this.scInputs.debitornumber;
     this.dialogRef.close(this.addedElement);
   }
 

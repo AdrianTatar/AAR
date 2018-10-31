@@ -109,7 +109,6 @@ export class ScEditDialogComponent implements OnInit {
 
   editRatesTable() {
     this.addedElement = this.scInputs;
-    console.log(this.addedElement);
     this.addedElement.rates.push(this.scrInputs);
     for (let index = 0; index < this.addedElement.rates.length; index++) {
       this.ratesArray[index] = this.addedElement.rates[index];
