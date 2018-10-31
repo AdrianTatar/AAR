@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, HostListener, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, AfterViewInit, AfterContentInit } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
@@ -47,6 +47,29 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
     price: 0
   };
 
+  async ngOnInit() {
+    this.dataSource.paginator = this.paginator;
+    this.selectedRow = 0;
+
+    this.fppForm = new FormGroup({
+      projectnumberplanmill: new FormControl('', Validators.required),
+      projectidtagetik: new FormControl('', Validators.required),
+      projectdescription: new FormControl('', Validators.required),
+      customernumber: new FormControl('', Validators.required),
+      price: new FormControl('', Validators.required)
+    });
+
+    await this.fixedPriceProjectService.getFixedPriceProjects().subscribe(data => {
+      this.fixedPriceProjects = data;
+      this.dataSource.data = this.fixedPriceProjects;
+      this.filteredDataSource.data = this.fixedPriceProjects;
+    });
+  }
+
+  ngAfterViewInit() {
+    this.filteredDataSource.paginator = this.paginator;
+  }
+
   constructor(
     public dialog: MatDialog, private fixedPriceProjectService: FixedPriceProjectService
   ) { }
@@ -78,25 +101,6 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
       : this.filteredDataSource.data;
   }
 
-  async ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.selectedRow = 0;
-
-    this.fppForm = new FormGroup({
-      projectnumberplanmill: new FormControl('', Validators.required),
-      projectidtagetik: new FormControl('', Validators.required),
-      projectdescription: new FormControl('', Validators.required),
-      customernumber: new FormControl('', Validators.required),
-      price: new FormControl('', Validators.required)
-    });
-
-    await this.fixedPriceProjectService.getFixedPriceProjects().subscribe(data => {
-      this.fixedPriceProjects = data;
-      this.dataSource.data = this.fixedPriceProjects;
-      this.filteredDataSource.data = this.fixedPriceProjects;
-    });
-  }
-
   get formProjectnumberplanmill() {
     return this.fppForm.get('projectnumberplanmill');
   }
@@ -115,12 +119,6 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
 
   get formPrice() {
     return this.fppForm.get('price');
-  }
-
-  ngAfterViewInit() {
-    // document.addEventListener('click', function (event) {
-    //   document.getElementById('mat-select-0').blur();
-    // });
   }
 
   @HostListener('document:keydown', ['$event']) handleKeyboardEvent(event: KeyboardEvent) {

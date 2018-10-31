@@ -1,6 +1,6 @@
 import { SurchargeCustomerRate } from './../../shared/models/surcharge.customer.rate';
 import { SurchargeCustomersService } from './services/surcharge-customers.service';
-import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, AfterViewInit, AfterContentInit, AfterContentChecked } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
 import { SurchargeCustomer } from '../../shared/models/surcharge.customer';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -14,7 +14,7 @@ import { delay } from 'q';
   templateUrl: './surcharge-customers.component.html',
   styleUrls: ['./surcharge-customers.component.css']
 })
-export class SurchargeCustomersComponent implements OnInit {
+export class SurchargeCustomersComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['debitornumber', 'debitorname',
     'type', 'customernumber', 'customername', 'year',
@@ -55,6 +55,26 @@ export class SurchargeCustomersComponent implements OnInit {
     public dialog: MatDialog, private surchargeCustomerService: SurchargeCustomersService
   ) { }
 
+  async ngOnInit() {
+    this.scForm = new FormGroup({
+      debitornumber: new FormControl('', Validators.required),
+      debitorname: new FormControl('', Validators.required),
+      type: new FormControl('', Validators.required),
+      customernumber: new FormControl('', Validators.required),
+      customername: new FormControl('', Validators.required),
+    });
+
+    await this.surchargeCustomerService.getSurchargeCustomers().subscribe(data => {
+      this.surchargeCustomer = data;
+      this.dataSource.data = this.surchargeCustomer;
+      this.filteredDataSource.data = this.surchargeCustomer;
+    });
+  }
+
+  ngAfterViewInit() {
+    this.filteredDataSource.paginator = this.paginator;
+  }
+
   filter() {
     this.filteredDataSource.data = this.dataSource.data;
 
@@ -91,23 +111,6 @@ export class SurchargeCustomersComponent implements OnInit {
       // Formula in the if statement is used to not let the selected row go to another page -it keeps it on the current page
       this.selectedRow += (this.selectedRow === this.dataSource.data.length ? 0 : 1);
     }
-  }
-
-  async ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.scForm = new FormGroup({
-      debitornumber: new FormControl('', Validators.required),
-      debitorname: new FormControl('', Validators.required),
-      type: new FormControl('', Validators.required),
-      customernumber: new FormControl('', Validators.required),
-      customername: new FormControl('', Validators.required),
-    });
-
-    await this.surchargeCustomerService.getSurchargeCustomers().subscribe(data => {
-      this.surchargeCustomer = data;
-      this.dataSource.data = this.surchargeCustomer;
-      this.filteredDataSource.data = this.surchargeCustomer;
-    });
   }
 
   get formDebitornumber() {

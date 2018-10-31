@@ -1,6 +1,6 @@
 import { CbAddDialogComponent } from './cb-add-dialog/cb-add-dialog.component';
 import { CustomerBase } from './../../shared/models/customerbase';
-import { Component, OnInit, ViewChild, HostListener, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, AfterViewInit, AfterContentInit } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
@@ -49,6 +49,35 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
     cluster: ''
   };
 
+  async ngOnInit() {
+    this.selectedRow = 0;
+
+    this.cbForm = new FormGroup({
+      blz: new FormControl('', Validators.required),
+      block: new FormControl('', Validators.required),
+      node: new FormControl('', Validators.required),
+      customername: new FormControl('', Validators.required),
+      bankgroup: new FormControl('', Validators.required),
+      cluster: new FormControl('', Validators.required)
+    });
+
+    await this.customerBaseService.getCustomerBase().subscribe(data => {
+      this.customerBase = data;
+      this.dataSource.data = this.customerBase;
+      this.filteredDataSource.data = this.customerBase;
+    });
+  }
+
+  ngAfterViewInit() {
+    this.filteredDataSource.paginator = this.paginator;
+  }
+
+  // ngAfterContentInit() {
+  //   document.addEventListener('click', function (event) {
+  //     document.getElementById('mat-select-0').blur();
+  //   });
+  // }
+
   constructor(
     public dialog: MatDialog, private customerBaseService: CustomerBaseService
   ) { }
@@ -86,26 +115,6 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
       : this.filteredDataSource.data;
   }
 
-  async ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.selectedRow = 0;
-
-    this.cbForm = new FormGroup({
-      blz: new FormControl('', Validators.required),
-      block: new FormControl('', Validators.required),
-      node: new FormControl('', Validators.required),
-      customername: new FormControl('', Validators.required),
-      bankgroup: new FormControl('', Validators.required),
-      cluster: new FormControl('', Validators.required)
-    });
-
-    await this.customerBaseService.getCustomerBase().subscribe(data => {
-      this.customerBase = data;
-      this.dataSource.data = this.customerBase;
-      this.filteredDataSource.data = this.customerBase;
-    });
-  }
-
   get formblz() {
     return this.cbForm.get('blz');
   }
@@ -128,12 +137,6 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
 
   get formcluster() {
     return this.cbForm.get('cluster');
-  }
-
-  ngAfterViewInit() {
-    // document.addEventListener('click', function (event) {
-    //   document.getElementById('mat-select-0').blur();
-    // });
   }
 
   @HostListener('document:keydown', ['$event']) handleKeyboardEvent(event: KeyboardEvent) {

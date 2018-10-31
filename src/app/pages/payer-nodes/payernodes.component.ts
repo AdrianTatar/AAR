@@ -1,7 +1,7 @@
 import { PayerNodeService } from './services/payernode.service';
 import { PnAddDialogComponent } from './pn-add-dialog/pn-add-dialog.component';
 import { PayerNode } from '../../shared/models/payernode';
-import { Component, OnInit, ViewChild, HostListener, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, AfterViewInit, AfterContentInit } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
@@ -50,6 +50,29 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
     payernodecode: ''
   };
 
+  async ngOnInit() {
+    this.selectedRow = 0;
+
+    this.pnForm = new FormGroup({
+      customernumber: new FormControl('', Validators.required),
+      customername: new FormControl('', Validators.required),
+      hierarchy: new FormControl('', Validators.required),
+      payernodenumber: new FormControl('', Validators.required),
+      payernodedescription: new FormControl('', Validators.required),
+      payernodecode: new FormControl('', Validators.required)
+    });
+
+    await this.payerNode.getPayerNodes().subscribe(data => {
+      this.payerNodes = data;
+      this.dataSource.data = this.payerNodes;
+      this.filteredDataSource.data = this.payerNodes;
+    });
+  }
+
+  ngAfterViewInit() {
+    this.filteredDataSource.paginator = this.paginator;
+  }
+
   constructor(
     public dialog: MatDialog, private payerNode: PayerNodeService
   ) { }
@@ -85,27 +108,6 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
       : this.filteredDataSource.data;
   }
 
-  async ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.selectedRow = 0;
-
-    this.pnForm = new FormGroup({
-      customernumber: new FormControl('', Validators.required),
-      customername: new FormControl('', Validators.required),
-      hierarchy: new FormControl('', Validators.required),
-      payernodenumber: new FormControl('', Validators.required),
-      payernodedescription: new FormControl('', Validators.required),
-      payernodecode: new FormControl('', Validators.required)
-    });
-
-    await this.payerNode.getPayerNodes().subscribe(data => {
-      this.payerNodes = data;
-      this.dataSource.data = this.payerNodes;
-      this.filteredDataSource.data = this.payerNodes;
-    });
-
-  }
-
   get formcustomernumber() {
     return this.pnForm.get('customernumber');
   }
@@ -128,12 +130,6 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
 
   get formpayernodecode() {
     return this.pnForm.get('payernodecode');
-  }
-
-  ngAfterViewInit() {
-    // document.addEventListener('click', function (event) {
-    //   document.getElementById('mat-select-0').blur();
-    // });
   }
 
   @HostListener('document:keydown', ['$event']) handleKeyboardEvent(event: KeyboardEvent) {

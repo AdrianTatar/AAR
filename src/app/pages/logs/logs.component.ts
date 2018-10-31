@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, AfterContentInit, AfterViewInit } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
 import { UserAction } from '../../shared/models/user.actions';
 import { UserService } from './services/user.service';
@@ -8,7 +8,8 @@ import { UserService } from './services/user.service';
   templateUrl: './logs.component.html',
   styleUrls: ['./logs.component.css']
 })
-export class LogsComponent implements OnInit {
+
+export class LogsComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['position', 'timestamp', 'uid', 'action'];
   dataSource = new MatTableDataSource<UserAction>();
@@ -28,21 +29,25 @@ export class LogsComponent implements OnInit {
   userIdSearchQuery = '';
   actionSearchQuery = '';
 
-  constructor(
-    public dialog: MatDialog,
-    private userService: UserService
-  ) { }
-
   async ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.selectedRow = 0;
 
     await this.userService.getUsers().subscribe(data => {
-      this.userActions = data;    
+      this.userActions = data;
       this.dataSource.data = this.userActions;
       this.filteredDataSource.data = this.userActions;
     });
   }
+
+  ngAfterViewInit() {
+    this.filteredDataSource.paginator = this.paginator;
+  }
+
+  constructor(
+    public dialog: MatDialog,
+    private userService: UserService
+  ) { }
 
   filter() {
     this.filteredDataSource.data = this.dataSource.data;
