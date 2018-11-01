@@ -205,7 +205,6 @@ export class SurchargeCustomersComponent implements OnInit, AfterViewInit {
   openViewDialog(selectedRow): void {
     const dialogRef = this.dialog.open(ScViewDialogComponent, {
       width: '800px',
-      disableClose: true,
       data: {
         debitorNameData: this.dataSource.data[selectedRow - 1].debitorname,
         debitorNumberData: this.dataSource.data[selectedRow - 1].debitornumber,
