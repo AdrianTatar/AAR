@@ -5,44 +5,44 @@
 <mat-dialog-content>
 
   <mat-form-field class="full-width">
-    <input [readonly]="true" [(ngModel)]="scInputs.debitornumber" matInput placeholder="Debitor Number" [formControl]="formdebitornumber">
+    <input [readonly]="true" [value]="scInputs.debitornumber" matInput placeholder="Debitor Number">
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input [readonly]="true" [(ngModel)]="scInputs.debitorname" matInput placeholder="Debitor" (keyup.enter)="confirmEdit()"
-      [formControl]="formdebitorname">
+    <input [readonly]="true" [value]="scInputs.debitorname" matInput placeholder="Debitor">
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input [readonly]="true" [(ngModel)]="scInputs.type" matInput placeholder="Type" [formControl]="formtype">
+    <input [readonly]="true" [value]="scInputs.type" matInput placeholder="Type">
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input [readonly]="true" [(ngModel)]="scInputs.customernumber" placeholder="Customer Number" matInput [formControl]="formcustomernumber">
+    <input [readonly]="true" [value]="scInputs.customernumber" placeholder="Customer Number" matInput>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input [readonly]="true" [(ngModel)]="scInputs.customername" placeholder="Customer Name" matInput [formControl]="formcustomername">
+    <input [readonly]="true" [value]="scInputs.customername" placeholder="Customer Name" matInput>
   </mat-form-field>
 
 </mat-dialog-content>
 
-<div class="mat-elevation-z8">
-  <table>
-    <thead>
-      <tr>
-        <th class="headers">Year</th>
-        <th class="headers">Daily Rate</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let array of ratesArray; let i = index">
-        <td>{{array.year}}</td>
-        <td>{{array.dailyrate}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table mat-table [dataSource]="surchargeRatesDataSource" class="mat-elevation-z8">
+
+  <!-- Year Column -->
+  <ng-container matColumnDef="year">
+    <th mat-header-cell *matHeaderCellDef> Year </th>
+    <td mat-cell *matCellDef="let surchargeRate"> {{surchargeRate.year}} </td>
+  </ng-container>
+
+  <!-- Daily Rate Column -->
+  <ng-container matColumnDef="dailyrate">
+    <th mat-header-cell *matHeaderCellDef> Daily rate </th>
+    <td mat-cell *matCellDef="let surchargeRate"> {{surchargeRate.dailyrate}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedSurchargeRateColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedSurchargeRateColumns;"></tr>
+</table>
 
 <mat-dialog-actions>
   <button mat-fab mat-dialog-close matTooltip="Cancel" class="clear-icon">

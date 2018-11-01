@@ -177,27 +177,27 @@ export class SurchargeCustomersComponent implements OnInit, AfterViewInit {
 
   openEditDialog(rowNumber): void {
     this.selectedRowToEdit = this.mapToDataSource(rowNumber);
-    console.log(this.selectedRowToEdit);
     const dialogRef = this.dialog.open(ScEditDialogComponent, {
       width: '800px',
       disableClose: true,
       data: {
         customerId: this.dataSource.data[this.selectedRowToEdit - 1].id,
-        debitorNameData: this.dataSource.data[this.selectedRowToEdit - 1].debitorname,
-        debitorNumberData: this.dataSource.data[this.selectedRowToEdit - 1].debitornumber,
-        typeData: this.dataSource.data[this.selectedRowToEdit - 1].type,
-        customerNameData: this.dataSource.data[this.selectedRowToEdit - 1].customername,
-        customerNumberData: this.dataSource.data[this.selectedRowToEdit - 1].customernumber,
-        rateData: this.dataSource.data[this.selectedRowToEdit - 1].rates,
+        debitorName: this.dataSource.data[this.selectedRowToEdit - 1].debitorname,
+        debitorNumber: this.dataSource.data[this.selectedRowToEdit - 1].debitornumber,
+        type: this.dataSource.data[this.selectedRowToEdit - 1].type,
+        customerName: this.dataSource.data[this.selectedRowToEdit - 1].customername,
+        customerNumber: this.dataSource.data[this.selectedRowToEdit - 1].customernumber,
+        rates: this.dataSource.data[this.selectedRowToEdit - 1].rates,
       }
     });
 
     dialogRef.afterClosed().subscribe(data => {
       if (data) {
-        this.dataSource.data[this.selectedRowToEdit - 1] = data;
-        this.filter();
+        console.log(data);
         this.surchargeCustomerService.updateSurchargeCustomer(this.dataSource.data[this.selectedRowToEdit - 1]);
+        this.dataSource.data[this.selectedRowToEdit - 1] = data;
         this.selectedRowToEdit = -1;
+        this.filter();
       }
     });
   }
@@ -206,12 +206,12 @@ export class SurchargeCustomersComponent implements OnInit, AfterViewInit {
     const dialogRef = this.dialog.open(ScViewDialogComponent, {
       width: '800px',
       data: {
-        debitorNameData: this.dataSource.data[selectedRow - 1].debitorname,
-        debitorNumberData: this.dataSource.data[selectedRow - 1].debitornumber,
-        typeData: this.dataSource.data[selectedRow - 1].type,
-        customerNameData: this.dataSource.data[selectedRow - 1].customername,
-        customerNumberData: this.dataSource.data[selectedRow - 1].customernumber,
-        rateData: this.dataSource.data[selectedRow - 1].rates
+        debitorName: this.dataSource.data[selectedRow - 1].debitorname,
+        debitorNumber: this.dataSource.data[selectedRow - 1].debitornumber,
+        type: this.dataSource.data[selectedRow - 1].type,
+        customerName: this.dataSource.data[selectedRow - 1].customername,
+        customerNumber: this.dataSource.data[selectedRow - 1].customernumber,
+        rates: this.dataSource.data[selectedRow - 1].rates
       }
     });
   }
