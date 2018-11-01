@@ -5,7 +5,7 @@
 <mat-dialog-content>
 
   <mat-form-field class="full-width">
-    <input type="number" [(ngModel)]="pnInputs.customernumber" placeholder="customernumber" matInput (keyup.enter)="confirmEdit()"
+    <input type="number" [(ngModel)]="pnInputs.customernumber" placeholder="Customer Number" matInput (keyup.enter)="confirmEdit()"
       [formControl]="formcustomernumber">
     <mat-error *ngIf="formcustomernumber.invalid">
       Customernumber is <strong>required</strong>
@@ -28,14 +28,16 @@
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="number" [(ngModel)]="pnInputs.payernodenumber"  placeholder="Payernodenumber" matInput (keyup.enter)="confirmEdit()" [formControl]="formpayernodenumber">
+    <input type="number" [(ngModel)]="pnInputs.payernodenumber" placeholder="Payernode Number" matInput (keyup.enter)="confirmEdit()"
+      [formControl]="formpayernodenumber">
     <mat-error *ngIf="formpayernodenumber.invalid">
       Payernodenumber is <strong>required</strong>
     </mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="text" [(ngModel)]="pnInputs.payernodedescription" matInput placeholder="Payernodedescription" [formControl]="formpayernodedescription">
+    <input type="text" [(ngModel)]="pnInputs.payernodedescription" matInput placeholder="Payernodedescription"
+      [formControl]="formpayernodedescription">
     <mat-error *ngIf="formpayernodedescription.invalid">
       Payernodedescription is <strong>required</strong>
     </mat-error>
@@ -50,10 +52,10 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
+  <button [disabled]="pnForm.invalid" (click)="save()" mat-fab matTooltip="Confirm" class="done-icon">
+    <mat-icon>done</mat-icon>
+  </button>
   <button mat-fab mat-dialog-close matTooltip="Cancel" class="clear-icon">
     <mat-icon>clear</mat-icon>
-  </button>
-  <button (click)="save()" mat-fab matTooltip="Confirm" class="done-icon">
-    <mat-icon>done</mat-icon>
   </button>
 </mat-dialog-actions>
