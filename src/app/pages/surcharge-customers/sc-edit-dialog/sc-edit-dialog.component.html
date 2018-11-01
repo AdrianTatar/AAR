@@ -13,7 +13,13 @@
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input [(ngModel)]="scInputs.type" matInput placeholder="Type" [formControl]="formtype">
+    <mat-select [(ngModel)]="scInputs.type" placeholder="Type" [formControl]="formtype">
+      <mat-option>None</mat-option>
+      <mat-option value="Fremdbanken">Fremdbanken</mat-option>
+      <mat-option value="Sektorbanken">Sektorbanken</mat-option>
+      <mat-option value="Sonstige Sektor">Sonstige Sektor</mat-option>
+      <mat-option value="Sonstige Fremdfirmen">Sonstige Fremdfirmen</mat-option>
+    </mat-select>
   </mat-form-field>
 
   <mat-form-field class="full-width">

@@ -4,6 +4,7 @@
 
       <!-- Debitornumber Column -->
       <ng-container matColumnDef="debitornumber">
+        <!-- Debitornumber Header -->
         <th mat-header-cell *matHeaderCellDef class="header">
           Debitor Number
           <button mat-icon-button (click)="debitornumberSearch = !debitornumberSearch; clearSearchInputBox()">
@@ -16,26 +17,17 @@
             </mat-form-field>
           </div>
         </th>
+        <!-- Debitornumber Cell -->
         <td mat-cell *matCellDef="let element" (click)="openViewDialog(mapToDataSource(element.id))">
-          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
-            <mat-form-field>
-              <input class="input-value" [(ngModel)]="scInputs.debitornumber" matInput (keyup.enter)="confirmEdit()"
-                [formControl]="formDebitornumber">
-              <mat-error *ngIf="formDebitornumber.invalid">
-                Debitornumber is <strong>required</strong>
-              </mat-error>
-            </mat-form-field>
+          <div>
+            {{ element.debitornumber }}
           </div>
-          <ng-template #simpleDisplay>
-            <div>
-              {{ element.debitornumber }}
-            </div>
-          </ng-template>
         </td>
       </ng-container>
 
       <!-- Debitorname Column -->
       <ng-container matColumnDef="debitorname">
+        <!-- Debitorname Header -->
         <th mat-header-cell *matHeaderCellDef class="header">
           Debitor
           <button mat-icon-button (click)="debitornameSearch = !debitornameSearch; clearSearchInputBox()">
@@ -47,26 +39,17 @@
             </mat-form-field>
           </div>
         </th>
+        <!-- Debitorname Cell -->
         <td mat-cell *matCellDef="let element" (click)="openViewDialog(mapToDataSource(element.id))">
-          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
-            <mat-form-field>
-              <input type="text" [(ngModel)]="scInputs.debitorname" matInput (keyup.enter)="confirmEdit()"
-                [formControl]="formDebitorname">
-              <mat-error *ngIf="formDebitorname.invalid">
-                Debitorname is <strong>required</strong>
-              </mat-error>
-            </mat-form-field>
+          <div>
+            {{ element.debitorname }}
           </div>
-          <ng-template #simpleDisplay>
-            <div>
-              {{ element.debitorname }}
-            </div>
-          </ng-template>
         </td>
       </ng-container>
 
       <!-- Type Column -->
       <ng-container matColumnDef="type">
+        <!-- Type Header -->
         <th mat-header-cell *matHeaderCellDef class="header">
           Type
           <button mat-icon-button (click)="typeSearch = !typeSearch; clearSearchInputBox()">
@@ -77,37 +60,26 @@
             <mat-form-field>
               <mat-select [(value)]="typeSearchQuery" (selectionChange)="filter()" class="searchInput">
                 <mat-option>None</mat-option>
-                <mat-option value="fremdbanken">Fremdbanken</mat-option>
-                <mat-option value="sektorbanken">Sektorbanken</mat-option>
+                <mat-option value="Fremdbanken">Fremdbanken</mat-option>
+                <mat-option value="Sektorbanken">Sektorbanken</mat-option>
+                <mat-option value="Sonstige Sektor">Sonstige Sektor</mat-option>
+                <mat-option value="Sonstige Fremdfirmen">Sonstige Fremdfirmen</mat-option>
               </mat-select>
             </mat-form-field>
 
           </div>
         </th>
+        <!-- Type Cell -->
         <td mat-cell *matCellDef="let element" (click)="openViewDialog(mapToDataSource(element.id))">
-          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
-
-            <mat-form-field>
-              <mat-select [(ngModel)]="scInputs.type" (keyup.enter)="confirmEdit()" [formControl]="formType">
-                <mat-option>None</mat-option>
-                <mat-option value="Fremdbanken">Fremdbanken</mat-option>
-                <mat-option value="Sektorbanken">Sektorbanken</mat-option>
-              </mat-select>
-              <mat-error *ngIf="formType.invalid">
-                Type is <strong>required</strong>
-              </mat-error>
-            </mat-form-field>
+          <div>
+            {{ element.type }}
           </div>
-          <ng-template #simpleDisplay>
-            <div>
-              {{ element.type }}
-            </div>
-          </ng-template>
         </td>
       </ng-container>
 
       <!-- Customernumber Column -->
       <ng-container matColumnDef="customernumber">
+        <!-- Customernumber Header -->
         <th mat-header-cell *matHeaderCellDef class="header">
           Customer Id
           <button mat-icon-button (click)="customernumberSearch = !customernumberSearch; clearSearchInputBox();">
@@ -120,26 +92,17 @@
             </mat-form-field>
           </div>
         </th>
+        <!-- Customernumber Cell -->
         <td mat-cell *matCellDef="let element" (click)="openViewDialog(mapToDataSource(element.id))">
-          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
-            <mat-form-field>
-              <input type="number" [(ngModel)]="scInputs.customernumber" matInput (keyup.enter)="confirmEdit()"
-                [formControl]="formCustomernumber">
-              <mat-error *ngIf="formCustomernumber.invalid">
-                Kunden Number is <strong>required</strong>
-              </mat-error>
-            </mat-form-field>
+          <div>
+            {{ element.customernumber }}
           </div>
-          <ng-template #simpleDisplay>
-            <div>
-              {{ element.customernumber }}
-            </div>
-          </ng-template>
         </td>
       </ng-container>
 
       <!-- Customername Column -->
       <ng-container matColumnDef="customername">
+        <!-- Customername Header -->
         <th mat-header-cell *matHeaderCellDef class="header">
           Customer Name
           <button mat-icon-button (click)="customernameSearch = !customernameSearch; clearSearchInputBox();">
@@ -151,29 +114,22 @@
             </mat-form-field>
           </div>
         </th>
+        <!-- Customername Cell -->
         <td mat-cell *matCellDef="let element" (click)="openViewDialog(mapToDataSource(element.id))">
-          <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
-            <mat-form-field>
-              <input [(ngModel)]="scInputs.customername" matInput (keyup.enter)="confirmEdit()" [formControl]="formCustomername">
-              <mat-error *ngIf="formCustomername.invalid">
-                Customername is <strong>required</strong>
-              </mat-error>
-            </mat-form-field>
+          <div>
+            {{ element.customername }}
           </div>
-          <ng-template #simpleDisplay>
-            <div>
-              {{ element.customername }}
-            </div>
-          </ng-template>
         </td>
       </ng-container>
 
-      <!-- Year Column -->
+      <!-- 2018 Rates Column -->
       <ng-container matColumnDef="year">
+        <!-- 2018 Rates Header -->
         <th mat-header-cell *matHeaderCellDef class="header">
           2018 Rates
         </th>
-        <td mat-cell *matCellDef="let row" (click)="openViewDialog(mapToDataSource(element.id))">
+        <!-- 2018 Rates Cell -->
+        <td mat-cell *matCellDef="let element" (click)="openViewDialog(mapToDataSource(element.id))">
           2018
         </td>
       </ng-container>

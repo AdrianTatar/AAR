@@ -194,9 +194,9 @@ export class SurchargeCustomersComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(data => {
       if (data) {
-        this.filteredDataSource.data[this.selectedRowToEdit - 1] = data;
-        this.surchargeCustomerService.updateSurchargeCustomer(this.filteredDataSource.data[this.selectedRowToEdit - 1]);
-        this.ngOnInit();
+        this.dataSource.data[this.selectedRowToEdit - 1] = data;
+        this.filter();
+        this.surchargeCustomerService.updateSurchargeCustomer(this.dataSource.data[this.selectedRowToEdit - 1]);
         this.selectedRowToEdit = -1;
       }
     });
@@ -263,6 +263,7 @@ export class SurchargeCustomersComponent implements OnInit, AfterViewInit {
     this.scInputs.customernumber = this.dataSource.data[rowNumber - 1].customernumber;
     this.scInputs.customername = this.dataSource.data[rowNumber - 1].customername;
   }
+
   private mapToDataSource(elementId) {
     let pos = 0;
     for (let i = 0; i < this.dataSource.data.length; i++) {

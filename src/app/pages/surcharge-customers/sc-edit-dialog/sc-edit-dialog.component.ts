@@ -58,6 +58,7 @@ export class ScEditDialogComponent implements OnInit {
     private surchargeCustomersService: SurchargeCustomersService,
     private dialogRef: MatDialogRef<ScEditDialogComponent>
   ) {
+
     this.scForm = new FormGroup({
       debitorenumber: new FormControl('', Validators.required),
       debitorname: new FormControl('', Validators.required),
