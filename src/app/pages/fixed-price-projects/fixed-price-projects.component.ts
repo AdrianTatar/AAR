@@ -48,7 +48,6 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
   };
 
   async ngOnInit() {
-    this.dataSource.paginator = this.paginator;
     this.selectedRow = 0;
 
     this.fppForm = new FormGroup({
@@ -67,6 +66,7 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
     this.filteredDataSource.paginator = this.paginator;
   }
 
@@ -100,18 +100,18 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
 
     this.filteredDataSource.data = (this.customernumberSearchQuery) ?
       this.filteredDataSource.data
-      .sort(function(a: FixedPriceProject, b: FixedPriceProject) { return a.customernumber - b.customernumber; })
-      .filter(p => p.customernumber
-        .toString()
-        .includes(this.customernumberSearchQuery.toString()))
+        .sort(function (a: FixedPriceProject, b: FixedPriceProject) { return a.customernumber - b.customernumber; })
+        .filter(p => p.customernumber
+          .toString()
+          .includes(this.customernumberSearchQuery.toString()))
       : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.priceSearchQuery) ?
       this.filteredDataSource.data
-      .sort(function(a: FixedPriceProject, b: FixedPriceProject) { return a.price - b.price; })
-      .filter(p => p.price
-        .toString()
-        .includes(this.priceSearchQuery.toString()))
+        .sort(function (a: FixedPriceProject, b: FixedPriceProject) { return a.price - b.price; })
+        .filter(p => p.price
+          .toString()
+          .includes(this.priceSearchQuery.toString()))
       : this.filteredDataSource.data;
   }
 
@@ -184,8 +184,8 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
     data.id = this.dataSource.data[this.dataSource.data.length - 1].id + 1;
     this.dataSource.data.push(data);
     this.filteredDataSource.data = this.dataSource.data;
-    this.dataSource._updatePaginator(this.dataSource.data.length);
-    this.paginator._changePageSize(this.paginator.pageSize);
+    this.filteredDataSource._updatePaginator(this.dataSource.data.length);
+    this.filteredDataSource.paginator.lastPage();
   }
 
   private selectRow(rowNumber) {
