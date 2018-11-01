@@ -3,21 +3,21 @@
 </div>
 
 <mat-dialog-content>
+  <form [formGroup]="scForm">
+    <mat-form-field class="full-width">
+      <input type="number" [(ngModel)]="scInputs.year" matInput placeholder="Year" [formControl]="formyear">
+      <mat-error *ngIf="formyear.invalid">
+        year is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field class="full-width">
-    <input type="number" [(ngModel)]="scInputs.year" matInput placeholder="Year" [formControl]="formyear">
-    <mat-error *ngIf="formyear.invalid">
-      year is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field class="full-width">
-    <input type="number" [(ngModel)]="scInputs.dailyrate" matInput placeholder="Dailyrate" [formControl]="formdailyrate">
-    <mat-error *ngIf="formdailyrate.invalid">
-      dailyrate is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
-
+    <mat-form-field class="full-width">
+      <input type="number" [(ngModel)]="scInputs.dailyrate" matInput placeholder="Dailyrate" [formControl]="formdailyrate">
+      <mat-error *ngIf="formdailyrate.invalid">
+        dailyrate is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
 </mat-dialog-content>
 
 <mat-dialog-actions>

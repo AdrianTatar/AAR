@@ -3,27 +3,27 @@
 </div>
 
 <mat-dialog-content>
+  <form [formGroup]="scForm">
+    <mat-form-field class="full-width">
+      <input [readonly]="true" [value]="scInputs.debitornumber" matInput placeholder="Debitor Number">
+    </mat-form-field>
 
-  <mat-form-field class="full-width">
-    <input [readonly]="true" [value]="scInputs.debitornumber" matInput placeholder="Debitor Number">
-  </mat-form-field>
+    <mat-form-field class="full-width">
+      <input [readonly]="true" [value]="scInputs.debitorname" matInput placeholder="Debitor">
+    </mat-form-field>
 
-  <mat-form-field class="full-width">
-    <input [readonly]="true" [value]="scInputs.debitorname" matInput placeholder="Debitor">
-  </mat-form-field>
+    <mat-form-field class="full-width">
+      <input [readonly]="true" [value]="scInputs.type" matInput placeholder="Type">
+    </mat-form-field>
 
-  <mat-form-field class="full-width">
-    <input [readonly]="true" [value]="scInputs.type" matInput placeholder="Type">
-  </mat-form-field>
+    <mat-form-field class="full-width">
+      <input [readonly]="true" [value]="scInputs.customernumber" placeholder="Customer Number" matInput>
+    </mat-form-field>
 
-  <mat-form-field class="full-width">
-    <input [readonly]="true" [value]="scInputs.customernumber" placeholder="Customer Number" matInput>
-  </mat-form-field>
-
-  <mat-form-field class="full-width">
-    <input [readonly]="true" [value]="scInputs.customername" placeholder="Customer Name" matInput>
-  </mat-form-field>
-
+    <mat-form-field class="full-width">
+      <input [readonly]="true" [value]="scInputs.customername" placeholder="Customer Name" matInput>
+    </mat-form-field>
+  </form>
 </mat-dialog-content>
 
 <table mat-table [dataSource]="surchargeRatesDataSource" class="mat-elevation-z8">

@@ -3,30 +3,31 @@
 </div>
 
 <mat-dialog-content>
+  <form [formGroup]="scForm">
+    <mat-form-field class="full-width">
+      <input type="number" [(ngModel)]="scInputs.debitornumber" matInput placeholder="Debitor Number" [formControl]="formdebitornumber">
+    </mat-form-field>
 
-  <mat-form-field class="full-width">
-    <input type="number" [(ngModel)]="scInputs.debitornumber" matInput placeholder="Debitor Number" [formControl]="formdebitornumber">
-  </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" [(ngModel)]="scInputs.debitorname" matInput placeholder="Debitor" [formControl]="formdebitorname">
+    </mat-form-field>
 
-  <mat-form-field class="full-width">
-    <input type="text" [(ngModel)]="scInputs.debitorname" matInput placeholder="Debitor" [formControl]="formdebitorname">
-  </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-select [(ngModel)]="scInputs.type" placeholder="Type" [formControl]="formtype">
+        <mat-option>None</mat-option>
+        <mat-option value="fremdbanken">Fremdbanken</mat-option>
+        <mat-option value="sektorbanken">Sektorbanken</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <mat-form-field class="full-width">
-    <mat-select [(ngModel)]="scInputs.type" placeholder="Type" [formControl]="formtype">
-      <mat-option>None</mat-option>
-      <mat-option value="fremdbanken">Fremdbanken</mat-option>
-      <mat-option value="sektorbanken">Sektorbanken</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="number" [(ngModel)]="scInputs.customernumber" placeholder="Customer Number" matInput [formControl]="formcustomernumber">
+    </mat-form-field>
 
-  <mat-form-field class="full-width">
-    <input type="number" [(ngModel)]="scInputs.customernumber" placeholder="Customer Number" matInput [formControl]="formcustomernumber">
-  </mat-form-field>
-
-  <mat-form-field class="full-width">
-    <input [(ngModel)]="scInputs.customername" placeholder="Customer Name" matInput [formControl]="formcustomername">
-  </mat-form-field>
+    <mat-form-field class="full-width">
+      <input [(ngModel)]="scInputs.customername" placeholder="Customer Name" matInput [formControl]="formcustomername">
+    </mat-form-field>
+  </form>
 
   <form id="rates-inputs">
     <mat-form-field class="half-width">
@@ -41,11 +42,9 @@
       <mat-icon>add</mat-icon>
     </button>
   </form>
-
 </mat-dialog-content>
 
 <table mat-table [dataSource]="surchargeRatesDataSource" class="mat-elevation-z8">
-
   <!-- Year Column -->
   <ng-container matColumnDef="year">
     <th mat-header-cell *matHeaderCellDef> Year </th>

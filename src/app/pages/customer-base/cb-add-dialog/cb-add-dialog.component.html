@@ -3,49 +3,50 @@
 </div>
 
 <mat-dialog-content>
+  <form [formGroup]="cbForm">
+    <mat-form-field class="full-width">
+      <input type="number" [(ngModel)]="cbInputs.blz" placeholder="Blz" matInput [formControl]="formblz">
+      <mat-error *ngIf="formblz.invalid">
+        Blz is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field class="full-width">
-    <input type="number" [(ngModel)]="cbInputs.blz" placeholder="Blz" matInput [formControl]="formblz">
-    <mat-error *ngIf="formblz.invalid">
-      Blz is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" [(ngModel)]="cbInputs.block" placeholder="Block" [formControl]="formblock" matInput
+        (keyup.enter)="confirmEdit()">
+      <mat-error *ngIf="formblock.invalid">
+        Block is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field class="full-width">
-    <input type="text" [(ngModel)]="cbInputs.block" placeholder="Block" [formControl]="formblock" matInput
-      (keyup.enter)="confirmEdit()">
-    <mat-error *ngIf="formblock.invalid">
-      Block is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" [(ngModel)]="cbInputs.node" type="text" matInput placeholder="Nodes" [formControl]="formnode">
+      <mat-error *ngIf="formnode.invalid">
+        Node is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field class="full-width">
-    <input type="text" [(ngModel)]="cbInputs.node" type="text" matInput placeholder="Nodes" [formControl]="formnode">
-    <mat-error *ngIf="formnode.invalid">
-      Node is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" [(ngModel)]="cbInputs.customername" matInput placeholder="Customer Name" [formControl]="formcustomername">
+      <mat-error *ngIf="formcustomername.invalid">
+        Customer name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field class="full-width">
-    <input type="text" [(ngModel)]="cbInputs.customername" matInput placeholder="Customer Name" [formControl]="formcustomername">
-    <mat-error *ngIf="formcustomername.invalid">
-      Customer name is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" [(ngModel)]="cbInputs.bankgroup" matInput placeholder="Bank Group" [formControl]="formbankgroup">
+      <mat-error *ngIf="formbankgroup.invalid">
+        Bankgroup is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field class="full-width">
-    <input type="text" [(ngModel)]="cbInputs.bankgroup" matInput placeholder="Bank Group" [formControl]="formbankgroup">
-    <mat-error *ngIf="formbankgroup.invalid">
-      Bankgroup is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field class="full-width">
-    <input type="text" [(ngModel)]="cbInputs.cluster" matInput placeholder="Cluster" [formControl]="formcluster">
-    <mat-error *ngIf="formcluster.invalid">
-      cluster is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" [(ngModel)]="cbInputs.cluster" matInput placeholder="Cluster" [formControl]="formcluster">
+      <mat-error *ngIf="formcluster.invalid">
+        cluster is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
 </mat-dialog-content>
 
 <mat-dialog-actions>
