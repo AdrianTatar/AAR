@@ -192,11 +192,11 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
     this.filter();
   }
 
-  private pushObject(data: PayerNode) {
+  async pushObject(data: PayerNode) {
     data.id = this.dataSource.data[this.dataSource.data.length - 1].id + 1;
     this.dataSource.data.push(data);
     this.filteredDataSource.data = this.dataSource.data;
-    this.filteredDataSource._updatePaginator(this.dataSource.data.length);
+    await this.filteredDataSource._updatePaginator(this.dataSource.data.length);
     this.filteredDataSource.paginator.lastPage();
   }
 
