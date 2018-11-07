@@ -1,7 +1,6 @@
 import { Scenario } from './../../shared/models/scenario';
 import { ExportService } from './services/export.service';
 import { Component } from '@angular/core';
-import { saveAs } from 'file-saver';
 import { MatSnackBar } from '@angular/material';
 
 @Component({
