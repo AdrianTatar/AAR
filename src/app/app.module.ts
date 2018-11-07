@@ -13,7 +13,7 @@ import { SharedModule } from './shared/shared.module';
     AppComponent,
     NavbarComponent,
     routingComponents,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

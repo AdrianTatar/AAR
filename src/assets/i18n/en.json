@@ -3,7 +3,7 @@
   "CustomerBase": "Customer Base",
   "FixedPriceProjects": "Fixed Price Projects",
   "SurchargeCustomers": "Surcharge Customers",
-  "Logs": "User Actions",
+  "UserActions": "User Actions",
 
   "Number": "#",
   "NameFPP": "Name",

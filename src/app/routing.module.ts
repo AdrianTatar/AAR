@@ -9,7 +9,7 @@ const appRoutes: Routes = [
   { path: 'surcharge-customers', loadChildren: './pages/surcharge-customers/sc.module#ScModule', data: { page: 'thre' }},
   { path: 'payer-nodes', loadChildren: './pages/payer-nodes/pn.module#PnModule', data: { page: 'four' }},
   { path: 'customer-base', loadChildren: './pages/customer-base/customerbase.module#CustomerBaseModule', data: { page: 'five' }},
-  { path: 'logs', loadChildren: './pages/logs/logs.module#LogsModule', data: { page: 'six' } },
+  { path: 'user-actions', loadChildren: './pages/user-actions/user-actions.module#UserActionsModule', data: { page: 'six' } },
   { path: 'export', loadChildren: './pages/export/export.module#ExpModule', data: { page: 'seven'}},
   { path: '**', component: NotFoundComponent }
 ];
