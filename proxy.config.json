@@ -47,5 +47,15 @@
     "pathRewrite":{
       "^/payerNode":""
     }
+  },
+
+  "/export": {
+    "target": "http://localhost:8080/aarREST/rest/export",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite":{
+      "^/export":""
+    }
   }
 }
