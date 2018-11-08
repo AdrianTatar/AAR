@@ -13,7 +13,7 @@ export class UserActionsCreateService {
 
   private userActionUrl = '/userAction';
   private savePath = '/create';
-  
+
   constructor(private http: HttpClient) { }
   
   // FIXME: User hardcodat.
