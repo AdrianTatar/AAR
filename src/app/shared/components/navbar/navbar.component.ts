@@ -16,7 +16,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
   }
 
-
   constructor(
     public dialog: MatDialog,
     private translate: TranslateService,

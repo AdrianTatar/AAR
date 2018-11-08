@@ -45,30 +45,40 @@ export class UserActionsComponent implements OnInit, AfterViewInit {
 
   constructor(
     public dialog: MatDialog,
-    private userActionsService: UserActionsService
-  ) { }
+    private userActionsService: UserActionsService) {
+  }
+
+  private convertDateForFilter(date) {
+    return date.year.toString() + '.'
+      + (date.monthValue < 10 ? '0' + date.monthValue.toString() : date.monthValue.toString()) + '.'
+      + (date.dayOfMonth < 10 ? '0' + date.dayOfMonth.toString() : date.dayOfMonth.toString()) + ' '
+      + (date.hour < 10 ? '0' + date.hour.toString() : date.hour.toString()) + ':'
+      + (date.minute < 10 ? '0' + date.minute.toString() : date.minute.toString()) + ':'
+      + (date.second < 10 ? '0' + date.second.toString() : date.second.toString());
+  }
 
   filter() {
+    this.paginator.firstPage();
     this.filteredDataSource.data = this.dataSource.data;
 
     this.filteredDataSource.data = (this.logIdSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.id === this.logIdSearchQuery)
+      this.dataSource.data.filter(p => p.id.toString().toLocaleLowerCase()
+        .includes(this.logIdSearchQuery.toString().trim().toLocaleLowerCase()))
+      : this.dataSource.data;
+
+    this.filteredDataSource.data = (this.timestampSearchQuery) ?
+      this.filteredDataSource.data.filter(p => this.convertDateForFilter(p.time)
+        .includes(this.timestampSearchQuery.trim().toLocaleLowerCase()))
       : this.filteredDataSource.data;
 
-    // TODO Redo Date Filter
-    // this.filteredDataSource.data = (this.timestampSearchQuery) ?
-    //   this.filteredDataSource.data.filter(p => p.timestamp.toDateString()
-    //     .includes(this.timestampSearchQuery.toLocaleLowerCase()))
-    //   : this.filteredDataSource.data;
-
     this.filteredDataSource.data = (this.userIdSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.userid.toLocaleLowerCase()
-        .includes(this.userIdSearchQuery.toLocaleLowerCase()))
+      this.dataSource.data.filter(p => p.userId.toLocaleLowerCase()
+        .includes(this.userIdSearchQuery.trim().toLocaleLowerCase()))
       : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.actionSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.action.toLocaleLowerCase()
-        .includes(this.actionSearchQuery.toLocaleLowerCase()))
+      this.dataSource.data.filter(p => p.action.toLocaleLowerCase()
+        .includes(this.actionSearchQuery.trim().toLocaleLowerCase()))
       : this.filteredDataSource.data;
   }
 

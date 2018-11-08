@@ -16,5 +16,17 @@
 
   "ExportButton": "Export",
   "AddRow": "Add Row",
-  "Logout": "Log out"
+  "Logout": "Log out",
+
+  "PopulateUserActions" : {
+    "FPPCreate": "Created new Fixed Price Project.",
+    "FPPEdit": "Edited Fixed Price Project.",
+    "SCCreate": "Created new Surcharge Customer.",
+    "SCEdit": "Edited Surcharge Customer.",
+    "PNCreate": "Created new Payer Node.",
+    "PNEdit": "Edited Payer Node.",
+    "CBCreate": "Created new Customer Base.",
+    "CBEdit": "Edited Customer Base.",
+    "GenerateAAR": "Generated Automatisierte Aufschlagsrechnung."
+  }
 }

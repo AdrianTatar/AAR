@@ -91,9 +91,9 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
     this.filteredDataSource.data = (this.blockSearchQuery) ?
       // tslint:disable-next-line:max-line-length
       this.dataSource.data
-       .filter(p => p.block
-        .toLocaleLowerCase()
-        .includes(this.blockSearchQuery.trim().toLocaleLowerCase()))
+        .filter(p => p.block
+          .toLocaleLowerCase()
+          .includes(this.blockSearchQuery.trim().toLocaleLowerCase()))
       : this.dataSource.data;
 
     this.filteredDataSource.data = (this.nodeSearchQuery) ?
@@ -119,8 +119,8 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
 
     this.filteredDataSource.data = (this.blzSearchQuery) ?
       this.filteredDataSource.data
-      .sort(function(a: CustomerBase, b: CustomerBase) { return a.blz - b.blz; })
-      .filter(p => p.blz.toString().includes(this.blzSearchQuery.toString()))
+        .sort(function (a: CustomerBase, b: CustomerBase) { return a.blz - b.blz; })
+        .filter(p => p.blz.toString().includes(this.blzSearchQuery.toString()))
       : this.filteredDataSource.data;
   }
 

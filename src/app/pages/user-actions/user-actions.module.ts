@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UserActionsRoutingModule, userActionsRoutingComponents } from './user-actions-routing.module';
 import { UserActionsService } from './services/user-actions.service';
 import { SharedModule } from '../../shared/shared.module';
+import { TimestampPipe } from './utils/TimestampPipe';
 
 @NgModule({
   imports: [
@@ -11,7 +12,8 @@ import { SharedModule } from '../../shared/shared.module';
     SharedModule
   ],
   declarations: [
-    userActionsRoutingComponents
+    userActionsRoutingComponents,
+    TimestampPipe
   ],
   providers: [
     UserActionsService
