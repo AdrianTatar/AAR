@@ -13,8 +13,10 @@ export class UserActionsCreateService {
 
   private userActionUrl = '/userAction';
   private savePath = '/create';
+  
   constructor(private http: HttpClient) { }
-
+  
+  // FIXME: User hardcodat.
   public createUserAction(action: string) {
     const userAction = {} as UserAction;
     userAction.action = action;
