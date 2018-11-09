@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild, HostListener, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { languageChange } from '../../animations';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,21 +11,19 @@ import { languageChange } from '../../animations';
   styleUrls: ['./navbar.component.css'],
   animations: [languageChange]
 })
-export class NavbarComponent implements OnInit, AfterViewInit {
+export class NavbarComponent {
 
   language = 'EN';
-  image = '';
-  ngAfterViewInit(): void {
-  }
 
   constructor(
     public dialog: MatDialog,
-    private translate: TranslateService,
-    public snackBar: MatSnackBar
+    public translate: TranslateService,
+    public snackBar: MatSnackBar,
+    public router: Router,
+    public cookieService: CookieService
   ) {
     translate.setDefaultLang('en');
     this.language = 'EN';
-    this.image = '../../assets/resources/united-kingdom.png';
   }
 
   switchLanguage(language: string) {
@@ -31,10 +31,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.language = language.toUpperCase();
 
     if (this.language === 'EN') {
-      this.image = '../../assets/resources/united-kingdom.png';
       this.openSnackBar('English language.', '');
     } else {
-      this.image = '../../assets/resources/germany.png';
       this.openSnackBar('Deutsch Sprache.', '');
     }
   }
@@ -46,5 +44,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngOnInit() { }
+  private logout() {
+    this.cookieService.delete('username');
+    this.router.navigate(['']);
+  }
 }

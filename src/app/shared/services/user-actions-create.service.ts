@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserAction } from '../models/user.actions';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,14 +15,16 @@ export class UserActionsCreateService {
   private userActionUrl = '/userAction';
   private savePath = '/create';
 
-  constructor(private http: HttpClient) { }
-  
-  // FIXME: User hardcodat.
+  constructor(
+    private http: HttpClient,
+    private cookieService: CookieService
+    ) { }
+
   public createUserAction(action: string) {
     const userAction = {} as UserAction;
     userAction.action = action;
     userAction.time = this.createTodayDateAsTimestamp();
-    userAction.userId = 'hardcodat@urss.ro';
+    userAction.userId = this.cookieService.get('username');
 
     return this.http.post<UserAction>(this.userActionUrl + this.savePath,
       JSON.stringify(userAction), httpOptions).subscribe(res => {

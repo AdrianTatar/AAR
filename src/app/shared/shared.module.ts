@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { MaterialsModule } from './materials.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
 import { UserActionsCreateService } from './services/user-actions-create.service';
 import { TranslateModule } from '@ngx-translate/core';
@@ -20,7 +21,8 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule
   ],
   providers: [
-    UserActionsCreateService
+    UserActionsCreateService,
+    CookieService
   ]
 })
 export class SharedModule { }

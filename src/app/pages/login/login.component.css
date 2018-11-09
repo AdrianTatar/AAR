@@ -1,4 +1,4 @@
-#background-container{
+#background-container {
   position: fixed;
   left: 0;
   top: 0;
@@ -11,7 +11,7 @@
   background-size: cover;
 }
 
-#logo-container{
+#logo-container {
   position: fixed;
   width: 100%;
   height: 9%;
@@ -20,7 +20,7 @@
   top: 6%;
 }
 
-#logo{
+#logo {
   position: fixed;
   left: 45%;
   width: 11%;
@@ -30,35 +30,36 @@
   background-size: contain;
 }
 
-#main-container{
+#main-container {
   position: fixed;
   width: 20%;
   height: 45%;
   left: 40%;
   top: 17%;
 }
-#second-container{
+
+#second-container {
   position: relative;
-  height:70%;
+  height: 70%;
   width: 100%;
   top: 1%;
   left: 0;
 }
 
-#login-form-container{
+#login-form-container {
   position: relative;
   top: 10%;
   left: 0;
 }
 
-.input-containers{
+.input-containers {
   position: relative;
   left: 0;
   width: 100%;
   height: 30%;
 }
 
-.input-forms{
+.input-forms {
   position: relative;
   background-color: white;
   color: black;
@@ -71,14 +72,14 @@
   border-radius: 4px;
 }
 
-#login-btn-container{
+#login-btn-container {
   position: relative;
   top: 8%;
   width: 100%;
   height: 30%;
 }
 
-#login-btn{
+#login-btn {
   position: relative;
   font-weight: bold;
   font-size: 20px;
@@ -90,7 +91,7 @@
   border-radius: 4px;
 }
 
-#issue-container{
+#issue-container {
   position: relative;
   color: white;
   width: 105%;
@@ -99,7 +100,8 @@
   font-weight: bold;
   cursor: pointer;
 }
-#copyright-container{
+
+#copyright-container {
   position: fixed;
   font-size: 18px;
   bottom: 1.7%;
@@ -107,4 +109,26 @@
   left: 26%;
   color: white;
   text-align: center;
+}
+
+.alert {
+  margin-top: 2px;
+  width: 100%;
+  padding: 10px;
+  background-color: #f44336;
+  color: white;
+}
+
+.elementToFadeInAndOut {
+  opacity: 1;
+  animation: fade 2s linear;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0
+  }
+  40% {
+    opacity: 1
+  }
 }

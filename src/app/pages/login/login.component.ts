@@ -1,19 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { AuthService } from '../../shared/services/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  constructor(private router1: Router) { }
-  ngOnInit() {}
-  navigate() {
-    this.router1.navigate(['fixed-prices']);
+  username;
+  password;
+  response = true;
+
+  constructor(
+    public authService: AuthService,
+    private cookieService: CookieService,
+    private router: Router
+  ) { }
+
+  loginUser() {
+    if (!this.username || !this.password) {
+      this.response = false;
+      return false;
+    }
+    this.response = this.authService.getUserDetails(this.username, this.password);
+    if (this.response === true) {
+      this.cookieService.set('username', this.username);
+      this.router.navigate(['fixed-prices']);
+    }
   }
 }
-
-

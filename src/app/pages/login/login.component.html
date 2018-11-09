@@ -12,12 +12,16 @@
           <div class="input-containers">
             <input class="input-forms" placeholder="Password" [(ngModel)]="password" type="password" name="password"
               required>
+            <div *ngIf="!response" class="alert elementToFadeInAndOut">
+              Invalid username or password.
+            </div>
+
           </div>
         </form>
         <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
       </mat-card-content>
       <div id="login-btn-container">
-        <button mat-raised-button id="login-btn" (click)="navigate()">Log in to URSS</button>
+        <button mat-raised-button id="login-btn" (click)="loginUser()">Log in to URSS</button>
       </div>
       <div id="issue-container" onclick='alert("Credentials recover site");'>Can't log in?</div>
     </div>
