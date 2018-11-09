@@ -1,11 +1,10 @@
 import { CbAddDialogComponent } from './cb-add-dialog/cb-add-dialog.component';
 import { CustomerBase } from './../../shared/models/customerbase';
-import { Component, OnInit, ViewChild, HostListener, AfterViewInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, AfterViewInit, AfterViewChecked, ElementRef } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { CustomerBaseService } from './services/customer-base.service';
-
 @Component({
   selector: 'app-customerbase',
   templateUrl: './customerbase.component.html',
@@ -18,7 +17,9 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<CustomerBase>();
   filteredDataSource = new MatTableDataSource<CustomerBase>();
   customerBase: CustomerBase[];
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  selectedPageSize = 5;
   selectedRowToEdit = -1;
   selectedRow = -1;
 
@@ -71,13 +72,13 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.filteredDataSource.paginator = this.paginator;
-  }
 
-  // ngAfterContentInit() {
-  //   document.addEventListener('click', function (event) {
-  //     document.getElementById('mat-select-0').blur();
-  //   });
-  // }
+    document.addEventListener('click', function (event) {
+      if (document.getElementById('mat-select-0')) {
+        document.getElementById('mat-select-0').blur();
+      }
+    });
+  }
 
   constructor(
     public dialog: MatDialog, private customerBaseService: CustomerBaseService
@@ -86,10 +87,7 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
   filter() {
     this.filteredDataSource.data = this.dataSource.data;
 
-    // console.log(this.blzSearchQuery);
-
     this.filteredDataSource.data = (this.blockSearchQuery) ?
-      // tslint:disable-next-line:max-line-length
       this.dataSource.data
         .filter(p => p.block
           .toLocaleLowerCase()
@@ -148,14 +146,34 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
     return this.cbForm.get('cluster');
   }
 
+  triggerBlur() {
+  }
+
   @HostListener('document:keydown', ['$event']) handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.key === 'ArrowUp') {
-      this.selectedRow -= (this.selectedRow === 0 ? 0 : 1);
-    } else if (event.key === 'ArrowDown'
-      && ((this.selectedRow + 1) / this.paginator.pageSize < 1)
-      && (this.selectedRow + 1 < this.dataSource.data.length)) {
-      // Formula in the if statement is used to not let the selected row go to another page -it keeps it on the current page
-      this.selectedRow += (this.selectedRow === this.dataSource.data.length ? 0 : 1);
+    if (event.key === 'ArrowDown') {
+      if (!this.paginator.hasNextPage()) {
+        if (this.selectedRow < (this.paginator.length % this.paginator.pageSize) - 1) {
+          this.selectedRow++;
+        }
+      } else {
+        this.selectedRow++;
+      }
+      if (this.selectedRow === this.paginator.pageSize && this.paginator.hasNextPage()) {
+        this.paginator.nextPage();
+        this.selectedRow = 0;
+      }
+    } else if (event.key === 'ArrowUp') {
+      if (!this.paginator.hasPreviousPage()) {
+        if (this.selectedRow !== 0) {
+          this.selectedRow--;
+        }
+      } else {
+        this.selectedRow--;
+      }
+      if (this.selectedRow === -1 && this.paginator.hasPreviousPage()) {
+        this.paginator.previousPage();
+        this.selectedRow = this.paginator.pageSize - 1;
+      }
     }
   }
 

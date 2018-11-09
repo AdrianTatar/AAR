@@ -72,6 +72,12 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.filteredDataSource.paginator = this.paginator;
+
+    document.addEventListener('click', function (event) {
+      if (document.getElementById('mat-select-0')) {
+        document.getElementById('mat-select-0').blur();
+      }
+    });
   }
 
   constructor(
@@ -82,11 +88,11 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
     /* In cazul in care Customer Number din baza de date se va transforma din STRING in INT aici o sa avem o eroare in cod.*/
     this.filteredDataSource.data = (this.customernumberSearchQuery) ?
       this.filteredDataSource.data
-      .sort(function(a: PayerNode, b: PayerNode) { return parseInt(a.customernumber, 10) - parseInt(b.customernumber, 10); })
-      .filter(p => p.customernumber
-        .toString()
-        .toLocaleLowerCase()
-        .includes(this.customernumberSearchQuery.toString().toLocaleLowerCase()))
+        .sort(function (a: PayerNode, b: PayerNode) { return parseInt(a.customernumber, 10) - parseInt(b.customernumber, 10); })
+        .filter(p => p.customernumber
+          .toString()
+          .toLocaleLowerCase()
+          .includes(this.customernumberSearchQuery.toString().toLocaleLowerCase()))
       : this.dataSource.data;
 
     this.filteredDataSource.data = (this.customernameSearchQuery) ?
@@ -103,7 +109,7 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
 
     this.filteredDataSource.data = (this.payernodenumberSearchQuery) ?
       this.filteredDataSource.data
-        .sort(function(a: PayerNode, b: PayerNode) { return a.payernodenumber - b.payernodenumber; })
+        .sort(function (a: PayerNode, b: PayerNode) { return a.payernodenumber - b.payernodenumber; })
         .filter(p => p.payernodenumber
           .toString()
           .includes(this.payernodenumberSearchQuery.toString()))
@@ -145,13 +151,30 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
   }
 
   @HostListener('document:keydown', ['$event']) handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.key === 'ArrowUp') {
-      this.selectedRow -= (this.selectedRow === 0 ? 0 : 1);
-    } else if (event.key === 'ArrowDown'
-      && ((this.selectedRow + 1) / this.paginator.pageSize < 1)
-      && (this.selectedRow + 1 < this.dataSource.data.length)) {
-      // Formula in the if statement is used to not let the selected row go to another page -it keeps it on the current page
-      this.selectedRow += (this.selectedRow === this.dataSource.data.length ? 0 : 1);
+    if (event.key === 'ArrowDown') {
+      if (!this.paginator.hasNextPage()) {
+        if (this.selectedRow < (this.paginator.length % this.paginator.pageSize) - 1) {
+          this.selectedRow++;
+        }
+      } else {
+        this.selectedRow++;
+      }
+      if (this.selectedRow === this.paginator.pageSize && this.paginator.hasNextPage()) {
+        this.paginator.nextPage();
+        this.selectedRow = 0;
+      }
+    } else if (event.key === 'ArrowUp') {
+      if (!this.paginator.hasPreviousPage()) {
+        if (this.selectedRow !== 0) {
+          this.selectedRow--;
+        }
+      } else {
+        this.selectedRow--;
+      }
+      if (this.selectedRow === -1 && this.paginator.hasPreviousPage()) {
+        this.paginator.previousPage();
+        this.selectedRow = this.paginator.pageSize - 1;
+      }
     }
   }
 

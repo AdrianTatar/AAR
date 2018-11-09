@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, HostListener, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
@@ -68,6 +68,12 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.filteredDataSource.paginator = this.paginator;
+
+    document.addEventListener('click', function (event) {
+      if (document.getElementById('mat-select-0')) {
+        document.getElementById('mat-select-0').blur();
+      }
+    });
   }
 
   constructor(
@@ -136,13 +142,30 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
   }
 
   @HostListener('document:keydown', ['$event']) handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.key === 'ArrowUp') {
-      this.selectedRow -= (this.selectedRow === 0 ? 0 : 1);
-    } else if (event.key === 'ArrowDown'
-      && ((this.selectedRow + 1) / this.paginator.pageSize < 1)
-      && (this.selectedRow + 1 < this.dataSource.data.length)) {
-      // Formula in the if statement is used to not let the selected row go to another page -it keeps it on the current page
-      this.selectedRow += (this.selectedRow === this.dataSource.data.length ? 0 : 1);
+    if (event.key === 'ArrowDown') {
+      if (!this.paginator.hasNextPage()) {
+        if (this.selectedRow < (this.paginator.length % this.paginator.pageSize) - 1) {
+          this.selectedRow++;
+        }
+      } else {
+        this.selectedRow++;
+      }
+      if (this.selectedRow === this.paginator.pageSize && this.paginator.hasNextPage()) {
+        this.paginator.nextPage();
+        this.selectedRow = 0;
+      }
+    } else if (event.key === 'ArrowUp') {
+      if (!this.paginator.hasPreviousPage()) {
+        if (this.selectedRow !== 0) {
+          this.selectedRow--;
+        }
+      } else {
+        this.selectedRow--;
+      }
+      if (this.selectedRow === -1 && this.paginator.hasPreviousPage()) {
+        this.paginator.previousPage();
+        this.selectedRow = this.paginator.pageSize - 1;
+      }
     }
   }
 
@@ -154,7 +177,6 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(data => {
       if (data) {
-        console.log(data);
         this.fixedPriceProjectService.createFixedPriceProject(data);
         this.pushObject(data);
       }
