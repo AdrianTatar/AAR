@@ -14,7 +14,7 @@
           </mat-form-field>
         </div>
         <mat-form-field>
-          <input matInput placeholder="Passwort" [(ngModel)]="password">
+          <input type="password" matInput placeholder="Passwort" [(ngModel)]="password">
         </mat-form-field>
         <div *ngIf="!response" class="wrong-credentials">
           Ungültiger Benutzername oder Kennwort.

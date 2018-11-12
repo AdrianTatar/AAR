@@ -1,5 +1,5 @@
 table {
-  width: 100%; 
+  width: 100%;
 }
 
 .align-page {
@@ -7,14 +7,15 @@ table {
 }
 
 .header {
-  background: #428bca;
   color: white;
+  background-color:#525252;
+  font-family: 'Poppins', sans-serif;
+  width: 20%;
 }
 
 .highlight {
   background-color: #eeeeee;
 }
-
 
 .selectionHeader {
   width: 40px;
@@ -25,11 +26,12 @@ table {
 }
 
 .options-menu {
-  width: 10px;
+  background-color:#525252;
+
 }
 
 .edit-icon {
-  color: #428bca;
+  color: #525252;
 }
 
 .cancel-icon {
@@ -49,7 +51,7 @@ table {
 }
 
 .add-icon {
-  background: #428bca;
+  background: #525252;
   color: white;
 }
 
@@ -62,20 +64,20 @@ table {
   float: left;
 }
 
-.full-width {
-  width: 80%;
-}
-
 ::ng-deep .mat-icon{
   height:20px !important;
   width:20px !important;
   font-size:20px !important;
 }
 
-.searchInput {
+mat-form-field.search-input {
   color: white;
 }
 
-.matInput {
-  width: 10px;
+::ng-deep .mat-input-wrapper {
+  background: white;
+}
+
+.align-items {
+  float: left;
 }

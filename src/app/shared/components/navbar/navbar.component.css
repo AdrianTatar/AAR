@@ -1,5 +1,6 @@
 mat-toolbar {
   background: white;
+  margin-top: 8px;
 }
 
 mat-form-field {
@@ -21,17 +22,24 @@ a {
 
 .logo {
   padding: 0px;
-  width: 7%;
+  width: 10%;
   height: auto;
 }
 
 .active {
   color: white;
-  background: #428bca;
+  border-bottom: 5px solid #F7FF00;
+  background-color: #525252;
+  font-family: 'Poppins', sans-serif;
+}
+
+.mat-menu-item {
+  font-family: 'Poppins', sans-serif;
 }
 
 hr {
-  margin: 10px;
+  margin-top: 10px;
+  margin-bottom: 0px;
 }
 
 .language {
@@ -52,22 +60,25 @@ hr {
 
 a {
   text-decoration: none;
-  color: rgba(0, 0, 0, .87);
+  font-family: 'Poppins', sans-serif;
+  color: #525252;
+}
+
+.snackbar-panelclass {
+  color: white;
+  background-color: #525252;
 }
 
 mat-menu {
   padding-top: 40px;
 }
 
-.export {
-  background: #feed01;
-  color: black;
-}
-
 .white-icon {
   color: white;
 }
+
 /* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
+
 .white-icon svg {
   fill: white;
 }
