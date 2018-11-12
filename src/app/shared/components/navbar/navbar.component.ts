@@ -11,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
   animations: [languageChange]
 })
 export class NavbarComponent {
-  language = 'EN';
+  language = 'DE';
 
   constructor(
     public dialog: MatDialog,
@@ -20,8 +20,8 @@ export class NavbarComponent {
     public router: Router,
     public cookieService: CookieService
   ) {
-    translate.setDefaultLang('en');
-    this.language = 'EN';
+    translate.setDefaultLang('de');
+    this.language = 'DE';
   }
 
   switchLanguage(language: string) {
