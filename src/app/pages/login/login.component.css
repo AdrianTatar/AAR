@@ -1,134 +1,89 @@
-#background-container {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
+.header {
+  margin-top: 15px;
+  padding-left: 20%;
+  margin-bottom: 20px;
+}
+
+.body {
+  position: inherit;
+  background-color: #f4f4f4;
+  height: 91.3vh;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+/* .footer {
   width: 100%;
-  height: 100%;
-  background-image: url(../../../assets/resources/sky.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#logo-container {
-  position: fixed;
-  width: 100%;
-  height: 9%;
-  left: 0;
-  right: 0;
-  top: 6%;
-}
-
-#logo {
-  position: fixed;
-  left: 45%;
-  width: 11%;
-  height: 10%;
-  background-image: url(../../../assets/resources/logo.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-#main-container {
-  position: fixed;
-  width: 20%;
-  height: 45%;
-  left: 40%;
-  top: 17%;
-}
-
-#second-container {
-  position: relative;
-  height: 70%;
-  width: 100%;
-  top: 1%;
-  left: 0;
-}
-
-#login-form-container {
-  position: relative;
-  top: 10%;
-  left: 0;
-}
-
-.input-containers {
-  position: relative;
-  left: 0;
-  width: 100%;
-  height: 30%;
-}
-
-.input-forms {
-  position: relative;
-  background-color: white;
-  color: black;
-  font-size: 20px;
-  width: 100%;
+  background-color: #666666;
+  color:#FDFDFD;
   height: 30px;
-  padding: 8px;
-  margin-top: 6%;
-  border: 1px solid black;
-  border-radius: 4px;
+  position:fixed;
+  bottom:0;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-bottom: 15px;
 }
 
-#login-btn-container {
-  position: relative;
-  top: 8%;
-  width: 100%;
-  height: 30%;
+.footer>.right {
+  margin-left: auto;
+} */
+
+.login-container {
+  margin:auto;
+  padding-top: 10px;
+  width: 500px;
+  color: #545454;
+  font-family: 'Poppins', sans-serif;
 }
 
-#login-btn {
-  position: relative;
-  font-weight: bold;
+.login-container>h1 {
+  margin-bottom:0px;
+}
+
+.login-container>.information {
+  margin-top: 0px;
   font-size: 20px;
-  background-color: #00BFFF;
-  color: #fff;
-  width: 105%;
-  height: 55%;
-  left: 0;
-  border-radius: 4px;
 }
 
-#issue-container {
-  position: relative;
-  color: white;
-  width: 105%;
-  text-align: center;
-  font-size: 22px;
-  font-weight: bold;
-  cursor: pointer;
+.login-container>.forgot-password {
+  font-size: 15px;
 }
 
-#copyright-container {
-  position: fixed;
-  font-size: 18px;
-  bottom: 1.7%;
-  width: 50%;
-  left: 26%;
-  color: white;
-  text-align: center;
+a { 
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid #FEEF00;
+} 
+
+.login-form {
+  background-color:#FFFFFF;
+  padding: 8% 18% 0 18%;
 }
 
-.alert {
-  margin-top: 2px;
+.wrong-credentials {
+  color: #E82C0C;
+}
+
+mat-form-field {
+  background-color: #F8F8F8; 
   width: 100%;
-  padding: 10px;
-  background-color: #f44336;
-  color: white;
+  margin: 0px;
+  font-family: 'Poppins', sans-serif;
 }
 
-.elementToFadeInAndOut {
-  opacity: 1;
-  animation: fade 2s linear;
+.space {
+  margin-bottom: 20px;
 }
 
-@keyframes fade {
-  0% {
-    opacity: 0
-  }
-  40% {
-    opacity: 1
-  }
+mat-form-field.mat-form.wrapper {
+  padding-bottom: 0px;
+}
+
+.login-button {
+  font-family: 'Poppins', sans-serif;
+  background-color: #FEEF00;
+  color:#373737;
+  width: 100%;
+  height: 50px;
+  margin: 30px 0 30px 0;
 }

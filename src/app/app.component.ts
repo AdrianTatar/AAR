@@ -12,4 +12,8 @@ export class AppComponent {
   getPage(outlet) {
     return outlet.activatedRouteData['page'] || 'one';
   }
+
+  getNavBar(outlet) {
+    return outlet.activatedRouteData['noNavBar'] || 'false';
+  }
 }

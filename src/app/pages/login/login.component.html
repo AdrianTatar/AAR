@@ -1,30 +1,35 @@
-<div id="background-container">
-  <div id="logo-container">
-    <a id="logo"></a>
+<div class="container">
+  <div class="header">
+    <img src="../../../assets/resources/raiffeisen-logo.png">
   </div>
-  <div id="main-container">
-    <div id="second-container">
-      <mat-card-content>
-        <form id="login-form-container" class="example-form">
-          <div class="input-containers">
-            <input class="input-forms" placeholder="Username" [(ngModel)]="username" name="username" required>
-          </div>
-          <div class="input-containers">
-            <input class="input-forms" placeholder="Password" [(ngModel)]="password" type="password" name="password"
-              required>
-            <div *ngIf="!response" class="alert elementToFadeInAndOut">
-              Invalid username or password.
-            </div>
 
-          </div>
-        </form>
-        <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
-      </mat-card-content>
-      <div id="login-btn-container">
-        <button mat-raised-button id="login-btn" (click)="loginUser()">Log in to URSS</button>
+  <div class="body">
+    <div class="login-container">
+      <h1>LOGIN</h1>
+      <p class="information">BITTE GEBEN SIE IHREN BENUTZERNAMEN (E-MAIL) UND IHR PASSWORT EIN</p>
+      <div class="login-form">
+        <div class="space">
+          <mat-form-field>
+            <input matInput placeholder="Benutzer" [(ngModel)]="username">
+          </mat-form-field>
+        </div>
+        <mat-form-field>
+          <input matInput placeholder="Passwort" [(ngModel)]="password">
+        </mat-form-field>
+        <div *ngIf="!response" class="wrong-credentials">
+          Ungültiger Benutzername oder Kennwort.
+        </div>
+        <button type="submit" mat-button class="login-button" (click)="loginUser()">ANMELDEN</button>
+
+
       </div>
-      <div id="issue-container" onclick='alert("Credentials recover site");'>Can't log in?</div>
+      <p class="forgot-password">Haben Sie Ihr Passwort vergessen? <a href=''>Klicken Sie hier</a></p>
     </div>
   </div>
+
+  <!-- <div class="footer">
+    <div class="right">
+      <p>©2018 Raiffeisen</p>
+    </div>
+  </div> -->
 </div>
-<div id="copyright-container">©2018 URSS, INC. ALL RIGHTS RESERVED.</div>
