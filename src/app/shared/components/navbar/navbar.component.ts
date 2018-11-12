@@ -40,7 +40,7 @@ export class NavbarComponent {
   private openSnackBar(message: string, action?: string) {
     this.snackBar.open(message, action, {
       duration: 1300,
-      panelClass: ['blue-snackbar']
+      panelClass: ['snackbar-panelclass']
     });
   }
 

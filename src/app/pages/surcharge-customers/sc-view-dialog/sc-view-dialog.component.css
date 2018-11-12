@@ -4,7 +4,8 @@ button {
 .header {
   padding: 5px;
   margin-bottom: 5px;
-  background-color: #428bca;
+  background-color: #525252;
+  border-bottom: 5px solid #F7FF00;
   color: white;
 }
 
@@ -33,33 +34,49 @@ h1 {
 .full-width {
   width: 100%;
 }
+.half-width{
+  width: 45%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.add-icon {
+  background-color: #525252;;
+  color: white;
+  float: right;
+  margin-top: 3px;
+}
 table {
   margin-top: 10px;
   width: 100%;
 }
 mat-dialog-content {
-  margin-top: 15px;
+  margin-top: 10px;
 }
 mat-dialog-actions {
   margin-top: 20px;
   float: right;
 }
+
+#rates-inputs{
+  margin: 20px;
+}
 th, td{
-  text-align: center;
-  width: 50%;
- }
-  table {
-   border-collapse: collapse;
-   margin-top: 35px;
- }
- th{
-   background: #428bca;
-   color: white;
-   height: 30px;
- }
- td{
-   padding: 8px;   
- }
- tr{
-   border-bottom: lightgray 1px solid;
- }
+ text-align: center;
+ width: 50%;
+}
+ table {
+  border-collapse: collapse;
+  margin-top: 35px;
+}
+th{
+  font-size: 15px;
+  background-color: #525252;
+  color: white;
+  height: 30px;
+}
+td{
+  padding: 8px;   
+}
+tr{
+  border-bottom: lightgray 1px solid;
+}

@@ -5,7 +5,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthGuard } from './shared/services/guards/auth-guard.service';
 
 const appRoutes: Routes = [
-  { path: '', component: LoginComponent, data: { page: 'one' } },
+  { path: '', component: LoginComponent, data: { noNavBar: 'true' } },
   {
     path: 'fixed-prices',
     loadChildren: './pages/fixed-price-projects/fpp.module#FppModule',

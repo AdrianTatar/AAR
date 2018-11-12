@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, HostListener, AfterContentInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, AfterViewInit } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
 import { UserAction } from '../../shared/models/user.actions';
 import { UserActionsService } from './services/user-actions.service';

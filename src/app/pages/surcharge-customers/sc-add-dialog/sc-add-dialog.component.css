@@ -4,7 +4,8 @@ button {
 .header {
   padding: 5px;
   margin-bottom: 5px;
-  background-color: #428bca;
+  background-color: #525252;
+  border-bottom: 5px solid #F7FF00;
   color: white;
 }
 
@@ -39,7 +40,7 @@ h1 {
   margin-right: 5px;
 }
 .add-icon {
-  background: #428bca;
+  background-color: #525252;;
   color: white;
   float: right;
   margin-top: 3px;
@@ -69,7 +70,7 @@ th, td{
 }
 th{
   font-size: 15px;
-  background: #428bca;
+  background-color: #525252;;
   color: white;
   height: 30px;
 }

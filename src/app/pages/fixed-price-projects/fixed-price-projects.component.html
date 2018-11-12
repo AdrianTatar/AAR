@@ -4,15 +4,15 @@
 
       <!-- Planmill Projektnummer Column -->
       <ng-container matColumnDef="projectnumberplanmill">
-        <th mat-header-cell *matHeaderCellDef class="header id-column">
+        <th mat-header-cell *matHeaderCellDef class="header">
           Planmill Projektnummer
 
           <button mat-icon-button (click)="projectnumberplanmillSearch = !projectnumberplanmillSearch; clearSearchInputBox()">
-            <mat-icon>search</mat-icon>
+            <mat-icon class="searchIcon">search</mat-icon>
           </button>
-          <div *ngIf="projectnumberplanmillSearch === true">
+          <div *ngIf="projectnumberplanmillSearch === true" class="search-input">
             <mat-form-field>
-              <input [(ngModel)]="projectnumberplanmillSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
+              <input [(ngModel)]="projectnumberplanmillSearchQuery" (keyup)="filter()" matInput placeholder="Search...">
             </mat-form-field>
           </div>
         </th>
@@ -176,7 +176,7 @@
 
       <!-- Buttons Column -->
       <ng-container matColumnDef="menu">
-        <th mat-header-cell *matHeaderCellDef class="header options-menu"></th>
+        <th mat-header-cell *matHeaderCellDef class="options-menu"></th>
         <td mat-cell *matCellDef="let element">
           <ng-template #editButton>
             <button [disabled]="createNewRow === true" mat-button (click)="editRow(element.id)" class="edit-icon">

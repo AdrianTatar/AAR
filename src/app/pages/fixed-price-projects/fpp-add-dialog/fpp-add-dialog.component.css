@@ -5,8 +5,11 @@ button {
 .header {
     padding: 5px;
     margin-bottom: 5px;
-    background-color: #428bca;
     color: white;
+    background-color:#525252;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    border-bottom: 5px solid #F7FF00;
 }
 
 h1 {

@@ -1,9 +1,9 @@
 <div id="container">
 
-  <div>
+  <div *ngIf="getNavBar(appOutlet) === 'false'">
     <app-navbar></app-navbar>
   </div>
-
+  
   <div class="container" [@animRoutes]="getPage(appOutlet)">
     <router-outlet #appOutlet="outlet"></router-outlet>
   </div>
