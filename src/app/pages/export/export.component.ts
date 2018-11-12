@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class ExportComponent {
     location;
+    page;
     scenarios: Scenario[];
 
     constructor(
@@ -27,7 +28,8 @@ export class ExportComponent {
     async exportXML(year, scenario) {
         if (year != null && scenario != null) {
             this.location = 'http://localhost:8080/aarREST/rest/export/' + year + '/' + scenario;
-            window.open(this.location);
+            this.page = window.open(this.location);
+
         } else {
             this.openSnackBar('Select Year and Scenario before exporting!', '');
         }
