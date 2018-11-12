@@ -5,37 +5,58 @@
 <mat-dialog-content>
   <form [formGroup]="scForm">
     <mat-form-field class="full-width">
-      <input type="number" [(ngModel)]="scInputs.debitornumber" matInput placeholder="Debitor Number" [formControl]="formdebitornumber">
+      <input type="number" [(ngModel)]="scInputs.debitornumber" matInput placeholder="{{ 'DebitorNumber' | translate }}" [formControl]="formdebitornumber">
+      <mat-error *ngIf="formdebitornumber">
+        {{ 'DebitorNumber' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input type="text" [(ngModel)]="scInputs.debitorname" matInput placeholder="Debitor" [formControl]="formdebitorname">
+      <input type="text" [(ngModel)]="scInputs.debitorname" matInput placeholder="{{ 'Debitor' | translate }}" [formControl]="formdebitorname">
+      <mat-error *ngIf="formdebitornumber">
+        {{ 'Debitor' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <mat-select [(ngModel)]="scInputs.type" placeholder="Type" [formControl]="formtype">
+      <mat-select [(ngModel)]="scInputs.type" placeholder="{{ 'Type' | translate }}" [formControl]="formtype">
         <mat-option>None</mat-option>
         <mat-option value="fremdbanken">Fremdbanken</mat-option>
         <mat-option value="sektorbanken">Sektorbanken</mat-option>
       </mat-select>
+      <mat-error *ngIf="formtype">
+        {{ 'Type' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input type="number" [(ngModel)]="scInputs.customernumber" placeholder="Customer Number" matInput [formControl]="formcustomernumber">
+      <input type="number" [(ngModel)]="scInputs.customernumber" placeholder="{{ 'CustomerId' | translate }}" matInput [formControl]="formcustomernumber">
+      <mat-error *ngIf="formcustomernumber">
+        {{ 'CustomerId' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input [(ngModel)]="scInputs.customername" placeholder="Customer Name" matInput [formControl]="formcustomername">
+      <input [(ngModel)]="scInputs.customername" placeholder="{{ 'CustomerName' | translate }}" matInput [formControl]="formcustomername">
+      <mat-error *ngIf="formcustomername">
+        {{ 'CustomerName' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
+      </mat-error>
     </mat-form-field>
   </form>
 
   <form id="rates-inputs">
     <mat-form-field class="half-width">
-      <input type="number" [(ngModel)]="scrInputs.year" placeholder="Year" matInput [formControl]="formrates">
+      <input type="number" [(ngModel)]="scrInputs.year" placeholder="{{ 'Year' | translate }}" matInput [formControl]="formyear">
+      <mat-error *ngIf="formyear">
+        {{ 'Year' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="half-width">
-      <input type="number" [(ngModel)]="scrInputs.dailyrate" placeholder="Daily Rate" matInput [formControl]="formrates">
+      <input type="number" [(ngModel)]="scrInputs.dailyrate" placeholder="{{ 'DailyRate' | translate }}" matInput [formControl]="formdailyrate">
+      <mat-error *ngIf="formdailyrate">
+        {{ 'DailyRate' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
+      </mat-error>
     </mat-form-field>
 
     <button (click)="addSurchargeRate()" mat-mini-fab matTooltip="{{'AddRow' | translate}}" class="add-icon">
@@ -47,13 +68,13 @@
 <table mat-table [dataSource]="surchargeRatesDataSource" class="mat-elevation-z8">
   <!-- Year Column -->
   <ng-container matColumnDef="year">
-    <th mat-header-cell *matHeaderCellDef> Year </th>
+    <th mat-header-cell *matHeaderCellDef> {{ 'Year' | translate }} </th>
     <td mat-cell *matCellDef="let surchargeRate"> {{surchargeRate.year}} </td>
   </ng-container>
 
   <!-- Daily Rate Column -->
   <ng-container matColumnDef="dailyrate">
-    <th mat-header-cell *matHeaderCellDef> Daily rate </th>
+    <th mat-header-cell *matHeaderCellDef> {{ 'DailyRate' | translate }} </th>
     <td mat-cell *matCellDef="let surchargeRate"> {{surchargeRate.dailyrate}} </td>
   </ng-container>
 
@@ -62,10 +83,10 @@
 </table>
 
 <mat-dialog-actions>
-  <button [disabled]="scForm.invalid" (click)="saveSurchargeCustomer()" mat-fab matTooltip="Confirm" class="done-icon">
+  <button [disabled]="scForm.invalid" (click)="saveSurchargeCustomer()" mat-fab matTooltip="{{ 'ConfirmEdit' | translate }}" class="done-icon">
     <mat-icon>done</mat-icon>
   </button>
-  <button mat-fab mat-dialog-close matTooltip="Cancel" class="clear-icon">
+  <button mat-fab mat-dialog-close matTooltip="{{ 'Cancel' | translate }}" class="clear-icon">
     <mat-icon>clear</mat-icon>
   </button>
 </mat-dialog-actions>

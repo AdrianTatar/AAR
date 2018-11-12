@@ -1,62 +1,62 @@
 <div class="header">
-  <h1 mat-dialog-title>{{'RegularCustomers' | translate }}</h1>
+  <h1 mat-dialog-title>{{'PayerNodes' | translate }}</h1>
 </div>
 
 <mat-dialog-content>
   <form [formGroup]="pnForm">
     <mat-form-field class="full-width">
-      <input type="number" [(ngModel)]="pnInputs.customernumber" placeholder="Customer Number" matInput (keyup.enter)="confirmEdit()"
+      <input type="number" [(ngModel)]="pnInputs.customernumber" placeholder="{{ 'CustomerNumber' | translate }}" matInput (keyup.enter)="confirmEdit()"
         [formControl]="formcustomernumber">
       <mat-error *ngIf="formcustomernumber.invalid">
-        Customernumber is <strong>required</strong>
+        {{ 'CustomerNumber' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input type="text" [(ngModel)]="pnInputs.customername" placeholder="Bezeichnung Kunde" [formControl]="formcustomername"
+      <input type="text" [(ngModel)]="pnInputs.customername" placeholder="{{ 'CustomerName' | translate }}" [formControl]="formcustomername"
         matInput>
       <mat-error *ngIf="formcustomername.invalid">
-        Customername is <strong>required</strong>
+        {{ 'CustomerName' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input type="text" [(ngModel)]="pnInputs.hierarchy" matInput placeholder="Hierarchy" [formControl]="formhierarchy">
+      <input type="text" [(ngModel)]="pnInputs.hierarchy" matInput placeholder="{{ 'Hierarchy' | translate }}" [formControl]="formhierarchy">
       <mat-error *ngIf="formhierarchy.invalid">
-        Hierarchy is <strong>required</strong>
+        {{ 'Hierarchy' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input type="number" [(ngModel)]="pnInputs.payernodenumber" placeholder="Payernode Number" matInput (keyup.enter)="confirmEdit()"
+      <input type="number" [(ngModel)]="pnInputs.payernodenumber" placeholder="{{ 'PayernodeNumber' | translate }}" matInput (keyup.enter)="confirmEdit()"
         [formControl]="formpayernodenumber">
       <mat-error *ngIf="formpayernodenumber.invalid">
-        Payernodenumber is <strong>required</strong>
+        {{ 'PayernodeNumber' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input type="text" [(ngModel)]="pnInputs.payernodedescription" matInput placeholder="Payernodedescription"
+      <input type="text" [(ngModel)]="pnInputs.payernodedescription" matInput placeholder="{{ 'PayernodeDescription' | translate }}"
         [formControl]="formpayernodedescription">
       <mat-error *ngIf="formpayernodedescription.invalid">
-        Payernodedescription is <strong>required</strong>
+        {{ 'PayernodeDescription' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input type="text" [(ngModel)]="pnInputs.payernodecode" matInput placeholder="Payernodecode" [formControl]="formpayernodecode">
+      <input type="text" [(ngModel)]="pnInputs.payernodecode" matInput placeholder="{{ 'Payernodecode' | translate }}" [formControl]="formpayernodecode">
       <mat-error *ngIf="formpayernodecode.invalid">
-        Payernodecode is <strong>required</strong>
+        {{ 'Payernodecode' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
       </mat-error>
     </mat-form-field>
   </form>
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button [disabled]="pnForm.invalid" (click)="save()" mat-fab matTooltip="Confirm" class="done-icon">
+  <button [disabled]="pnForm.invalid" (click)="save()" mat-fab matTooltip="{{ 'ConfirmEdit' | translate }}" class="done-icon">
     <mat-icon>done</mat-icon>
   </button>
-  <button mat-fab mat-dialog-close matTooltip="Cancel" class="clear-icon">
+  <button mat-fab mat-dialog-close matTooltip="{{ 'Cancel' | translate }}" class="clear-icon">
     <mat-icon>clear</mat-icon>
   </button>
 </mat-dialog-actions>

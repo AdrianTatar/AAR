@@ -6,7 +6,6 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { UserActionsCreateService } from './services/user-actions-create.service';
 import { TranslateModule } from '@ngx-translate/core';
-
 @NgModule({
   imports: [
     FormsModule,

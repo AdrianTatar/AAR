@@ -6,6 +6,40 @@
   "UserActions": "Benutzeraktionen",
   "Number": "#",
 
+  "PlanmillProjektnummer": "Planmill Projekt Nummer",
+  "TagetikProjektID": "Projekt Nummer",
+  "ProjBez": "Projekt Bezeichnung",
+  "KundenNr": "Kundennummer",
+  "Fixpreis": "Festpreis",
+
+  "DebitorNumber": "Debitor Nummer",
+  "Debitor": "Debitor Name",
+  "Type": "Typ",
+  "CustomerId": "Kundennummer",
+  "CustomerName": "Kundenname",
+  "2018Rates": "2018 Raten",
+  "Year": "Jahr",
+  "DailyRate": "Tagesrate",
+
+  "CustomerNumber": "Kundennummer",
+  "Hierarchy": "Hierarchie",
+  "PayernodeNumber": "Zahlerknotennummer",
+  "PayernodeDescription": "Zahlerknoten Bezeichnung",
+  "Payernodecode": "Zahlerknoten Code",
+
+  "BLZ": "Bankleitzahl",
+  "Block": "Block",
+  "Node": "Knoten",
+  "BankGroup": "Bankgruppe",
+  "Cluster": "Cluster",
+
+  "Timestamp": "Zeitstempel",
+  "UserId": "Benutzernummer",
+  "Action": "Aktion",
+
+  "Scenarios": "Szenarien",
+  "ExportMsg": "Der Exportvorgang kann einige Minuten dauern!",
+
   "NameFPP": "Name",
   "WeightFPP": "Gewicht",
   "SymbolFPP": "Symbol",
@@ -16,7 +50,13 @@
 
   "ExportButton": "Exportieren",
   "AddRow": "Zeile hinzufügen",
+  "Edit": "Bearbeiten",
+  "Search": "Suche...",
+  "ConfirmEdit": "Bestätigen",
+  "Cancel": "Beenden",
   "Logout": "Ausloggen",
+  "ToBe": "ist",
+  "Required": "notwendig",
 
   "PopulateUserActions" : {
     "FPPCreate": "(DE) Created new Fixed Price Project.",

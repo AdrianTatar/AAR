@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { MatSnackBar, MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { languageChange } from '../../animations';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -12,7 +11,6 @@ import { CookieService } from 'ngx-cookie-service';
   animations: [languageChange]
 })
 export class NavbarComponent {
-
   language = 'EN';
 
   constructor(
@@ -49,3 +47,4 @@ export class NavbarComponent {
     this.router.navigate(['']);
   }
 }
+
