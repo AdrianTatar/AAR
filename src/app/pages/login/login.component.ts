@@ -10,8 +10,8 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class LoginComponent {
 
-  username;
-  password;
+  username = '';
+  password = '';
   response = true;
 
   constructor(
