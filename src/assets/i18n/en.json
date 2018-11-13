@@ -1,4 +1,6 @@
 {
+  "WelcomeMsg": "Welcome, User!",
+
   "PayerNodes": "Payer Nodes",
   "CustomerBase": "Customer Base",
   "FixedPriceProjects": "Fixed Price Projects",

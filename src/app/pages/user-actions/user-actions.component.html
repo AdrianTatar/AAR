@@ -85,7 +85,7 @@
       <tr mat-row (click)="selectRow(index)" [ngClass]="{'highlight': index == selectedRow}" *matRowDef="let row; columns: displayedColumns; let index = index"></tr>
     </table>
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[15, 20, 50, 100]" showFirstLastButtons></mat-paginator>
   </div>
 
   <div class="space-for-buttons">
