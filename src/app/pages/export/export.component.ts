@@ -28,7 +28,7 @@ export class ExportComponent {
         });
     }
 
-    async exportXML(year, scenario) {
+    exportXML(year, scenario) {
         if (year != null && scenario != null) {
             this.location = this.exportProjectUrl + year + '/' + scenario + '/' + this.cookieService.get('username');
             window.open(this.location);
@@ -44,4 +44,3 @@ export class ExportComponent {
         });
     }
 }
-
