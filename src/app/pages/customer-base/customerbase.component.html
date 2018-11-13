@@ -12,11 +12,10 @@
           </button>
           <div *ngIf="blzSearch === true">
             <mat-form-field>
-              <input type="number" [(ngModel)]="blzSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+              <input type="number" [(ngModel)]="blzSearchQuery" (keyup)="filter()" matInput
                 class="searchInput">
             </mat-form-field>
           </div>
-
         </th>
 
         <td mat-cell *matCellDef="let element">
@@ -47,7 +46,7 @@
           </button>
           <div *ngIf="blockSearch === true">
             <mat-form-field>
-              <input [(ngModel)]="blockSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+              <input [(ngModel)]="blockSearchQuery" (keyup)="filter()" matInput
                 class="searchInput">
             </mat-form-field>
           </div>
@@ -82,7 +81,7 @@
           </button>
           <div *ngIf="nodeSearch === true">
             <mat-form-field>
-              <input [(ngModel)]="nodeSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+              <input [(ngModel)]="nodeSearchQuery" (keyup)="filter()" matInput
                 class="searchInput">
             </mat-form-field>
           </div>
@@ -116,7 +115,7 @@
           </button>
           <div *ngIf="customernameSearch === true">
             <mat-form-field>
-              <input [(ngModel)]="customernameSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+              <input [(ngModel)]="customernameSearchQuery" (keyup)="filter()" matInput
                 class="searchInput">
             </mat-form-field>
           </div>
@@ -150,7 +149,7 @@
           </button>
           <div *ngIf="bankgroupSearch === true">
             <mat-form-field>
-              <input [(ngModel)]="bankgroupSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+              <input [(ngModel)]="bankgroupSearchQuery" (keyup)="filter()" matInput
                 class="searchInput">
             </mat-form-field>
           </div>
@@ -184,7 +183,7 @@
           </button>
           <div *ngIf="clusterSearch === true">
             <mat-form-field>
-              <input [(ngModel)]="clusterSearchQuery" (keyup)="filter()" matInput placeholder="Search..."
+              <input [(ngModel)]="clusterSearchQuery" (keyup)="filter()" matInput
                 class="searchInput">
             </mat-form-field>
           </div>
@@ -231,7 +230,7 @@
       <tr mat-row (click)="selectRow(index)" [ngClass]="{'highlight': index == selectedRow}" *matRowDef="let row; columns: displayedColumns; let index = index"></tr>
     </table>
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[10, 15, 30, 50, 100]" showFirstLastButtons></mat-paginator>
   </div>
 
   <div class="space-for-buttons">

@@ -13,6 +13,13 @@ table {
   width: 20%;
 }
 
+.mini-header {
+  color: white;
+  background-color:#525252;
+  font-family: 'Poppins', sans-serif;
+  width: 15%;
+}
+
 .highlight {
   background-color: #eeeeee;
 }
@@ -84,4 +91,9 @@ mat-form-field.search-input {
 
 table {
   font-family: 'Poppins', sans-serif;
+}
+
+td, th {
+  padding: 10px;
+  margin: 5px;
 }
