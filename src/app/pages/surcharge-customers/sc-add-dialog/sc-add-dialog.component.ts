@@ -17,6 +17,8 @@ export class ScAddDialogComponent implements OnInit {
   surchargeRates: SurchargeCustomerRate[] = [];
   surchargeRatesDataSource = new MatTableDataSource<SurchargeCustomerRate>(this.surchargeRates);
 
+  currentYear;
+
   scrForm;
   scrInputs: SurchargeCustomerRate = {
     id: null,
@@ -41,14 +43,13 @@ export class ScAddDialogComponent implements OnInit {
   }
 
   async ngOnInit() {
-
+    this.currentYear = new Date().getFullYear();
     this.scForm = new FormGroup({
       debitorenumber: new FormControl('', Validators.required),
       debitorname: new FormControl('', Validators.required),
       type: new FormControl('', Validators.required),
       customernumber: new FormControl('', Validators.required),
-      customername: new FormControl('', Validators.required),
-      rates: new FormControl('', Validators.required)
+      customername: new FormControl('', Validators.required)
     });
 
     this.scrForm = new FormGroup({
@@ -58,6 +59,7 @@ export class ScAddDialogComponent implements OnInit {
   }
 
   addSurchargeRate() {
+    console.log(this.scInputs);
     const rateToAdd: SurchargeCustomerRate = {
       id: null,
       year: this.scrInputs.year,

@@ -1,4 +1,6 @@
 {
+  "WelcomeMsg": "Willkommen, Benutzer!",
+
   "PayerNodes": "Zahlerknoten",
   "CustomerBase": "Kundenstamm",
   "FixedPriceProjects": "Fixpreisprojekte",

@@ -3,7 +3,8 @@ table {
 }
 
 .align-page {
-  margin: 20px 10px 0px 10px;
+  margin: 20px 10px 0px 15%;
+  width: 70%;
 }
 
 .header {
@@ -11,6 +12,13 @@ table {
   background-color:#525252;
   font-family: 'Poppins', sans-serif;
   width: 20%;
+}
+
+.mini-header {
+  color: white;
+  background-color:#525252;
+  font-family: 'Poppins', sans-serif;
+  width: 15%;
 }
 
 .highlight {
@@ -80,4 +88,13 @@ mat-form-field.search-input {
 
 .align-items {
   float: left;
+}
+
+table {
+  font-family: 'Poppins', sans-serif;
+}
+
+td, th {
+  padding: 10px;
+  margin: 5px;
 }

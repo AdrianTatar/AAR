@@ -5,8 +5,8 @@
 <mat-dialog-content>
   <form [formGroup]="fppForm">
     <mat-form-field class="full-width">
-      <input type="text" [(ngModel)]="fppInputs.projectnumberplanmill" placeholder="{{ 'PlanmillProjektnummer' | translate }}" matInput
-        [formControl]="formProjectnumberplanmill">
+      <input type="text" [(ngModel)]="fppInputs.projectnumberplanmill" placeholder="{{ 'PlanmillProjektnummer' | translate }}"
+        matInput [formControl]="formProjectnumberplanmill">
       <mat-error *ngIf="formProjectnumberplanmill">
         {{ 'PlanmillProjektnummer' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
       </mat-error>
@@ -44,11 +44,12 @@
   </form>
 </mat-dialog-content>
 
+
 <mat-dialog-actions>
-  <button [disabled]="fppForm.invalid" (click)="save()" mat-fab matTooltip="{{'ConfirmEdit' | translate}}" class="done-icon">
+  <button [disabled]="fppForm.invalid" (click)="save()" mat-mini-fab matTooltip="{{'ConfirmEdit' | translate}}" class="done-icon">
     <mat-icon>done</mat-icon>
   </button>
-  <button mat-fab mat-dialog-close matTooltip="{{'Cancel' | translate}}" class="clear-icon">
+  <button mat-mini-fab mat-dialog-close matTooltip="{{'Cancel' | translate}}" class="clear-icon">
     <mat-icon>clear</mat-icon>
   </button>
 </mat-dialog-actions>

@@ -29,7 +29,8 @@ export class ExportComponent {
         });
     }
 
-    async exportXML(year, scenario) {       
+
+    exportXML(year, scenario) {
         if (year != null && scenario != null) {
             this.userActionsCreateService.createUserAction('GenerateAAR');
             this.location = this.exportProjectUrl + year + '/' + scenario+'/'+ this.cookieService.get('username');
@@ -42,8 +43,7 @@ export class ExportComponent {
     private openSnackBar(message: string, action?: string) {
         this.snackBar.open(message, action, {
             duration: 1300,
-            panelClass: ['blue-snackbar']
+            panelClass: ['snackbar-panelclass']
         });
     }
 }
-

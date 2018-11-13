@@ -1,7 +1,50 @@
+#main-container {
+  margin-top: 1.5%;
+}
+
+#logo-container {
+  position: relative;
+  display: inline-block;
+  margin-left: 16%;
+}
+
+#welcome-message {
+  font-size: 15px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+}
+
+#welcome-container {
+  display: inline-block;
+  margin-left: 50%;
+}
+
+#lang-select {
+  display: inline-block;
+}
+
+
+#logout-container {
+  display: inline-block;
+}
+
 mat-toolbar {
   background: white;
   margin-top: 8px;
+  text-align: center;
 }
+
+#toolbar-container{
+  overflow: hidden;
+  text-align: center;
+}
+
+
+#tabs-container {
+  flex: 12 1 auto;
+  text-align: center;
+}
+
 
 mat-form-field {
   font-size: 15px;
@@ -20,12 +63,6 @@ a {
   flex: 1 1 auto;
 }
 
-.logo {
-  padding: 0px;
-  width: 10%;
-  height: auto;
-}
-
 .active {
   color: white;
   border-bottom: 5px solid #F7FF00;
@@ -37,20 +74,27 @@ a {
   font-family: 'Poppins', sans-serif;
 }
 
-hr {
-  margin-top: 10px;
+#bar {
+  margin-top: 5px;
   margin-bottom: 0px;
+  width: 70%;
 }
-
+#lang-btn:hover {
+  background-color:transparent !important;
+}
 .language {
   color: white;
   height: 40px;
 }
 
+#lang-btn {
+  padding: 0;
+  text-align: center;
+}
+
 .country {
-  width: 40px;
+  width: 25px;
   height: auto;
-  float: right;
 }
 
 .create-space {
@@ -72,6 +116,7 @@ a {
 mat-menu {
   padding-top: 40px;
 }
+
 
 .white-icon {
   color: white;

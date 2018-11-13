@@ -171,7 +171,7 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(FppAddDialogComponent, {
-      width: '600px',
+      width: '550px',
       disableClose: true
     });
 
