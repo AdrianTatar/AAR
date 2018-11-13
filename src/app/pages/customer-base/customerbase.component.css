@@ -70,6 +70,10 @@ table {
   font-size:20px !important;
 }
 
+table {
+  font-family: 'Poppins', sans-serif;
+}
+
 mat-form-field.search-input {
   color: white;
 }

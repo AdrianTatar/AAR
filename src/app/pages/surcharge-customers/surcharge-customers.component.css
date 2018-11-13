@@ -81,3 +81,7 @@ mat-form-field.search-input {
 .align-items {
   float: left;
 }
+
+table {
+  font-family: 'Poppins', sans-serif;
+}

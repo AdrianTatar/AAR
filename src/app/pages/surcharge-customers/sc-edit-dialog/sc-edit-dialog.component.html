@@ -5,7 +5,8 @@
 <mat-dialog-content>
   <form [formGroup]="scForm">
     <mat-form-field class="full-width">
-      <input [(ngModel)]="scInputs.debitornumber" matInput placeholder="{{ 'DebitorNumber' | translate }}" [formControl]="formdebitornumber">
+      <input [(ngModel)]="scInputs.debitornumber" matInput placeholder="{{ 'DebitorNumber' | translate }}"
+        [formControl]="formdebitornumber">
       <mat-error *ngIf="formdebitornumber">
         {{ 'DebitorNumber' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
       </mat-error>
@@ -45,10 +46,15 @@
       </mat-error>
     </mat-form-field>
   </form>
-  
+
   <form id="rates-inputs">
     <mat-form-field class="half-width">
-      <input [(ngModel)]="scrInputs.year" placeholder="{{ 'Year' | translate }}" matInput [formControl]="formyear">
+      <mat-select [(ngModel)]="scrInputs.year" placeholder="{{ 'Year' | translate }}" [formControl]="formyear">
+        <mat-option>None</mat-option>
+        <mat-option value="{{currentYear-1}}">{{currentYear-1}}</mat-option>
+        <mat-option value="{{currentYear}}">{{currentYear}}</mat-option>
+        <mat-option value="{{currentYear+1}}">{{currentYear+1}}</mat-option>
+      </mat-select>
       <mat-error *ngIf="formyear">
         {{ 'Year' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
       </mat-error>
@@ -86,10 +92,11 @@
 </table>
 
 <mat-dialog-actions>
-  <button [disabled]="scForm.invalid" (click)="editSurchargeCustomer()" mat-fab matTooltip="{{ 'ConfirmEdit' | translate }}" class="done-icon">
+  <button [disabled]="scForm.invalid" (click)="editSurchargeCustomer()" mat-mini-fab matTooltip="{{ 'ConfirmEdit' | translate }}"
+    class="done-icon">
     <mat-icon>done</mat-icon>
   </button>
-  <button mat-fab mat-dialog-close matTooltip="{{ 'Cancel' | translate }}" class="clear-icon">
+  <button mat-mini-fab mat-dialog-close matTooltip="{{ 'Cancel' | translate }}" class="clear-icon">
     <mat-icon>clear</mat-icon>
   </button>
 </mat-dialog-actions>

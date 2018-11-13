@@ -1,11 +1,24 @@
 #main-container{
     margin-left: 0.5%;
 }
+
+mat-form-field {
+    font-family: 'Poppins', sans-serif;
+}
+
 #exp-btn{
     color: white;
     background-color:#525252;
+    font-family: 'Poppins', sans-serif;
 }
 #warning-container{
     margin-top: 10px;
     color: red;
+    font-family: 'Poppins', sans-serif;
+
 }
+
+.snackbar-panelclass {
+    color: white;
+    background-color: #525252;
+  }
