@@ -18,7 +18,7 @@ table {
   color: white;
   background-color:#525252;
   font-family: 'Poppins', sans-serif;
-  width: 15%;
+  width: 20%;
 }
 
 .highlight {
@@ -82,6 +82,9 @@ mat-form-field.search-input {
   color: white;
 }
 
+.searchInput {
+}
+
 ::ng-deep .mat-input-wrapper {
   background: white;
 }
@@ -95,6 +98,5 @@ table {
 }
 
 td, th {
-  padding: 10px;
   margin: 5px;
 }
