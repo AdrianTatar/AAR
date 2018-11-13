@@ -12,7 +12,7 @@
           </button>
           <div *ngIf="projectnumberplanmillSearch === true" class="search-input">
             <mat-form-field>
-              <input [(ngModel)]="projectnumberplanmillSearchQuery" (keyup)="filter()" matInput placeholder="{{ 'Search' | translate }}" class="searchInput">
+              <input [(ngModel)]="projectnumberplanmillSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
         </th>
@@ -44,9 +44,9 @@
           <button mat-icon-button (click)="tagetikSearch = !tagetikSearch; clearSearchInputBox();">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="tagetikSearch === true">
+          <div *ngIf="tagetikSearch === true" class="search-input">
             <mat-form-field>
-              <input [(ngModel)]="tagetikSearchQuery" (keyup)="filter()" matInput placeholder="{{ 'Search' | translate }}"
+              <input [(ngModel)]="tagetikSearchQuery" (keyup)="filter()" matInput
                 class="searchInput">
             </mat-form-field>
           </div>
@@ -79,9 +79,9 @@
           <button mat-icon-button (click)="projectdescriptionSearch = !projectdescriptionSearch; clearSearchInputBox(); ">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="projectdescriptionSearch === true">
+          <div *ngIf="projectdescriptionSearch === true" class="search-input">
             <mat-form-field>
-              <input [(ngModel)]="projectdescriptionSearchQuery" (keyup)="filter()" matInput placeholder="{{ 'Search' | translate }}"
+              <input [(ngModel)]="projectdescriptionSearchQuery" (keyup)="filter()" matInput
                 class="searchInput">
             </mat-form-field>
           </div>
@@ -114,10 +114,9 @@
           <button mat-icon-button (click)="customernumberSearch = !customernumberSearch; clearSearchInputBox(); ">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="customernumberSearch === true">
+          <div *ngIf="customernumberSearch === true" class="search-input">
             <mat-form-field>
-              <input type="number" [(ngModel)]="customernumberSearchQuery" (keyup)="filter()" matInput placeholder="{{ 'Search' | translate }}"
-                class="searchInput">
+              <input type="number" [(ngModel)]="customernumberSearchQuery" (keyup)="filter()" matInput class="searchInput">
             </mat-form-field>
           </div>
 
@@ -149,9 +148,9 @@
           <button mat-icon-button (click)="priceSearch = !priceSearch; clearSearchInputBox(); ">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="priceSearch === true">
+          <div *ngIf="priceSearch === true" class="search-input">
             <mat-form-field>
-              <input type="number" [(ngModel)]="priceSearchQuery" (keyup)="filter()" matInput placeholder="{{ 'Search' | translate }}"
+              <input type="number" [(ngModel)]="priceSearchQuery" (keyup)="filter()" matInput
                 class="searchInput">
             </mat-form-field>
           </div>

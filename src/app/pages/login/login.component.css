@@ -60,12 +60,12 @@ mat-form-field {
   height: 48px;
 }
 
-/* ::ng-deep .mat-form-field-infix {
+.login-form::ng-deep.mat-form-field-infix {
   margin-top: 4px;
   border-left: .84375em solid transparent;
   border-right: .84375em solid transparent;
   border-bottom: 2px solid #F8F8F8;
-} */
+}
 
 .space {
   margin-bottom: 20px;

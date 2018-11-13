@@ -71,6 +71,30 @@ table {
   font-size:20px !important;
 }
 
+.search-input ::ng-deep.mat-form-field-infix {
+  color: white;
+}
+
+.search-input ::ng-deep.mat-input-element {
+  caret-color: white;
+}
+
+.search-input ::ng-deep.mat-form-field-underline {
+  background-color: #F7FF00;
+}
+
+.search-input ::ng-deep.mat-form-field-ripple {
+  background-color: #F7FF00 !important;
+}
+
+.search-input ::ng-deep.mat-select-value {
+  color: white;
+}
+
+.search-input ::ng-deep.mat-select-arrow {
+  color: white !important;
+}
+
 mat-form-field.search-input {
   color: white;
 }

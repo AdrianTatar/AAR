@@ -10,10 +10,9 @@
           <button mat-icon-button (click)="customernumberSearch = !customernumberSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="customernumberSearch === true">
+          <div *ngIf="customernumberSearch === true" class="search-input">
             <mat-form-field>
-              <input type="number" [(ngModel)]="customernumberSearchQuery" (keyup)="filter()" matInput placeholder="{{ 'Search' | translate }}"
-                class="searchInput">
+              <input type="number" [(ngModel)]="customernumberSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
         </th>
@@ -45,9 +44,9 @@
           <button mat-icon-button (click)="customernameSearch = !customernameSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="customernameSearch === true">
+          <div *ngIf="customernameSearch === true" class="search-input">
             <mat-form-field>
-              <input [(ngModel)]="customernameSearchQuery" (keyup)="filter()" matInput placeholder="{{ 'Search' | translate }}" class="searchInput">
+              <input [(ngModel)]="customernameSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
 
@@ -77,9 +76,9 @@
           <button mat-icon-button (click)="hierarchySearch = !hierarchySearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="hierarchySearch === true">
+          <div *ngIf="hierarchySearch === true" class="search-input">
             <mat-form-field>
-              <mat-select [(value)]="hierarchySearchQuery" (selectionChange)="filter()" class="searchInput">
+              <mat-select [(value)]="hierarchySearchQuery" (selectionChange)="filter()">
                 <mat-option>None</mat-option>
                 <mat-option value="k1">K1</mat-option>
               </mat-select>
@@ -114,10 +113,9 @@
           <button mat-icon-button (click)="payernodenumberSearch = !payernodenumberSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="payernodenumberSearch === true">
+          <div *ngIf="payernodenumberSearch === true" class="search-input">
             <mat-form-field>
-              <input type="number" [(ngModel)]="payernodenumberSearchQuery" (keyup)="filter()" matInput placeholder="{{ 'Search' | translate }}"
-                class="searchInput">
+              <input type="number" [(ngModel)]="payernodenumberSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
 
@@ -149,10 +147,9 @@
           <button mat-icon-button (click)="payernodedescriptionSearch = !payernodedescriptionSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="payernodedescriptionSearch === true">
+          <div *ngIf="payernodedescriptionSearch === true" class="search-input">
             <mat-form-field>
-              <input type="text" [(ngModel)]="payernodedescriptionSearchQuery" (keyup)="filter()" matInput placeholder="{{ 'Search' | translate }}"
-                class="searchInput">
+              <input type="text" [(ngModel)]="payernodedescriptionSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
 
@@ -184,10 +181,9 @@
           <button mat-icon-button (click)="payernodecodeSearch = !payernodecodeSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="payernodecodeSearch === true">
+          <div *ngIf="payernodecodeSearch === true" class="search-input">
             <mat-form-field>
-              <input type="text" [(ngModel)]="payernodecodeSearchQuery" (keyup)="filter()" matInput placeholder="{{ 'Search' | translate }}"
-                class="searchInput">
+              <input type="text" [(ngModel)]="payernodecodeSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
 

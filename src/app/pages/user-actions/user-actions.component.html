@@ -9,9 +9,9 @@
           <button mat-icon-button (click)="logIdSearch = !logIdSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="logIdSearch === true">
+          <div *ngIf="logIdSearch === true" class="search-input">
             <mat-form-field>
-              <input [(ngModel)]="logIdSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
+              <input [(ngModel)]="logIdSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
         </th>
@@ -27,9 +27,9 @@
           <button mat-icon-button (click)="timestampSearch = !timestampSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="timestampSearch === true">
+          <div *ngIf="timestampSearch === true" class="search-input">
             <mat-form-field>
-              <input [(ngModel)]="timestampSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
+              <input [(ngModel)]="timestampSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
         </th>
@@ -44,9 +44,9 @@
           <button mat-icon-button (click)="userIdSearch = !userIdSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="userIdSearch === true">
+          <div *ngIf="userIdSearch === true" class="search-input">
             <mat-form-field>
-              <input [(ngModel)]="userIdSearchQuery" (keyup)="filter()" matInput placeholder="Search..." class="searchInput">
+              <input [(ngModel)]="userIdSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
         </th>
@@ -61,9 +61,9 @@
           <button mat-icon-button (click)="actionSearch = !actionSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="actionSearch === true">
+          <div *ngIf="actionSearch === true" class="search-input">
             <mat-form-field>
-              <mat-select [(value)]="actionSearchQuery" (selectionChange)="filter()" class="searchInput">
+              <mat-select [(value)]="actionSearchQuery" (selectionChange)="filter()">
                 <mat-option>None</mat-option>
                 <mat-option value="FPPCreate">{{ ('PopulateUserActions' | translate)['FPPCreate'] }}</mat-option>
                 <mat-option value="FPPEdit">{{ ('PopulateUserActions' | translate)['FPPEdit'] }}</mat-option>

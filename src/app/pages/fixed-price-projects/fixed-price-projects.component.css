@@ -78,15 +78,20 @@ table {
   font-size:20px !important;
 }
 
-mat-form-field.search-input {
+.search-input ::ng-deep.mat-form-field-infix {
   color: white;
 }
 
-.searchInput {
+.search-input ::ng-deep.mat-input-element {
+  caret-color: white;
 }
 
-::ng-deep .mat-input-wrapper {
-  background: white;
+.search-input ::ng-deep.mat-form-field-underline {
+  background-color: #F7FF00;
+}
+
+.search-input ::ng-deep.mat-form-field-ripple {
+  background-color: #F7FF00 !important;
 }
 
 .align-items {
