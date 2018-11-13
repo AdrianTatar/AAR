@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { languageChange } from '../../animations';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { TranslateService } from '@ngx-translate/core';
+import { ExpAddDialogComponent } from './exp-add-dialog/exp-add-dialog.component';
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +12,8 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./navbar.component.css'],
   animations: [languageChange]
 })
-export class NavbarComponent {
+export class NavbarComponent implements AfterViewInit {
+
   language = 'DE';
   selected = 'DE';
   constructor(
@@ -24,7 +26,28 @@ export class NavbarComponent {
     translate.setDefaultLang('de');
     this.language = 'DE';
   }
+  ngAfterViewInit() {
 
+    document.addEventListener('click', function (event) {
+      if (document.getElementById('mat-select-0')) {
+        document.getElementById('mat-select-0').blur();
+      }
+    });
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ExpAddDialogComponent, {
+      width: '600px',
+      disableClose: true
+    });
+
+    // dialogRef.afterClosed().subscribe(data => {
+    //   if (data) {
+    //     this.fixedPriceProjectService.createFixedPriceProject(data);
+    //     this.pushObject(data);
+    //   }
+    // });
+  }
   switchLanguage(language: string) {
     this.translate.use(language);
     this.language = language.toUpperCase();

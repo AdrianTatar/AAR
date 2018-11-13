@@ -9,7 +9,7 @@
     </span>
 
     <span id="lang-container">
-      <button mat-button [matMenuTriggerFor]="menu" id="lang-btn">
+      <button mat-flat-button [matMenuTriggerFor]="menu" id="lang-btn">
         <mat-icon>
           <div *ngIf="this.language === 'DE'; else englishShow">
             <img class="country" src="../../assets/resources/germany.png">
@@ -19,14 +19,20 @@
           </ng-template>
         </mat-icon>
       </button>
-      <mat-menu xPosition="before" yPosition="above" #menu="matMenu">
-        <button mat-menu-item (click)="switchLanguage('en')">EN <img class="country" src="../../assets/resources/united-kingdom.png"></button>
-        <button mat-menu-item (click)="switchLanguage('de')">DE <img class="country" src="../../assets/resources/germany.png"></button>
+      <mat-menu xPosition="after" yPosition="below" #menu="matMenu" id="lang-menu">
+        <button mat-menu-item (click)="switchLanguage('en')" class="menu-items"><img class="country" src="../../assets/resources/united-kingdom.png"></button>
+        <button mat-menu-item (click)="switchLanguage('de')" class="menu-items"><img class="country" src="../../assets/resources/germany.png"></button>
       </mat-menu>
     </span>
 
-    <span id="logout-container">
-      <button mat-menu-item (click)="logout()"><a color="primary">{{ 'Logout' | translate }}</a></button>
+    <span id="export-container" matTooltip="Export">
+      <button mat-icon-button (click)="openDialog()" id="export-btn"><img class="export" src="../../assets/resources/export-btn.png"></button>
+      <button mat-icon-button (click)="openDialog()" id="export-text">Export</button>
+    </span>
+
+    <span id="logout-container" matTooltip=" {{ 'Logout' | translate }}">
+      <button mat-icon-button (click)="logout()" id="logout-btn"><img class="logout" src="../../assets/resources/log-out.png"></button>
+      <button mat-icon-button (click)="logout()" id="logout-text"> {{ 'Logout' | translate }}</button>
     </span>
   </div>
   <hr id="bar">
