@@ -3,6 +3,7 @@ import { ExportService } from './services/export.service';
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { CookieService } from 'ngx-cookie-service';
+import { UserActionsCreateService } from '../../shared/services/user-actions-create.service';
 
 @Component({
     selector: 'app-export',
@@ -11,14 +12,14 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class ExportComponent {
     location;
-    page;
     scenarios: Scenario[];
     private exportProjectUrl = '/export';
-
+ 
     constructor(
         private exportService: ExportService,
         public snackBar: MatSnackBar,
-        private cookieService: CookieService
+        private cookieService: CookieService,
+        private userActionsCreateService: UserActionsCreateService
     ) {
     }
 
@@ -28,9 +29,11 @@ export class ExportComponent {
         });
     }
 
+
     exportXML(year, scenario) {
         if (year != null && scenario != null) {
-            this.location = this.exportProjectUrl + year + '/' + scenario + '/' + this.cookieService.get('username');
+            this.userActionsCreateService.createUserAction('GenerateAAR');
+            this.location = this.exportProjectUrl + year + '/' + scenario+'/'+ this.cookieService.get('username');
             window.open(this.location);
         } else {
             this.openSnackBar('Select Year and Scenario before exporting!', '');
