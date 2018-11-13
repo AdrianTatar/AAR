@@ -5,6 +5,40 @@
   "SurchargeCustomers": "Surcharge Customers",
   "UserActions": "User Actions",
 
+  "PlanmillProjektnummer": "Planmill Project Number",
+  "TagetikProjektID": "Project Number",
+  "ProjBez": "Project Description",
+  "KundenNr": "Customer Number",
+  "Fixpreis": "Fixed Price",
+
+  "DebitorNumber": "Debitor Number",
+  "Debitor": "Debitor Name",
+  "Type": "Type",
+  "CustomerId": "Customer Id",
+  "CustomerName": "Customer Name",
+  "2018Rates": "2018 Rates",
+  "Year": "Year",
+  "DailyRate": "Daily Rate",
+
+  "CustomerNumber": "Customer Number",
+  "Hierarchy": "Hierarchy",
+  "PayernodeNumber": "Payernode Number",
+  "PayernodeDescription": "Payernode Description",
+  "Payernodecode": "Payernode Code",
+
+  "BLZ": "Bank Code Number",
+  "Block": "Block",
+  "Node": "Node",
+  "BankGroup": "Bank Group",
+  "Cluster": "Cluster",
+
+  "Timestamp": "Timestamp",
+  "UserId": "User Id",
+  "Action": "Action",
+
+  "Scenarios": "Scenarios",
+  "ExportMsg": "Export process might take a few minutes!",
+
   "Number": "#",
   "NameFPP": "Name",
   "WeightFPP": "Weight",
@@ -16,7 +50,13 @@
 
   "ExportButton": "Export",
   "AddRow": "Add Row",
+  "Edit": "Edit",
+  "Search": "Search...",
+  "ConfirmEdit": "Confirm",
+  "Cancel": "Cancel",
   "Logout": "Log out",
+  "ToBe": "is",
+  "Required": "required",
 
   "PopulateUserActions" : {
     "FPPCreate": "Created new Fixed Price Project.",

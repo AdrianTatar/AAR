@@ -1,6 +1,6 @@
 <div id="main-container">
     <mat-form-field>
-        <mat-select #year (selectionChange)="changeScenarios($event.value)" placeholder="Year">
+        <mat-select #year (selectionChange)="changeScenarios($event.value)" placeholder="{{ 'Year' | translate}}">
             <mat-option value="2017">2017</mat-option>
             <mat-option value="2018">2018</mat-option>
             <mat-option value="2019">2019</mat-option>
@@ -8,10 +8,11 @@
     </mat-form-field>
     <div></div>
     <mat-form-field>
-        <mat-select #scenario placeholder="Scenarios">
+        <mat-select #scenario placeholder="{{ 'Scenarios' | translate }}">
             <mat-option *ngFor="let sc of scenarios" [value]="sc.scenario">{{sc.scenario}}</mat-option>
         </mat-select>
     </mat-form-field>
     <div><button (click)="exportXML(year.value, scenario.value)"  target="_blank" mat-raised-button id="exp-btn">Export</button></div>
-    <div id="warning-container">Export process might take a few minutes!</div>
+    <div id="warning-container">{{ 'ExportMsg' | translate}}</div>
+    <ng-template #elseBlock}>Damn</ng-template>
 </div>

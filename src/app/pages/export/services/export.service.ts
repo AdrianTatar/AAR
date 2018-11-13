@@ -9,7 +9,6 @@ const httpOptions = {
 
 @Injectable()
 export class ExportService {
-
   private exportUrl = '/export';
   private readPath = '/getScenariosForYear';
 

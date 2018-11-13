@@ -11,6 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class ExportComponent {
     location;
+    page;
     scenarios: Scenario[];
     private exportProjectUrl = '/export';
 

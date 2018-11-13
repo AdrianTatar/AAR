@@ -115,4 +115,12 @@ export class ScEditDialogComponent implements OnInit {
   get formrates() {
     return this.scForm.get('rates');
   }
+
+  get formyear() {
+    return this.scrForm.get('year');
+  }
+
+  get formdailyrate() {
+    return this.scrForm.get('dailyrate');
+  }
 }
