@@ -4,6 +4,7 @@ import { languageChange } from '../../animations';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -12,7 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class NavbarComponent {
   language = 'DE';
-
+  selected = 'DE';
   constructor(
     public dialog: MatDialog,
     public translate: TranslateService,
