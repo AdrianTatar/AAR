@@ -2,6 +2,10 @@ table {
   width: 100%;
 }
 
+input {
+  font-family: 'Poppins', sans-serif; 
+}
+
 .align-page {
   margin: 20px 10px 0px 15%;
   width: 70%;

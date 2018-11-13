@@ -71,6 +71,10 @@ table {
   font-size:20px !important;
 }
 
+input, textarea  {
+  font-family: 'Poppins', sans-serif; 
+}
+
 .search-input ::ng-deep.mat-form-field-infix {
   color: white;
 }

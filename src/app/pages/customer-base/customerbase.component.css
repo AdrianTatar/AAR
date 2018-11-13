@@ -56,6 +56,10 @@ table {
   color: white;
 }
 
+input, textarea {
+  font-family: 'Poppins', sans-serif; 
+}
+
 .input-fields {
   margin-top: 15px;
   float:right;
