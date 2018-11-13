@@ -14,6 +14,17 @@ table {
   width: 20%;
 }
 
+input {
+  font-family: 'Poppins', sans-serif; 
+}
+
+.mini-header {
+  color: white;
+  background-color:#525252;
+  font-family: 'Poppins', sans-serif;
+  width: 20%;
+}
+
 .highlight {
   background-color: #eeeeee;
 }
@@ -52,9 +63,10 @@ table {
 }
 
 .add-icon {
-  background: #525252;
-  color: white;
+  background: #FEEF00;
+  color: #525252;
 }
+
 
 .input-fields {
   margin-top: 15px;
@@ -71,14 +83,30 @@ table {
   font-size:20px !important;
 }
 
-mat-form-field.search-input {
+.search-input ::ng-deep.mat-form-field-infix {
   color: white;
 }
 
-::ng-deep .mat-input-wrapper {
-  background: white;
+.search-input ::ng-deep.mat-input-element {
+  caret-color: white;
+}
+
+.search-input ::ng-deep.mat-form-field-underline {
+  background-color: #F7FF00;
+}
+
+.search-input ::ng-deep.mat-form-field-ripple {
+  background-color: #F7FF00 !important;
 }
 
 .align-items {
   float: left;
+}
+
+table {
+  font-family: 'Poppins', sans-serif;
+}
+
+td, th {
+  margin: 5px;
 }

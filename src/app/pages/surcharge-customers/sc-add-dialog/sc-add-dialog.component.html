@@ -5,14 +5,16 @@
 <mat-dialog-content>
   <form [formGroup]="scForm">
     <mat-form-field class="full-width">
-      <input type="number" [(ngModel)]="scInputs.debitornumber" matInput placeholder="{{ 'DebitorNumber' | translate }}" [formControl]="formdebitornumber">
+      <input type="number" [(ngModel)]="scInputs.debitornumber" matInput placeholder="{{ 'DebitorNumber' | translate }}"
+        [formControl]="formdebitornumber">
       <mat-error *ngIf="formdebitornumber">
         {{ 'DebitorNumber' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input type="text" [(ngModel)]="scInputs.debitorname" matInput placeholder="{{ 'Debitor' | translate }}" [formControl]="formdebitorname">
+      <input type="text" [(ngModel)]="scInputs.debitorname" matInput placeholder="{{ 'Debitor' | translate }}"
+        [formControl]="formdebitorname">
       <mat-error *ngIf="formdebitornumber">
         {{ 'Debitor' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
       </mat-error>
@@ -21,8 +23,10 @@
     <mat-form-field class="full-width">
       <mat-select [(ngModel)]="scInputs.type" placeholder="{{ 'Type' | translate }}" [formControl]="formtype">
         <mat-option>None</mat-option>
-        <mat-option value="fremdbanken">Fremdbanken</mat-option>
-        <mat-option value="sektorbanken">Sektorbanken</mat-option>
+        <mat-option value="Fremdbanken">Fremdbanken</mat-option>
+        <mat-option value="Sektorbanken">Sektorbanken</mat-option>
+        <mat-option value="Sonstige Sektor">Sonstige Sektor</mat-option>
+        <mat-option value="Sonstige Fremdfirmen">Sonstige Fremdfirmen</mat-option>
       </mat-select>
       <mat-error *ngIf="formtype">
         {{ 'Type' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
@@ -30,7 +34,8 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input type="number" [(ngModel)]="scInputs.customernumber" placeholder="{{ 'CustomerId' | translate }}" matInput [formControl]="formcustomernumber">
+      <input type="number" [(ngModel)]="scInputs.customernumber" placeholder="{{ 'CustomerId' | translate }}" matInput
+        [formControl]="formcustomernumber">
       <mat-error *ngIf="formcustomernumber">
         {{ 'CustomerId' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
       </mat-error>
@@ -46,14 +51,20 @@
 
   <form id="rates-inputs">
     <mat-form-field class="half-width">
-      <input type="number" [(ngModel)]="scrInputs.year" placeholder="{{ 'Year' | translate }}" matInput [formControl]="formyear">
+      <mat-select [(ngModel)]="scrInputs.year" placeholder="{{ 'Year' | translate }}" [formControl]="formyear">
+        <mat-option>None</mat-option>
+        <mat-option value="{{currentYear-1}}">{{currentYear-1}}</mat-option>
+        <mat-option value="{{currentYear}}">{{currentYear}}</mat-option>
+        <mat-option value="{{currentYear+1}}">{{currentYear+1}}</mat-option>
+      </mat-select>
       <mat-error *ngIf="formyear">
         {{ 'Year' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="half-width">
-      <input type="number" [(ngModel)]="scrInputs.dailyrate" placeholder="{{ 'DailyRate' | translate }}" matInput [formControl]="formdailyrate">
+      <input type="number" [(ngModel)]="scrInputs.dailyrate" placeholder="{{ 'DailyRate' | translate }}" matInput
+        [formControl]="formdailyrate">
       <mat-error *ngIf="formdailyrate">
         {{ 'DailyRate' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
       </mat-error>
@@ -83,10 +94,11 @@
 </table>
 
 <mat-dialog-actions>
-  <button [disabled]="scForm.invalid" (click)="saveSurchargeCustomer()" mat-fab matTooltip="{{ 'ConfirmEdit' | translate }}" class="done-icon">
+  <button [disabled]="scForm.invalid" (click)="saveSurchargeCustomer()" mat-mini-fab matTooltip="{{ 'ConfirmEdit' | translate }}"
+    class="done-icon">
     <mat-icon>done</mat-icon>
   </button>
-  <button mat-fab mat-dialog-close matTooltip="{{ 'Cancel' | translate }}" class="clear-icon">
+  <button mat-mini-fab mat-dialog-close matTooltip="{{ 'Cancel' | translate }}" class="clear-icon">
     <mat-icon>clear</mat-icon>
   </button>
 </mat-dialog-actions>

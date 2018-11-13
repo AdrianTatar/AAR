@@ -185,7 +185,7 @@ export class SurchargeCustomersComponent implements OnInit, AfterViewInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ScAddDialogComponent, {
-      width: '800px',
+      width: '700px',
       disableClose: true,
     });
 
@@ -201,7 +201,7 @@ export class SurchargeCustomersComponent implements OnInit, AfterViewInit {
   openEditDialog(rowNumber): void {
     this.selectedRowToEdit = this.mapToDataSource(rowNumber);
     const dialogRef = this.dialog.open(ScEditDialogComponent, {
-      width: '800px',
+      width: '700px',
       disableClose: true,
       data: {
         customerId: this.dataSource.data[this.selectedRowToEdit - 1].id,
@@ -227,7 +227,7 @@ export class SurchargeCustomersComponent implements OnInit, AfterViewInit {
 
   openViewDialog(selectedRow): void {
     const dialogRef = this.dialog.open(ScViewDialogComponent, {
-      width: '800px',
+      width: '700px',
       data: {
         debitorName: this.dataSource.data[selectedRow - 1].debitorname,
         debitorNumber: this.dataSource.data[selectedRow - 1].debitornumber,

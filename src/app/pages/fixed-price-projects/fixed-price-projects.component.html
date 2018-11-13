@@ -4,7 +4,7 @@
 
       <!-- Planmill Projektnummer Column -->
       <ng-container matColumnDef="projectnumberplanmill">
-        <th mat-header-cell *matHeaderCellDef class="header id-column">
+        <th mat-header-cell *matHeaderCellDef class="header">
           {{ 'PlanmillProjektnummer' | translate }}
 
           <button mat-icon-button (click)="projectnumberplanmillSearch = !projectnumberplanmillSearch; clearSearchInputBox()">
@@ -12,7 +12,7 @@
           </button>
           <div *ngIf="projectnumberplanmillSearch === true" class="search-input">
             <mat-form-field>
-              <input [(ngModel)]="projectnumberplanmillSearchQuery" (keyup)="filter()" matInput placeholder="{{ 'Search' | translate }}" class="searchInput">
+              <input [(ngModel)]="projectnumberplanmillSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
         </th>
@@ -44,19 +44,19 @@
           <button mat-icon-button (click)="tagetikSearch = !tagetikSearch; clearSearchInputBox();">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="tagetikSearch === true">
+          <div *ngIf="tagetikSearch === true" class="search-input">
             <mat-form-field>
-              <input [(ngModel)]="tagetikSearchQuery" (keyup)="filter()" matInput placeholder="{{ 'Search' | translate }}" class="searchInput">
+              <input [(ngModel)]="tagetikSearchQuery" (keyup)="filter()" matInput
+                class="searchInput">
             </mat-form-field>
           </div>
-
 
         </th>
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field>
-              <input type="text" [(ngModel)]="fppInputs.projectidtagetik" [formControl]="formProjectidtagetik"
-                matInput (keyup.enter)="confirmEdit()">
+              <input type="text" [(ngModel)]="fppInputs.projectidtagetik" [formControl]="formProjectidtagetik" matInput
+                (keyup.enter)="confirmEdit()">
               <mat-error *ngIf="formProjectidtagetik.invalid">
                 {{ 'TagetikProjektID' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
               </mat-error>
@@ -79,9 +79,10 @@
           <button mat-icon-button (click)="projectdescriptionSearch = !projectdescriptionSearch; clearSearchInputBox(); ">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="projectdescriptionSearch === true">
+          <div *ngIf="projectdescriptionSearch === true" class="search-input">
             <mat-form-field>
-              <input [(ngModel)]="projectdescriptionSearchQuery" (keyup)="filter()" matInput placeholder="{{ 'Search' | translate }}" class="searchInput">
+              <input [(ngModel)]="projectdescriptionSearchQuery" (keyup)="filter()" matInput
+                class="searchInput">
             </mat-form-field>
           </div>
 
@@ -113,10 +114,9 @@
           <button mat-icon-button (click)="customernumberSearch = !customernumberSearch; clearSearchInputBox(); ">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="customernumberSearch === true">
+          <div *ngIf="customernumberSearch === true" class="search-input">
             <mat-form-field>
-              <input type="number" [(ngModel)]="customernumberSearchQuery" (keyup)="filter()" matInput placeholder="{{ 'Search' | translate }}"
-                class="searchInput">
+              <input type="number" [(ngModel)]="customernumberSearchQuery" (keyup)="filter()" matInput class="searchInput">
             </mat-form-field>
           </div>
 
@@ -148,9 +148,9 @@
           <button mat-icon-button (click)="priceSearch = !priceSearch; clearSearchInputBox(); ">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="priceSearch === true">
+          <div *ngIf="priceSearch === true" class="search-input">
             <mat-form-field>
-              <input type="number" [(ngModel)]="priceSearchQuery" (keyup)="filter()" matInput placeholder="{{ 'Search' | translate }}"
+              <input type="number" [(ngModel)]="priceSearchQuery" (keyup)="filter()" matInput
                 class="searchInput">
             </mat-form-field>
           </div>
@@ -159,8 +159,7 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="example-full-width">
-              <input type="number" [(ngModel)]="fppInputs.price" matInput (keyup.enter)="confirmEdit()"
-                [formControl]="formPrice">
+              <input type="number" [(ngModel)]="fppInputs.price" matInput (keyup.enter)="confirmEdit()" [formControl]="formPrice">
               <mat-error *ngIf="formPrice.invalid">
                 {{ 'Fixpreis' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
               </mat-error>
@@ -179,7 +178,8 @@
         <th mat-header-cell *matHeaderCellDef class="options-menu"></th>
         <td mat-cell *matCellDef="let element">
           <ng-template #editButton>
-            <button [disabled]="createNewRow === true" mat-button (click)="editRow(element.id)" matTooltip="{{'Edit' | translate}}" class="edit-icon">
+            <button [disabled]="createNewRow === true" mat-button (click)="editRow(element.id)" matTooltip="{{'Edit' | translate}}"
+              class="edit-icon">
               <mat-icon>edit</mat-icon>
             </button>
           </ng-template>
@@ -198,7 +198,7 @@
       <tr mat-row (click)="selectRow(index)" [ngClass]="{'highlight': index == selectedRow}" *matRowDef="let row; columns: displayedColumns; let index = index"></tr>
     </table>
 
-    <mat-paginator [pageSizeOptions]="[15, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[10, 15, 30, 50, 100]" showFirstLastButtons></mat-paginator>
   </div>
 
   <div class="space-for-buttons">

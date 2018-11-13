@@ -13,22 +13,6 @@
   padding-right: 20%;
 }
 
-/* .footer {
-  width: 100%;
-  background-color: #666666;
-  color:#FDFDFD;
-  height: 30px;
-  position:fixed;
-  bottom:0;
-  padding-left: 20%;
-  padding-right: 20%;
-  padding-bottom: 15px;
-}
-
-.footer>.right {
-  margin-left: auto;
-} */
-
 .login-container {
   margin:auto;
   padding-top: 10px;
@@ -43,11 +27,13 @@
 
 .login-container>.information {
   margin-top: 0px;
-  font-size: 20px;
+  font-size: 16px;
+  color: #545454;
 }
 
 .login-container>.forgot-password {
-  font-size: 15px;
+  font-size: 12px;
+  text-align: center;
 }
 
 a { 
@@ -68,8 +54,17 @@ a {
 mat-form-field {
   background-color: #F8F8F8; 
   width: 100%;
-  margin: 0px;
+  margin-bottom: 0px;
   font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  height: 48px;
+}
+
+.login-form::ng-deep.mat-form-field-infix {
+  margin-top: 4px;
+  border-left: .84375em solid transparent;
+  border-right: .84375em solid transparent;
+  border-bottom: 2px solid #F8F8F8;
 }
 
 .space {
@@ -79,6 +74,7 @@ mat-form-field {
 mat-form-field.mat-form.wrapper {
   padding-bottom: 0px;
 }
+
 
 .login-button {
   font-family: 'Poppins', sans-serif;

@@ -52,8 +52,13 @@ table {
 }
 
 .add-icon {
-  background: #525252;
-  color: white;
+  background: #FEEF00;
+  color: #525252;
+}
+
+
+input, textarea {
+  font-family: 'Poppins', sans-serif; 
 }
 
 .input-fields {
@@ -65,10 +70,38 @@ table {
   float: left;
 }
 
+.search-input ::ng-deep.mat-form-field-infix {
+  color: white;
+}
+
+.search-input ::ng-deep.mat-input-element {
+  caret-color: white;
+}
+
+.search-input ::ng-deep.mat-form-field-underline {
+  background-color: #F7FF00;
+}
+
+.search-input ::ng-deep.mat-form-field-ripple {
+  background-color: #F7FF00 !important;
+}
+
+.search-input ::ng-deep.mat-select-value {
+  color: white;
+}
+
+.search-input ::ng-deep.mat-select-arrow {
+  color: white !important;
+}
+
 ::ng-deep .mat-icon{
   height:20px !important;
   width:20px !important;
   font-size:20px !important;
+}
+
+table {
+  font-family: 'Poppins', sans-serif;
 }
 
 mat-form-field.search-input {
