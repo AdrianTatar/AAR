@@ -100,12 +100,10 @@ mat-toolbar {
   text-align: center;
 }
 
-
 #tabs-container {
   flex: 12 1 auto;
   text-align: center;
 }
-
 
 mat-form-field {
   font-size: 15px;

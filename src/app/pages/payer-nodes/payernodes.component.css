@@ -11,7 +11,14 @@ table {
   color: white;
   background-color:#525252;
   font-family: 'Poppins', sans-serif;
-  width: 17%;
+  width: 18%;
+}
+
+.mini-header {
+  color: white;
+  background-color:#525252;
+  font-family: 'Poppins', sans-serif;
+  width: 20%;
 }
 
 .highlight {
@@ -28,7 +35,10 @@ table {
 
 .options-menu {
   background-color:#525252;
-
+  color: white;
+  background-color:#525252;
+  font-family: 'Poppins', sans-serif;
+  width: 60px;
 }
 
 .edit-icon {

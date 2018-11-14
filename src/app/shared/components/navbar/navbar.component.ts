@@ -37,7 +37,7 @@ export class NavbarComponent implements AfterViewInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ExpAddDialogComponent, {
-      width: '600px',
+      width: '500px',
       disableClose: true
     });
 

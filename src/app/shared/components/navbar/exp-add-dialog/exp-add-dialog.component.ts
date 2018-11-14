@@ -4,7 +4,6 @@ import { Scenario } from 'src/app/shared/models/scenario';
 import { ExportService } from 'src/app/pages/export/services/export.service';
 import { CookieService } from 'ngx-cookie-service';
 
-
 @Component({
     selector: 'app-exp-add-dialog',
     templateUrl: './exp-add-dialog.component.html',
@@ -42,7 +41,7 @@ export class ExpAddDialogComponent {
     private openSnackBar(message: string, action?: string) {
         this.snackBar.open(message, action, {
             duration: 1300,
-            panelClass: ['blue-snackbar']
+            panelClass: ['snackbar-panelclass']
         });
     }
 }

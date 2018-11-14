@@ -1,0 +1,70 @@
+button {
+    margin-right: 8px;
+}
+
+.header {
+    padding: 5px;
+    margin-bottom: 5px;
+    color: white;
+    background-color: #525252;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    border-bottom: 5px solid #FEEF05;
+}
+
+.export-button {
+    font-family: 'Poppins', sans-serif;
+    color: #525252;
+    background-color: #FEEF05;
+    font-size: 15px;
+}
+
+.warning-container {
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    margin-top: 17px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Poppins', sans-serif;
+}
+
+.clear-icon {
+    background: #d9534f;
+    color: white;
+}
+
+.snackbar-panelclass {
+    color: white;
+    background-color: #525252;
+}
+
+.done-icon {
+    background: #46a546;
+    color: white;
+}
+
+.full-width {
+    width: 100%;
+    margin-bottom: 2px;
+}
+
+.mat-icon {
+    font-size: 2px;
+}
+
+mat-dialog-actions {
+    float: right;
+    margin-bottom: 0px;
+}
+
+mat-dialog-content {
+    padding-top: 3px;
+}
+
+mat-form-field {
+    font-family: 'Poppins', sans-serif;
+    width: 47%;
+    margin: 6px;
+}

@@ -59,7 +59,7 @@
           <a [routerLink]="['/user-actions']" routerLinkActive="active" mat-button>{{'UserActions' | translate}}</a>
         </span>
         <span>
-          <a [routerLink]="['/export']" routerLinkActive="active" mat-button>{{'Export' | translate}}</a>
+          <a routerLinkActive="active"><button mat-button (click)="openDialog()">{{'Export' | translate}}</button></a>
         </span>
       </div>
 
