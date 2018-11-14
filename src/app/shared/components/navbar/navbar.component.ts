@@ -14,6 +14,8 @@ import { ExpAddDialogComponent } from './exp-add-dialog/exp-add-dialog.component
 })
 export class NavbarComponent implements AfterViewInit {
 
+  userName;
+
   language = 'DE';
   selected = 'DE';
   constructor(
@@ -25,6 +27,7 @@ export class NavbarComponent implements AfterViewInit {
   ) {
     translate.setDefaultLang('de');
     this.language = 'DE';
+    this.userName = this.cookieService.get('username');
   }
   ngAfterViewInit() {
 

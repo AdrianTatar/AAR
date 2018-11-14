@@ -9,15 +9,16 @@
 }
 
 #welcome-message {
+  width: 180px;
   font-size: 15px;
   font-weight: 500;
   font-family: 'Poppins', sans-serif;
 }
 
 #welcome-container {
-  position: absolute;
+  position: relative;
   display: inline-block;
-  margin-left: 35%;
+  margin-left: 37%;
 }
 
 #lang-select {
@@ -36,16 +37,16 @@
 
 #lang-container{
   display: inline-block;
-  position: absolute;
-  margin-left: 60.5%;
+  position: relative;
+  margin-left: 3.5%;
   margin-top: 0.3%;
 }
 
 #export-container {
   margin-top: 0.4%;
-  position: absolute;
+  position: relative;
   display: inline-block;
-  margin-left: 47.5%;
+  margin-left: 0.3%;
 }
 
 #logout-btn {
@@ -74,18 +75,18 @@
 
 #logout-container {
   margin-top: 0.4%;
-  position: absolute;
+  position: relative;
   display: inline-block;
-  margin-left: 52.8%;
+  margin-left: 1.3%;
 }
 
 #export-text {
-  position: absolute;
+  position: relative;
   margin-left: 8px;
 }
 
 #logout-text { 
-  position: absolute;
+  position: relative;
   margin-left: 8px;
 }
 
