@@ -5,7 +5,17 @@
     </span>
 
     <span id="welcome-container">
-      <p id="welcome-message">{{ 'WelcomeMsg' | translate}}</p>
+      <p id="welcome-message">{{ 'WelcomeMsg' | translate}} {{ userName }} </p>
+    </span>
+
+    <span id="export-container" matTooltip="Export">
+      <button mat-icon-button (click)="openDialog()" id="export-btn"><img class="export" src="../../assets/resources/export-btn.png"></button>
+      <button mat-icon-button (click)="openDialog()" id="export-text">Export</button>
+    </span>
+
+    <span id="logout-container" matTooltip=" {{ 'Logout' | translate }}">
+      <button mat-icon-button (click)="logout()" id="logout-btn"><img class="logout" src="../../assets/resources/log-out.png"></button>
+      <button mat-icon-button (click)="logout()" id="logout-text"> {{ 'Logout' | translate }}</button>
     </span>
 
     <span id="lang-container">
@@ -23,16 +33,6 @@
         <button mat-menu-item (click)="switchLanguage('en')" class="menu-items"><img class="country" src="../../assets/resources/united-kingdom.png"></button>
         <button mat-menu-item (click)="switchLanguage('de')" class="menu-items"><img class="country" src="../../assets/resources/germany.png"></button>
       </mat-menu>
-    </span>
-
-    <span id="export-container" matTooltip="Export">
-      <button mat-icon-button (click)="openDialog()" id="export-btn"><img class="export" src="../../assets/resources/export-btn.png"></button>
-      <button mat-icon-button (click)="openDialog()" id="export-text">Export</button>
-    </span>
-
-    <span id="logout-container" matTooltip=" {{ 'Logout' | translate }}">
-      <button mat-icon-button (click)="logout()" id="logout-btn"><img class="logout" src="../../assets/resources/log-out.png"></button>
-      <button mat-icon-button (click)="logout()" id="logout-text"> {{ 'Logout' | translate }}</button>
     </span>
   </div>
   <hr id="bar">
@@ -57,9 +57,6 @@
         </span>
         <span>
           <a [routerLink]="['/user-actions']" routerLinkActive="active" mat-button>{{'UserActions' | translate}}</a>
-        </span>
-        <span>
-          <a routerLinkActive="active"><button mat-button (click)="openDialog()">{{'Export' | translate}}</button></a>
         </span>
       </div>
 

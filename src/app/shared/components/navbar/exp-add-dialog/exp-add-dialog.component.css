@@ -17,9 +17,11 @@ button {
     color: #525252;
     background-color: #FEEF05;
     font-size: 15px;
+    margin-top: 5%;
 }
 
 .warning-container {
+    margin-top: 5%;
     font-family: 'Poppins', sans-serif;
 }
 
