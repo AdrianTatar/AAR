@@ -1,11 +1,16 @@
 #main-container {
+  overflow: hidden;
   margin-top: 1.5%;
+  padding: 1.5% 15% 1.5% 15%;
 }
 
 #logo-container {
+  float: left;
+}
+
+#welcome-container {
   position: relative;
   display: inline-block;
-  margin-left: 16%;
 }
 
 #welcome-message {
@@ -15,14 +20,16 @@
   font-family: 'Poppins', sans-serif;
 }
 
-#welcome-container {
-  position: relative;
-  display: inline-block;
-  margin-left: 37%;
+#right-container {
+  float: right;
 }
 
-#lang-select {
-  display: inline-block;
+#logout-container {
+  margin-right: 30px;
+}
+
+#export-container {
+  margin-right: 20px;
 }
 
 .menu-items {
@@ -31,22 +38,9 @@
 }
 
 #lang-btn {
-  min-width: 7px !important;
-}
-
-
-#lang-container{
-  display: inline-block;
-  position: relative;
-  margin-left: 3.5%;
-  margin-top: 0.3%;
-}
-
-#export-container {
-  margin-top: 0.4%;
-  position: relative;
-  display: inline-block;
-  margin-left: 0.3%;
+  background-color: transparent;
+  padding: 0;
+  text-align: center;
 }
 
 #logout-btn {
@@ -54,6 +48,7 @@
   background-color: #FEEF00;
   text-align: center;
   min-width: 7px !important;
+  margin-right: 5px;
 }
 
 #export-btn {
@@ -61,6 +56,7 @@
   background-color: #FEEF00;
   text-align: center;
   min-width: 7px !important;
+  margin-right: 5px;
 }
 
 .logout {
@@ -73,21 +69,12 @@
   height: auto;
 }
 
-#logout-container {
-  margin-top: 0.4%;
-  position: relative;
-  display: inline-block;
-  margin-left: 1.3%;
-}
-
 #export-text {
-  position: relative;
-  margin-left: 8px;
+  font-family: 'Poppins', sans-serif;
 }
 
 #logout-text { 
-  position: relative;
-  margin-left: 8px;
+  font-family: 'Poppins', sans-serif;
 }
 
 mat-toolbar {
@@ -135,9 +122,9 @@ a {
 }
 
 #bar {
-  margin-top: 5px;
+  margin-top: 5%;
   margin-bottom: 0px;
-  width: 70%;
+  width: 100%;
 }
 
 .language {
