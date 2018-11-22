@@ -1,6 +1,4 @@
-import { SurchargeCustomersRateService } from './../surchargecustomersrates/services/surcharge-customers-rates.service';
 import { SurchargeCustomerRate } from './../../../shared/models/surcharge.customer.rate';
-import { SurchargeCustomersService } from './../services/surcharge-customers.service';
 import { SurchargeCustomer } from './../../../shared/models/surcharge.customer';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MatTableDataSource } from '@angular/material';
@@ -14,11 +12,13 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 })
 export class ScEditDialogComponent implements OnInit {
 
-  displayedSurchargeRateColumns: String[] = ['year', 'dailyrate'];
+  displayedSurchargeRateColumns: String[] = ['year', 'at', 'hu', 'sk', 'ro', 'menu'];
   surchargeRates = [];
   surchargeRatesDataSource = new MatTableDataSource<SurchargeCustomerRate>(this.surchargeRates);
 
   currentYear;
+
+  editDailyRate = false;
 
   scForm;
   scInputs: SurchargeCustomer = {
@@ -34,8 +34,21 @@ export class ScEditDialogComponent implements OnInit {
   scrForm;
   scrInputs: SurchargeCustomerRate = {
     id: null,
+    year: null,
+    at: null,
+    hu: null,
+    sk: null,
+    ro: null
+  };
+
+  scrEditForm;
+  scrInputsEdit: SurchargeCustomerRate = {
+    id: null,
     year: 0,
-    dailyrate: 0
+    at: 0,
+    hu: 0,
+    sk: 0,
+    ro: 0
   };
 
   constructor(
@@ -64,9 +77,18 @@ export class ScEditDialogComponent implements OnInit {
     });
 
     this.scrForm = new FormGroup({
-      surchargecustomer_id: new FormControl('', Validators.required),
       year: new FormControl('', Validators.required),
-      dailyrate: new FormControl('', Validators.required)
+      at: new FormControl('', Validators.required),
+      hu: new FormControl('', Validators.required),
+      sk: new FormControl('', Validators.required),
+      ro: new FormControl('', Validators.required),
+    });
+
+    this.scrEditForm = new FormGroup({
+      at: new FormControl('', Validators.required),
+      hu: new FormControl('', Validators.required),
+      sk: new FormControl('', Validators.required),
+      ro: new FormControl('', Validators.required),
     });
   }
 
@@ -74,13 +96,48 @@ export class ScEditDialogComponent implements OnInit {
     const rateToAdd: SurchargeCustomerRate = {
       id: null,
       year: this.scrInputs.year,
-      dailyrate: this.scrInputs.dailyrate
+      at: this.scrInputs.ro,
+      hu: this.scrInputs.hu,
+      sk: this.scrInputs.sk,
+      ro: this.scrInputs.ro
     };
     this.surchargeRates.push(rateToAdd);
     this.surchargeRatesDataSource.data = this.surchargeRates;
 
-    this.scrInputs.year = 0;
-    this.scrInputs.dailyrate = 0;
+    this.scrInputs.year = null;
+    this.scrInputs.at = null;
+    this.scrInputs.hu = null;
+    this.scrInputs.sk = null;
+    this.scrInputs.ro = null;
+
+    this.scrForm = new FormGroup({
+      year: new FormControl('', Validators.required),
+      at: new FormControl('', Validators.required),
+      hu: new FormControl('', Validators.required),
+      sk: new FormControl('', Validators.required),
+      ro: new FormControl('', Validators.required),
+    });
+  }
+
+  private confirmDailyRateEdit(index) {
+    this.surchargeRates[index].at = this.scrInputsEdit.at;
+    this.surchargeRates[index].hu = this.scrInputsEdit.hu;
+    this.surchargeRates[index].sk = this.scrInputsEdit.sk;
+    this.surchargeRates[index].ro = this.scrInputsEdit.ro;
+    this.surchargeRatesDataSource.data = this.surchargeRates;
+    this.editDailyRate = false;
+  }
+
+  private dailyRateEdit(index) {
+    this.editDailyRate = true;
+    this.scrInputsEdit.at = this.surchargeRates[index].at;
+    this.scrInputsEdit.hu = this.surchargeRates[index].hu;
+    this.scrInputsEdit.sk = this.surchargeRates[index].sk;
+    this.scrInputsEdit.ro = this.surchargeRates[index].ro;
+  }
+
+  private cancelDailyRateEdit() {
+    this.editDailyRate = false;
   }
 
   editSurchargeCustomer() {
@@ -123,7 +180,35 @@ export class ScEditDialogComponent implements OnInit {
     return this.scrForm.get('year');
   }
 
-  get formdailyrate() {
-    return this.scrForm.get('dailyrate');
+  get formAT() {
+    return this.scrForm.get('at');
+  }
+
+  get formHU() {
+    return this.scrForm.get('hu');
+  }
+
+  get formSK() {
+    return this.scrForm.get('sk');
+  }
+
+  get formRO() {
+    return this.scrForm.get('ro');
+  }
+
+  get formEditAT() {
+    return this.scrEditForm.get('at');
+  }
+
+  get formEditHU() {
+    return this.scrEditForm.get('hu');
+  }
+
+  get formEditSK() {
+    return this.scrEditForm.get('sk');
+  }
+
+  get formEditRO() {
+    return this.scrEditForm.get('ro');
   }
 }

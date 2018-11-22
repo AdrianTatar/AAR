@@ -11,7 +11,7 @@ import { SurchargeCustomerRate } from 'src/app/shared/models/surcharge.customer.
 })
 export class ScViewDialogComponent {
 
-  displayedSurchargeRateColumns: String[] = ['year', 'dailyrate'];
+  displayedSurchargeRateColumns: String[] = ['year', 'at', 'hu', 'sk', 'ro'];
   surchargeRatesDataSource = new MatTableDataSource<SurchargeCustomerRate>();
 
   scInputs: SurchargeCustomer = {

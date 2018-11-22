@@ -59,6 +59,7 @@ mat-form-field {
   margin-left: 5px;
   margin-right: 5px;
 }
+
 .add-icon {
   background-color: #525252;;
   color: white;
@@ -72,8 +73,6 @@ table {
   font-family: 'Poppins', sans-serif;
 }
 
-mat-dialog-content {
-}
 mat-dialog-actions {
   margin-top: 20px;
   float: right;
@@ -84,20 +83,26 @@ mat-dialog-actions {
 }
 th, td{
  text-align: center;
- width: 50%;
 }
  table {
   border-collapse: collapse;
 }
+
 th{
   font-size: 15px;
   background-color: #525252;
   color: white;
   height: 30px;
 }
+
 td{
   padding: 8px;   
 }
+
 tr{
   border-bottom: lightgray 1px solid;
+}
+
+.daily-rate-align {
+  /* width: 250px; */
 }
