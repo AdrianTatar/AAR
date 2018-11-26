@@ -34,7 +34,7 @@ input {
 }
 
 .space-for-buttons {
-  height: 130px;
+  height: 30px;
 }
 
 .options-menu {
@@ -55,16 +55,14 @@ input {
 }
 
 .right {
-  margin: 8px;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  margin: 0 30px 60px 0px;
+  position: relative;
 }
 
 .add-icon {
   background: #FEEF00;
   color: #525252;
+  position: absolute;
+  margin-left: 95%;
 }
 
 

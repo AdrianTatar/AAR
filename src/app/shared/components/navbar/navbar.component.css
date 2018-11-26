@@ -1,7 +1,7 @@
 #main-container {
   overflow: hidden;
-  margin-top: 1.5%;
-  padding: 1.5% 15% 1.5% 15%;
+  margin-top: 0%;
+  padding: 0% 15% 1.5% 15%;
 }
 
 #logo-container {
@@ -25,7 +25,7 @@
 }
 
 #logout-container {
-  margin-right: 30px;
+  margin-right: 40px;
 }
 
 #export-container {
@@ -35,12 +35,6 @@
 .menu-items {
   text-align: center;
   padding-top: 8px;
-}
-
-#lang-btn {
-  background-color: transparent;
-  padding: 0;
-  text-align: center;
 }
 
 #logout-btn {
@@ -104,6 +98,20 @@ a {
   padding: 5px 30px 5px 30px;
 }
 
+.arrow{
+  margin-right: 0px;
+  padding-left: 5px;
+  height: 9px;
+  width: 12px;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.lang-text {
+  margin-right: 0px;
+  padding: 0px;
+  font-family: 'Poppins', sans-serif !important;
+}
+
 .fill-remaining-space {
   /* This fills the remaining space, by using flexbox.
      Every toolbar row uses a flexbox row layout. */
@@ -136,6 +144,11 @@ a {
   background-color: transparent;
   padding: 0;
   text-align: center;
+}
+
+#lang-container{
+  position: relative;
+  margin-left: 90%;
 }
 
 .country {
