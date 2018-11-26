@@ -1,5 +1,6 @@
-table {
-  width: 100%;
+mat-table {
+  overflow: auto;
+  max-height: 730px;
 }
 
 .cells {

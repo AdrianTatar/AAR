@@ -41,30 +41,15 @@
   border-radius: 50%;
   background-color: #FEEF00;
   text-align: center;
-  min-width: 7px !important;
-  margin-right: 5px;
-}
-
-#export-btn {
-  border-radius: 50%;
-  background-color: #FEEF00;
-  text-align: center;
-  min-width: 7px !important;
   margin-right: 5px;
 }
 
 .logout {
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
   width: 23px;
   height: auto;
-}
-
-.export {
-  width: 23px;
-  height: auto;
-}
-
-#export-text {
-  font-family: 'Poppins', sans-serif;
 }
 
 #logout-text { 
@@ -78,13 +63,9 @@ mat-toolbar {
 }
 
 #toolbar-container{
-  overflow: hidden;
-  text-align: center;
-}
-
-#tabs-container {
-  flex: 12 1 auto;
-  text-align: center;
+  display: table;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 mat-form-field {
@@ -125,8 +106,10 @@ a {
   font-family: 'Poppins', sans-serif;
 }
 
-.mat-menu-item {
-  font-family: 'Poppins', sans-serif;
+.select-tables {
+  width: 150px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 #bar {
@@ -159,6 +142,10 @@ a {
 .create-space {
   margin-right: 20px;
   padding-right: 5px;
+}
+
+.fill-top-space {
+  height: 20px;
 }
 
 a {

@@ -1,10 +1,10 @@
 <div class="align-page">
   <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="filteredDataSource">
+    <mat-table [dataSource]="filteredDataSource">
 
       <!-- BLZ Column -->
       <ng-container matColumnDef="blz">
-        <th mat-header-cell *matHeaderCellDef class="header id-column">
+        <th mat-header-cell *matHeaderCellDef class="header">
           {{ 'BLZ' | translate }}
 
           <button mat-icon-button (click)="blzSearch = !blzSearch; clearSearchInputBox()">
@@ -225,7 +225,7 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row (click)="selectRow(index)" [ngClass]="{'highlight': index == selectedRow}" *matRowDef="let row; columns: displayedColumns; let index = index"></tr>
-    </table>
+    </mat-table>
 
     <mat-paginator [pageSizeOptions]="[10, 15, 30, 50, 100]" showFirstLastButtons></mat-paginator>
   </div>

@@ -1,4 +1,4 @@
-<div id="lang-container">
+<div id="lang-container" *ngIf="windowWidth > 800; else topSpace">
   <button mat-flat-button [matMenuTriggerFor]="menu" id="lang-btn">
     <div>
       <div *ngIf="this.language === 'DE'; else englishShow">
@@ -14,6 +14,11 @@
     <button mat-menu-item (click)="switchLanguage('de')" class="menu-items"><a class="lang-text">Deutsch</a></button>
   </mat-menu>
 </div>
+<div>
+  <ng-template #topSpace>
+    <div class="fill-top-space"></div>
+  </ng-template>
+</div>
 <form id="main-container">
   <div>
     <span id="logo-container">
@@ -21,41 +26,135 @@
     </span>
 
     <span id="right-container">
-      <span id="welcome-container">
+      <div id="welcome-container" *ngIf="windowWidth > 550">
         <p id="welcome-message">{{ 'WelcomeMsg' | translate}} {{ userName }} </p>
-      </span>
+      </div>
 
       <span id="logout-container" matTooltip=" {{ 'Logout' | translate }}">
         <button mat-icon-button (click)="logout()" id="logout-btn"><img class="logout" src="../../assets/resources/log-out.png"></button>
-        <button mat-icon-button (click)="logout()" id="logout-text"> {{ 'Logout' | translate }}</button>
+        <button mat-icon-button (click)="logout()" id="logout-text" *ngIf="windowWidth > 650"> {{ 'Logout' | translate
+          }}</button>
       </span>
 
     </span>
   </div>
   <hr id="bar">
   <div id="toolbar-container">
-    <mat-toolbar>
-      <div [@languageChange]="language" id="tabs-container">
-        <span>
+    <mat-toolbar id="tabs-container">
+      <div [@languageChange]="language">
+        <span *ngIf="windowWidth > 500; else otherTables6">
           <a [routerLink]="['/fixed-prices']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
             mat-button>{{'FixedPriceProjects' | translate}}</a>
         </span>
         <span>
+          <ng-template #otherTables6>
+            <span>
+              <mat-select placeholder="Other Tables" class="select-tables">
+                <mat-option value="option1"> <a [routerLink]="['/fixed-prices']" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}" mat-button>{{'FixedPriceProjects' | translate}}</a></mat-option>
+                <mat-option value="option1"><a [routerLink]="['/surcharge-customers']" routerLinkActive="active"
+                    mat-button>{{'SurchargeCustomers'
+                    | translate}}</a></mat-option>
+                <mat-option value="option1"><a [routerLink]="['/payer-nodes']" routerLinkActive="active" mat-button>{{'PayerNodes'
+                    | translate}}</a></mat-option>
+                <mat-option value="option1"><a [routerLink]="['/customer-base']" routerLinkActive="active" mat-button>{{'CustomerBase'
+                    | translate}}</a></mat-option>
+                <mat-option value="option1"><a [routerLink]="['/user-actions']" routerLinkActive="active" mat-button>{{'UserActions'
+                    |
+                    translate}}</a></mat-option>
+                <mat-option value="option2"><a [routerLink]="['/export-actions']" routerLinkActive="active" mat-button>{{'ExportHistory'
+                    |
+                    translate}}</a></mat-option>
+              </mat-select>
+            </span>
+          </ng-template>
+        </span>
+        <span *ngIf="windowWidth > 800; else otherTables5">
           <a [routerLink]="['/surcharge-customers']" routerLinkActive="active" mat-button>{{'SurchargeCustomers'
             | translate}}</a>
         </span>
         <span>
+          <ng-template #otherTables5>
+            <span *ngIf="windowWidth > 500">
+              <mat-select placeholder="Other Tables" class="select-tables">
+                <mat-option value="option1"><a [routerLink]="['/surcharge-customers']" routerLinkActive="active"
+                    mat-button>{{'SurchargeCustomers'
+                    | translate}}</a></mat-option>
+                <mat-option value="option1"><a [routerLink]="['/payer-nodes']" routerLinkActive="active" mat-button>{{'PayerNodes'
+                    | translate}}</a></mat-option>
+                <mat-option value="option1"><a [routerLink]="['/customer-base']" routerLinkActive="active" mat-button>{{'CustomerBase'
+                    | translate}}</a></mat-option>
+                <mat-option value="option1"><a [routerLink]="['/user-actions']" routerLinkActive="active" mat-button>{{'UserActions'
+                    |
+                    translate}}</a></mat-option>
+                <mat-option value="option2"><a [routerLink]="['/export-actions']" routerLinkActive="active" mat-button>{{'ExportHistory'
+                    |
+                    translate}}</a></mat-option>
+              </mat-select>
+            </span>
+          </ng-template>
+        </span>
+        <span *ngIf="windowWidth > 1100; else otherTables4">
           <a [routerLink]="['/payer-nodes']" routerLinkActive="active" mat-button>{{'PayerNodes'
             | translate}}</a>
         </span>
         <span>
+          <ng-template #otherTables4>
+            <span *ngIf="windowWidth > 800">
+              <mat-select placeholder="Other Tables" class="select-tables">
+                <mat-option value="option1"><a [routerLink]="['/payer-nodes']" routerLinkActive="active" mat-button>{{'PayerNodes'
+                    | translate}}</a></mat-option>
+                <mat-option value="option1"><a [routerLink]="['/customer-base']" routerLinkActive="active" mat-button>{{'CustomerBase'
+                    | translate}}</a></mat-option>
+                <mat-option value="option1"><a [routerLink]="['/user-actions']" routerLinkActive="active" mat-button>{{'UserActions'
+                    |
+                    translate}}</a></mat-option>
+                <mat-option value="option2"><a [routerLink]="['/export-actions']" routerLinkActive="active" mat-button>{{'ExportHistory'
+                    |
+                    translate}}</a></mat-option>
+              </mat-select>
+            </span>
+          </ng-template>
+        </span>
+        <span *ngIf="windowWidth > 1400; else otherTables3">
           <a [routerLink]="['/customer-base']" routerLinkActive="active" mat-button>{{'CustomerBase'
             | translate}}</a>
         </span>
         <span>
+          <ng-template #otherTables3>
+            <span *ngIf="windowWidth > 1100">
+              <mat-select placeholder="Other Tables" class="select-tables">
+                <mat-option value="option1"><a [routerLink]="['/customer-base']" routerLinkActive="active" mat-button>{{'CustomerBase'
+                    | translate}}</a></mat-option>
+                <mat-option value="option1"><a [routerLink]="['/user-actions']" routerLinkActive="active" mat-button>{{'UserActions'
+                    |
+                    translate}}</a></mat-option>
+                <mat-option value="option2"><a [routerLink]="['/export-actions']" routerLinkActive="active" mat-button>{{'ExportHistory'
+                    |
+                    translate}}</a></mat-option>
+              </mat-select>
+            </span>
+          </ng-template>
+        </span>
+        <span *ngIf="windowWidth > 1600; else otherTables2">
           <a [routerLink]="['/user-actions']" routerLinkActive="active" mat-button>{{'UserActions' | translate}}</a>
         </span>
         <span>
+          <ng-template #otherTables2>
+            <span *ngIf="windowWidth > 1400">
+              <mat-select placeholder="Other Tables" class="select-tables">
+                <mat-option value="option1"><a [routerLink]="['/user-actions']" routerLinkActive="active" mat-button>{{'UserActions'
+                    |
+                    translate}}</a></mat-option>
+                <mat-option value="option2"><a [routerLink]="['/export-actions']" routerLinkActive="active" mat-button>{{'ExportHistory'
+                    |
+                    translate}}</a></mat-option>
+              </mat-select>
+            </span>
+          </ng-template>
+        </span>
+
+        <span *ngIf="windowWidth > 1600">
           <a [routerLink]="['/export-actions']" routerLinkActive="active" mat-button>{{'ExportHistory' | translate}}</a>
         </span>
       </div>
