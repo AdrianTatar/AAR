@@ -37,25 +37,25 @@
   <!-- AT Daily Rate Column -->
   <ng-container matColumnDef="at" class="daily-rate-align">
     <th mat-header-cell *matHeaderCellDef>AT</th>
-    <td mat-cell *matCellDef="let surchargeRate"> 12.0 </td>
+    <td mat-cell *matCellDef="let surchargeRate"> {{surchargeRate.dailyrate_at}} </td>
   </ng-container>
 
   <!-- HU Daily Rate Column -->
   <ng-container matColumnDef="hu" class="daily-rate-align">
     <th mat-header-cell *matHeaderCellDef>HU</th>
-    <td mat-cell *matCellDef="let surchargeRate"> 12.0 </td>
+    <td mat-cell *matCellDef="let surchargeRate"> {{surchargeRate.dailyrate_hu}} </td>
   </ng-container>
 
   <!-- SK Daily Rate Column -->
   <ng-container matColumnDef="sk" class="daily-rate-align">
     <th mat-header-cell *matHeaderCellDef>SK</th>
-    <td mat-cell *matCellDef="let surchargeRate"> 12.0 </td>
+    <td mat-cell *matCellDef="let surchargeRate"> {{surchargeRate.dailyrate_sk}} </td>
   </ng-container>
 
   <!-- RO Daily Rate Column -->
   <ng-container matColumnDef="ro" class="daily-rate-align">
     <th mat-header-cell *matHeaderCellDef>RO</th>
-    <td mat-cell *matCellDef="let surchargeRate"> 12.0 </td>
+    <td mat-cell *matCellDef="let surchargeRate"> {{surchargeRate.dailyrate_ro}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedSurchargeRateColumns"></tr>

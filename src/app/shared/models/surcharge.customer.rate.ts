@@ -1,8 +1,8 @@
 export interface SurchargeCustomerRate {
     id: number;
     year: number;
-    at: number;
-    hu: number;
-    sk: number;
-    ro: number;
+    dailyrate_at: number;
+    dailyrate_hu: number;
+    dailyrate_sk: number;
+    dailyrate_ro: number;
 }

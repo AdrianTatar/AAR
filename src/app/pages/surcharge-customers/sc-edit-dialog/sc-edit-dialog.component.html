@@ -101,7 +101,7 @@
   <ng-container matColumnDef="year">
     <th mat-header-cell *matHeaderCellDef>{{ 'Year' | translate }} </th>
     <td mat-cell *matCellDef="let surchargeRate">
-      {{surchargeRate.year}}
+      {{ surchargeRate.year }}
     </td>
   </ng-container>
 
@@ -111,7 +111,7 @@
     <td mat-cell *matCellDef="let surchargeRate">
       <div *ngIf="surchargeRate.year === currentYear && editDailyRate === true; else displayInfo">
         <mat-form-field class="scr-input-edit">
-          <input type="number" [(ngModel)]="scrInputsEdit.at" [formControl]="formEditAT" matInput>
+          <input type="number" [(ngModel)]="scrInputsEdit.dailyrate_at" [formControl]="formEditAT" matInput>
           <mat-error *ngIf="formEditAT">
             AT {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
           </mat-error>
@@ -119,8 +119,7 @@
       </div>
 
       <ng-template #displayInfo>
-        AT
-        {{ surchargeRate.at }}
+        {{ surchargeRate.dailyrate_at }}
       </ng-template>
     </td>
   </ng-container>
@@ -131,7 +130,7 @@
     <td mat-cell *matCellDef="let surchargeRate">
       <div *ngIf="surchargeRate.year === currentYear && editDailyRate === true; else displayInfo">
         <mat-form-field class="scr-input-edit">
-          <input type="number" [(ngModel)]="scrInputsEdit.hu" [formControl]="formEditHU" matInput>
+          <input type="number" [(ngModel)]="scrInputsEdit.dailyrate_hu" [formControl]="formEditHU" matInput>
           <mat-error *ngIf="formEditHU">
             HU {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
           </mat-error>
@@ -139,8 +138,7 @@
       </div>
 
       <ng-template #displayInfo>
-        HU
-        {{ surchargeRate.hu }}
+        {{ surchargeRate.dailyrate_hu }}
       </ng-template>
     </td>
   </ng-container>
@@ -151,7 +149,7 @@
     <td mat-cell *matCellDef="let surchargeRate">
       <div *ngIf="surchargeRate.year === currentYear && editDailyRate === true; else displayInfo">
         <mat-form-field class="scr-input-edit">
-          <input type="number" [(ngModel)]="scrInputsEdit.sk" [formControl]="formEditSK" matInput>
+          <input type="number" [(ngModel)]="scrInputsEdit.dailyrate_sk" [formControl]="formEditSK" matInput>
           <mat-error *ngIf="formEditSK">
             SK {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
           </mat-error>
@@ -159,8 +157,7 @@
       </div>
 
       <ng-template #displayInfo>
-        SK
-        {{ surchargeRate.sk }}
+        {{ surchargeRate.dailyrate_sk }}
       </ng-template>
     </td>
   </ng-container>
@@ -171,7 +168,7 @@
     <td mat-cell *matCellDef="let surchargeRate">
       <div *ngIf="surchargeRate.year === currentYear && editDailyRate === true; else displayInfo">
         <mat-form-field class="scr-input-edit">
-          <input type="number" [(ngModel)]="scrInputsEdit.ro" [formControl]="formEditRO" matInput>
+          <input type="number" [(ngModel)]="scrInputsEdit.dailyrate_ro" [formControl]="formEditRO" matInput>
           <mat-error *ngIf="formEditRO">
             RO {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
           </mat-error>
@@ -179,8 +176,7 @@
       </div>
 
       <ng-template #displayInfo>
-        RO
-        {{ surchargeRate.ro }}
+        {{ surchargeRate.dailyrate_ro }}
       </ng-template>
     </td>
   </ng-container>

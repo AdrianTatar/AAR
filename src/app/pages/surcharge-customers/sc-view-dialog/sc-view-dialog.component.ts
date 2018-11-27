@@ -35,5 +35,7 @@ export class ScViewDialogComponent {
     this.scInputs.debitorname = this.data.debitorName;
     this.scInputs.debitornumber = this.data.debitorNumber;
     this.surchargeRatesDataSource.data = this.data.rates;
+
+    console.log(this.data);
   }
 }
