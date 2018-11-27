@@ -53,34 +53,6 @@
         <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
       </ng-container>
 
-      <!-- Action Column -->
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef class="header">
-          {{ 'Action' | translate }}
-
-          <button mat-icon-button (click)="actionSearch = !actionSearch; clearSearchInputBox()">
-            <mat-icon>search</mat-icon>
-          </button>
-          <div *ngIf="actionSearch === true" class="search-input">
-            <mat-form-field>
-              <mat-select [(value)]="actionSearchQuery" (selectionChange)="filter()">
-                <mat-option>None</mat-option>
-                <mat-option value="FPPCreate">{{ ('PopulateUserActions' | translate)['FPPCreate'] }}</mat-option>
-                <mat-option value="FPPEdit">{{ ('PopulateUserActions' | translate)['FPPEdit'] }}</mat-option>
-                <mat-option value="SCCreate">{{ ('PopulateUserActions' | translate)['SCCreate'] }}</mat-option>
-                <mat-option value="SCEdit">{{ ('PopulateUserActions' | translate)['SCEdit'] }}</mat-option>
-                <mat-option value="PNCreate">{{ ('PopulateUserActions' | translate)['PNCreate'] }}</mat-option>
-                <mat-option value="PNEdit">{{ ('PopulateUserActions' | translate)['PNEdit'] }}</mat-option>
-                <mat-option value="CBCreate">{{ ('PopulateUserActions' | translate)['CBCreate'] }}</mat-option>
-                <mat-option value="CBEdit">{{ ('PopulateUserActions' | translate)['CBEdit'] }}</mat-option>
-                <mat-option value="CBEdit">{{ ('PopulateUserActions' | translate)['GenerateAAR'] }}</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </th>
-        <td mat-cell *matCellDef="let element"> {{ ('PopulateUserActions' | translate)[element.action] }} </td>
-      </ng-container>
-
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row (click)="selectRow(index)" [ngClass]="{'highlight': index == selectedRow}" *matRowDef="let row; columns: displayedColumns; let index = index"></tr>
     </table>
@@ -91,5 +63,9 @@
   </div>
 
   <div class="space-for-buttons">
+  </div>
+
+  <div id="export-container" matTooltip="Export">
+    <button mat-icon-button (click)="openDialog()" id="export-btn"><img class="export" src="../../../assets/resources/export-btn.png"></button>
   </div>
 </div>

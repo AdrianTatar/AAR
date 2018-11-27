@@ -1,5 +1,5 @@
 <div class="align-page">
-  <div class="mat-elevation-z8">
+  <div class="mat-elevation-z8" id="table-container">
     <table mat-table [dataSource]="filteredDataSource">
 
       <!-- Debitornumber Column -->
@@ -18,7 +18,7 @@
         </th>
         <!-- Debitornumber Cell -->
         <td mat-cell *matCellDef="let element" (click)="openViewDialog(mapToDataSource(element.id))">
-          <div>
+          <div class="cells">
             {{ element.debitornumber }}
           </div>
         </td>
@@ -40,7 +40,7 @@
         </th>
         <!-- Debitorname Cell -->
         <td mat-cell *matCellDef="let element" (click)="openViewDialog(mapToDataSource(element.id))">
-          <div>
+          <div class="cells">
             {{ element.debitorname }}
           </div>
         </td>
@@ -70,7 +70,7 @@
         </th>
         <!-- Type Cell -->
         <td mat-cell *matCellDef="let element" (click)="openViewDialog(mapToDataSource(element.id))">
-          <div>
+          <div class="cells">
             {{ element.type }}
           </div>
         </td>
@@ -92,7 +92,7 @@
         </th>
         <!-- Customernumber Cell -->
         <td mat-cell *matCellDef="let element" (click)="openViewDialog(mapToDataSource(element.id))">
-          <div>
+          <div class="cells">
             {{ element.customernumber }}
           </div>
         </td>
@@ -114,7 +114,7 @@
         </th>
         <!-- Customername Cell -->
         <td mat-cell *matCellDef="let element" (click)="openViewDialog(mapToDataSource(element.id))">
-          <div>
+          <div class="cells">
             {{ element.customername }}
           </div>
         </td>
@@ -145,8 +145,9 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row (click)="selectRow(index)" [ngClass]="{'highlight': index == selectedRow}" *matRowDef="let row; columns: displayedColumns; let index = index"></tr>
     </table>
-
-    <mat-paginator [pageSizeOptions]="[10, 15, 30, 50, 100]" showFirstLastButtons></mat-paginator>
+    <div class="footer">
+      <mat-paginator [pageSize]="15" [pageSizeOptions]="[10, 15, 30, 50, 100]" showFirstLastButtons></mat-paginator>
+    </div>
   </div>
 
   <div class="space-for-buttons">

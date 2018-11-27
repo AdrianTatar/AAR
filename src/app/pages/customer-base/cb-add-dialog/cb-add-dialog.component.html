@@ -4,12 +4,17 @@
 
 <mat-dialog-content>
   <form [formGroup]="cbForm">
+
+    <!-- BLZ Input Form -->
+
     <mat-form-field class="full-width">
       <input type="number" [(ngModel)]="cbInputs.blz" placeholder="{{ 'BLZ' | translate }}" matInput [formControl]="formblz">
       <mat-error *ngIf="formblz.invalid">
         {{ 'BLZ' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
       </mat-error>
     </mat-form-field>
+
+    <!-- Block Input Form -->
 
     <mat-form-field class="full-width">
       <input type="text" [(ngModel)]="cbInputs.block" placeholder="{{ 'Block' | translate }}" [formControl]="formblock" matInput
@@ -19,12 +24,16 @@
       </mat-error>
     </mat-form-field>
 
+    <!-- Node Input Form -->
+
     <mat-form-field class="full-width">
       <input type="text" [(ngModel)]="cbInputs.node" type="text" matInput placeholder="{{ 'Node' | translate }}" [formControl]="formnode">
       <mat-error *ngIf="formnode.invalid">
         {{ 'Node' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
       </mat-error>
     </mat-form-field>
+
+    <!-- Customer Name Input Form -->
 
     <mat-form-field class="full-width">
       <input type="text" [(ngModel)]="cbInputs.customername" matInput placeholder="{{ 'CustomerName' | translate }}" [formControl]="formcustomername">
@@ -33,12 +42,16 @@
       </mat-error>
     </mat-form-field>
 
+    <!-- Bank Group Input Form -->
+
     <mat-form-field class="full-width">
       <input type="text" [(ngModel)]="cbInputs.bankgroup" matInput placeholder="{{ 'BankGroup' | translate }}" [formControl]="formbankgroup">
       <mat-error *ngIf="formbankgroup.invalid">
         {{ 'BankGroup' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
       </mat-error>
     </mat-form-field>
+
+    <!-- Cluster Input Form -->
 
     <mat-form-field class="full-width">
       <input type="text" [(ngModel)]="cbInputs.cluster" matInput placeholder="{{ 'Cluster' | translate }}" [formControl]="formcluster">
@@ -50,9 +63,15 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
+  
+    <!-- Save Button -->
+
   <button [disabled]="cbForm.invalid" (click)="save()" mat-mini-fab matTooltip="Confirm" class="done-icon">
     <mat-icon>done</mat-icon>
   </button>
+  
+    <!-- Cancel Button -->
+
   <button mat-mini-fab mat-dialog-close matTooltip="Cancel" class="clear-icon">
     <mat-icon>clear</mat-icon>
   </button>

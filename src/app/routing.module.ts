@@ -36,17 +36,18 @@ const appRoutes: Routes = [
     data: { page: 'six' },
     canActivate: [AuthGuard]
   },
-  // {
-  //   path: 'export',
-  //   loadChildren: './pages/export/export.module#ExpModule',
-  //   data: { page: 'seven'},
-  //   canActivate: [AuthGuard]
-  // },
+  {
+    path: 'export-actions',
+    loadChildren: './pages/export-actions/export-actions.module#ExportActionsModule',
+    data: { page: 'seven' },
+    canActivate: [AuthGuard]
+  },
+
   { path: '**', component: NotFoundComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
   exports: [RouterModule]
 })
 export class RoutingModule { }

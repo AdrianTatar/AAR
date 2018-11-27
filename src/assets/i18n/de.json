@@ -1,6 +1,6 @@
 {
   "WelcomeMsg": "Willkommen ",
-
+  "ExportHistory": "Export Protokoll",
   "PayerNodes": "Zahlerknoten",
   "CustomerBase": "Kundenstamm",
   "FixedPriceProjects": "Fixpreisprojekte",
@@ -61,14 +61,14 @@
   "Required": "notwendig",
 
   "PopulateUserActions" : {
-    "FPPCreate": "(DE) Created new Fixed Price Project.",
-    "FPPEdit": "(DE) Edited Fixed Price Project.",
-    "SCCreate": "(DE) Created new Surcharge Customer.",
-    "SCEdit": "(DE) Edited Surcharge Customer.",
-    "PNCreate": "(DE) Created new Payer Node.",
-    "PNEdit": "(DE) Edited Payer Node.",
-    "CBCreate": "(DE) Created new Customer Base.",
-    "CBEdit": "(DE) Edited Customer Base.",
-    "GenerateAAR": "(DE) Generated Automatisierte Aufschlagsrechnung."
+    "FPPCreate": "Neues Fixpreisprojekt erstellt.",
+    "FPPEdit": "Bearbeitet Fixpreisprojekt.",
+    "SCCreate": "Neuer Auschlagskunde erstellt.",
+    "SCEdit": "Bearbeitet Auschalgskunde.",
+    "PNCreate": "Neuer Zahlerknote erstellt.",
+    "PNEdit": "Bearbeitet Zahlerknote.",
+    "CBCreate": "Neuen Kundenstamm erstellt.",
+    "CBEdit": "Bearbeitet Kundenstamm.",
+    "GenerateAAR": "Generiert Automatisierte Aufschlagsrechnung."
   }
 }

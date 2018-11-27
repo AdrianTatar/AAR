@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, HostListener } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { languageChange } from '../../animations';
 import { Router } from '@angular/router';
@@ -15,7 +15,7 @@ import { ExpAddDialogComponent } from './exp-add-dialog/exp-add-dialog.component
 export class NavbarComponent implements AfterViewInit {
 
   userName;
-
+  windowWidth: number = window.innerWidth;
   language = 'DE';
   selected = 'DE';
   constructor(
@@ -36,6 +36,12 @@ export class NavbarComponent implements AfterViewInit {
         document.getElementById('mat-select-0').blur();
       }
     });
+    this.windowWidth = window.innerWidth;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  resize(event) {
+    this.windowWidth = window.innerWidth;
   }
 
   openDialog(): void {

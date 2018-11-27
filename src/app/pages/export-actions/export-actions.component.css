@@ -33,109 +33,113 @@ table {
   background-color: #F4F4F4;
   padding-top: 1.7%;
 }
-
-.cells {
-  padding-right: 5px;
-}
-
-.search-input ::ng-deep.mat-form-field-infix {
-  color: white;
-}
-
-.search-input ::ng-deep.mat-input-element {
-  caret-color: white;
-}
-
-.search-input ::ng-deep.mat-form-field-underline {
-  background-color: #F7FF00;
-}
-
-.search-input ::ng-deep.mat-form-field-ripple {
-  background-color: #F7FF00 !important;
-}
-
-.search-input ::ng-deep.mat-select-value {
-  color: white;
-}
-
-.search-input ::ng-deep.mat-select-arrow {
-  color: white !important;
-}
-
+  
 .header {
   color: white;
-  background-color:#525252;
+  background-color: #525252;
   font-family: 'Poppins', sans-serif;
   width: 20%;
 }
-
+  
 .highlight {
   background-color: #eeeeee;
 }
-
+  
 .selectionHeader {
   width: 40px;
 }
-
+  
 .space-for-buttons {
   height: 30px;
 }
-
+  
 .options-menu {
-  background-color:#525252;
-
+  background-color: #525252;
 }
-
+  
 .edit-icon {
   color: #525252;
 }
-
+  
 .cancel-icon {
   color: #d9534f;
 }
-
+  
 .done-icon {
   color: #46a546;
 }
-
-.right {
-  position: relative;
-}
-
-.add-icon {
-  background: #FEEF00;
-  color: #525252;
-  position: absolute;
-  margin-left: 82%;
-}
-
+  
 .input-fields {
   margin-top: 15px;
-  float:right;
+  float: right;
 }
-
+  
 .mat-form-field {
   float: left;
 }
-
-::ng-deep .mat-icon{
-  height:20px !important;
-  width:20px !important;
-  font-size:20px !important;
+  
+.search-input ::ng-deep.mat-form-field-infix {
+  color: white;
 }
-
+  
+.search-input ::ng-deep.mat-input-element {
+  caret-color: white;
+}
+  
+.search-input ::ng-deep.mat-form-field-underline {
+  background-color: #F7FF00;
+}
+  
+.search-input ::ng-deep.mat-form-field-ripple {
+  background-color: #F7FF00 !important;
+}
+  
+.search-input ::ng-deep.mat-select-value {
+  color: white;
+}
+  
+.search-input ::ng-deep.mat-select-arrow {
+  color: white !important;
+}
+  
+::ng-deep .mat-icon {
+  height: 20px !important;
+  width: 20px !important;
+  font-size: 20px !important;
+}
+  
 mat-form-field.search-input {
   color: white;
 }
-
+  
 ::ng-deep .mat-input-wrapper {
   background: white;
 }
-
+  
 .align-items {
   float: left;
 }
 
-table {
+#export-container {
+  position: relative;
+  margin-left: 82%;
+}
+
+#export-btn {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #FEEF00;
+  text-align: center;
+  min-width: 50px !important;
+  min-height: 50px !important;
+}
+
+.export {
+  width: 30px;
+  height: auto;
+}
+
+#export-text {
+  font-size: 16px;
   font-family: 'Poppins', sans-serif;
 }

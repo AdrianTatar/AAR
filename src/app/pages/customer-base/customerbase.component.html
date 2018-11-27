@@ -1,5 +1,5 @@
 <div class="align-page">
-  <div class="mat-elevation-z8">
+  <div class="mat-elevation-z8" id="table-container">
     <table mat-table [dataSource]="filteredDataSource">
 
       <!-- BLZ Column -->
@@ -27,7 +27,7 @@
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
-            <div>
+            <div class="cells">
               {{ element.blz }}
             </div>
           </ng-template>
@@ -49,7 +49,6 @@
             </mat-form-field>
           </div>
 
-
         </th>
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
@@ -61,7 +60,7 @@
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
-            <div>
+            <div class="cells">
               {{ element.block }}
             </div>
           </ng-template>
@@ -82,7 +81,6 @@
               <input [(ngModel)]="nodeSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
-
         </th>
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
@@ -95,7 +93,7 @@
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
-            <div>
+            <div class="cells">
               {{ element.node }}
             </div>
           </ng-template>
@@ -116,20 +114,19 @@
               <input [(ngModel)]="customernameSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
-
         </th>
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="example-full-width">
               <input type="text" [(ngModel)]="cbInputs.customername" matInput (keyup.enter)="confirmEdit()"
-                [formControl]="formcustomername">
+                [formControl]="formcustomername">s
               <mat-error *ngIf="formcustomername.invalid">
                 {{ 'CustomerName' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
-            <div>
+            <div class="cells">
               {{ element.customername }}
             </div>
           </ng-template>
@@ -150,7 +147,6 @@
               <input [(ngModel)]="bankgroupSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
-
         </th>
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
@@ -162,7 +158,7 @@
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
-            <div>
+            <div class="cells">
               {{ element.bankgroup }}
             </div>
           </ng-template>
@@ -183,7 +179,6 @@
               <input [(ngModel)]="clusterSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
-
         </th>
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
@@ -195,7 +190,7 @@
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
-            <div>
+            <div class="cells">
               {{ element.cluster }}
             </div>
           </ng-template>
@@ -226,8 +221,9 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row (click)="selectRow(index)" [ngClass]="{'highlight': index == selectedRow}" *matRowDef="let row; columns: displayedColumns; let index = index"></tr>
     </table>
-
-    <mat-paginator [pageSizeOptions]="[10, 15, 30, 50, 100]" showFirstLastButtons></mat-paginator>
+    <div class="footer">
+      <mat-paginator fixed [pageSize]="15" [pageSizeOptions]="[10, 15, 30, 50, 100]" showFirstLastButtons></mat-paginator>
+    </div>
   </div>
 
   <div class="space-for-buttons">

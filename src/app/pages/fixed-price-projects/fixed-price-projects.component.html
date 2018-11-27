@@ -1,5 +1,5 @@
 <div class="align-page">
-  <div class="mat-elevation-z8">
+  <div class="mat-elevation-z8" id="table-container">
     <table mat-table [dataSource]="filteredDataSource">
 
       <!-- Planmill Projektnummer Column -->
@@ -28,7 +28,7 @@
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
-            <div>
+            <div class="cells">
               {{ element.projectnumberplanmill }}
             </div>
           </ng-template>
@@ -46,8 +46,7 @@
           </button>
           <div *ngIf="tagetikSearch === true" class="search-input">
             <mat-form-field>
-              <input [(ngModel)]="tagetikSearchQuery" (keyup)="filter()" matInput
-                class="searchInput">
+              <input [(ngModel)]="tagetikSearchQuery" (keyup)="filter()" matInput class="searchInput">
             </mat-form-field>
           </div>
 
@@ -63,7 +62,7 @@
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
-            <div>
+            <div class="cells">
               {{ element.projectidtagetik }}
             </div>
           </ng-template>
@@ -81,8 +80,7 @@
           </button>
           <div *ngIf="projectdescriptionSearch === true" class="search-input">
             <mat-form-field>
-              <input [(ngModel)]="projectdescriptionSearchQuery" (keyup)="filter()" matInput
-                class="searchInput">
+              <input [(ngModel)]="projectdescriptionSearchQuery" (keyup)="filter()" matInput class="searchInput">
             </mat-form-field>
           </div>
 
@@ -98,7 +96,7 @@
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
-            <div>
+            <div class="cells">
               {{ element.projectdescription }}
             </div>
           </ng-template>
@@ -132,7 +130,7 @@
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
-            <div>
+            <div class="cells">
               {{ element.customernumber }}
             </div>
           </ng-template>
@@ -150,8 +148,7 @@
           </button>
           <div *ngIf="priceSearch === true" class="search-input">
             <mat-form-field>
-              <input type="number" [(ngModel)]="priceSearchQuery" (keyup)="filter()" matInput
-                class="searchInput">
+              <input type="number" [(ngModel)]="priceSearchQuery" (keyup)="filter()" matInput class="searchInput">
             </mat-form-field>
           </div>
 
@@ -166,7 +163,7 @@
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
-            <div>
+            <div class="cells">
               {{ element.price }}
             </div>
           </ng-template>
@@ -198,7 +195,9 @@
       <tr mat-row (click)="selectRow(index)" [ngClass]="{'highlight': index == selectedRow}" *matRowDef="let row; columns: displayedColumns; let index = index"></tr>
     </table>
 
-    <mat-paginator [pageSizeOptions]="[10, 15, 30, 50, 100]" showFirstLastButtons></mat-paginator>
+    <div class="footer">
+      <mat-paginator [pageSize]="15" [pageSizeOptions]="[10, 15, 30, 50, 100]" showFirstLastButtons></mat-paginator>
+    </div>
   </div>
 
   <div class="space-for-buttons">
@@ -209,4 +208,5 @@
       <mat-icon>add</mat-icon>
     </button>
   </div>
+
 </div>
