@@ -1,6 +1,6 @@
 <div class="align-page">
-  <div class="mat-elevation-z8">
-    <mat-table [dataSource]="filteredDataSource">
+  <div class="mat-elevation-z8" id="table-container">
+    <table mat-table [dataSource]="filteredDataSource">
 
       <!-- Customer Number Column -->
       <ng-container matColumnDef="customernumber">
@@ -28,7 +28,7 @@
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
-            <div>
+            <div class="cells">
               {{ element.customernumber }}
             </div>
           </ng-template>
@@ -62,7 +62,7 @@
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
-            <div>
+            <div class="cells">
               {{ element.customername }}
             </div>
           </ng-template>
@@ -97,7 +97,7 @@
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
-            <div>
+            <div class="cells">
               {{ element.hierarchy }}
             </div>
           </ng-template>
@@ -131,7 +131,7 @@
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
-            <div>
+            <div class="cells">
               {{ element.payernodenumber }}
             </div>
           </ng-template>
@@ -165,7 +165,7 @@
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
-            <div>
+            <div class="cells">
               {{ element.payernodedescription }}
             </div>
           </ng-template>
@@ -211,7 +211,8 @@
         <th mat-header-cell *matHeaderCellDef class="header options-menu"></th>
         <td mat-cell *matCellDef="let element">
           <ng-template #editButton>
-            <button [disabled]="createNewRow === true" mat-button (click)="editRow(element.id)" class="edit-icon" matTooltip="{{'Edit' | translate }}">
+            <button [disabled]="createNewRow === true" mat-button (click)="editRow(element.id)" class="edit-icon"
+              matTooltip="{{'Edit' | translate }}">
               <mat-icon>edit</mat-icon>
             </button>
           </ng-template>
@@ -228,9 +229,10 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row (click)="selectRow(index)" [ngClass]="{'highlight': index == selectedRow}" *matRowDef="let row; columns: displayedColumns; let index = index"></tr>
-    </mat-table>
-
-    <mat-paginator [pageSizeOptions]="[10, 15, 30, 50, 100]" showFirstLastButtons></mat-paginator>
+    </table>
+    <div class="footer">
+      <mat-paginator [pageSize]="15" [pageSizeOptions]="[10, 15, 30, 50, 100]" showFirstLastButtons></mat-paginator>
+    </div>
   </div>
 
   <div class="space-for-buttons">
