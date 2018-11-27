@@ -10,31 +10,31 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ScrAddDialogComponent {
 
-  scForm;
-  scInputs: SurchargeCustomerRate = {
-    id: null,
-    year: 0,
-    dailyrate: 0
-  };
+  // scForm;
+  // scInputs: SurchargeCustomerRate = {
+  //   id: null,
+  //   year: 0,
+  //   // dailyrate: 0
+  // };
 
-  constructor(
-    private dialogRef: MatDialogRef<ScrAddDialogComponent>
-  ) {
-    this.scForm = new FormGroup({
-      year: new FormControl('', Validators.required),
-      dailyrate: new FormControl('', Validators.required)
-    });
-  }
+  // constructor(
+  //   private dialogRef: MatDialogRef<ScrAddDialogComponent>
+  // ) {
+  //   this.scForm = new FormGroup({
+  //     year: new FormControl('', Validators.required),
+  //     dailyrate: new FormControl('', Validators.required)
+  //   });
+  // }
 
-  save() {
-    this.dialogRef.close(this.scInputs);
-  }
+  // save() {
+  //   this.dialogRef.close(this.scInputs);
+  // }
 
-  get formyear() {
-    return this.scForm.get('year');
-  }
+  // get formyear() {
+  //   return this.scForm.get('year');
+  // }
 
-  get formdailyrate() {
-    return this.scForm.get('dailyrate');
-  }
+  // get formdailyrate() {
+  //   return this.scForm.get('dailyrate');
+  // }
 }

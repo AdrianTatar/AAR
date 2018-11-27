@@ -10,122 +10,122 @@ import { ScrAddDialogComponent } from './scr-add-dialog/scr-add-dialog.component
     templateUrl: './surchargecustomersrate.component.html',
     styleUrls: ['./surchargecustomersrate.component.css']
 })
-export class SurchargeCustomersRateComponent implements OnInit {
+export class SurchargeCustomersRateComponent /*implements OnInit*/ {
 
-    displayedColumns: string[] = ['year', 'dailyrate'];
-    dataSource = new MatTableDataSource<SurchargeCustomerRate>();
-    filteredDataSource = new MatTableDataSource<SurchargeCustomerRate>();
-    surchargeCustomerRate: SurchargeCustomerRate[];
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-    selectedRowToEdit = -1;
-    selectedRow = -1;
+    // displayedColumns: string[] = ['year', 'dailyrate'];
+    // dataSource = new MatTableDataSource<SurchargeCustomerRate>();
+    // filteredDataSource = new MatTableDataSource<SurchargeCustomerRate>();
+    // surchargeCustomerRate: SurchargeCustomerRate[];
+    // @ViewChild(MatPaginator) paginator: MatPaginator;
+    // selectedRowToEdit = -1;
+    // selectedRow = -1;
 
-    surchargecustomer_idSearch = false;
-    yearSearch = false;
-    dailyrateSearch = false;
+    // surchargecustomer_idSearch = false;
+    // yearSearch = false;
+    // dailyrateSearch = false;
 
-    surchargecustomer_idSearchQuery = 0;
-    yearSearchQuery = 0;
-    dailyrateSearchQuery = 0;
+    // surchargecustomer_idSearchQuery = 0;
+    // yearSearchQuery = 0;
+    // dailyrateSearchQuery = 0;
 
-    addNewElement = false;
+    // addNewElement = false;
 
-    scrForm;
-    scrInputs: SurchargeCustomerRate = {
-        id: null,
-        year: null,
-        dailyrate: null
-    };
+    // scrForm;
+    // scrInputs: SurchargeCustomerRate = {
+    //     id: null,
+    //     year: null,
+    //     dailyrate: null
+    // };
 
-    constructor(
-        public dialog: MatDialog, private surchargeCustomersRateService: SurchargeCustomersRateService
-    ) { }
+    // constructor(
+    //     public dialog: MatDialog, private surchargeCustomersRateService: SurchargeCustomersRateService
+    // ) { }
 
-    async ngOnInit() {
-        this.dataSource.paginator = this.paginator;
-        this.selectedRow = 0;
+    // async ngOnInit() {
+    //     this.dataSource.paginator = this.paginator;
+    //     this.selectedRow = 0;
 
-        this.scrForm = new FormGroup({
-            surchargecustomer_id: new FormControl('', Validators.required),
-            year: new FormControl('', Validators.required),
-            dailyrate: new FormControl('', Validators.required)
-        });
+    //     this.scrForm = new FormGroup({
+    //         surchargecustomer_id: new FormControl('', Validators.required),
+    //         year: new FormControl('', Validators.required),
+    //         dailyrate: new FormControl('', Validators.required)
+    //     });
 
-        await this.surchargeCustomersRateService.getSurchargeCustomersRates().subscribe(data => {
-            this.surchargeCustomerRate = data;
-            this.dataSource.data = this.surchargeCustomerRate;
-            this.filteredDataSource.data = this.surchargeCustomerRate;
-        });
-    }
+    //     await this.surchargeCustomersRateService.getSurchargeCustomersRates().subscribe(data => {
+    //         this.surchargeCustomerRate = data;
+    //         this.dataSource.data = this.surchargeCustomerRate;
+    //         this.filteredDataSource.data = this.surchargeCustomerRate;
+    //     });
+    // }
 
-    get formYear() {
-        return this.scrForm.get('year');
-    }
+    // get formYear() {
+    //     return this.scrForm.get('year');
+    // }
 
-    get formDailyRate() {
-        return this.scrForm.get('dailyrate');
-    }
+    // get formDailyRate() {
+    //     return this.scrForm.get('dailyrate');
+    // }
 
-    private selectRow(rowNumber) {
-        this.selectedRow = rowNumber;
-    }
+    // private selectRow(rowNumber) {
+    //     this.selectedRow = rowNumber;
+    // }
 
-    @HostListener('document:keydown', ['$event']) handleKeyboardEvent(event: KeyboardEvent) {
-        if (event.key === 'ArrowUp') {
-            this.selectedRow -= (this.selectedRow === 0 ? 0 : 1);
-        } else if (event.key === 'ArrowDown'
-            && ((this.selectedRow + 1) / this.paginator.pageSize < 1)
-            && (this.selectedRow + 1 < this.dataSource.data.length)) {
-            // Formula in the if statement is used to not let the selected row go to another page -it keeps it on the current page
-            this.selectedRow += (this.selectedRow === this.dataSource.data.length ? 0 : 1);
-        }
-    }
+    // @HostListener('document:keydown', ['$event']) handleKeyboardEvent(event: KeyboardEvent) {
+    //     if (event.key === 'ArrowUp') {
+    //         this.selectedRow -= (this.selectedRow === 0 ? 0 : 1);
+    //     } else if (event.key === 'ArrowDown'
+    //         && ((this.selectedRow + 1) / this.paginator.pageSize < 1)
+    //         && (this.selectedRow + 1 < this.dataSource.data.length)) {
+    //         // Formula in the if statement is used to not let the selected row go to another page -it keeps it on the current page
+    //         this.selectedRow += (this.selectedRow === this.dataSource.data.length ? 0 : 1);
+    //     }
+    // }
 
-    clearSearchInputBox() {
-        if (!this.surchargecustomer_idSearch) {
-            this.surchargecustomer_idSearchQuery = 0;
-        }
-        if (!this.yearSearch) {
-            this.yearSearchQuery = 0;
-        }
-        if (!this.dailyrateSearch) {
-            this.dailyrateSearchQuery = 0;
-        }
-    }
+    // clearSearchInputBox() {
+    //     if (!this.surchargecustomer_idSearch) {
+    //         this.surchargecustomer_idSearchQuery = 0;
+    //     }
+    //     if (!this.yearSearch) {
+    //         this.yearSearchQuery = 0;
+    //     }
+    //     if (!this.dailyrateSearch) {
+    //         this.dailyrateSearchQuery = 0;
+    //     }
+    // }
 
-    private editRow(rowNumber) {
-        /*this.selectedRowToEdit = this.mapToDataSource(rowNumber);*/
-        this.setEditValues(this.selectedRowToEdit);
-    }
+    // private editRow(rowNumber) {
+    //     /*this.selectedRowToEdit = this.mapToDataSource(rowNumber);*/
+    //     this.setEditValues(this.selectedRowToEdit);
+    // }
 
-    private cancelEdit() {
-        this.selectedRowToEdit = -1;
-    }
+    // private cancelEdit() {
+    //     this.selectedRowToEdit = -1;
+    // }
 
-    private setEditValues(rowNumber) {
-    }
+    // private setEditValues(rowNumber) {
+    // }
 
-    private confirmEdit() {
-    }
+    // private confirmEdit() {
+    // }
 
-    openDialog(): void {
-        const dialogRef = this.dialog.open(ScrAddDialogComponent, {
-            width: '800px',
-            disableClose: true
-        });
+    // openDialog(): void {
+    //     const dialogRef = this.dialog.open(ScrAddDialogComponent, {
+    //         width: '800px',
+    //         disableClose: true
+    //     });
 
-        dialogRef.afterClosed().subscribe(data => {
-            if (data) {
-                this.pushObject(data);
-            }
-        });
-    }
+    //     dialogRef.afterClosed().subscribe(data => {
+    //         if (data) {
+    //             this.pushObject(data);
+    //         }
+    //     });
+    // }
 
-    private pushObject(data: SurchargeCustomerRate) {
-        data.id = this.dataSource.data[this.dataSource.data.length - 1].id + 1;
-        this.dataSource.data.push(data);
-        this.filteredDataSource.data = this.dataSource.data;
-    }
+    // private pushObject(data: SurchargeCustomerRate) {
+    //     data.id = this.dataSource.data[this.dataSource.data.length - 1].id + 1;
+    //     this.dataSource.data.push(data);
+    //     this.filteredDataSource.data = this.dataSource.data;
+    // }
 
     /*
     private mapToDataSource(elementId) {
