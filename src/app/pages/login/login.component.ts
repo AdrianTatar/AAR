@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
@@ -8,11 +8,17 @@ import { CookieService } from 'ngx-cookie-service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   username = '';
   password = '';
   response = true;
+
+  @ViewChild('name') nameField: ElementRef;
+
+  ngOnInit() {
+    this.nameField.nativeElement.focus();
+  }
 
   constructor(
     public authService: AuthService,
@@ -31,4 +37,5 @@ export class LoginComponent {
       this.router.navigate(['fixed-prices']);
     }
   }
+
 }

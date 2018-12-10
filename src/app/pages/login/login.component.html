@@ -10,11 +10,11 @@
       <div class="login-form">
         <div class="space">
           <mat-form-field>
-            <input matInput placeholder="Benutzer" [(ngModel)]="username">
+            <input #name matInput placeholder="Benutzer" [(ngModel)]="username" ng>
           </mat-form-field>
         </div>
         <mat-form-field>
-          <input type="password" matInput placeholder="Passwort" [(ngModel)]="password">
+          <input (keydown.enter)="loginUser()" type="password" matInput placeholder="Passwort" [(ngModel)]="password">
         </mat-form-field>
         <div *ngIf="!response" class="wrong-credentials">
           Ungültiger Benutzername oder Kennwort.

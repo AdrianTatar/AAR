@@ -16,7 +16,6 @@ export class ExpAddDialogComponent {
     private exportProjectUrl = '/export';
 
     constructor(
-        private dialogRef: MatDialogRef<ExpAddDialogComponent>,
         private exportService: ExportService,
         public snackBar: MatSnackBar,
         private cookieService: CookieService
@@ -31,7 +30,7 @@ export class ExpAddDialogComponent {
 
     exportXML(year, scenario) {
         if (year != null && scenario != null) {
-            this.location = this.exportProjectUrl + year + '/' + scenario + '/' + this.cookieService.get('username');
+            this.location = this.exportProjectUrl + '/' + year + '/' + scenario + '/' + this.cookieService.get('username');
             window.open(this.location);
         } else {
             this.openSnackBar('Select Year and Scenario before exporting!', '');
