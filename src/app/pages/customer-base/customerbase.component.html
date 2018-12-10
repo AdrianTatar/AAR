@@ -119,7 +119,7 @@
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="example-full-width">
               <input type="text" [(ngModel)]="cbInputs.customername" matInput (keyup.enter)="confirmEdit()"
-                [formControl]="formcustomername">s
+                [formControl]="formcustomername">
               <mat-error *ngIf="formcustomername.invalid">
                 {{ 'CustomerName' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
               </mat-error>

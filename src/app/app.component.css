@@ -1,11 +1,12 @@
 ::ng-deep router-outlet ~ * {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 77.5%;
 }
 
 #container {
   height: 100%;
+  background-color: #F4F4F4;
 }
 
 #nav-container {
@@ -14,5 +15,9 @@
 
 #container2 {
   margin-top: 0.7%;
+  background-color: #F4F4F4;
+}
+
+html {
   background-color: #F4F4F4;
 }

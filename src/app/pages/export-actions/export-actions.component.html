@@ -2,23 +2,6 @@
   <div class="mat-elevation-z8" id="table-container">
     <table mat-table [dataSource]="dataSource">
 
-      <!-- ID Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef class="header">
-          {{ 'Number' | translate}}
-          <button mat-icon-button (click)="logIdSearch = !logIdSearch; clearSearchInputBox()">
-            <mat-icon>search</mat-icon>
-          </button>
-          <div *ngIf="logIdSearch === true" class="search-input">
-            <mat-form-field>
-              <input [(ngModel)]="logIdSearchQuery" (keyup)="filter()" matInput>
-            </mat-form-field>
-          </div>
-        </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-
-      </ng-container>
-
       <!-- Timestamp Column -->
       <ng-container matColumnDef="timestamp">
         <th mat-header-cell *matHeaderCellDef class="header">
@@ -33,7 +16,7 @@
             </mat-form-field>
           </div>
         </th>
-        <td mat-cell *matCellDef="let element"> {{ element.time }} </td>
+        <td mat-cell *matCellDef="let element"> {{ element[1] | timestamp }} </td>
       </ng-container>
 
       <!-- User Id Column -->
@@ -50,31 +33,14 @@
             </mat-form-field>
           </div>
         </th>
-        <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
-      </ng-container>
-
-      <!-- Excel File Name Column -->
-      <ng-container matColumnDef="excelFile">
-        <th mat-header-cell *matHeaderCellDef class="header">
-          Excel File
-
-          <button mat-icon-button (click)="userIdSearch = !userIdSearch; clearSearchInputBox()">
-            <mat-icon>search</mat-icon>
-          </button>
-          <div *ngIf="userIdSearch === true" class="search-input">
-            <mat-form-field>
-              <input [(ngModel)]="userIdSearchQuery" (keyup)="filter()" matInput>
-            </mat-form-field>
-          </div>
-        </th>
-        <td mat-cell *matCellDef="let element"> {{element.excelFile}} </td>
+        <td mat-cell *matCellDef="let element"> {{element[0]}} </td>
       </ng-container>
 
       <!-- Buttons Column -->
       <ng-container matColumnDef="menu">
         <th mat-header-cell *matHeaderCellDef class="header options-menu"></th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-button class="edit-icon" (click)="exportXML(element.excelFile)" matTooltip="{{ 'Edit' | translate}}">
+        <td mat-cell *matCellDef="let element; let i = index">
+          <button mat-button class="edit-icon" (click)="exportXML(i)" matTooltip="{{ 'Edit' | translate}}">
             <img id="exp-btn" src="../../../assets/resources/excel-icon.png">
           </button>
         </td>

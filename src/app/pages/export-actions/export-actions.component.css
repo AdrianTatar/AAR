@@ -1,9 +1,9 @@
 #table-container{
   max-height:700px;
-  width: 70%;
+  width: 50%;
   overflow:scroll;
   overflow-x:hidden;
-  margin-left: 15%;
+  margin-left: 25%;
 }
 
 #table-container::-webkit-scrollbar {
@@ -43,7 +43,7 @@ table {
   color: white;
   background-color: #525252;
   font-family: 'Poppins', sans-serif;
-  width: 25%;
+  width: 60%;
 }
   
 .highlight {
@@ -127,7 +127,7 @@ mat-form-field.search-input {
 
 #export-container {
   position: relative;
-  margin-left: 82%;
+  margin-left: 72%;
 }
 
 #export-btn {
