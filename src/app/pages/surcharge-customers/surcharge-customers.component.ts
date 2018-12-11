@@ -217,8 +217,8 @@ export class SurchargeCustomersComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(data => {
       if (data) {
         console.log(data);
-        this.surchargeCustomerService.updateSurchargeCustomer(this.dataSource.data[this.selectedRowToEdit - 1]);
         this.dataSource.data[this.selectedRowToEdit - 1] = data;
+        this.surchargeCustomerService.updateSurchargeCustomer(this.dataSource.data[this.selectedRowToEdit - 1]);
         this.selectedRowToEdit = -1;
         this.filter();
       }

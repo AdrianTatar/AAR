@@ -69,6 +69,7 @@
     "PNEdit": "Edited Payer Node.",
     "CBCreate": "Created new Customer Base.",
     "CBEdit": "Edited Customer Base.",
-    "GenerateAAR": "Generated Automatisierte Aufschlagsrechnung."
+    "ExcelRe": "Excel File from History Downloaded",
+    "ExcelGenerate": "New Excel-File Generated"
   }
 }

@@ -13,6 +13,9 @@ export class AuthService {
     if (username === 'admin' && password === 'admin') {
       return true;
     }
+    if (username === 'test' && password === 'test') {
+      return true;
+    }
     return false;
   }
 

@@ -69,6 +69,7 @@
     "PNEdit": "Bearbeitet Zahlerknote.",
     "CBCreate": "Neuen Kundenstamm erstellt.",
     "CBEdit": "Bearbeitet Kundenstamm.",
-    "GenerateAAR": "Generiert Automatisierte Aufschlagsrechnung."
+    "ExcelRe": "Alte Excel-Datei heruntergeladen",
+    "ExcelGenerate": "Neue Excel-Datei heruntergeladen"
   }
 }

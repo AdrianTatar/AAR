@@ -1,3 +1,4 @@
+import { UserActionsCreateService } from './../../../services/user-actions-create.service';
 import { Component } from '@angular/core';
 import { MatDialogRef, MatSnackBar } from '@angular/material';
 import { Scenario } from 'src/app/shared/models/scenario';
@@ -18,7 +19,8 @@ export class ExpAddDialogComponent {
     constructor(
         private exportService: ExportService,
         public snackBar: MatSnackBar,
-        private cookieService: CookieService
+        private cookieService: CookieService,
+        private userActionsCreateService: UserActionsCreateService
     ) {
     }
 
@@ -29,6 +31,7 @@ export class ExpAddDialogComponent {
     }
 
     exportXML(year, scenario) {
+        this.userActionsCreateService.createUserAction('ExcelGenerate');
         if (year != null && scenario != null) {
             this.location = this.exportProjectUrl + '/' + year + '/' + scenario + '/' + this.cookieService.get('username');
             window.open(this.location);

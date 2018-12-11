@@ -14,7 +14,7 @@ export class ExportComponent {
     location;
     scenarios: Scenario[];
     private exportProjectUrl = '/export';
- 
+
     constructor(
         private exportService: ExportService,
         public snackBar: MatSnackBar,
@@ -33,7 +33,7 @@ export class ExportComponent {
     exportXML(year, scenario) {
         if (year != null && scenario != null) {
             this.userActionsCreateService.createUserAction('GenerateAAR');
-            this.location = this.exportProjectUrl + year + '/' + scenario+'/'+ this.cookieService.get('username');
+            this.location = this.exportProjectUrl + year + '/' + scenario + '/' + this.cookieService.get('username');
             window.open(this.location);
         } else {
             this.openSnackBar('Select Year and Scenario before exporting!', '');

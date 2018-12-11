@@ -1,3 +1,4 @@
+import { UserActionsCreateService } from 'src/app/shared/services/user-actions-create.service';
 import { ExpAddDialogComponent } from './../../shared/components/navbar/exp-add-dialog/exp-add-dialog.component';
 import { Component, OnInit, ViewChild, HostListener, AfterViewInit, PipeTransform, Pipe } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
@@ -20,6 +21,10 @@ export class ExportActionsComponent implements OnInit, AfterViewInit {
   exportDate;
   day;
   month;
+  user;
+  hour;
+  minute;
+  second;
 
   dataSource = new MatTableDataSource<ExportAction>();
   filteredDataSource = new MatTableDataSource<ExportAction>();
@@ -40,14 +45,23 @@ export class ExportActionsComponent implements OnInit, AfterViewInit {
   async ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.selectedRow = 0;
+    this.user = this.cookieService.get('username');
 
-    await this.exportService.getallExports().subscribe(data => {
-      this.exportActions = data;
-      this.dataSource.data = this.exportActions;
-      this.filteredDataSource.data = this.exportActions;
-      console.log(this.dataSource.data);
-    });
-
+    if (this.user === 'admin') {
+      await this.exportService.getallExports().subscribe(data => {
+        this.exportActions = data;
+        this.dataSource.data = this.exportActions;
+        this.filteredDataSource.data = this.exportActions;
+        console.log(this.dataSource.data);
+      });
+    } else {
+      await this.exportService.getallUserExports().subscribe(data => {
+        this.exportActions = data;
+        this.dataSource.data = this.exportActions;
+        this.filteredDataSource.data = this.exportActions;
+        console.log(this.dataSource.data);
+      });
+    }
 
   }
 
@@ -63,7 +77,8 @@ export class ExportActionsComponent implements OnInit, AfterViewInit {
 
   constructor(public dialog: MatDialog,
     private exportService: ExportActionsService,
-    private cookieService: CookieService) {
+    private cookieService: CookieService,
+    private userActionsCreateService: UserActionsCreateService) {
   }
 
   openDialog(): void {
@@ -75,7 +90,7 @@ export class ExportActionsComponent implements OnInit, AfterViewInit {
 
 
   exportXML(value) {
-
+    this.userActionsCreateService.createUserAction('ExcelRe');
     if (this.dataSource.data[value][1].dayOfMonth < 10) {
       this.day = '0' + this.dataSource.data[value][1].dayOfMonth;
     } else {
@@ -86,13 +101,28 @@ export class ExportActionsComponent implements OnInit, AfterViewInit {
     } else {
       this.month = this.dataSource.data[value][1].monthValue;
     }
+    if (this.dataSource.data[value][1].hour < 10) {
+      this.hour = '0' + this.dataSource.data[value][1].hour;
+    } else {
+      this.hour = this.dataSource.data[value][1].hour;
+    }
+    if (this.dataSource.data[value][1].minute < 10) {
+      this.minute = '0' + this.dataSource.data[value][1].minute;
+    } else {
+      this.minute = this.dataSource.data[value][1].minute;
+    }
+    if (this.dataSource.data[value][1].second < 10) {
+      this.second = '0' + this.dataSource.data[value][1].second;
+    } else {
+      this.second = this.dataSource.data[value][1].second;
+    }
 
     this.exportDate = this.dataSource.data[value][1].year + '-'
       + this.month + '-'
       + this.day + 'T'
-      + this.dataSource.data[value][1].hour + ':'
-      + this.dataSource.data[value][1].minute + ':'
-      + this.dataSource.data[value][1].second;
+      + this.hour + ':'
+      + this.minute + ':'
+      + this.second;
 
     this.location = this.exportProjectUrl + this.cookieService.get('username') + '/' + this.exportDate;
     window.open(this.location);
