@@ -180,7 +180,8 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PnAddDialogComponent, {
-      width: '550px',
+      width: '33%',
+      height: '58%',
       disableClose: true
     });
 

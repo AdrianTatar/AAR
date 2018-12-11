@@ -179,7 +179,8 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(CbAddDialogComponent, {
-      width: '600px',
+      width: '33%',
+      height: '58%',
       disableClose: true
     });
 

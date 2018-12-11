@@ -17,6 +17,7 @@ export class UserActionsService {
   private readAllPath = '/readAll';
 
   public getUsers() {
+    console.log(this.userActionUrl);
     return this.http.get<UserAction[]>(this.userActionUrl + this.readAllPath);
   }
 

@@ -1,28 +1,41 @@
 import { UserActionsCreateService } from './../../../services/user-actions-create.service';
-import { Component } from '@angular/core';
-import { MatDialogRef, MatSnackBar } from '@angular/material';
+import { Component, Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { Scenario } from 'src/app/shared/models/scenario';
 import { ExportService } from 'src/app/pages/export/services/export.service';
 import { CookieService } from 'ngx-cookie-service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Component({
     selector: 'app-exp-add-dialog',
     templateUrl: './exp-add-dialog.component.html',
     styleUrls: ['./exp-add-dialog.component.css']
 })
+
+@Injectable({
+    providedIn: 'root'
+})
+
 export class ExpAddDialogComponent {
     location;
     page;
     scenarios: Scenario[];
-    private exportProjectUrl = '/export';
+
 
     constructor(
+        private http: HttpClient,
         private exportService: ExportService,
         public snackBar: MatSnackBar,
         private cookieService: CookieService,
         private userActionsCreateService: UserActionsCreateService
     ) {
     }
+
+    private exportProjectUrl = '/export';
 
     async changeScenarios(year) {
         await this.exportService.getScenarios(year).subscribe(data => {
@@ -31,13 +44,14 @@ export class ExpAddDialogComponent {
     }
 
     exportXML(year, scenario) {
-        this.userActionsCreateService.createUserAction('ExcelGenerate');
         if (year != null && scenario != null) {
             this.location = this.exportProjectUrl + '/' + year + '/' + scenario + '/' + this.cookieService.get('username');
             window.open(this.location);
+            console.log(this.exportProjectUrl);
         } else {
             this.openSnackBar('Select Year and Scenario before exporting!', '');
         }
+        this.userActionsCreateService.createUserAction('ExcelGenerate');
     }
 
     private openSnackBar(message: string, action?: string) {
