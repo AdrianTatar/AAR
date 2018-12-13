@@ -1,3 +1,5 @@
+import { SurchargeCustomersService } from './../services/surcharge-customers.service';
+import { SurchargeCustomersRateService } from './../surchargecustomersrates/services/surcharge-customers-rates.service';
 import { SurchargeCustomerRate } from './../../../shared/models/surcharge.customer.rate';
 import { SurchargeCustomer } from './../../../shared/models/surcharge.customer';
 import { Component, OnInit, Inject } from '@angular/core';
@@ -52,15 +54,16 @@ export class ScEditDialogComponent implements OnInit {
   };
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private dialogRef: MatDialogRef<ScEditDialogComponent>
+    @Inject(MAT_DIALOG_DATA) public data: SurchargeCustomer,
+    private dialogRef: MatDialogRef<ScEditDialogComponent>,
+    private surchargeCustomerService: SurchargeCustomersService
   ) {
-    this.scInputs.id = this.data.customerId;
-    this.scInputs.customernumber = this.data.customerNumber;
-    this.scInputs.customername = this.data.customerName;
+    this.scInputs.id = this.data.id;
+    this.scInputs.customernumber = this.data.customernumber;
+    this.scInputs.customername = this.data.customername;
     this.scInputs.type = this.data.type;
-    this.scInputs.debitorname = this.data.debitorName;
-    this.scInputs.debitornumber = this.data.debitorNumber;
+    this.scInputs.debitorname = this.data.debitorname;
+    this.scInputs.debitornumber = this.data.debitornumber;
     this.surchargeRates = this.data.rates;
     this.surchargeRatesDataSource.data = this.data.rates;
   }
@@ -120,11 +123,20 @@ export class ScEditDialogComponent implements OnInit {
   }
 
   private confirmDailyRateEdit(index) {
-    this.surchargeRates[index].at = this.scrInputsEdit.dailyrate_at;
-    this.surchargeRates[index].hu = this.scrInputsEdit.dailyrate_hu;
-    this.surchargeRates[index].sk = this.scrInputsEdit.dailyrate_sk;
-    this.surchargeRates[index].ro = this.scrInputsEdit.dailyrate_ro;
+    this.surchargeRates[index].dailyrate_at = this.scrInputsEdit.dailyrate_at;
+    this.surchargeRates[index].dailyrate_hu = this.scrInputsEdit.dailyrate_hu;
+    this.surchargeRates[index].dailyrate_sk = this.scrInputsEdit.dailyrate_sk;
+    this.surchargeRates[index].dailyrate_ro = this.scrInputsEdit.dailyrate_ro;
     this.surchargeRatesDataSource.data = this.surchargeRates;
+
+    this.data.rates[0].dailyrate_at = this.surchargeRatesDataSource.data[0].dailyrate_at;
+    this.data.rates[0].dailyrate_hu = this.surchargeRatesDataSource.data[0].dailyrate_hu;
+    this.data.rates[0].dailyrate_sk = this.surchargeRatesDataSource.data[0].dailyrate_sk;
+    this.data.rates[0].dailyrate_ro = this.surchargeRatesDataSource.data[0].dailyrate_ro;
+    this.data.rates[0].id = this.surchargeRatesDataSource.data[0].id;
+    this.data.rates[0].year = this.surchargeRatesDataSource.data[0].year;
+    this.surchargeCustomerService.updateSurchargeCustomer(this.data);
+    console.log(this.data);
     this.editDailyRate = false;
   }
 

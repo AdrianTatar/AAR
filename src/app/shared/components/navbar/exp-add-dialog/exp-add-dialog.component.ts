@@ -44,14 +44,12 @@ export class ExpAddDialogComponent {
     }
 
     exportXML(year, scenario) {
-        // if (year != null && scenario != null) {
-        //     this.location = this.exportProjectUrl + '/' + year + '/' + scenario + '/' + this.cookieService.get('username');
-        //     console.log(this.location);
-        // } else {
-        //     this.openSnackBar('Select Year and Scenario before exporting!', '');
-        // }
-        this.exportService.getXML(year, scenario).subscribe();
-        this.userActionsCreateService.createUserAction('ExcelGenerate');
+        if (year != null && scenario != null) {
+            this.exportService.getXML(year, scenario);
+            // this.userActionsCreateService.createUserAction('ExcelGenerate');
+        } else {
+            this.openSnackBar('Select Year and Scenario before exporting!', '');
+        }
     }
 
 

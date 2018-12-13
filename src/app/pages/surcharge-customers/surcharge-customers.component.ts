@@ -206,12 +206,12 @@ export class SurchargeCustomersComponent implements OnInit, AfterViewInit {
       height: '87%',
       disableClose: true,
       data: {
-        customerId: this.dataSource.data[this.selectedRowToEdit - 1].id,
-        debitorName: this.dataSource.data[this.selectedRowToEdit - 1].debitorname,
-        debitorNumber: this.dataSource.data[this.selectedRowToEdit - 1].debitornumber,
+        id: this.dataSource.data[this.selectedRowToEdit - 1].id,
+        debitorname: this.dataSource.data[this.selectedRowToEdit - 1].debitorname,
+        debitornumber: this.dataSource.data[this.selectedRowToEdit - 1].debitornumber,
         type: this.dataSource.data[this.selectedRowToEdit - 1].type,
-        customerName: this.dataSource.data[this.selectedRowToEdit - 1].customername,
-        customerNumber: this.dataSource.data[this.selectedRowToEdit - 1].customernumber,
+        customername: this.dataSource.data[this.selectedRowToEdit - 1].customername,
+        customernumber: this.dataSource.data[this.selectedRowToEdit - 1].customernumber,
         rates: this.dataSource.data[this.selectedRowToEdit - 1].rates,
       }
     });

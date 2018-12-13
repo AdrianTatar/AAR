@@ -25,6 +25,6 @@ export class ExportService {
   }
 
   public getXML(year: string, scenario: string) {
-    return this.http.get(this.exportUrl + '/' + year + '/' + scenario + '/' + this.cookieService.get('username'));
+    window.open(this.exportUrl + '/' + year + '/' + scenario + '/' + this.cookieService.get('username'));
   }
 }
