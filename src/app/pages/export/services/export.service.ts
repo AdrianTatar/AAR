@@ -1,7 +1,9 @@
+import { ExportAction } from './../../../shared/models/export.actions';
 import { Scenario } from './../../../shared/models/scenario';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserActionsCreateService } from '../../../shared/services/user-actions-create.service';
+import { CookieService } from 'ngx-cookie-service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -9,10 +11,11 @@ const httpOptions = {
 
 @Injectable()
 export class ExportService {
-  private exportUrl = '/export';
+  private exportUrl = 'http://localhost:8080/aarREST/rest/export';
   private readPath = '/getScenariosForYear';
 
   constructor(
+    private cookieService: CookieService,
     private http: HttpClient,
     private userActionsCreateService: UserActionsCreateService
   ) { }
@@ -21,8 +24,7 @@ export class ExportService {
     return this.http.get<Scenario[]>(this.exportUrl + this.readPath + '/' + year);
   }
 
-  public getXML(year: string, name: string) {
-    this.userActionsCreateService.createUserAction('GenerateAAR');
-    return this.http.get<Scenario[]>(this.exportUrl + '/' + year + '/' + name);
+  public getXML(year: string, scenario: string) {
+    return this.http.get(this.exportUrl + '/' + year + '/' + scenario + '/' + this.cookieService.get('username'));
   }
 }

@@ -90,7 +90,7 @@ export class ExportActionsComponent implements OnInit, AfterViewInit {
 
 
   exportXML(value) {
-    // this.userActionsCreateService.createUserAction('ExcelRe');
+    this.userActionsCreateService.createUserAction('ExcelRe');
     if (this.dataSource.data[value][1].dayOfMonth < 10) {
       this.day = '0' + this.dataSource.data[value][1].dayOfMonth;
     } else {
