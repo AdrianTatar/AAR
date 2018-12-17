@@ -172,7 +172,7 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(FppAddDialogComponent, {
       width: '33%',
-      height: '50%',
+      height: '55%',
       disableClose: true
     });
 
@@ -222,6 +222,16 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
 
   private cancelEdit() {
     this.selectedRowToEdit = -1;
+  }
+
+  private isFieldChanged() {
+    if (this.fppInputs.projectnumberplanmill === this.dataSource.data[this.selectedRowToEdit - 1].projectnumberplanmill  &&
+      this.fppInputs.projectidtagetik === this.dataSource.data[this.selectedRowToEdit - 1].projectidtagetik &&
+      this.fppInputs.projectdescription === this.dataSource.data[this.selectedRowToEdit - 1].projectdescription &&
+      this.fppInputs.customernumber === this.dataSource.data[this.selectedRowToEdit - 1].customernumber &&
+      this.fppInputs.price === this.dataSource.data[this.selectedRowToEdit - 1].price) {
+        return false;
+    }
   }
 
   private confirmEdit() {

@@ -217,7 +217,7 @@
             </button>
           </ng-template>
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else editButton">
-            <button mat-button class="done-icon" (click)="confirmEdit()" [disabled]="pnForm.invalid" matTooltip="{{'ConfirmEdit' | translate }}">
+            <button mat-button class="done-icon" (click)="confirmEdit()" [disabled]="isFieldChanged() === false || pnForm.invalid" matTooltip="{{'ConfirmEdit' | translate }}">
               <mat-icon>check</mat-icon>
             </button>
             <button mat-button (click)="cancelEdit()" class="cancel-icon" matTooltip="{{'Cancel' | translate }}">

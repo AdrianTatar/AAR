@@ -68,6 +68,16 @@ export class ScEditDialogComponent implements OnInit {
     this.surchargeRatesDataSource.data = this.data.rates;
   }
 
+  private isFieldChanged() {
+    if (this.scInputs.debitornumber === this.data.debitornumber  &&
+      this.scInputs.debitorname === this.data.debitorname &&
+      this.scInputs.type === this.data.type &&
+      this.scInputs.customernumber === this.data.customernumber &&
+      this.scInputs.customername === this.data.customername) {
+        return false;
+    }
+  }
+
   ngOnInit() {
     this.currentYear = new Date().getFullYear();
 

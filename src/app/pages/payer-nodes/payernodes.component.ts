@@ -237,6 +237,17 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
     this.selectedRowToEdit = -1;
   }
 
+  private isFieldChanged() {
+    if (this.pnInputs.customernumber === this.dataSource.data[this.selectedRowToEdit - 1].customernumber &&
+      this.pnInputs.customername === this.dataSource.data[this.selectedRowToEdit - 1].customername &&
+      this.pnInputs.hierarchy === this.dataSource.data[this.selectedRowToEdit - 1].hierarchy &&
+      this.pnInputs.payernodenumber === this.dataSource.data[this.selectedRowToEdit - 1].payernodenumber &&
+      this.pnInputs.payernodedescription === this.dataSource.data[this.selectedRowToEdit - 1].payernodedescription &&
+      this.pnInputs.payernodecode === this.dataSource.data[this.selectedRowToEdit - 1].payernodecode) {
+      return false;
+    }
+  }
+
   private confirmEdit() {
     if (this.pnForm.valid) {
       this.dataSource.data[this.selectedRowToEdit - 1].customernumber = this.pnInputs.customernumber;

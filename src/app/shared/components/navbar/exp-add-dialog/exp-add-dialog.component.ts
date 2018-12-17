@@ -24,10 +24,10 @@ export class ExpAddDialogComponent {
     location;
     page;
     scenarios: Scenario[];
-
+    message = false;
+    yearChange = false;
 
     constructor(
-        private http: HttpClient,
         private exportService: ExportService,
         public snackBar: MatSnackBar,
         private cookieService: CookieService,
@@ -41,12 +41,19 @@ export class ExpAddDialogComponent {
         await this.exportService.getScenarios(year).subscribe(data => {
             this.scenarios = data;
         });
+        this.yearChange = true;
     }
 
     exportXML(year, scenario) {
         if (year != null && scenario != null) {
+            if (scenario.includes(year) === false) {
+                scenario = null;
+            }
+        }
+        if (year != null && scenario != null) {
             this.exportService.getXML(year, scenario);
-            // this.userActionsCreateService.createUserAction('ExcelGenerate');
+            this.userActionsCreateService.createUserAction('ExcelGenerate');
+            this.message = true;
         } else {
             this.openSnackBar('Select Year and Scenario before exporting!', '');
         }

@@ -237,6 +237,17 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
     this.selectedRowToEdit = -1;
   }
 
+  private isFieldChanged() {
+    if (this.cbInputs.blz === this.dataSource.data[this.selectedRowToEdit - 1].blz  &&
+      this.cbInputs.block === this.dataSource.data[this.selectedRowToEdit - 1].block &&
+      this.cbInputs.node === this.dataSource.data[this.selectedRowToEdit - 1].node &&
+      this.cbInputs.customername === this.dataSource.data[this.selectedRowToEdit - 1].customername &&
+      this.cbInputs.bankgroup === this.dataSource.data[this.selectedRowToEdit - 1].bankgroup &&
+      this.cbInputs.cluster === this.dataSource.data[this.selectedRowToEdit - 1].cluster) {
+        return false;
+    }
+  }
+
   private confirmEdit() {
     if (this.cbForm.valid) {
       this.dataSource.data[this.selectedRowToEdit - 1].blz = this.cbInputs.blz;

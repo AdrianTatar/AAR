@@ -216,7 +216,7 @@
 </table>
 
 <mat-dialog-actions>
-  <button [disabled]="scForm.invalid" (click)="editSurchargeCustomer()" mat-mini-fab matTooltip="{{ 'ConfirmEdit' | translate }}"
+  <button [disabled]="isFieldChanged() === false || scForm.invalid" (click)="editSurchargeCustomer()" mat-mini-fab matTooltip="{{ 'ConfirmEdit' | translate }}"
     class="done-icon">
     <mat-icon>done</mat-icon>
   </button>
