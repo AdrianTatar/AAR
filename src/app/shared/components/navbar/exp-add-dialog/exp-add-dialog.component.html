@@ -17,7 +17,7 @@
     </mat-form-field>
     <div><button (click)="exportXML(year.value, scenario.value)" target="_blank" mat-raised-button class="export-button">Export</button></div>
     <div *ngIf="this.message === true" class="warning-container">{{ 'ExportMsg' | translate}}</div>
-    <!-- <ng-template #elseBlock}>Damn</ng-template> -->
+    <div *ngIf="this.doneMessage === true" class="warning-container">Export was done</div>
 </mat-dialog-content>
 
 

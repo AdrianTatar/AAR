@@ -13,6 +13,7 @@ const httpOptions = {
 export class ExportService {
   private exportUrl = 'http://localhost:8080/aarREST/rest/export';
   private readPath = '/getScenariosForYear';
+  windowObject;
 
   constructor(
     private cookieService: CookieService,
@@ -25,6 +26,7 @@ export class ExportService {
   }
 
   public getXML(year: string, scenario: string) {
-    window.open(this.exportUrl + '/' + year + '/' + scenario + '/' + this.cookieService.get('username'));
+    this.windowObject = window.open(this.exportUrl + '/' + year + '/' + scenario + '/' + this.cookieService.get('username'));
+    return this.windowObject;
   }
 }

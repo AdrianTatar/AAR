@@ -25,15 +25,18 @@ export class ExpAddDialogComponent {
     page;
     scenarios: Scenario[];
     message = false;
+    doneMessage = false;
     yearChange = false;
+    windowObject;
+    checkInterval = false;
+    checkTab;
 
     constructor(
         private exportService: ExportService,
         public snackBar: MatSnackBar,
         private cookieService: CookieService,
         private userActionsCreateService: UserActionsCreateService
-    ) {
-    }
+    ) {}
 
     private exportProjectUrl = '/export';
 
@@ -51,9 +54,20 @@ export class ExpAddDialogComponent {
             }
         }
         if (year != null && scenario != null) {
-            this.exportService.getXML(year, scenario);
-            this.userActionsCreateService.createUserAction('ExcelGenerate');
+            this.windowObject = this.exportService.getXML(year, scenario);
             this.message = true;
+            const inte = setInterval(() => {
+                if (this.windowObject.closed === true) {
+                    this.checkInterval = true;
+                    if (this.checkInterval === true) {
+                        console.log('done');
+                        clearInterval(inte);
+                        this.message = false;
+                        this.doneMessage = true;
+                    }
+                    this.userActionsCreateService.createUserAction('ExcelGenerate');
+                }
+            }, 2000);
         } else {
             this.openSnackBar('Select Year and Scenario before exporting!', '');
         }
