@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material';
 import { Scenario } from 'src/app/shared/models/scenario';
 import { ExportService } from 'src/app/pages/export/services/export.service';
 import { CookieService } from 'ngx-cookie-service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

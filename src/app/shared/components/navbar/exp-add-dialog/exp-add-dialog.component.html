@@ -15,9 +15,18 @@
             <mat-option *ngFor="let sc of scenarios" [(value)]="sc.scenario">{{sc.scenario}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <div><button (click)="exportXML(year.value, scenario.value)" target="_blank" mat-raised-button class="export-button">Export</button></div>
-    <div *ngIf="this.message === true" class="warning-container">{{ 'ExportMsg' | translate}}</div>
-    <div *ngIf="this.doneMessage === true" class="warning-container">Export was done</div>
+    <!--<div><button (click)="exportXML(year.value, scenario.value)" target="_blank" mat-raised-button class="export-button">Export</button></div>-->
+    <div class="col">
+        <div ngbDropdown class="d-inline-block">
+            <button class="btn shadow-none" id="dropdownBasic1" ngbDropdownToggle>Export</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button class="dropdown-item" (click)="exportXML(year.value, scenario.value)">Excel</button>
+                <button class="dropdown-item">Host Txt</button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="this.message === true" class="warning-container">{{ 'ExportMsg' | translate }}</div>
+    <div *ngIf="this.doneMessage === true" class="warning-container">{{ 'ExportDoneMsg' | translate }}</div>
 </mat-dialog-content>
 
 

@@ -9,8 +9,11 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ExportService {
+  private exportAction = '/export';
   private exportUrl = 'http://localhost:8080/aarREST/rest/export';
   private readPath = '/getScenariosForYear';
   windowObject;
@@ -28,5 +31,9 @@ export class ExportService {
   public getXML(year: string, scenario: string) {
     this.windowObject = window.open(this.exportUrl + '/' + year + '/' + scenario + '/' + this.cookieService.get('username'));
     return this.windowObject;
+  }
+
+  public createExport(user) {
+    return this.http.post<ExportAction>(this.exportAction, user);
   }
 }

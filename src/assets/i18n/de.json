@@ -41,6 +41,7 @@
 
   "Scenarios": "Szenarien",
   "ExportMsg": "Der Exportvorgang kann einige Minuten dauern!",
+  "ExportDoneMsg": "Export Prozess erfolgreich",
 
   "NameFPP": "Name",
   "WeightFPP": "Gewicht",

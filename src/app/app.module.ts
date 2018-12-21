@@ -12,7 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ExpAddDialogComponent } from './shared/components/navbar/exp-add-dialog/exp-add-dialog.component';
 import { ExportService } from './pages/export/services/export.service';
 
@@ -34,6 +34,7 @@ export function createTranslateLoader(http: HttpClient) {
     SharedModule,
     RoutingModule,
     HttpModule,
+    NgbModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -63,10 +63,32 @@ mat-dialog-actions {
 
 mat-dialog-content {
     padding-top: 3px;
+    height: 60%;
 }
 
 mat-form-field {
     font-family: 'Poppins', sans-serif;
     width: 47%;
     margin: 6px;
+}
+
+#dropdownBasic1 {
+    background-color: #FEEF05;
+    color: #525252;
+    font-size: 15px;
+    font-weight: 500;
+    border: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+#dropdownBasic1:hover {
+    background-color: #525252;
+    color: #FEEF05;
+}
+#dropdownBasic1:focus, #dropdownBasic1:active {
+    background-image: none;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none !important;
 }

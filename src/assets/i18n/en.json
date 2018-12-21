@@ -40,6 +40,7 @@
 
   "Scenarios": "Scenarios",
   "ExportMsg": "Export process might take a few minutes!",
+  "ExportDoneMsg": "Export process finished",
 
   "Number": "#",
   "NameFPP": "Name",

@@ -84,13 +84,13 @@ export class ExportActionsComponent implements OnInit, AfterViewInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(ExpAddDialogComponent, {
       width: '500px',
+      height: '40%',
       disableClose: true
     });
   }
 
 
-  exportXML(value) {
-    this.userActionsCreateService.createUserAction('ExcelRe');
+  async exportXML(value) {
     if (this.dataSource.data[value][1].dayOfMonth < 10) {
       this.day = '0' + this.dataSource.data[value][1].dayOfMonth;
     } else {
@@ -127,7 +127,7 @@ export class ExportActionsComponent implements OnInit, AfterViewInit {
     this.location = this.exportProjectUrl + this.cookieService.get('username') + '/' + this.exportDate;
     window.open(this.location);
     this.selectedRow = value;
-    console.log(this.location);
+    this.userActionsCreateService.createUserAction('ExcelRe');
   }
 
   private convertDateForFilter(date) {
