@@ -15,7 +15,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 export class ExportActionsComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['timestamp', 'userId', 'menu'];
+  displayedColumns: string[] = ['timestamp', 'userId', 'menuExcelBtn', 'menuHostTxtBtn'];
   private exportProjectUrl = 'http://localhost:8080/aarREST/rest/export/getExport/';
   location;
   exportDate;
@@ -124,7 +124,47 @@ export class ExportActionsComponent implements OnInit, AfterViewInit {
       + this.minute + ':'
       + this.second;
 
-    this.location = this.exportProjectUrl + this.cookieService.get('username') + '/' + this.exportDate;
+    this.location = this.exportProjectUrl + 'Excel/' + this.cookieService.get('username') + '/' + this.exportDate;
+    window.open(this.location);
+    this.selectedRow = value;
+    this.userActionsCreateService.createUserAction('ExcelRe');
+  }
+
+  async exportHost(value) {
+    if (this.dataSource.data[value][1].dayOfMonth < 10) {
+      this.day = '0' + this.dataSource.data[value][1].dayOfMonth;
+    } else {
+      this.day = this.dataSource.data[value][1].dayOfMonth;
+    }
+    if (this.dataSource.data[value][1].monthValue < 10) {
+      this.month = '0' + this.dataSource.data[value][1].monthValue;
+    } else {
+      this.month = this.dataSource.data[value][1].monthValue;
+    }
+    if (this.dataSource.data[value][1].hour < 10) {
+      this.hour = '0' + this.dataSource.data[value][1].hour;
+    } else {
+      this.hour = this.dataSource.data[value][1].hour;
+    }
+    if (this.dataSource.data[value][1].minute < 10) {
+      this.minute = '0' + this.dataSource.data[value][1].minute;
+    } else {
+      this.minute = this.dataSource.data[value][1].minute;
+    }
+    if (this.dataSource.data[value][1].second < 10) {
+      this.second = '0' + this.dataSource.data[value][1].second;
+    } else {
+      this.second = this.dataSource.data[value][1].second;
+    }
+
+    this.exportDate = this.dataSource.data[value][1].year + '-'
+      + this.month + '-'
+      + this.day + 'T'
+      + this.hour + ':'
+      + this.minute + ':'
+      + this.second;
+
+    this.location = this.exportProjectUrl + 'HostTxt/' + this.cookieService.get('username') + '/' + this.exportDate;
     window.open(this.location);
     this.selectedRow = value;
     this.userActionsCreateService.createUserAction('ExcelRe');

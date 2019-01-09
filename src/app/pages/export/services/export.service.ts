@@ -29,7 +29,12 @@ export class ExportService {
   }
 
   public getXML(year: string, scenario: string) {
-    this.windowObject = window.open(this.exportUrl + '/' + year + '/' + scenario + '/' + this.cookieService.get('username'));
+    this.windowObject = window.open(this.exportUrl + '/excel/' + year + '/' + scenario + '/' + this.cookieService.get('username'));
+    return this.windowObject;
+  }
+
+  public getHost(year: string, scenario: string) {
+    this.windowObject = window.open(this.exportUrl + '/hostTxt/' + year + '/' + scenario + '/' + this.cookieService.get('username'));
     return this.windowObject;
   }
 

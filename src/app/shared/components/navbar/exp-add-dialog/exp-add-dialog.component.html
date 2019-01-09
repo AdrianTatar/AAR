@@ -21,7 +21,7 @@
             <button class="btn shadow-none" id="dropdownBasic1" ngbDropdownToggle>Export</button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                 <button class="dropdown-item" (click)="exportXML(year.value, scenario.value)">Excel</button>
-                <button class="dropdown-item">Host Txt</button>
+                <button class="dropdown-item" (click)="exportHost(year.value, scenario.value)">Host Txt</button>
             </div>
         </div>
     </div>

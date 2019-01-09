@@ -2,10 +2,10 @@
   <button mat-flat-button [matMenuTriggerFor]="menu" id="lang-btn">
     <div>
       <div *ngIf="this.language === 'DE'; else englishShow">
-        <a class="lang-text">Deutsch <img class="arrow" src="../../../../assets/resources/down-arrow.png"></a>
+        <a class="lang-text">DE <img class="arrow" src="../../../../assets/resources/down-arrow.png"></a>
       </div>
       <ng-template #englishShow>
-        <a class="lang-text">English <img class="arrow" src="../../../../assets/resources/down-arrow.png"></a>
+        <a class="lang-text">EN <img class="arrow" src="../../../../assets/resources/down-arrow.png"></a>
       </ng-template>
     </div>
   </button>
