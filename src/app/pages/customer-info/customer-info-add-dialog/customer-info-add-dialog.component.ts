@@ -1,17 +1,17 @@
-import { CustomerBase } from './../../../shared/models/customerbase';
+import { CustomerInfo } from '../../../shared/models/customer-info';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 
 @Component({
-  selector: 'app-cb-add-dialog',
-  templateUrl: './cb-add-dialog.component.html',
-  styleUrls: ['./cb-add-dialog.component.css']
+  selector: 'app-customer-info-add-dialog',
+  templateUrl: './customer-info-add-dialog.component.html',
+  styleUrls: ['./customer-info-add-dialog.component.css']
 })
-export class CbAddDialogComponent {
+export class CustomerInfoAddDialogComponent {
 
   cbForm;
-  cbInputs: CustomerBase = {
+  cbInputs: CustomerInfo = {
     id: null,
     blz: 0,
     block: '',
@@ -22,7 +22,7 @@ export class CbAddDialogComponent {
   };
 
   constructor(
-    private dialogRef: MatDialogRef<CbAddDialogComponent>
+    private dialogRef: MatDialogRef<CustomerInfoAddDialogComponent>
   ) {
     this.cbForm = new FormGroup({
       blz: new FormControl('', Validators.required),

@@ -25,8 +25,8 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'customer-base',
-    loadChildren: './pages/customer-base/customerbase.module#CustomerBaseModule',
+    path: 'customer-info',
+    loadChildren: './pages/customer-info/customer-info.module#CustomerInfoModule',
     data: { page: 'five' },
     canActivate: [AuthGuard]
   },

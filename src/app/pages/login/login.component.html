@@ -1,34 +1,26 @@
-<div class="container">
-  <div class="header">
-    <img src="../../../assets/resources/logo_raiffeisensoftware.gif">
-  </div>
+<div class="header">
+  <img src="../../../assets/resources/logo_raiffeisensoftware.gif">
+</div>
 
-  <div class="body">
-    <div class="login-container">
-      <h1 class="login-header">LOGIN</h1>
-      <p class="information">BITTE GEBEN SIE IHREN BENUTZERNAMEN (E-MAIL) UND IHR PASSWORT EIN</p>
-      <div class="login-form">
-        <div class="space">
-          <mat-form-field>
-            <input #name matInput placeholder="Benutzer" [(ngModel)]="username" ng>
-          </mat-form-field>
-        </div>
+<div class="body">
+  <div class="login-container">
+    <h2 class="login-header">LOGIN</h2>
+    <p class="information">BITTE GEBEN SIE IHREN BENUTZERNAMEN (E-MAIL) UND IHR PASSWORT EIN</p>
+    <div class="login-form">
+      <div class="space">
         <mat-form-field>
-          <input (keydown.enter)="loginUser()" type="password" matInput placeholder="Passwort" [(ngModel)]="password">
+          <input #name matInput placeholder="Benutzer" [(ngModel)]="username" ng>
         </mat-form-field>
-        <div *ngIf="!response" class="wrong-credentials">
-          Ungültiger Benutzername oder Kennwort.
-        </div>
-        <button type="submit" mat-button class="login-button" (click)="loginUser()">ANMELDEN</button>
-
       </div>
-      <p class="forgot-password">Haben Sie Ihr Passwort vergessen? <a href=''>Klicken Sie hier</a></p>
-    </div>
-  </div>
+      <mat-form-field>
+        <input (keydown.enter)="loginUser()" type="password" matInput placeholder="Passwort" [(ngModel)]="password">
+      </mat-form-field>
+      <div *ngIf="!response" class="wrong-credentials">
+        Ungültiger Benutzername oder Kennwort.
+      </div>
+      <button type="submit" mat-button class="login-button" (click)="loginUser()">ANMELDEN</button>
 
-  <!-- <div class="footer">
-    <div class="right">
-      <p>©2018 Raiffeisen</p>
     </div>
-  </div> -->
+    <p class="forgot-password">Haben Sie Ihr Passwort vergessen? <a id="pass-forgot" href=''>Klicken Sie hier</a></p>
+  </div>
 </div>

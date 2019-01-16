@@ -1,22 +1,24 @@
-import { CbAddDialogComponent } from './cb-add-dialog/cb-add-dialog.component';
-import { CustomerBase } from './../../shared/models/customerbase';
-import { Component, OnInit, ViewChild, HostListener, AfterViewInit, AfterViewChecked, ElementRef } from '@angular/core';
+import { CustomerInfoAddDialogComponent } from './customer-info-add-dialog/customer-info-add-dialog.component';
+import { CustomerInfo } from '../../shared/models/customer-info';
+import { Component, OnInit, ViewChild, HostListener, AfterViewInit} from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
-import { CustomerBaseService } from './services/customer-base.service';
+import { CustomerInfoService } from './services/customer-info.service';
+
 @Component({
-  selector: 'app-customerbase',
-  templateUrl: './customerbase.component.html',
-  styleUrls: ['./customerbase.component.css']
+  selector: 'app-customer-info',
+  templateUrl: './customer-info.component.html',
+  styleUrls: ['./customer-info.component.css']
 })
-export class CustomerBaseComponent implements OnInit, AfterViewInit {
+
+export class CustomerInfoComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['blz', 'block', 'node', 'customername', 'bankgroup', 'cluster', 'menu'];
 
-  dataSource = new MatTableDataSource<CustomerBase>();
-  filteredDataSource = new MatTableDataSource<CustomerBase>();
-  customerBase: CustomerBase[];
+  dataSource = new MatTableDataSource<CustomerInfo>();
+  filteredDataSource = new MatTableDataSource<CustomerInfo>();
+  CustomerInfo: CustomerInfo[];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   selectedPageSize = 5;
@@ -40,7 +42,7 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
   addNewElement = false;
 
   cbForm;
-  cbInputs: CustomerBase = {
+  cbInputs: CustomerInfo = {
     id: null,
     blz: 0,
     block: '',
@@ -62,10 +64,10 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
       cluster: new FormControl('', Validators.required)
     });
 
-    await this.customerBaseService.getCustomerBase().subscribe(data => {
-      this.customerBase = data;
-      this.dataSource.data = this.customerBase;
-      this.filteredDataSource.data = this.customerBase;
+    await this.customerInfoService.getCustomerInfo().subscribe(data => {
+      this.CustomerInfo = data;
+      this.dataSource.data = this.CustomerInfo;
+      this.filteredDataSource.data = this.CustomerInfo;
     });
   }
 
@@ -81,7 +83,7 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
   }
 
   constructor(
-    public dialog: MatDialog, private customerBaseService: CustomerBaseService
+    public dialog: MatDialog, private customerInfoService: CustomerInfoService
   ) { }
 
   filter() {
@@ -117,7 +119,7 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
 
     this.filteredDataSource.data = (this.blzSearchQuery) ?
       this.filteredDataSource.data
-        .sort(function (a: CustomerBase, b: CustomerBase) { return a.blz - b.blz; })
+        .sort(function (a: CustomerInfo, b: CustomerInfo) { return a.blz - b.blz; })
         .filter(p => p.blz.toString().includes(this.blzSearchQuery.toString()))
       : this.filteredDataSource.data;
   }
@@ -178,7 +180,7 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(CbAddDialogComponent, {
+    const dialogRef = this.dialog.open(CustomerInfoAddDialogComponent, {
       width: '33%',
       height: '58%',
       disableClose: true
@@ -187,7 +189,7 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(data => {
       if (data) {
         console.log(data);
-        this.customerBaseService.createCustomerBase(data);
+        this.customerInfoService.createCustomerInfo(data);
         this.pushObject(data);
       }
     });
@@ -215,7 +217,7 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
     this.filter();
   }
 
-  async pushObject(data: CustomerBase) {
+  async pushObject(data: CustomerInfo) {
     data.id = this.dataSource.data[this.dataSource.data.length - 1].id + 1;
     this.dataSource.data.push(data);
     this.filteredDataSource.data = this.dataSource.data;
@@ -256,7 +258,7 @@ export class CustomerBaseComponent implements OnInit, AfterViewInit {
       this.dataSource.data[this.selectedRowToEdit - 1].customername = this.cbInputs.customername;
       this.dataSource.data[this.selectedRowToEdit - 1].bankgroup = this.cbInputs.bankgroup;
       this.dataSource.data[this.selectedRowToEdit - 1].cluster = this.cbInputs.cluster;
-      this.customerBaseService.updateCustomerBase(this.dataSource.data[this.selectedRowToEdit - 1]);
+      this.customerInfoService.updateCustomerInfo(this.dataSource.data[this.selectedRowToEdit - 1]);
       this.selectedRowToEdit = -1;
     }
   }

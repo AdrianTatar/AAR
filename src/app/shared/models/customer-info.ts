@@ -1,4 +1,4 @@
-export interface CustomerBase {
+export interface CustomerInfo {
     id: number;
     blz: number;
     block: string;

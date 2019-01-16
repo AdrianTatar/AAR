@@ -2,7 +2,7 @@
   "WelcomeMsg": "Willkommen ",
   "ExportHistory": "Export Protokoll",
   "PayerNodes": "Zahlerknoten",
-  "CustomerBase": "Kundenstamm",
+  "CustomerInfo": "Kundenstamm",
   "FixedPriceProjects": "Fixpreisprojekte",
   "SurchargeCustomers": "Aufschlags Kunden",
   "UserActions": "Benutzeraktionen",
@@ -19,7 +19,7 @@
   "Type": "Typ",
   "CustomerId": "Kundennummer",
   "CustomerName": "Kundenname",
-  "2018Rates": "2018 Raten",
+  "2019Rates": "2019 Raten",
   "Year": "Jahr",
   "DailyRate": "Tagesrate",
 

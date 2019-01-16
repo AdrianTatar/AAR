@@ -1,8 +1,8 @@
 <div id="lang-container" *ngIf="windowWidth > 800; else topSpace">
-  <button mat-flat-button [matMenuTriggerFor]="menu" id="lang-btn">
+  <button mat-button [matMenuTriggerFor]="menu" id="lang-btn">
     <div>
       <div *ngIf="this.language === 'DE'; else englishShow">
-        <a class="lang-text">DE <img class="arrow" src="../../../../assets/resources/down-arrow.png"></a>
+        <a class="lang-text">DE<img class="arrow" src="../../../../assets/resources/down-arrow.png"></a>
       </div>
       <ng-template #englishShow>
         <a class="lang-text">EN <img class="arrow" src="../../../../assets/resources/down-arrow.png"></a>
@@ -57,7 +57,7 @@
                     | translate}}</a></mat-option>
                 <mat-option value="option1"><a [routerLink]="['/payer-nodes']" routerLinkActive="active" mat-button>{{'PayerNodes'
                     | translate}}</a></mat-option>
-                <mat-option value="option1"><a [routerLink]="['/customer-base']" routerLinkActive="active" mat-button>{{'CustomerBase'
+                <mat-option value="option1"><a [routerLink]="['/customer-info']" routerLinkActive="active" mat-button>{{'CustomerInfo'
                     | translate}}</a></mat-option>
                 <mat-option value="option1"><a [routerLink]="['/user-actions']" routerLinkActive="active" mat-button>{{'UserActions'
                     |
@@ -82,7 +82,7 @@
                     | translate}}</a></mat-option>
                 <mat-option value="option1"><a [routerLink]="['/payer-nodes']" routerLinkActive="active" mat-button>{{'PayerNodes'
                     | translate}}</a></mat-option>
-                <mat-option value="option1"><a [routerLink]="['/customer-base']" routerLinkActive="active" mat-button>{{'CustomerBase'
+                <mat-option value="option1"><a [routerLink]="['/customer-info']" routerLinkActive="active" mat-button>{{'CustomerInfo'
                     | translate}}</a></mat-option>
                 <mat-option value="option1"><a [routerLink]="['/user-actions']" routerLinkActive="active" mat-button>{{'UserActions'
                     |
@@ -104,7 +104,7 @@
               <mat-select placeholder="Other Tables" class="select-tables">
                 <mat-option value="option1"><a [routerLink]="['/payer-nodes']" routerLinkActive="active" mat-button>{{'PayerNodes'
                     | translate}}</a></mat-option>
-                <mat-option value="option1"><a [routerLink]="['/customer-base']" routerLinkActive="active" mat-button>{{'CustomerBase'
+                <mat-option value="option1"><a [routerLink]="['/customer-info']" routerLinkActive="active" mat-button>{{'CustomerInfo'
                     | translate}}</a></mat-option>
                 <mat-option value="option1"><a [routerLink]="['/user-actions']" routerLinkActive="active" mat-button>{{'UserActions'
                     |
@@ -117,14 +117,14 @@
           </ng-template>
         </span>
         <span *ngIf="windowWidth > 1400; else otherTables3">
-          <a [routerLink]="['/customer-base']" routerLinkActive="active" mat-button>{{'CustomerBase'
+          <a [routerLink]="['/customer-info']" routerLinkActive="active" mat-button>{{'CustomerInfo'
             | translate}}</a>
         </span>
         <span>
           <ng-template #otherTables3>
             <span *ngIf="windowWidth > 1100">
               <mat-select placeholder="Other Tables" class="select-tables">
-                <mat-option value="option1"><a [routerLink]="['/customer-base']" routerLinkActive="active" mat-button>{{'CustomerBase'
+                <mat-option value="option1"><a [routerLink]="['/customer-info']" routerLinkActive="active" mat-button>{{'CustomerInfo'
                     | translate}}</a></mat-option>
                 <mat-option value="option1"><a [routerLink]="['/user-actions']" routerLinkActive="active" mat-button>{{'UserActions'
                     |

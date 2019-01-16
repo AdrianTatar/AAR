@@ -1,38 +1,40 @@
 .header {
-  padding-top: 15px;
-  padding-left: 20%;
-  padding-bottom: 20px;
+  padding-top: 2%;
+  padding-left: 28%;
+  padding-bottom: 2%;
   background-color: white;
 }
 
 .body {
   position: inherit;
   background-color: #f4f4f4;
-  height: 91.3vh;
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-left: 40%;
+  padding-right: 40%;
 }
 
 .login-container {
   margin:auto;
   padding-top: 10px;
-  width: 500px;
+  width: 450px;
   color: #545454;
   font-family: 'Poppins', sans-serif;
 }
 
-.login-container>h1 {
+.login-container>h2 {
+  padding-top: 2%;
   margin-bottom:0px;
 }
 
 .login-container>.information {
-  margin-top: 0px;
+  margin-top: 10px;
   font-size: 16px;
+  font-weight: bold;
   color: #545454;
 }
 
 .login-container>.forgot-password {
-  font-size: 12px;
+  padding-top: 3%;
+  font-size: 14px;
   text-align: center;
 }
 
@@ -44,7 +46,12 @@ a {
 
 .login-form {
   background-color:#FFFFFF;
+  margin-top: 25px;
   padding: 8% 18% 0 18%;
+}
+
+#pass-forgot {
+  font-weight: bold;
 }
 
 .wrong-credentials {

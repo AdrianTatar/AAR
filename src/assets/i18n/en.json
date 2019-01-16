@@ -2,7 +2,7 @@
   "WelcomeMsg": "Welcome ",
   "ExportHistory": "Export History",
   "PayerNodes": "Payer Nodes",
-  "CustomerBase": "Customer Base",
+  "CustomerInfo": "Customer Info",
   "FixedPriceProjects": "Fixed Price Projects",
   "SurchargeCustomers": "Surcharge Customers",
   "UserActions": "User Actions",
@@ -18,7 +18,7 @@
   "Type": "Type",
   "CustomerId": "Customer Id",
   "CustomerName": "Customer Name",
-  "2018Rates": "2018 Rates",
+  "2019Rates": "2019 Rates",
   "Year": "Year",
   "DailyRate": "Daily Rate",
 
@@ -68,8 +68,8 @@
     "SCEdit": "Edited Surcharge Customer.",
     "PNCreate": "Created new Payer Node.",
     "PNEdit": "Edited Payer Node.",
-    "CBCreate": "Created new Customer Base.",
-    "CBEdit": "Edited Customer Base.",
+    "CBCreate": "Created new Customer Info.",
+    "CBEdit": "Edited Customer Info.",
     "ExcelRe": "Excel File from History Downloaded",
     "ExcelGenerate": "New Excel-File Generated"
   }
