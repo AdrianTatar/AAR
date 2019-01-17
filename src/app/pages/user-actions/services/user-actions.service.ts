@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { UserAction } from '../../../shared/models/user.actions';
+import { UserAction } from '../../../shared/models/user-action';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

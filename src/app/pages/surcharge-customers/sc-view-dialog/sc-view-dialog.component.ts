@@ -1,8 +1,8 @@
-import { SurchargeCustomer } from './../../../shared/models/surcharge.customer';
+import { SurchargeCustomer } from '../../../shared/models/surcharge-custome';
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MatTableDataSource } from '@angular/material';
 import { MAT_DIALOG_DATA } from '@angular/material';
-import { SurchargeCustomerRate } from 'src/app/shared/models/surcharge.customer.rate';
+import { SurchargeCustomerRate } from 'src/app/shared/models/surcharge-customer-rate';
 
 @Component({
   selector: 'app-sc-view-dialog',

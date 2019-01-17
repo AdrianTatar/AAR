@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UserAction } from '../models/user.actions';
+import { UserAction } from '../models/user-action';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 

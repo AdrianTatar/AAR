@@ -1,4 +1,4 @@
-import { SurchargeCustomerRate } from './surcharge.customer.rate';
+import { SurchargeCustomerRate } from './surcharge-customer-rate';
 export interface SurchargeCustomer {
     id: number;
     debitornumber: number;

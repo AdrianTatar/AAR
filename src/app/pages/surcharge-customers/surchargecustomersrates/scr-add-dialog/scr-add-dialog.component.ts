@@ -1,7 +1,4 @@
-import { SurchargeCustomerRate } from '../../../../shared/models/surcharge.customer.rate';
 import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-scr-add-dialog',

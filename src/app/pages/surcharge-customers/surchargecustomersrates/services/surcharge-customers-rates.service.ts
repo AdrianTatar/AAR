@@ -1,4 +1,4 @@
-import { SurchargeCustomerRate } from './../../../../shared/models/surcharge.customer.rate';
+import { SurchargeCustomerRate } from './../../../../shared/models/surcharge-customer-rate';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 

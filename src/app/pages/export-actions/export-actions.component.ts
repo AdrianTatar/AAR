@@ -2,7 +2,7 @@ import { UserActionsCreateService } from 'src/app/shared/services/user-actions-c
 import { ExpAddDialogComponent } from './../../shared/components/navbar/exp-add-dialog/exp-add-dialog.component';
 import { Component, OnInit, ViewChild, HostListener, AfterViewInit, PipeTransform, Pipe } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
-import { ExportAction } from 'src/app/shared/models/export.actions';
+import { ExportAction } from 'src/app/shared/models/export.action';
 import { ExportActionsService } from './services/export-actions.service';
 import { CookieService } from 'ngx-cookie-service';
 

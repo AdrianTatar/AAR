@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
-import { FixedPriceProject } from '../../../shared/models/fixed.price.project';
+import { FixedPriceProject } from '../../../shared/models/fixed-price-project';
 
 @Component({
   selector: 'app-fpp-add-dialog',

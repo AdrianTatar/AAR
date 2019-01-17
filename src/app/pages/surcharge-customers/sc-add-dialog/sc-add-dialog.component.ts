@@ -1,6 +1,6 @@
-import { SurchargeCustomerRate } from './../../../shared/models/surcharge.customer.rate';
+import { SurchargeCustomerRate } from './../../../shared/models/surcharge-customer-rate';
 import { SurchargeCustomersService } from './../services/surcharge-customers.service';
-import { SurchargeCustomer } from './../../../shared/models/surcharge.customer';
+import { SurchargeCustomer } from '../../../shared/models/surcharge-custome';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MatTableDataSource } from '@angular/material';
 import { FormGroup, FormControl, Validators } from '@angular/forms';

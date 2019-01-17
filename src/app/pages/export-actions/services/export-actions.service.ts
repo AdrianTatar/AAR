@@ -1,5 +1,5 @@
 import { CookieService } from 'ngx-cookie-service';
-import { ExportAction } from 'src/app/shared/models/export.actions';
+import { ExportAction } from 'src/app/shared/models/export.action';
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { UserActionsCreateService } from 'src/app/shared/services/user-actions-create.service';

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { SurchargeCustomer } from '../../../shared/models/surcharge.customer';
+import { SurchargeCustomer } from '../../../shared/models/surcharge-custome';
 import { UserActionsCreateService } from '../../../shared/services/user-actions-create.service';
 
 const httpOptions = {

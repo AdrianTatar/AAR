@@ -1,8 +1,7 @@
-import { SurchargeCustomerRate } from './../../shared/models/surcharge.customer.rate';
 import { SurchargeCustomersService } from './services/surcharge-customers.service';
-import { Component, OnInit, ViewChild, HostListener, AfterViewInit, AfterContentInit, AfterContentChecked } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, AfterViewInit} from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
-import { SurchargeCustomer } from '../../shared/models/surcharge.customer';
+import { SurchargeCustomer } from '../../shared/models/surcharge-custome';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ScAddDialogComponent } from './sc-add-dialog/sc-add-dialog.component';
 import { ScEditDialogComponent } from './sc-edit-dialog/sc-edit-dialog.component';

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FixedPriceProject } from '../../../shared/models/fixed.price.project';
+import { FixedPriceProject } from '../../../shared/models/fixed-price-project';
 import { UserActionsCreateService } from '../../../shared/services/user-actions-create.service';
 
 const httpOptions = {

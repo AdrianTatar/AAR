@@ -1,7 +1,7 @@
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SurchargeCustomersRateService } from './services/surcharge-customers-rates.service';
 import { MatTableDataSource, MatDialog, MatPaginator } from '@angular/material';
-import { SurchargeCustomerRate } from '../../../shared/models/surcharge.customer.rate';
+import { SurchargeCustomerRate } from '../../../shared/models/surcharge-customer-rate';
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { ScrAddDialogComponent } from './scr-add-dialog/scr-add-dialog.component';
 

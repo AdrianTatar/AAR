@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, HostListener, AfterViewInit } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
-import { UserAction } from '../../shared/models/user.actions';
+import { UserAction } from '../../shared/models/user-action';
 import { UserActionsService } from './services/user-actions.service';
 
 @Component({

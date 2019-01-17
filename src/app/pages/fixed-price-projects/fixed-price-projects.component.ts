@@ -1,10 +1,12 @@
+import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit, ViewChild, HostListener, AfterViewInit } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { FppAddDialogComponent } from './fpp-add-dialog/fpp-add-dialog.component';
-import { FixedPriceProject } from '../../shared/models/fixed.price.project';
+import { FixedPriceProject } from '../../shared/models/fixed-price-project';
 import { FixedPriceProjectService } from './services/fixed-price-project.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-fixed-price-projects',
@@ -15,14 +17,12 @@ import { FixedPriceProjectService } from './services/fixed-price-project.service
 export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['projectnumberplanmill', 'projectidtagetik', 'projectdescription', 'customernumber', 'price', 'menu'];
-
   dataSource = new MatTableDataSource<FixedPriceProject>();
   filteredDataSource = new MatTableDataSource<FixedPriceProject>();
   fixedPriceProjects: FixedPriceProject[];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   selectedRowToEdit = -1;
   selectedRow = -1;
-
   projectnumberplanmillSearch = false;
   projectidtagetikSearch = false;
   projectdescriptionSearch = false;
@@ -77,8 +77,10 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
   }
 
   constructor(
-    public dialog: MatDialog, private fixedPriceProjectService: FixedPriceProjectService
-  ) { }
+    public dialog: MatDialog,
+    private fixedPriceProjectService: FixedPriceProjectService
+  ) {
+  }
 
   filter() {
     this.filteredDataSource.data = this.dataSource.data;
@@ -225,12 +227,12 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
   }
 
   private isFieldChanged() {
-    if (this.fppInputs.projectnumberplanmill === this.dataSource.data[this.selectedRowToEdit - 1].projectnumberplanmill  &&
+    if (this.fppInputs.projectnumberplanmill === this.dataSource.data[this.selectedRowToEdit - 1].projectnumberplanmill &&
       this.fppInputs.projectidtagetik === this.dataSource.data[this.selectedRowToEdit - 1].projectidtagetik &&
       this.fppInputs.projectdescription === this.dataSource.data[this.selectedRowToEdit - 1].projectdescription &&
       this.fppInputs.customernumber === this.dataSource.data[this.selectedRowToEdit - 1].customernumber &&
       this.fppInputs.price === this.dataSource.data[this.selectedRowToEdit - 1].price) {
-        return false;
+      return false;
     }
   }
 

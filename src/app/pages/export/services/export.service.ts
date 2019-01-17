@@ -1,4 +1,4 @@
-import { ExportAction } from './../../../shared/models/export.actions';
+import { ExportAction } from '../../../shared/models/export.action';
 import { Scenario } from './../../../shared/models/scenario';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';

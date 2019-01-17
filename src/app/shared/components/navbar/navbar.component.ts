@@ -49,14 +49,8 @@ export class NavbarComponent implements AfterViewInit {
       width: '500px',
       disableClose: true
     });
-
-    // dialogRef.afterClosed().subscribe(data => {
-    //   if (data) {
-    //     this.fixedPriceProjectService.createFixedPriceProject(data);
-    //     this.pushObject(data);
-    //   }
-    // });
   }
+
   switchLanguage(language: string) {
     this.translate.use(language);
     this.language = language.toUpperCase();
@@ -76,6 +70,7 @@ export class NavbarComponent implements AfterViewInit {
   }
 
   private logout() {
+    this.translate.use('de');
     this.cookieService.delete('username');
     this.router.navigate(['']);
   }
