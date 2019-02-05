@@ -14,7 +14,7 @@ import { CustomerInfoService } from './services/customer-info.service';
 
 export class CustomerInfoComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['blz', 'block', 'node', 'customername', 'bankgroup', 'cluster', 'menu'];
+  displayedColumns: string[] = ['blz', 'block', 'node', 'customerName', 'bankGroup', 'cluster', 'menu'];
 
   dataSource = new MatTableDataSource<CustomerInfo>();
   filteredDataSource = new MatTableDataSource<CustomerInfo>();
@@ -28,15 +28,15 @@ export class CustomerInfoComponent implements OnInit, AfterViewInit {
   blzSearch = false;
   blockSearch = false;
   nodeSearch = false;
-  customernameSearch = false;
-  bankgroupSearch = false;
+  customerNameSearch = false;
+  bankGroupSearch = false;
   clusterSearch = false;
 
   blzSearchQuery = 0;
   blockSearchQuery = '';
   nodeSearchQuery = '';
-  customernameSearchQuery = '';
-  bankgroupSearchQuery = '';
+  customerNameSearchQuery = '';
+  bankGroupSearchQuery = '';
   clusterSearchQuery = '';
 
   addNewElement = false;
@@ -47,8 +47,8 @@ export class CustomerInfoComponent implements OnInit, AfterViewInit {
     blz: 0,
     block: '',
     node: '',
-    customername: '',
-    bankgroup: '',
+    customerName: '',
+    bankGroup: '',
     cluster: ''
   };
 
@@ -59,8 +59,8 @@ export class CustomerInfoComponent implements OnInit, AfterViewInit {
       blz: new FormControl('', Validators.required),
       block: new FormControl('', Validators.required),
       node: new FormControl('', Validators.required),
-      customername: new FormControl('', Validators.required),
-      bankgroup: new FormControl('', Validators.required),
+      customerName: new FormControl('', Validators.required),
+      bankGroup: new FormControl('', Validators.required),
       cluster: new FormControl('', Validators.required)
     });
 
@@ -102,14 +102,14 @@ export class CustomerInfoComponent implements OnInit, AfterViewInit {
         .includes(this.nodeSearchQuery.trim().toLocaleLowerCase()))
       : this.filteredDataSource.data;
 
-    this.filteredDataSource.data = (this.customernameSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.customername.toLocaleLowerCase()
-        .includes(this.customernameSearchQuery.trim().toLocaleLowerCase()))
+    this.filteredDataSource.data = (this.customerNameSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.customerName.toLocaleLowerCase()
+        .includes(this.customerNameSearchQuery.trim().toLocaleLowerCase()))
       : this.filteredDataSource.data;
 
-    this.filteredDataSource.data = (this.bankgroupSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.bankgroup.toLocaleLowerCase()
-        .includes(this.bankgroupSearchQuery.trim().toLocaleLowerCase()))
+    this.filteredDataSource.data = (this.bankGroupSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.bankGroup.toLocaleLowerCase()
+        .includes(this.bankGroupSearchQuery.trim().toLocaleLowerCase()))
       : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.clusterSearchQuery) ?
@@ -136,12 +136,12 @@ export class CustomerInfoComponent implements OnInit, AfterViewInit {
     return this.cbForm.get('node');
   }
 
-  get formcustomername() {
-    return this.cbForm.get('customername');
+  get formcustomerName() {
+    return this.cbForm.get('customerName');
   }
 
-  get formbankgroup() {
-    return this.cbForm.get('bankgroup');
+  get formbankGroup() {
+    return this.cbForm.get('bankGroup');
   }
 
   get formcluster() {
@@ -205,11 +205,11 @@ export class CustomerInfoComponent implements OnInit, AfterViewInit {
     if (!this.nodeSearch) {
       this.nodeSearchQuery = '';
     }
-    if (!this.customernameSearch) {
-      this.customernameSearchQuery = '';
+    if (!this.customerNameSearch) {
+      this.customerNameSearchQuery = '';
     }
-    if (!this.bankgroupSearch) {
-      this.bankgroupSearchQuery = '';
+    if (!this.bankGroupSearch) {
+      this.bankGroupSearchQuery = '';
     }
     if (!this.clusterSearch) {
       this.clusterSearchQuery = '';
@@ -243,8 +243,8 @@ export class CustomerInfoComponent implements OnInit, AfterViewInit {
     if (this.cbInputs.blz === this.dataSource.data[this.selectedRowToEdit - 1].blz  &&
       this.cbInputs.block === this.dataSource.data[this.selectedRowToEdit - 1].block &&
       this.cbInputs.node === this.dataSource.data[this.selectedRowToEdit - 1].node &&
-      this.cbInputs.customername === this.dataSource.data[this.selectedRowToEdit - 1].customername &&
-      this.cbInputs.bankgroup === this.dataSource.data[this.selectedRowToEdit - 1].bankgroup &&
+      this.cbInputs.customerName === this.dataSource.data[this.selectedRowToEdit - 1].customerName &&
+      this.cbInputs.bankGroup === this.dataSource.data[this.selectedRowToEdit - 1].bankGroup &&
       this.cbInputs.cluster === this.dataSource.data[this.selectedRowToEdit - 1].cluster) {
         return false;
     }
@@ -255,8 +255,8 @@ export class CustomerInfoComponent implements OnInit, AfterViewInit {
       this.dataSource.data[this.selectedRowToEdit - 1].blz = this.cbInputs.blz;
       this.dataSource.data[this.selectedRowToEdit - 1].block = this.cbInputs.block;
       this.dataSource.data[this.selectedRowToEdit - 1].node = this.cbInputs.node;
-      this.dataSource.data[this.selectedRowToEdit - 1].customername = this.cbInputs.customername;
-      this.dataSource.data[this.selectedRowToEdit - 1].bankgroup = this.cbInputs.bankgroup;
+      this.dataSource.data[this.selectedRowToEdit - 1].customerName = this.cbInputs.customerName;
+      this.dataSource.data[this.selectedRowToEdit - 1].bankGroup = this.cbInputs.bankGroup;
       this.dataSource.data[this.selectedRowToEdit - 1].cluster = this.cbInputs.cluster;
       this.customerInfoService.updateCustomerInfo(this.dataSource.data[this.selectedRowToEdit - 1]);
       this.selectedRowToEdit = -1;
@@ -266,8 +266,8 @@ export class CustomerInfoComponent implements OnInit, AfterViewInit {
     this.cbInputs.blz = this.dataSource.data[rowNumber - 1].blz;
     this.cbInputs.block = this.dataSource.data[rowNumber - 1].block;
     this.cbInputs.node = this.dataSource.data[rowNumber - 1].node;
-    this.cbInputs.customername = this.dataSource.data[rowNumber - 1].customername;
-    this.cbInputs.bankgroup = this.dataSource.data[rowNumber - 1].bankgroup;
+    this.cbInputs.customerName = this.dataSource.data[rowNumber - 1].customerName;
+    this.cbInputs.bankGroup = this.dataSource.data[rowNumber - 1].bankGroup;
     this.cbInputs.cluster = this.dataSource.data[rowNumber - 1].cluster;
   }
 

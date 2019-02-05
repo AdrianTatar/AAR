@@ -1,10 +1,10 @@
 import { SurchargeCustomerRate } from './surcharge-customer-rate';
 export interface SurchargeCustomer {
     id: number;
-    debitornumber: number;
-    debitorname: string;
+    debitorNumber: number;
+    debitorName: string;
     type: string;
-    customernumber: number;
-    customername: string;
+    customerNumber: number;
+    customerName: string;
     rates: [SurchargeCustomerRate];
 }

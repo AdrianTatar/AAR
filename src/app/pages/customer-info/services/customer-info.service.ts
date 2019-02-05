@@ -10,10 +10,7 @@ const httpOptions = {
 @Injectable()
 export class CustomerInfoService {
 
-  private customerInfoUrl = '/customerBase';
-  private readAllPath = '/readAll';
-  private savePath = '/create';
-  private updatePath = '/update';
+  private customerInfoUrl = '/customers-info';
 
   constructor(
     private http: HttpClient,
@@ -21,19 +18,19 @@ export class CustomerInfoService {
   ) { }
 
   public getCustomerInfo() {
-    return this.http.get<CustomerInfo[]>(this.customerInfoUrl + this.readAllPath);
+    return this.http.get<CustomerInfo[]>(this.customerInfoUrl);
   }
 
   public createCustomerInfo(customerBase) {
     this.userActionsCreateService.createUserAction('CustomerInfoCreate');
-    return this.http.post<CustomerInfo>(this.customerInfoUrl + this.savePath,
+    return this.http.post<CustomerInfo>(this.customerInfoUrl,
       JSON.stringify(customerBase), httpOptions)
       .subscribe(res => console.log(res));
   }
 
   public updateCustomerInfo(customerInfo: CustomerInfo) {
     this.userActionsCreateService.createUserAction('CustomerInfoEdit');
-    return this.http.put<CustomerInfo>(this.customerInfoUrl + this.updatePath,
+    return this.http.put<CustomerInfo>(this.customerInfoUrl,
       JSON.stringify(customerInfo), httpOptions)
       .subscribe(response => console.log(response));
   }

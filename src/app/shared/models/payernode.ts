@@ -1,9 +1,9 @@
 export interface PayerNode {
     id: number;
-    customernumber: string;
-    customername: string;
+    customerNumber: string;
+    customerName: string;
     hierarchy: string;
-    payernodenumber: number;
-    payernodedescription: string;
-    payernodecode: string;
+    payerNodeNumber: number;
+    payerNodeDescription: string;
+    payerNodeCode: string;
 }

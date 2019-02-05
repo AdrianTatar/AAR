@@ -3,16 +3,16 @@
     <table mat-table [dataSource]="filteredDataSource">
 
       <!-- Planmill Projektnummer Column -->
-      <ng-container matColumnDef="projectnumberplanmill">
+      <ng-container matColumnDef="projectPlanmillNumber">
         <th mat-header-cell *matHeaderCellDef class="header">
           {{ 'PlanmillProjektnummer' | translate }}
 
-          <button mat-icon-button (click)="projectnumberplanmillSearch = !projectnumberplanmillSearch; clearSearchInputBox()">
+          <button mat-icon-button (click)="projectPlanmillNumberSearch = !projectPlanmillNumberSearch; clearSearchInputBox()">
             <mat-icon class="searchIcon">search</mat-icon>
           </button>
-          <div *ngIf="projectnumberplanmillSearch === true" class="search-input">
+          <div *ngIf="projectPlanmillNumberSearch === true" class="search-input">
             <mat-form-field>
-              <input [(ngModel)]="projectnumberplanmillSearchQuery" (keyup)="filter()" matInput>
+              <input [(ngModel)]="projectPlanmillNumberSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
         </th>
@@ -20,23 +20,23 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field>
-              <input type="text" [(ngModel)]="fppInputs.projectnumberplanmill" matInput (keyup.enter)="confirmEdit()"
-                [formControl]="formProjectnumberplanmill">
-              <mat-error *ngIf="formProjectnumberplanmill.invalid">
+              <input type="text" [(ngModel)]="fppInputs.projectPlanmillNumber" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formprojectPlanmillNumber">
+              <mat-error *ngIf="formprojectPlanmillNumber.invalid">
                 {{ 'PlanmillProjektnummer' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
             <div class="cells">
-              {{ element.projectnumberplanmill }}
+              {{ element.projectPlanmillNumber }}
             </div>
           </ng-template>
         </td>
       </ng-container>
 
       <!-- Tagetik_Projekt-ID Column -->
-      <ng-container matColumnDef="projectidtagetik">
+      <ng-container matColumnDef="projectIdTagetik">
         <th mat-header-cell *matHeaderCellDef class="header">
 
           {{ 'TagetikProjektID' | translate }}
@@ -54,33 +54,33 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field>
-              <input type="text" [(ngModel)]="fppInputs.projectidtagetik" [formControl]="formProjectidtagetik" matInput
+              <input type="text" [(ngModel)]="fppInputs.projectIdTagetik" [formControl]="formprojectIdTagetik" matInput
                 (keyup.enter)="confirmEdit()">
-              <mat-error *ngIf="formProjectidtagetik.invalid">
+              <mat-error *ngIf="formprojectIdTagetik.invalid">
                 {{ 'TagetikProjektID' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
             <div class="cells">
-              {{ element.projectidtagetik }}
+              {{ element.projectIdTagetik }}
             </div>
           </ng-template>
         </td>
       </ng-container>
 
-      <!-- ProjectDescription Column -->
-      <ng-container matColumnDef="projectdescription">
+      <!-- projectDescription Column -->
+      <ng-container matColumnDef="projectDescription">
         <th mat-header-cell *matHeaderCellDef class="header">
 
           {{ 'ProjBez' | translate }}
 
-          <button mat-icon-button (click)="projectdescriptionSearch = !projectdescriptionSearch; clearSearchInputBox(); ">
+          <button mat-icon-button (click)="projectDescriptionSearch = !projectDescriptionSearch; clearSearchInputBox(); ">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="projectdescriptionSearch === true" class="search-input">
+          <div *ngIf="projectDescriptionSearch === true" class="search-input">
             <mat-form-field>
-              <input [(ngModel)]="projectdescriptionSearchQuery" (keyup)="filter()" matInput class="searchInput">
+              <input [(ngModel)]="projectDescriptionSearchQuery" (keyup)="filter()" matInput class="searchInput">
             </mat-form-field>
           </div>
 
@@ -88,33 +88,33 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="full-width">
-              <textarea [(ngModel)]="fppInputs.projectdescription" type="text" matInput (keyup.enter)="confirmEdit()"
-                [formControl]="formProjectdescription"></textarea>
-              <mat-error *ngIf="formProjectdescription.invalid">
+              <textarea [(ngModel)]="fppInputs.projectDescription" type="text" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formprojectDescription"></textarea>
+              <mat-error *ngIf="formprojectDescription.invalid">
                 {{ 'ProjBez' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
             <div class="cells">
-              {{ element.projectdescription }}
+              {{ element.projectDescription }}
             </div>
           </ng-template>
         </td>
       </ng-container>
 
-      <!-- CustomerNumber Column -->
-      <ng-container matColumnDef="customernumber">
+      <!-- customerNumber Column -->
+      <ng-container matColumnDef="customerNumber">
         <th mat-header-cell *matHeaderCellDef class="header">
 
           {{ 'KundenNr' | translate }}
 
-          <button mat-icon-button (click)="customernumberSearch = !customernumberSearch; clearSearchInputBox(); ">
+          <button mat-icon-button (click)="customerNumberSearch = !customerNumberSearch; clearSearchInputBox(); ">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="customernumberSearch === true" class="search-input">
+          <div *ngIf="customerNumberSearch === true" class="search-input">
             <mat-form-field>
-              <input type="number" [(ngModel)]="customernumberSearchQuery" (keyup)="filter()" matInput class="searchInput">
+              <input type="number" [(ngModel)]="customerNumberSearchQuery" (keyup)="filter()" matInput class="searchInput">
             </mat-form-field>
           </div>
 
@@ -122,16 +122,16 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="example-full-width">
-              <input type="number" [(ngModel)]="fppInputs.customernumber" matInput (keyup.enter)="confirmEdit()"
-                [formControl]="formCustomernumber">
-              <mat-error *ngIf="formCustomernumber.invalid">
+              <input type="number" [(ngModel)]="fppInputs.customerNumber" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formcustomerNumber">
+              <mat-error *ngIf="formcustomerNumber.invalid">
                 {{ 'KundenNr' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
             <div class="cells">
-              {{ element.customernumber }}
+              {{ element.customerNumber }}
             </div>
           </ng-template>
         </td>

@@ -16,7 +16,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class ExportActionsComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['timestamp', 'userId', 'menuExcelBtn', 'menuHostTxtBtn'];
-  private exportProjectUrl = 'http://localhost:8080/aarREST/rest/export/getExport/';
+  private exportProjectUrl = 'http://localhost:8080/aarREST/rest/export/';
   location;
   exportDate;
   day;
@@ -124,7 +124,7 @@ export class ExportActionsComponent implements OnInit, AfterViewInit {
       + this.minute + ':'
       + this.second;
 
-    this.location = this.exportProjectUrl + 'Excel/' + this.cookieService.get('username') + '/' + this.exportDate;
+    this.location = this.exportProjectUrl + 'existing/excel/' + this.cookieService.get('username') + '/' + this.exportDate;
     window.open(this.location);
     this.selectedRow = value;
     this.userActionsCreateService.createUserAction('ExcelRe');
@@ -164,7 +164,7 @@ export class ExportActionsComponent implements OnInit, AfterViewInit {
       + this.minute + ':'
       + this.second;
 
-    this.location = this.exportProjectUrl + 'HostTxt/' + this.cookieService.get('username') + '/' + this.exportDate;
+    this.location = this.exportProjectUrl + 'existing/hosttxt/' + this.cookieService.get('username') + '/' + this.exportDate;
     window.open(this.location);
     this.selectedRow = value;
     this.userActionsCreateService.createUserAction('ExcelRe');

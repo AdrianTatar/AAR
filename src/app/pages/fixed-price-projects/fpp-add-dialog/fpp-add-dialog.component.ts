@@ -13,10 +13,10 @@ export class FppAddDialogComponent {
   fppForm;
   fppInputs: FixedPriceProject = {
     id: null,
-    projectnumberplanmill: '',
-    projectidtagetik: '',
-    projectdescription: '',
-    customernumber: 0,
+    projectPlanmillNumber: '',
+    projectIdTagetik: '',
+    projectDescription: '',
+    customerNumber: 0,
     price: 0
   };
 
@@ -24,10 +24,10 @@ export class FppAddDialogComponent {
     private dialogRef: MatDialogRef<FppAddDialogComponent>
   ) {
     this.fppForm = new FormGroup({
-      projectnumberplanmill: new FormControl('', Validators.required),
-      projectidtagetik: new FormControl('', Validators.required),
-      projectdescription: new FormControl('', Validators.required),
-      customernumber: new FormControl('', Validators.required),
+      projectPlanmillNumber: new FormControl('', Validators.required),
+      projectIdTagetik: new FormControl('', Validators.required),
+      projectDescription: new FormControl('', Validators.required),
+      customerNumber: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required)
     });
   }
@@ -36,20 +36,20 @@ export class FppAddDialogComponent {
     this.dialogRef.close(this.fppInputs);
   }
 
-  get formProjectnumberplanmill() {
-    return this.fppForm.get('projectnumberplanmill');
+  get formprojectPlanmillNumber() {
+    return this.fppForm.get('projectPlanmillNumber');
   }
 
-  get formProjectidtagetik() {
-    return this.fppForm.get('projectidtagetik');
+  get formprojectIdTagetik() {
+    return this.fppForm.get('projectIdTagetik');
   }
 
-  get formProjectdescription() {
-    return this.fppForm.get('projectdescription');
+  get formprojectDescription() {
+    return this.fppForm.get('projectDescription');
   }
 
-  get formCustomernumber() {
-    return this.fppForm.get('customernumber');
+  get formcustomerNumber() {
+    return this.fppForm.get('customerNumber');
   }
 
   get formPrice() {

@@ -36,18 +36,18 @@
     <!-- Customer Name Input Form -->
 
     <mat-form-field class="full-width">
-      <input type="text" [(ngModel)]="cbInputs.customername" matInput placeholder="{{ 'CustomerName' | translate }}" [formControl]="formcustomername">
-      <mat-error *ngIf="formcustomername.invalid">
-        {{ 'CustomerName' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
+      <input type="text" [(ngModel)]="cbInputs.customerName" matInput placeholder="{{ 'customerName' | translate }}" [formControl]="formcustomerName">
+      <mat-error *ngIf="formcustomerName.invalid">
+        {{ 'customerName' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
       </mat-error>
     </mat-form-field>
 
     <!-- Bank Group Input Form -->
 
     <mat-form-field class="full-width">
-      <input type="text" [(ngModel)]="cbInputs.bankgroup" matInput placeholder="{{ 'BankGroup' | translate }}" [formControl]="formbankgroup">
-      <mat-error *ngIf="formbankgroup.invalid">
-        {{ 'BankGroup' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
+      <input type="text" [(ngModel)]="cbInputs.bankGroup" matInput placeholder="{{ 'bankGroup' | translate }}" [formControl]="formbankGroup">
+      <mat-error *ngIf="formbankGroup.invalid">
+        {{ 'bankGroup' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
       </mat-error>
     </mat-form-field>
 

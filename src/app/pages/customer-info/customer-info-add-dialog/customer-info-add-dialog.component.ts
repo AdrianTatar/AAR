@@ -16,8 +16,8 @@ export class CustomerInfoAddDialogComponent {
     blz: 0,
     block: '',
     node: '',
-    customername: '',
-    bankgroup: '',
+    customerName: '',
+    bankGroup: '',
     cluster: ''
   };
 
@@ -28,8 +28,8 @@ export class CustomerInfoAddDialogComponent {
       blz: new FormControl('', Validators.required),
       block: new FormControl('', Validators.required),
       node: new FormControl('', Validators.required),
-      customername: new FormControl('', Validators.required),
-      bankgroup: new FormControl('', Validators.required),
+      customerName: new FormControl('', Validators.required),
+      bankGroup: new FormControl('', Validators.required),
       cluster: new FormControl('', Validators.required)
     });
   }
@@ -50,12 +50,12 @@ export class CustomerInfoAddDialogComponent {
     return this.cbForm.get('node');
   }
 
-  get formcustomername() {
-    return this.cbForm.get('customername');
+  get formcustomerName() {
+    return this.cbForm.get('customerName');
   }
 
-  get formbankgroup() {
-    return this.cbForm.get('bankgroup');
+  get formbankGroup() {
+    return this.cbForm.get('bankGroup');
   }
 
   get formcluster() {

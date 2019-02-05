@@ -2,46 +2,46 @@
   <div class="mat-elevation-z8" id="table-container">
     <table mat-table [dataSource]="filteredDataSource">
 
-      <!-- Debitornumber Column -->
-      <ng-container matColumnDef="debitornumber">
-        <!-- Debitornumber Header -->
+      <!-- debitorNumber Column -->
+      <ng-container matColumnDef="debitorNumber">
+        <!-- debitorNumber Header -->
         <th mat-header-cell *matHeaderCellDef class="header">
-          {{ 'DebitorNumber' | translate }}
-          <button mat-icon-button (click)="debitornumberSearch = !debitornumberSearch; clearSearchInputBox()">
+          {{ 'debitorNumber' | translate }}
+          <button mat-icon-button (click)="debitorNumberSearch = !debitorNumberSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="debitornumberSearch === true" class="search-input">
+          <div *ngIf="debitorNumberSearch === true" class="search-input">
             <mat-form-field>
-              <input type="number" [(ngModel)]="debitornumberSearchQuery" (keyup)="filter()" matInput>
+              <input type="number" [(ngModel)]="debitorNumberSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
         </th>
-        <!-- Debitornumber Cell -->
+        <!-- debitorNumber Cell -->
         <td mat-cell *matCellDef="let element" (click)="openViewDialog(mapToDataSource(element.id))">
           <div class="cells">
-            {{ element.debitornumber }}
+            {{ element.debitorNumber }}
           </div>
         </td>
       </ng-container>
 
-      <!-- Debitorname Column -->
-      <ng-container matColumnDef="debitorname">
-        <!-- Debitorname Header -->
+      <!-- debitorName Column -->
+      <ng-container matColumnDef="debitorName">
+        <!-- debitorName Header -->
         <th mat-header-cell *matHeaderCellDef class="header">
           {{ 'Debitor' | translate }}
-          <button mat-icon-button (click)="debitornameSearch = !debitornameSearch; clearSearchInputBox()">
+          <button mat-icon-button (click)="debitorNameSearch = !debitorNameSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="debitornameSearch === true" class="search-input">
+          <div *ngIf="debitorNameSearch === true" class="search-input">
             <mat-form-field>
-              <input [(ngModel)]="debitornameSearchQuery" (keyup)="filter()" matInput>
+              <input [(ngModel)]="debitorNameSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
         </th>
-        <!-- Debitorname Cell -->
+        <!-- debitorName Cell -->
         <td mat-cell *matCellDef="let element" (click)="openViewDialog(mapToDataSource(element.id))">
           <div class="cells">
-            {{ element.debitorname }}
+            {{ element.debitorName }}
           </div>
         </td>
       </ng-container>
@@ -76,46 +76,46 @@
         </td>
       </ng-container>
 
-      <!-- Customernumber Column -->
-      <ng-container matColumnDef="customernumber">
-        <!-- Customernumber Header -->
+      <!-- customerNumber Column -->
+      <ng-container matColumnDef="customerNumber">
+        <!-- customerNumber Header -->
         <th mat-header-cell *matHeaderCellDef class="header">
           {{ 'CustomerId' | translate }}
-          <button mat-icon-button (click)="customernumberSearch = !customernumberSearch; clearSearchInputBox();">
+          <button mat-icon-button (click)="customerNumberSearch = !customerNumberSearch; clearSearchInputBox();">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="customernumberSearch === true" class="search-input">
+          <div *ngIf="customerNumberSearch === true" class="search-input">
             <mat-form-field>
-              <input type="number" [(ngModel)]="customernumberSearchQuery" (keyup)="filter()" matInput>
+              <input type="number" [(ngModel)]="customerNumberSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
         </th>
-        <!-- Customernumber Cell -->
+        <!-- customerNumber Cell -->
         <td mat-cell *matCellDef="let element" (click)="openViewDialog(mapToDataSource(element.id))">
           <div class="cells">
-            {{ element.customernumber }}
+            {{ element.customerNumber }}
           </div>
         </td>
       </ng-container>
 
-      <!-- Customername Column -->
-      <ng-container matColumnDef="customername">
-        <!-- Customername Header -->
+      <!-- customerName Column -->
+      <ng-container matColumnDef="customerName">
+        <!-- customerName Header -->
         <th mat-header-cell *matHeaderCellDef class="header">
-          {{ 'CustomerName' | translate }}
-          <button mat-icon-button (click)="customernameSearch = !customernameSearch; clearSearchInputBox();">
+          {{ 'customerName' | translate }}
+          <button mat-icon-button (click)="customerNameSearch = !customerNameSearch; clearSearchInputBox();">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="customernameSearch === true" class="search-input">
+          <div *ngIf="customerNameSearch === true" class="search-input">
             <mat-form-field>
-              <input [(ngModel)]="customernameSearchQuery" (keyup)="filter()" matInput>
+              <input [(ngModel)]="customerNameSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
         </th>
-        <!-- Customername Cell -->
+        <!-- customerName Cell -->
         <td mat-cell *matCellDef="let element" (click)="openViewDialog(mapToDataSource(element.id))">
           <div class="cells">
-            {{ element.customername }}
+            {{ element.customerName }}
           </div>
         </td>
       </ng-container>

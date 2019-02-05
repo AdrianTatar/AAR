@@ -12,7 +12,7 @@ import { ScrAddDialogComponent } from './scr-add-dialog/scr-add-dialog.component
 })
 export class SurchargeCustomersRateComponent implements OnInit {
 
-    displayedColumns: string[] = ['year', 'dailyrate_at', 'dailyrate_hu', 'dailyrate_sk', 'dailyrate_ro'];
+    displayedColumns: string[] = ['year', 'dailyrateAt', 'dailyrateHu', 'dailyrateSk', 'dailyrateRo'];
     dataSource = new MatTableDataSource<SurchargeCustomerRate>();
     filteredDataSource = new MatTableDataSource<SurchargeCustomerRate>();
     surchargeCustomerRate: SurchargeCustomerRate[];
@@ -40,10 +40,10 @@ export class SurchargeCustomersRateComponent implements OnInit {
     scrInputs: SurchargeCustomerRate = {
         id: null,
         year: null,
-        dailyrate_at: null,
-        dailyrate_hu: null,
-        dailyrate_sk: null,
-        dailyrate_ro: null
+        dailyrateAt: null,
+        dailyrateHu: null,
+        dailyrateSk: null,
+        dailyrateRo: null
     };
 
     constructor(
@@ -57,10 +57,10 @@ export class SurchargeCustomersRateComponent implements OnInit {
         this.scrForm = new FormGroup({
             surchargecustomer_id: new FormControl('', Validators.required),
             year: new FormControl('', Validators.required),
-            dailyrate_at: new FormControl('', Validators.required),
-            dailyrate_hu: new FormControl('', Validators.required),
-            dailyrate_sk: new FormControl('', Validators.required),
-            dailyrate_ro: new FormControl('', Validators.required)
+            dailyrateAt: new FormControl('', Validators.required),
+            dailyrateHu: new FormControl('', Validators.required),
+            dailyrateSk: new FormControl('', Validators.required),
+            dailyrateRo: new FormControl('', Validators.required)
         });
 
         await this.surchargeCustomersRateService.getSurchargeCustomersRates().subscribe(data => {
@@ -75,19 +75,19 @@ export class SurchargeCustomersRateComponent implements OnInit {
     }
 
     get formDailyRateAt() {
-        return this.scrForm.get('dailyrate_at');
+        return this.scrForm.get('dailyrateAt');
     }
 
     get formDailyRateHu() {
-        return this.scrForm.get('dailyrate_hu');
+        return this.scrForm.get('dailyrateHu');
     }
 
     get formDailyRateSk() {
-        return this.scrForm.get('dailyrate_sk');
+        return this.scrForm.get('dailyrateSk');
     }
 
     get formDailyRateRo() {
-        return this.scrForm.get('dailyrate_ro');
+        return this.scrForm.get('dailyrateRo');
     }
 
     private selectRow(rowNumber) {

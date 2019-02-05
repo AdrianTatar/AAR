@@ -23,20 +23,20 @@ export class ScAddDialogComponent implements OnInit {
   scrInputs: SurchargeCustomerRate = {
     id: null,
     year: 0,
-    dailyrate_at: null,
-    dailyrate_hu: null,
-    dailyrate_ro: null,
-    dailyrate_sk: null
+    dailyrateAt: null,
+    dailyrateHu: null,
+    dailyrateRo: null,
+    dailyrateSk: null
   };
 
   scForm;
   scInputs: SurchargeCustomer = {
     id: null,
-    debitornumber: 0,
-    debitorname: '',
+    debitorNumber: 0,
+    debitorName: '',
     type: '',
-    customernumber: 0,
-    customername: '',
+    customerNumber: 0,
+    customerName: '',
     rates: [this.scrInputs]
   };
 
@@ -49,18 +49,18 @@ export class ScAddDialogComponent implements OnInit {
     this.currentYear = new Date().getFullYear();
     this.scForm = new FormGroup({
       debitorenumber: new FormControl('', Validators.required),
-      debitorname: new FormControl('', Validators.required),
+      debitorName: new FormControl('', Validators.required),
       type: new FormControl('', Validators.required),
-      customernumber: new FormControl('', Validators.required),
-      customername: new FormControl('', Validators.required)
+      customerNumber: new FormControl('', Validators.required),
+      customerName: new FormControl('', Validators.required)
     });
 
     this.scrForm = new FormGroup({
       year: new FormControl('', Validators.required),
-      dailyrate_at: new FormControl('', Validators.required),
-      dailyrate_hu: new FormControl('', Validators.required),
-      dailyrate_sk: new FormControl('', Validators.required),
-      dailyrate_ro: new FormControl('', Validators.required),
+      dailyrateAt: new FormControl('', Validators.required),
+      dailyrateHu: new FormControl('', Validators.required),
+      dailyrateSk: new FormControl('', Validators.required),
+      dailyrateRo: new FormControl('', Validators.required),
     });
 
   }
@@ -70,51 +70,51 @@ export class ScAddDialogComponent implements OnInit {
     const rateToAdd: SurchargeCustomerRate = {
       id: null,
       year: this.scrInputs.year,
-      dailyrate_at: this.scrInputs.dailyrate_at,
-      dailyrate_hu: this.scrInputs.dailyrate_hu,
-      dailyrate_sk: this.scrInputs.dailyrate_sk,
-      dailyrate_ro: this.scrInputs.dailyrate_ro
+      dailyrateAt: this.scrInputs.dailyrateAt,
+      dailyrateHu: this.scrInputs.dailyrateHu,
+      dailyrateSk: this.scrInputs.dailyrateSk,
+      dailyrateRo: this.scrInputs.dailyrateRo
     };
     this.surchargeRates.push(rateToAdd);
     this.surchargeRatesDataSource.data = this.surchargeRates;
 
     this.scrInputs.year = 0;
-    this.scrInputs.dailyrate_at = 0;
-    this.scrInputs.dailyrate_hu = 0;
-    this.scrInputs.dailyrate_sk = 0;
-    this.scrInputs.dailyrate_ro = 0;
+    this.scrInputs.dailyrateAt = 0;
+    this.scrInputs.dailyrateHu = 0;
+    this.scrInputs.dailyrateSk = 0;
+    this.scrInputs.dailyrateRo = 0;
   }
 
   saveSurchargeCustomer() {
     const surchargeCustomerToAdd = {
-      debitornumber: this.scInputs.debitornumber,
-      debitorname: this.scInputs.debitorname,
-      customername: this.scInputs.customername,
-      customernumber: this.scInputs.customernumber,
+      debitorNumber: this.scInputs.debitorNumber,
+      debitorName: this.scInputs.debitorName,
+      customerName: this.scInputs.customerName,
+      customerNumber: this.scInputs.customerNumber,
       type: this.scInputs.type,
       rates: this.surchargeRates
     };
     this.dialogRef.close(surchargeCustomerToAdd);
   }
 
-  get formdebitornumber() {
+  get formdebitorNumber() {
     return this.scForm.get('debitorenumber');
   }
 
-  get formdebitorname() {
-    return this.scForm.get('debitorname');
+  get formdebitorName() {
+    return this.scForm.get('debitorName');
   }
 
   get formtype() {
     return this.scForm.get('type');
   }
 
-  get formcustomernumber() {
-    return this.scForm.get('customernumber');
+  get formcustomerNumber() {
+    return this.scForm.get('customerNumber');
   }
 
-  get formcustomername() {
-    return this.scForm.get('customername');
+  get formcustomerName() {
+    return this.scForm.get('customerName');
   }
 
   get formrates() {
@@ -130,19 +130,19 @@ export class ScAddDialogComponent implements OnInit {
   }
 
   get formAT() {
-    return this.scrForm.get('dailyrate_at');
+    return this.scrForm.get('dailyrateAt');
   }
 
   get formHU() {
-    return this.scrForm.get('dailyrate_hu');
+    return this.scrForm.get('dailyrateHu');
   }
 
   get formSK() {
-    return this.scrForm.get('dailyrate_sk');
+    return this.scrForm.get('dailyrateSk');
   }
 
   get formRO() {
-    return this.scrForm.get('dailyrate_ro');
+    return this.scrForm.get('dailyrateRo');
   }
 }
 

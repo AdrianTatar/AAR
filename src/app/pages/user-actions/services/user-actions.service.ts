@@ -13,12 +13,11 @@ export class UserActionsService {
 
   constructor(private http: HttpClient) { }
 
-  private userActionUrl = '/userAction';
-  private readAllPath = '/readAll';
+  private userActionUrl = '/user-actions';
 
   public getUsers() {
     console.log(this.userActionUrl);
-    return this.http.get<UserAction[]>(this.userActionUrl + this.readAllPath);
+    return this.http.get<UserAction[]>(this.userActionUrl );
   }
 
   public createUser(user) {

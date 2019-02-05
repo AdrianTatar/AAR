@@ -18,8 +18,8 @@ export class ExportActionsService {
         private userActionsCreateService: UserActionsCreateService) { }
 
     private exportActionUrl = '/export';
-    private readAllPath = '/getExportsList';
-    private readUserPath = '/getExportsList/';
+    private readAllPath = '/distinct-exports-info';
+    private readUserPath = '/distinct-exports-info-by-userid/';
 
     public getallExports() {
         return this.http.get<ExportAction[]>(this.exportActionUrl + this.readAllPath);

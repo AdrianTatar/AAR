@@ -14,7 +14,7 @@ import { MatDialog } from '@angular/material';
 export class PayerNodesComponent implements OnInit, AfterViewInit {
 
   // tslint:disable-next-line:max-line-length
-  displayedColumns: string[] = ['customernumber', 'customername', 'hierarchy', 'payernodenumber', 'payernodedescription', 'payernodecode', 'menu'];
+  displayedColumns: string[] = ['customerNumber', 'customerName', 'hierarchy', 'payerNodeNumber', 'payerNodeDescription', 'payerNodeCode', 'menu'];
 
   dataSource = new MatTableDataSource<PayerNode>();
   filteredDataSource = new MatTableDataSource<PayerNode>();
@@ -23,43 +23,43 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
   selectedRowToEdit = -1;
   selectedRow = -1;
 
-  customernumberSearch = false;
-  customernameSearch = false;
+  customerNumberSearch = false;
+  customerNameSearch = false;
   hierarchySearch = false;
-  payernodenumberSearch = false;
-  payernodedescriptionSearch = false;
-  payernodecodeSearch = false;
+  payerNodeNumberSearch = false;
+  payerNodeDescriptionSearch = false;
+  payerNodeCodeSearch = false;
 
-  customernumberSearchQuery = 0;
-  customernameSearchQuery = '';
+  customerNumberSearchQuery = 0;
+  customerNameSearchQuery = '';
   hierarchySearchQuery = '';
-  payernodenumberSearchQuery = 0;
-  payernodedescriptionSearchQuery = '';
-  payernodecodeSearchQuery = '';
+  payerNodeNumberSearchQuery = 0;
+  payerNodeDescriptionSearchQuery = '';
+  payerNodeCodeSearchQuery = '';
 
   addNewElement = false;
 
   pnForm;
   pnInputs: PayerNode = {
     id: null,
-    customernumber: '',
-    customername: '',
+    customerNumber: '',
+    customerName: '',
     hierarchy: '',
-    payernodenumber: 0,
-    payernodedescription: '',
-    payernodecode: ''
+    payerNodeNumber: 0,
+    payerNodeDescription: '',
+    payerNodeCode: ''
   };
 
   async ngOnInit() {
     this.selectedRow = 0;
 
     this.pnForm = new FormGroup({
-      customernumber: new FormControl('', Validators.required),
-      customername: new FormControl('', Validators.required),
+      customerNumber: new FormControl('', Validators.required),
+      customerName: new FormControl('', Validators.required),
       hierarchy: new FormControl('', Validators.required),
-      payernodenumber: new FormControl('', Validators.required),
-      payernodedescription: new FormControl('', Validators.required),
-      payernodecode: new FormControl('', Validators.required)
+      payerNodeNumber: new FormControl('', Validators.required),
+      payerNodeDescription: new FormControl('', Validators.required),
+      payerNodeCode: new FormControl('', Validators.required)
     });
 
     await this.payerNode.getPayerNodes().subscribe(data => {
@@ -86,20 +86,20 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
 
   filter() {
     /* In cazul in care Customer Number din baza de date se va transforma din STRING in INT aici o sa avem o eroare in cod.*/
-    this.filteredDataSource.data = (this.customernumberSearchQuery) ?
+    this.filteredDataSource.data = (this.customerNumberSearchQuery) ?
       this.filteredDataSource.data
-        .sort(function (a: PayerNode, b: PayerNode) { return parseInt(a.customernumber, 10) - parseInt(b.customernumber, 10); })
-        .filter(p => p.customernumber
+        .sort(function (a: PayerNode, b: PayerNode) { return parseInt(a.customerNumber, 10) - parseInt(b.customerNumber, 10); })
+        .filter(p => p.customerNumber
           .toString()
           .toLocaleLowerCase()
-          .includes(this.customernumberSearchQuery.toString().toLocaleLowerCase()))
+          .includes(this.customerNumberSearchQuery.toString().toLocaleLowerCase()))
       : this.dataSource.data;
 
-    this.filteredDataSource.data = (this.customernameSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.customername
+    this.filteredDataSource.data = (this.customerNameSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.customerName
         .toLocaleLowerCase()
         .trim()
-        .includes(this.customernameSearchQuery.toLocaleLowerCase().trim()))
+        .includes(this.customerNameSearchQuery.toLocaleLowerCase().trim()))
       : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.hierarchySearchQuery) ?
@@ -107,47 +107,47 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
         .includes(this.hierarchySearchQuery.toLocaleLowerCase().trim()))
       : this.filteredDataSource.data;
 
-    this.filteredDataSource.data = (this.payernodenumberSearchQuery) ?
+    this.filteredDataSource.data = (this.payerNodeNumberSearchQuery) ?
       this.filteredDataSource.data
-        .sort(function (a: PayerNode, b: PayerNode) { return a.payernodenumber - b.payernodenumber; })
-        .filter(p => p.payernodenumber
+        .sort(function (a: PayerNode, b: PayerNode) { return a.payerNodeNumber - b.payerNodeNumber; })
+        .filter(p => p.payerNodeNumber
           .toString()
-          .includes(this.payernodenumberSearchQuery.toString()))
+          .includes(this.payerNodeNumberSearchQuery.toString()))
       : this.filteredDataSource.data;
 
-    this.filteredDataSource.data = (this.payernodedescriptionSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.payernodedescription.toLocaleLowerCase()
-        .includes(this.payernodedescriptionSearchQuery.toLocaleLowerCase().trim()))
+    this.filteredDataSource.data = (this.payerNodeDescriptionSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.payerNodeDescription.toLocaleLowerCase()
+        .includes(this.payerNodeDescriptionSearchQuery.toLocaleLowerCase().trim()))
       : this.filteredDataSource.data;
 
-    this.filteredDataSource.data = (this.payernodecodeSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.payernodecode.toString().toLocaleLowerCase()
-        .includes(this.payernodecodeSearchQuery.toLocaleLowerCase().trim()))
+    this.filteredDataSource.data = (this.payerNodeCodeSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.payerNodeCode.toString().toLocaleLowerCase()
+        .includes(this.payerNodeCodeSearchQuery.toLocaleLowerCase().trim()))
       : this.filteredDataSource.data;
   }
 
-  get formcustomernumber() {
-    return this.pnForm.get('customernumber');
+  get formcustomerNumber() {
+    return this.pnForm.get('customerNumber');
   }
 
-  get formcustomername() {
-    return this.pnForm.get('customername');
+  get formcustomerName() {
+    return this.pnForm.get('customerName');
   }
 
   get formhierarchy() {
     return this.pnForm.get('hierarchy');
   }
 
-  get formpayernodenumber() {
-    return this.pnForm.get('payernodenumber');
+  get formpayerNodeNumber() {
+    return this.pnForm.get('payerNodeNumber');
   }
 
-  get formpayernodedescription() {
-    return this.pnForm.get('payernodedescription');
+  get formpayerNodeDescription() {
+    return this.pnForm.get('payerNodeDescription');
   }
 
-  get formpayernodecode() {
-    return this.pnForm.get('payernodecode');
+  get formpayerNodeCode() {
+    return this.pnForm.get('payerNodeCode');
   }
 
   @HostListener('document:keydown', ['$event']) handleKeyboardEvent(event: KeyboardEvent) {
@@ -195,23 +195,23 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
   }
 
   clearSearchInputBox() {
-    if (!this.customernameSearch) {
-      this.customernameSearchQuery = '';
+    if (!this.customerNameSearch) {
+      this.customerNameSearchQuery = '';
     }
-    if (!this.customernumberSearch) {
-      this.customernumberSearchQuery = 0;
+    if (!this.customerNumberSearch) {
+      this.customerNumberSearchQuery = 0;
     }
     if (!this.hierarchySearch) {
       this.hierarchySearchQuery = '';
     }
-    if (!this.payernodedescriptionSearch) {
-      this.payernodedescriptionSearchQuery = '';
+    if (!this.payerNodeDescriptionSearch) {
+      this.payerNodeDescriptionSearchQuery = '';
     }
-    if (!this.payernodecodeSearch) {
-      this.payernodecodeSearchQuery = '';
+    if (!this.payerNodeCodeSearch) {
+      this.payerNodeCodeSearchQuery = '';
     }
-    if (!this.payernodenumberSearch) {
-      this.payernodenumberSearchQuery = 0;
+    if (!this.payerNodeNumberSearch) {
+      this.payerNodeNumberSearchQuery = 0;
     }
     this.filter();
   }
@@ -238,36 +238,36 @@ export class PayerNodesComponent implements OnInit, AfterViewInit {
   }
 
   private isFieldChanged() {
-    if (this.pnInputs.customernumber === this.dataSource.data[this.selectedRowToEdit - 1].customernumber &&
-      this.pnInputs.customername === this.dataSource.data[this.selectedRowToEdit - 1].customername &&
+    if (this.pnInputs.customerNumber === this.dataSource.data[this.selectedRowToEdit - 1].customerNumber &&
+      this.pnInputs.customerName === this.dataSource.data[this.selectedRowToEdit - 1].customerName &&
       this.pnInputs.hierarchy === this.dataSource.data[this.selectedRowToEdit - 1].hierarchy &&
-      this.pnInputs.payernodenumber === this.dataSource.data[this.selectedRowToEdit - 1].payernodenumber &&
-      this.pnInputs.payernodedescription === this.dataSource.data[this.selectedRowToEdit - 1].payernodedescription &&
-      this.pnInputs.payernodecode === this.dataSource.data[this.selectedRowToEdit - 1].payernodecode) {
+      this.pnInputs.payerNodeNumber === this.dataSource.data[this.selectedRowToEdit - 1].payerNodeNumber &&
+      this.pnInputs.payerNodeDescription === this.dataSource.data[this.selectedRowToEdit - 1].payerNodeDescription &&
+      this.pnInputs.payerNodeCode === this.dataSource.data[this.selectedRowToEdit - 1].payerNodeCode) {
       return false;
     }
   }
 
   private confirmEdit() {
     if (this.pnForm.valid) {
-      this.dataSource.data[this.selectedRowToEdit - 1].customernumber = this.pnInputs.customernumber;
-      this.dataSource.data[this.selectedRowToEdit - 1].customername = this.pnInputs.customername;
+      this.dataSource.data[this.selectedRowToEdit - 1].customerNumber = this.pnInputs.customerNumber;
+      this.dataSource.data[this.selectedRowToEdit - 1].customerName = this.pnInputs.customerName;
       this.dataSource.data[this.selectedRowToEdit - 1].hierarchy = this.pnInputs.hierarchy;
-      this.dataSource.data[this.selectedRowToEdit - 1].payernodenumber = this.pnInputs.payernodenumber;
-      this.dataSource.data[this.selectedRowToEdit - 1].payernodedescription = this.pnInputs.payernodedescription;
-      this.dataSource.data[this.selectedRowToEdit - 1].payernodecode = this.pnInputs.payernodecode;
+      this.dataSource.data[this.selectedRowToEdit - 1].payerNodeNumber = this.pnInputs.payerNodeNumber;
+      this.dataSource.data[this.selectedRowToEdit - 1].payerNodeDescription = this.pnInputs.payerNodeDescription;
+      this.dataSource.data[this.selectedRowToEdit - 1].payerNodeCode = this.pnInputs.payerNodeCode;
       this.payerNode.updatePayerNode(this.dataSource.data[this.selectedRowToEdit - 1]);
       this.selectedRowToEdit = -1;
     }
   }
 
   private setEditValues(rowNumber) {
-    this.pnInputs.customernumber = this.dataSource.data[rowNumber - 1].customernumber;
-    this.pnInputs.customername = this.dataSource.data[rowNumber - 1].customername;
+    this.pnInputs.customerNumber = this.dataSource.data[rowNumber - 1].customerNumber;
+    this.pnInputs.customerName = this.dataSource.data[rowNumber - 1].customerName;
     this.pnInputs.hierarchy = this.dataSource.data[rowNumber - 1].hierarchy;
-    this.pnInputs.payernodenumber = this.dataSource.data[rowNumber - 1].payernodenumber;
-    this.pnInputs.payernodedescription = this.dataSource.data[rowNumber - 1].payernodedescription;
-    this.pnInputs.payernodecode = this.dataSource.data[rowNumber - 1].payernodecode;
+    this.pnInputs.payerNodeNumber = this.dataSource.data[rowNumber - 1].payerNodeNumber;
+    this.pnInputs.payerNodeDescription = this.dataSource.data[rowNumber - 1].payerNodeDescription;
+    this.pnInputs.payerNodeCode = this.dataSource.data[rowNumber - 1].payerNodeCode;
   }
 
   private mapToDataSource(elementId) {

@@ -1,51 +1,51 @@
 {
-  "/userAction": {
-    "target": "http://localhost:8080/aarREST/rest/userAction",
+  "/user-actions": {
+    "target": "http://localhost:8080/aarREST/rest/user-actions",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug",
     "pathRewrite":{
-      "^/userAction":""
+      "^/user-actions":""
     }
   },
 
-  "/fixedPriceProject": {
-    "target": "http://localhost:8080/aarREST/rest/fixedPriceProject",
+  "/fixed-price-projects": {
+    "target": "http://localhost:8080/aarREST/rest/fixed-price-projects",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug",
     "pathRewrite":{
-      "^/fixedPriceProject":""
+      "^/fixed-price-projects":""
     }
   },
 
-  "/surchargeCustomer": {
-    "target": "http://localhost:8080/aarREST/rest/surchargeCustomer",
+  "/surcharge-customers": {
+    "target": "http://localhost:8080/aarREST/rest/surcharge-customers",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug",
     "pathRewrite":{
-      "^/surchargeCustomer":""
+      "^/surcharge-customers":""
     }
   },
 
-  "/customerBase": {
-    "target": "http://localhost:8080/aarREST/rest/customerBase",
+  "/customers-info": {
+    "target": "http://localhost:8080/aarREST/rest/customers-info",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug",
     "pathRewrite":{
-      "^/customerBase":""
+      "^/customers-info":""
     }
   },
 
-  "/payerNode": {
-    "target": "http://localhost:8080/aarREST/rest/payerNode",
+  "/payer-nodes": {
+    "target": "http://localhost:8080/aarREST/rest/payer-nodes",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug",
     "pathRewrite":{
-      "^/payerNode":""
+      "^/payer-nodes":""
     }
   },
 

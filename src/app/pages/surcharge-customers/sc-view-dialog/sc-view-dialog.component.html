@@ -5,11 +5,11 @@
 <mat-dialog-content>
   <form>
     <mat-form-field class="full-width">
-      <input [readonly]="true" [value]="scInputs.debitornumber" matInput placeholder="{{ 'DebitorNumber' | translate }}">
+      <input [readonly]="true" [value]="scInputs.debitorNumber" matInput placeholder="{{ 'debitorNumber' | translate }}">
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input [readonly]="true" [value]="scInputs.debitorname" matInput placeholder="{{ 'Debitor' | translate }}">
+      <input [readonly]="true" [value]="scInputs.debitorName" matInput placeholder="{{ 'Debitor' | translate }}">
     </mat-form-field>
 
     <mat-form-field class="full-width">
@@ -17,7 +17,7 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input [readonly]="true" [value]="scInputs.customernumber" placeholder="{{ 'CustomerId' | translate }}" matInput>
+      <input [readonly]="true" [value]="scInputs.customerNumber" placeholder="{{ 'CustomerId' | translate }}" matInput>
     </mat-form-field>
 
     <mat-form-field class="full-width">
@@ -37,25 +37,25 @@
   <!-- AT Daily Rate Column -->
   <ng-container matColumnDef="at" class="daily-rate-align">
     <th mat-header-cell *matHeaderCellDef>AT</th>
-    <td mat-cell *matCellDef="let surchargeRate"> {{surchargeRate.dailyrate_at}} </td>
+    <td mat-cell *matCellDef="let surchargeRate"> {{surchargeRate.dailyrateAt}} </td>
   </ng-container>
 
   <!-- HU Daily Rate Column -->
   <ng-container matColumnDef="hu" class="daily-rate-align">
     <th mat-header-cell *matHeaderCellDef>HU</th>
-    <td mat-cell *matCellDef="let surchargeRate"> {{surchargeRate.dailyrate_hu}} </td>
+    <td mat-cell *matCellDef="let surchargeRate"> {{surchargeRate.dailyrateHu}} </td>
   </ng-container>
 
   <!-- SK Daily Rate Column -->
   <ng-container matColumnDef="sk" class="daily-rate-align">
     <th mat-header-cell *matHeaderCellDef>SK</th>
-    <td mat-cell *matCellDef="let surchargeRate"> {{surchargeRate.dailyrate_sk}} </td>
+    <td mat-cell *matCellDef="let surchargeRate"> {{surchargeRate.dailyrateSk}} </td>
   </ng-container>
 
   <!-- RO Daily Rate Column -->
   <ng-container matColumnDef="ro" class="daily-rate-align">
     <th mat-header-cell *matHeaderCellDef>RO</th>
-    <td mat-cell *matCellDef="let surchargeRate"> {{surchargeRate.dailyrate_ro}} </td>
+    <td mat-cell *matCellDef="let surchargeRate"> {{surchargeRate.dailyrateRo}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedSurchargeRateColumns"></tr>

@@ -25,11 +25,11 @@ export class ScEditDialogComponent implements OnInit {
   scForm;
   scInputs: SurchargeCustomer = {
     id: null,
-    debitornumber: 0,
-    debitorname: '',
+    debitorNumber: 0,
+    debitorName: '',
     type: '',
-    customernumber: 0,
-    customername: '',
+    customerNumber: 0,
+    customerName: '',
     rates: null
   };
 
@@ -37,20 +37,20 @@ export class ScEditDialogComponent implements OnInit {
   scrInputs: SurchargeCustomerRate = {
     id: null,
     year: null,
-    dailyrate_at: null,
-    dailyrate_hu: null,
-    dailyrate_sk: null,
-    dailyrate_ro: null
+    dailyrateAt: null,
+    dailyrateHu: null,
+    dailyrateSk: null,
+    dailyrateRo: null
   };
 
   scrEditForm;
   scrInputsEdit: SurchargeCustomerRate = {
     id: null,
     year: 0,
-    dailyrate_at: 0,
-    dailyrate_hu: 0,
-    dailyrate_sk: 0,
-    dailyrate_ro: 0
+    dailyrateAt: 0,
+    dailyrateHu: 0,
+    dailyrateSk: 0,
+    dailyrateRo: 0
   };
 
   constructor(
@@ -59,21 +59,21 @@ export class ScEditDialogComponent implements OnInit {
     private surchargeCustomerService: SurchargeCustomersService
   ) {
     this.scInputs.id = this.data.id;
-    this.scInputs.customernumber = this.data.customernumber;
-    this.scInputs.customername = this.data.customername;
+    this.scInputs.customerNumber = this.data.customerNumber;
+    this.scInputs.customerName = this.data.customerName;
     this.scInputs.type = this.data.type;
-    this.scInputs.debitorname = this.data.debitorname;
-    this.scInputs.debitornumber = this.data.debitornumber;
+    this.scInputs.debitorName = this.data.debitorName;
+    this.scInputs.debitorNumber = this.data.debitorNumber;
     this.surchargeRates = this.data.rates;
     this.surchargeRatesDataSource.data = this.data.rates;
   }
 
   private isFieldChanged() {
-    if (this.scInputs.debitornumber === this.data.debitornumber  &&
-      this.scInputs.debitorname === this.data.debitorname &&
+    if (this.scInputs.debitorNumber === this.data.debitorNumber  &&
+      this.scInputs.debitorName === this.data.debitorName &&
       this.scInputs.type === this.data.type &&
-      this.scInputs.customernumber === this.data.customernumber &&
-      this.scInputs.customername === this.data.customername) {
+      this.scInputs.customerNumber === this.data.customerNumber &&
+      this.scInputs.customerName === this.data.customerName) {
         return false;
     }
   }
@@ -83,25 +83,25 @@ export class ScEditDialogComponent implements OnInit {
 
     this.scForm = new FormGroup({
       debitorenumber: new FormControl('', Validators.required),
-      debitorname: new FormControl('', Validators.required),
+      debitorName: new FormControl('', Validators.required),
       type: new FormControl('', Validators.required),
-      customernumber: new FormControl('', Validators.required),
-      customername: new FormControl('', Validators.required),
+      customerNumber: new FormControl('', Validators.required),
+      customerName: new FormControl('', Validators.required),
     });
 
     this.scrForm = new FormGroup({
       year: new FormControl('', Validators.required),
-      dailyrate_at: new FormControl('', Validators.required),
-      dailyrate_hu: new FormControl('', Validators.required),
-      dailyrate_sk: new FormControl('', Validators.required),
-      dailyrate_ro: new FormControl('', Validators.required),
+      dailyrateAt: new FormControl('', Validators.required),
+      dailyrateHu: new FormControl('', Validators.required),
+      dailyrateSk: new FormControl('', Validators.required),
+      dailyrateRo: new FormControl('', Validators.required),
     });
 
     this.scrEditForm = new FormGroup({
-      dailyrate_at: new FormControl('', Validators.required),
-      dailyrate_hu: new FormControl('', Validators.required),
-      dailyrate_sk: new FormControl('', Validators.required),
-      dailyrate_ro: new FormControl('', Validators.required),
+      dailyrateAt: new FormControl('', Validators.required),
+      dailyrateHu: new FormControl('', Validators.required),
+      dailyrateSk: new FormControl('', Validators.required),
+      dailyrateRo: new FormControl('', Validators.required),
     });
   }
 
@@ -109,40 +109,40 @@ export class ScEditDialogComponent implements OnInit {
     const rateToAdd: SurchargeCustomerRate = {
       id: null,
       year: this.scrInputs.year,
-      dailyrate_at: this.scrInputs.dailyrate_ro,
-      dailyrate_hu: this.scrInputs.dailyrate_hu,
-      dailyrate_sk: this.scrInputs.dailyrate_sk,
-      dailyrate_ro: this.scrInputs.dailyrate_ro
+      dailyrateAt: this.scrInputs.dailyrateRo,
+      dailyrateHu: this.scrInputs.dailyrateHu,
+      dailyrateSk: this.scrInputs.dailyrateSk,
+      dailyrateRo: this.scrInputs.dailyrateRo
     };
     this.surchargeRates.push(rateToAdd);
     this.surchargeRatesDataSource.data = this.surchargeRates;
 
     this.scrInputs.year = null;
-    this.scrInputs.dailyrate_at = null;
-    this.scrInputs.dailyrate_hu = null;
-    this.scrInputs.dailyrate_sk = null;
-    this.scrInputs.dailyrate_ro = null;
+    this.scrInputs.dailyrateAt = null;
+    this.scrInputs.dailyrateHu = null;
+    this.scrInputs.dailyrateSk = null;
+    this.scrInputs.dailyrateRo = null;
 
     this.scrForm = new FormGroup({
       year: new FormControl('', Validators.required),
-      dailyrate_at: new FormControl('', Validators.required),
-      dailyrate_hu: new FormControl('', Validators.required),
-      dailyrate_sk: new FormControl('', Validators.required),
-      dailyrate_ro: new FormControl('', Validators.required),
+      dailyrateAt: new FormControl('', Validators.required),
+      dailyrateHu: new FormControl('', Validators.required),
+      dailyrateSk: new FormControl('', Validators.required),
+      dailyrateRo: new FormControl('', Validators.required),
     });
   }
 
   private confirmDailyRateEdit(index) {
-    this.surchargeRates[index].dailyrate_at = this.scrInputsEdit.dailyrate_at;
-    this.surchargeRates[index].dailyrate_hu = this.scrInputsEdit.dailyrate_hu;
-    this.surchargeRates[index].dailyrate_sk = this.scrInputsEdit.dailyrate_sk;
-    this.surchargeRates[index].dailyrate_ro = this.scrInputsEdit.dailyrate_ro;
+    this.surchargeRates[index].dailyrateAt = this.scrInputsEdit.dailyrateAt;
+    this.surchargeRates[index].dailyrateHu = this.scrInputsEdit.dailyrateHu;
+    this.surchargeRates[index].dailyrateSk = this.scrInputsEdit.dailyrateSk;
+    this.surchargeRates[index].dailyrateRo = this.scrInputsEdit.dailyrateRo;
     this.surchargeRatesDataSource.data = this.surchargeRates;
 
-    this.data.rates[0].dailyrate_at = this.surchargeRatesDataSource.data[0].dailyrate_at;
-    this.data.rates[0].dailyrate_hu = this.surchargeRatesDataSource.data[0].dailyrate_hu;
-    this.data.rates[0].dailyrate_sk = this.surchargeRatesDataSource.data[0].dailyrate_sk;
-    this.data.rates[0].dailyrate_ro = this.surchargeRatesDataSource.data[0].dailyrate_ro;
+    this.data.rates[0].dailyrateAt = this.surchargeRatesDataSource.data[0].dailyrateAt;
+    this.data.rates[0].dailyrateHu = this.surchargeRatesDataSource.data[0].dailyrateHu;
+    this.data.rates[0].dailyrateSk = this.surchargeRatesDataSource.data[0].dailyrateSk;
+    this.data.rates[0].dailyrateRo = this.surchargeRatesDataSource.data[0].dailyrateRo;
     this.data.rates[0].id = this.surchargeRatesDataSource.data[0].id;
     this.data.rates[0].year = this.surchargeRatesDataSource.data[0].year;
     this.surchargeCustomerService.updateSurchargeCustomer(this.data);
@@ -152,10 +152,10 @@ export class ScEditDialogComponent implements OnInit {
 
   private dailyRateEdit(index) {
     this.editDailyRate = true;
-    this.scrInputsEdit.dailyrate_at = this.surchargeRates[index].dailyrate_at;
-    this.scrInputsEdit.dailyrate_hu = this.surchargeRates[index].dailyrate_hu;
-    this.scrInputsEdit.dailyrate_sk = this.surchargeRates[index].dailyrate_sk;
-    this.scrInputsEdit.dailyrate_ro = this.surchargeRates[index].dailyrate_ro;
+    this.scrInputsEdit.dailyrateAt = this.surchargeRates[index].dailyrateAt;
+    this.scrInputsEdit.dailyrateHu = this.surchargeRates[index].dailyrateHu;
+    this.scrInputsEdit.dailyrateSk = this.surchargeRates[index].dailyrateSk;
+    this.scrInputsEdit.dailyrateRo = this.surchargeRates[index].dailyrateRo;
   }
 
   private cancelDailyRateEdit() {
@@ -164,34 +164,34 @@ export class ScEditDialogComponent implements OnInit {
 
   editSurchargeCustomer() {
     const surchargeCustomerToEdit = {
-      debitornumber: this.scInputs.debitornumber,
-      debitorname: this.scInputs.debitorname,
-      customername: this.scInputs.customername,
-      customernumber: this.scInputs.customernumber,
+      debitorNumber: this.scInputs.debitorNumber,
+      debitorName: this.scInputs.debitorName,
+      customerName: this.scInputs.customerName,
+      customerNumber: this.scInputs.customerNumber,
       type: this.scInputs.type,
       rates: this.surchargeRates
     };
     this.dialogRef.close(surchargeCustomerToEdit);
   }
 
-  get formdebitornumber() {
+  get formdebitorNumber() {
     return this.scForm.get('debitorenumber');
   }
 
-  get formdebitorname() {
-    return this.scForm.get('debitorname');
+  get formdebitorName() {
+    return this.scForm.get('debitorName');
   }
 
   get formtype() {
     return this.scForm.get('type');
   }
 
-  get formcustomernumber() {
-    return this.scForm.get('customernumber');
+  get formcustomerNumber() {
+    return this.scForm.get('customerNumber');
   }
 
-  get formcustomername() {
-    return this.scForm.get('customername');
+  get formcustomerName() {
+    return this.scForm.get('customerName');
   }
 
   get formrates() {
@@ -203,34 +203,34 @@ export class ScEditDialogComponent implements OnInit {
   }
 
   get formAT() {
-    return this.scrForm.get('dailyrate_at');
+    return this.scrForm.get('dailyrateAt');
   }
 
   get formHU() {
-    return this.scrForm.get('dailyrate_hu');
+    return this.scrForm.get('dailyrateHu');
   }
 
   get formSK() {
-    return this.scrForm.get('dailyrate_sk');
+    return this.scrForm.get('dailyrateSk');
   }
 
   get formRO() {
-    return this.scrForm.get('dailyrate_ro');
+    return this.scrForm.get('dailyrateRo');
   }
 
   get formEditAT() {
-    return this.scrEditForm.get('dailyrate_at');
+    return this.scrEditForm.get('dailyrateAt');
   }
 
   get formEditHU() {
-    return this.scrEditForm.get('dailyrate_hu');
+    return this.scrEditForm.get('dailyrateHu');
   }
 
   get formEditSK() {
-    return this.scrEditForm.get('dailyrate_sk');
+    return this.scrEditForm.get('dailyrateSk');
   }
 
   get formEditRO() {
-    return this.scrEditForm.get('dailyrate_ro');
+    return this.scrEditForm.get('dailyrateRo');
   }
 }

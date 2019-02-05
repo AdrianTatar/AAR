@@ -12,8 +12,7 @@ const httpOptions = {
 })
 export class UserActionsCreateService {
 
-  private userActionUrl = '/userAction';
-  private savePath = '/create';
+  private userActionUrl = '/user-actions';
 
   constructor(
     private http: HttpClient,
@@ -26,7 +25,7 @@ export class UserActionsCreateService {
     userAction.time = this.createTodayDateAsTimestamp();
     userAction.userId = this.cookieService.get('username');
 
-    return this.http.post<UserAction>(this.userActionUrl + this.savePath,
+    return this.http.post<UserAction>(this.userActionUrl,
       JSON.stringify(userAction), httpOptions).subscribe(res => {
       console.log(res);
     });

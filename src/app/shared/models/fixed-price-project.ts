@@ -1,8 +1,8 @@
 export interface FixedPriceProject {
     id: number;
-    projectnumberplanmill: string;
-    projectidtagetik: string;
-    projectdescription: string;
-    customernumber: number;
+    projectPlanmillNumber: string;
+    projectIdTagetik: string;
+    projectDescription: string;
+    customerNumber: number;
     price: number;
 }

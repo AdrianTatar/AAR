@@ -15,7 +15,7 @@ const httpOptions = {
 export class ExportService {
   private exportAction = '/export';
   private exportUrl = 'http://localhost:8080/aarREST/rest/export';
-  private readPath = '/getScenariosForYear';
+  private readPath = '/scenarios-with-selling-rates-for-year';
   windowObject;
 
   constructor(
@@ -29,12 +29,12 @@ export class ExportService {
   }
 
   public getXML(year: string, scenario: string) {
-    this.windowObject = window.open(this.exportUrl + '/excel/' + year + '/' + scenario + '/' + this.cookieService.get('username'));
+    this.windowObject = window.open(this.exportUrl + '/new/excel/' + year + '/' + scenario + '/' + this.cookieService.get('username'));
     return this.windowObject;
   }
 
   public getHost(year: string, scenario: string) {
-    this.windowObject = window.open(this.exportUrl + '/hostTxt/' + year + '/' + scenario + '/' + this.cookieService.get('username'));
+    this.windowObject = window.open(this.exportUrl + '/new/hosttxt/' + year + '/' + scenario + '/' + this.cookieService.get('username'));
     return this.windowObject;
   }
 

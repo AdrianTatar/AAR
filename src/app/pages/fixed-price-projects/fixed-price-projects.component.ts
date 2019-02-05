@@ -16,23 +16,23 @@ import { TranslateService } from '@ngx-translate/core';
 
 export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['projectnumberplanmill', 'projectidtagetik', 'projectdescription', 'customernumber', 'price', 'menu'];
+  displayedColumns: string[] = ['projectPlanmillNumber', 'projectIdTagetik', 'projectDescription', 'customerNumber', 'price', 'menu'];
   dataSource = new MatTableDataSource<FixedPriceProject>();
   filteredDataSource = new MatTableDataSource<FixedPriceProject>();
   fixedPriceProjects: FixedPriceProject[];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   selectedRowToEdit = -1;
   selectedRow = -1;
-  projectnumberplanmillSearch = false;
-  projectidtagetikSearch = false;
-  projectdescriptionSearch = false;
-  customernumberSearch = false;
+  projectPlanmillNumberSearch = false;
+  projectIdTagetikSearch = false;
+  projectDescriptionSearch = false;
+  customerNumberSearch = false;
   priceSearch = false;
 
-  projectnumberplanmillSearchQuery = '';
+  projectPlanmillNumberSearchQuery = '';
   tagetikSearchQuery = '';
-  projectdescriptionSearchQuery = '';
-  customernumberSearchQuery = 0;
+  projectDescriptionSearchQuery = '';
+  customerNumberSearchQuery = 0;
   priceSearchQuery = 0;
 
   addNewElement = false;
@@ -40,10 +40,10 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
   fppForm;
   fppInputs: FixedPriceProject = {
     id: null,
-    projectnumberplanmill: '',
-    projectidtagetik: '',
-    projectdescription: '',
-    customernumber: 0,
+    projectPlanmillNumber: '',
+    projectIdTagetik: '',
+    projectDescription: '',
+    customerNumber: 0,
     price: 0
   };
 
@@ -51,10 +51,10 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
     this.selectedRow = 0;
 
     this.fppForm = new FormGroup({
-      projectnumberplanmill: new FormControl('', Validators.required),
-      projectidtagetik: new FormControl('', Validators.required),
-      projectdescription: new FormControl('', Validators.required),
-      customernumber: new FormControl('', Validators.required),
+      projectPlanmillNumber: new FormControl('', Validators.required),
+      projectIdTagetik: new FormControl('', Validators.required),
+      projectDescription: new FormControl('', Validators.required),
+      customerNumber: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required)
     });
 
@@ -85,33 +85,33 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
   filter() {
     this.filteredDataSource.data = this.dataSource.data;
 
-    this.filteredDataSource.data = (this.projectnumberplanmillSearchQuery) ?
-      this.dataSource.data.filter(p => p.projectnumberplanmill
+    this.filteredDataSource.data = (this.projectPlanmillNumberSearchQuery) ?
+      this.dataSource.data.filter(p => p.projectPlanmillNumber
         .toLocaleLowerCase()
         .trim()
-        .includes(this.projectnumberplanmillSearchQuery.toLocaleLowerCase().trim()))
+        .includes(this.projectPlanmillNumberSearchQuery.toLocaleLowerCase().trim()))
       : this.dataSource.data;
 
     this.filteredDataSource.data = (this.tagetikSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.projectidtagetik
+      this.filteredDataSource.data.filter(p => p.projectIdTagetik
         .toLocaleLowerCase()
         .trim()
         .includes(this.tagetikSearchQuery.toLocaleLowerCase().trim()))
       : this.filteredDataSource.data;
 
-    this.filteredDataSource.data = (this.projectdescriptionSearchQuery) ?
-      this.filteredDataSource.data.filter(p => p.projectdescription
+    this.filteredDataSource.data = (this.projectDescriptionSearchQuery) ?
+      this.filteredDataSource.data.filter(p => p.projectDescription
         .toLocaleLowerCase()
         .trim()
-        .includes(this.projectdescriptionSearchQuery.toLocaleLowerCase().trim()))
+        .includes(this.projectDescriptionSearchQuery.toLocaleLowerCase().trim()))
       : this.filteredDataSource.data;
 
-    this.filteredDataSource.data = (this.customernumberSearchQuery) ?
+    this.filteredDataSource.data = (this.customerNumberSearchQuery) ?
       this.filteredDataSource.data
-        .sort(function (a: FixedPriceProject, b: FixedPriceProject) { return a.customernumber - b.customernumber; })
-        .filter(p => p.customernumber
+        .sort(function (a: FixedPriceProject, b: FixedPriceProject) { return a.customerNumber - b.customerNumber; })
+        .filter(p => p.customerNumber
           .toString()
-          .includes(this.customernumberSearchQuery.toString()))
+          .includes(this.customerNumberSearchQuery.toString()))
       : this.filteredDataSource.data;
 
     this.filteredDataSource.data = (this.priceSearchQuery) ?
@@ -123,20 +123,20 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
       : this.filteredDataSource.data;
   }
 
-  get formProjectnumberplanmill() {
-    return this.fppForm.get('projectnumberplanmill');
+  get formprojectPlanmillNumber() {
+    return this.fppForm.get('projectPlanmillNumber');
   }
 
-  get formProjectidtagetik() {
-    return this.fppForm.get('projectidtagetik');
+  get formprojectIdTagetik() {
+    return this.fppForm.get('projectIdTagetik');
   }
 
-  get formProjectdescription() {
-    return this.fppForm.get('projectdescription');
+  get formprojectDescription() {
+    return this.fppForm.get('projectDescription');
   }
 
-  get formCustomernumber() {
-    return this.fppForm.get('customernumber');
+  get formcustomerNumber() {
+    return this.fppForm.get('customerNumber');
   }
 
   get formPrice() {
@@ -187,20 +187,20 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
   }
 
   clearSearchInputBox() {
-    if (!this.projectnumberplanmillSearch) {
-      this.projectnumberplanmillSearchQuery = '';
+    if (!this.projectPlanmillNumberSearch) {
+      this.projectPlanmillNumberSearchQuery = '';
     }
     if (!this.priceSearch) {
       this.priceSearchQuery = 0;
     }
-    if (!this.projectidtagetikSearch) {
+    if (!this.projectIdTagetikSearch) {
       this.tagetikSearchQuery = '';
     }
-    if (!this.projectdescriptionSearch) {
-      this.projectdescriptionSearchQuery = '';
+    if (!this.projectDescriptionSearch) {
+      this.projectDescriptionSearchQuery = '';
     }
-    if (!this.customernumberSearch) {
-      this.customernumberSearchQuery = 0;
+    if (!this.customerNumberSearch) {
+      this.customerNumberSearchQuery = 0;
     }
     this.filter();
   }
@@ -227,10 +227,10 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
   }
 
   private isFieldChanged() {
-    if (this.fppInputs.projectnumberplanmill === this.dataSource.data[this.selectedRowToEdit - 1].projectnumberplanmill &&
-      this.fppInputs.projectidtagetik === this.dataSource.data[this.selectedRowToEdit - 1].projectidtagetik &&
-      this.fppInputs.projectdescription === this.dataSource.data[this.selectedRowToEdit - 1].projectdescription &&
-      this.fppInputs.customernumber === this.dataSource.data[this.selectedRowToEdit - 1].customernumber &&
+    if (this.fppInputs.projectPlanmillNumber === this.dataSource.data[this.selectedRowToEdit - 1].projectPlanmillNumber &&
+      this.fppInputs.projectIdTagetik === this.dataSource.data[this.selectedRowToEdit - 1].projectIdTagetik &&
+      this.fppInputs.projectDescription === this.dataSource.data[this.selectedRowToEdit - 1].projectDescription &&
+      this.fppInputs.customerNumber === this.dataSource.data[this.selectedRowToEdit - 1].customerNumber &&
       this.fppInputs.price === this.dataSource.data[this.selectedRowToEdit - 1].price) {
       return false;
     }
@@ -238,10 +238,10 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
 
   private confirmEdit() {
     if (this.fppForm.valid) {
-      this.dataSource.data[this.selectedRowToEdit - 1].projectnumberplanmill = this.fppInputs.projectnumberplanmill;
-      this.dataSource.data[this.selectedRowToEdit - 1].projectidtagetik = this.fppInputs.projectidtagetik;
-      this.dataSource.data[this.selectedRowToEdit - 1].projectdescription = this.fppInputs.projectdescription;
-      this.dataSource.data[this.selectedRowToEdit - 1].customernumber = this.fppInputs.customernumber;
+      this.dataSource.data[this.selectedRowToEdit - 1].projectPlanmillNumber = this.fppInputs.projectPlanmillNumber;
+      this.dataSource.data[this.selectedRowToEdit - 1].projectIdTagetik = this.fppInputs.projectIdTagetik;
+      this.dataSource.data[this.selectedRowToEdit - 1].projectDescription = this.fppInputs.projectDescription;
+      this.dataSource.data[this.selectedRowToEdit - 1].customerNumber = this.fppInputs.customerNumber;
       this.dataSource.data[this.selectedRowToEdit - 1].price = this.fppInputs.price;
       this.fixedPriceProjectService.updateFixedPriceProject(this.dataSource.data[this.selectedRowToEdit - 1]);
       this.selectedRowToEdit = -1;
@@ -249,10 +249,10 @@ export class FixedPriceProjectsComponent implements OnInit, AfterViewInit {
   }
 
   private setEditValues(rowNumber) {
-    this.fppInputs.projectnumberplanmill = this.dataSource.data[rowNumber - 1].projectnumberplanmill;
-    this.fppInputs.projectidtagetik = this.dataSource.data[rowNumber - 1].projectidtagetik;
-    this.fppInputs.projectdescription = this.dataSource.data[rowNumber - 1].projectdescription;
-    this.fppInputs.customernumber = this.dataSource.data[rowNumber - 1].customernumber;
+    this.fppInputs.projectPlanmillNumber = this.dataSource.data[rowNumber - 1].projectPlanmillNumber;
+    this.fppInputs.projectIdTagetik = this.dataSource.data[rowNumber - 1].projectIdTagetik;
+    this.fppInputs.projectDescription = this.dataSource.data[rowNumber - 1].projectDescription;
+    this.fppInputs.customerNumber = this.dataSource.data[rowNumber - 1].customerNumber;
     this.fppInputs.price = this.dataSource.data[rowNumber - 1].price;
   }
 

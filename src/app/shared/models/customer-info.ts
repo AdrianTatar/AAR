@@ -3,7 +3,7 @@ export interface CustomerInfo {
     blz: number;
     block: string;
     node: string;
-    customername: string;
-    bankgroup: string;
+    customerName: string;
+    bankGroup: string;
     cluster: string;
 }

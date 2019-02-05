@@ -11,10 +11,7 @@ const httpOptions = {
 @Injectable()
 export class PayerNodeService {
 
-  private payerNodeUrl = '/payerNode';
-  private readAllPath = '/readAll';
-  private savePath = '/create';
-  private updatePath = '/update';
+  private payerNodeUrl = '/payer-nodes';
 
   constructor(
     private http: HttpClient,
@@ -22,19 +19,19 @@ export class PayerNodeService {
   ) { }
 
   public getPayerNodes() {
-    return this.http.get<PayerNode[]>(this.payerNodeUrl + this.readAllPath);
+    return this.http.get<PayerNode[]>(this.payerNodeUrl);
   }
 
   public createPayerNode(payerNode) {
     this.userActionsCreateService.createUserAction('PNCreate');
-    return this.http.post<PayerNode>(this.payerNodeUrl + this.savePath,
+    return this.http.post<PayerNode>(this.payerNodeUrl,
       JSON.stringify(payerNode), httpOptions)
       .subscribe(response => console.log(response));
   }
 
   public updatePayerNode(payerNode: PayerNode) {
     this.userActionsCreateService.createUserAction('PNEdit');
-    return this.http.put<PayerNode>(this.payerNodeUrl + this.updatePath,
+    return this.http.put<PayerNode>(this.payerNodeUrl,
       JSON.stringify(payerNode), httpOptions)
       .subscribe(response => console.log(response));
   }

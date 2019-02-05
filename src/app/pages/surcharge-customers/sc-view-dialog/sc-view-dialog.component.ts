@@ -16,11 +16,11 @@ export class ScViewDialogComponent {
 
   scInputs: SurchargeCustomer = {
     id: null,
-    debitornumber: 0,
-    debitorname: '',
+    debitorNumber: 0,
+    debitorName: '',
     type: '',
-    customernumber: 0,
-    customername: '',
+    customerNumber: 0,
+    customerName: '',
     rates: null
   };
 
@@ -29,11 +29,11 @@ export class ScViewDialogComponent {
     private dialogRef: MatDialogRef<ScViewDialogComponent>
   ) {
     this.scInputs.id = this.data.customerId;
-    this.scInputs.customernumber = this.data.customerNumber;
-    this.scInputs.customername = this.data.customerName;
+    this.scInputs.customerNumber = this.data.customerNumber;
+    this.scInputs.customerName = this.data.customerName;
     this.scInputs.type = this.data.type;
-    this.scInputs.debitorname = this.data.debitorName;
-    this.scInputs.debitornumber = this.data.debitorNumber;
+    this.scInputs.debitorName = this.data.debitorName;
+    this.scInputs.debitorNumber = this.data.debitorNumber;
     this.surchargeRatesDataSource.data = this.data.rates;
 
     console.log(this.data);

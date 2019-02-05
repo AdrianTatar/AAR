@@ -3,16 +3,16 @@
     <table mat-table [dataSource]="filteredDataSource">
 
       <!-- Customer Number Column -->
-      <ng-container matColumnDef="customernumber">
+      <ng-container matColumnDef="customerNumber">
         <th mat-header-cell *matHeaderCellDef class="header">
-          {{ 'CustomerNumber' | translate }}
+          {{ 'customerNumber' | translate }}
 
-          <button mat-icon-button (click)="customernumberSearch = !customernumberSearch; clearSearchInputBox()">
+          <button mat-icon-button (click)="customerNumberSearch = !customerNumberSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="customernumberSearch === true" class="search-input">
+          <div *ngIf="customerNumberSearch === true" class="search-input">
             <mat-form-field>
-              <input type="number" [(ngModel)]="customernumberSearchQuery" (keyup)="filter()" matInput>
+              <input type="number" [(ngModel)]="customerNumberSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
         </th>
@@ -20,33 +20,33 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field>
-              <input type="text" [(ngModel)]="pnInputs.customernumber" matInput (keyup.enter)="confirmEdit()"
-                [formControl]="formcustomernumber">
-              <mat-error *ngIf="formcustomernumber.invalid">
-                {{ 'CustomerNumber' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
+              <input type="text" [(ngModel)]="pnInputs.customerNumber" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formcustomerNumber">
+              <mat-error *ngIf="formcustomerNumber.invalid">
+                {{ 'customerNumber' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
             <div class="cells">
-              {{ element.customernumber }}
+              {{ element.customerNumber }}
             </div>
           </ng-template>
         </td>
       </ng-container>
 
       <!-- Customer Name Column -->
-      <ng-container matColumnDef="customername">
+      <ng-container matColumnDef="customerName">
         <th mat-header-cell *matHeaderCellDef class="header">
 
-          {{ 'CustomerName' | translate }}
+          {{ 'customerName' | translate }}
 
-          <button mat-icon-button (click)="customernameSearch = !customernameSearch; clearSearchInputBox()">
+          <button mat-icon-button (click)="customerNameSearch = !customerNameSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="customernameSearch === true" class="search-input">
+          <div *ngIf="customerNameSearch === true" class="search-input">
             <mat-form-field>
-              <input [(ngModel)]="customernameSearchQuery" (keyup)="filter()" matInput>
+              <input [(ngModel)]="customerNameSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
 
@@ -54,16 +54,16 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field>
-              <textarea type="text" [(ngModel)]="pnInputs.customername" [formControl]="formcustomername" matInput
+              <textarea type="text" [(ngModel)]="pnInputs.customerName" [formControl]="formcustomerName" matInput
                 (keyup.enter)="confirmEdit()"></textarea>
-              <mat-error *ngIf="formcustomername.invalid">
-                {{ 'CustomerName' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
+              <mat-error *ngIf="formcustomerName.invalid">
+                {{ 'customerName' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
             <div class="cells">
-              {{ element.customername }}
+              {{ element.customerName }}
             </div>
           </ng-template>
         </td>
@@ -105,17 +105,17 @@
       </ng-container>
 
       <!-- Payernode Number Column -->
-      <ng-container matColumnDef="payernodenumber">
+      <ng-container matColumnDef="payerNodeNumber">
         <th mat-header-cell *matHeaderCellDef class="header">
 
-          {{ 'PayernodeNumber' | translate }}
+          {{ 'payerNodeNumber' | translate }}
 
-          <button mat-icon-button (click)="payernodenumberSearch = !payernodenumberSearch; clearSearchInputBox()">
+          <button mat-icon-button (click)="payerNodeNumberSearch = !payerNodeNumberSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="payernodenumberSearch === true" class="search-input">
+          <div *ngIf="payerNodeNumberSearch === true" class="search-input">
             <mat-form-field>
-              <input type="number" [(ngModel)]="payernodenumberSearchQuery" (keyup)="filter()" matInput>
+              <input type="number" [(ngModel)]="payerNodeNumberSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
 
@@ -123,33 +123,33 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="example-full-width">
-              <input type="number" [(ngModel)]="pnInputs.payernodenumber" matInput (keyup.enter)="confirmEdit()"
-                [formControl]="formpayernodenumber">
-              <mat-error *ngIf="formpayernodenumber.invalid">
-                {{ 'PayernodeNumber' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
+              <input type="number" [(ngModel)]="pnInputs.payerNodeNumber" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formpayerNodeNumber">
+              <mat-error *ngIf="formpayerNodeNumber.invalid">
+                {{ 'payerNodeNumber' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
             <div class="cells">
-              {{ element.payernodenumber }}
+              {{ element.payerNodeNumber }}
             </div>
           </ng-template>
         </td>
       </ng-container>
 
       <!-- Payernode Description Column -->
-      <ng-container matColumnDef="payernodedescription">
+      <ng-container matColumnDef="payerNodeDescription">
         <th mat-header-cell *matHeaderCellDef class="mini-header">
 
-          {{ 'PayernodeDescription' | translate }}
+          {{ 'payerNodeDescription' | translate }}
 
-          <button mat-icon-button (click)="payernodedescriptionSearch = !payernodedescriptionSearch; clearSearchInputBox()">
+          <button mat-icon-button (click)="payerNodeDescriptionSearch = !payerNodeDescriptionSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="payernodedescriptionSearch === true" class="search-input">
+          <div *ngIf="payerNodeDescriptionSearch === true" class="search-input">
             <mat-form-field>
-              <input type="text" [(ngModel)]="payernodedescriptionSearchQuery" (keyup)="filter()" matInput>
+              <input type="text" [(ngModel)]="payerNodeDescriptionSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
 
@@ -157,33 +157,33 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="example-full-width">
-              <input type="text" [(ngModel)]="pnInputs.payernodedescription" matInput (keyup.enter)="confirmEdit()"
-                [formControl]="formpayernodedescription">
-              <mat-error *ngIf="formpayernodedescription.invalid">
-                {{ 'PayernodeDescription' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
+              <input type="text" [(ngModel)]="pnInputs.payerNodeDescription" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formpayerNodeDescription">
+              <mat-error *ngIf="formpayerNodeDescription.invalid">
+                {{ 'payerNodeDescription' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
             <div class="cells">
-              {{ element.payernodedescription }}
+              {{ element.payerNodeDescription }}
             </div>
           </ng-template>
         </td>
       </ng-container>
 
       <!-- Payernode Code Column -->
-      <ng-container matColumnDef="payernodecode">
+      <ng-container matColumnDef="payerNodeCode">
         <th mat-header-cell *matHeaderCellDef class="mini-header">
 
-          {{ 'Payernodecode' | translate }}
+          {{ 'payerNodeCode' | translate }}
 
-          <button mat-icon-button (click)="payernodecodeSearch = !payernodecodeSearch; clearSearchInputBox()">
+          <button mat-icon-button (click)="payerNodeCodeSearch = !payerNodeCodeSearch; clearSearchInputBox()">
             <mat-icon>search</mat-icon>
           </button>
-          <div *ngIf="payernodecodeSearch === true" class="search-input">
+          <div *ngIf="payerNodeCodeSearch === true" class="search-input">
             <mat-form-field>
-              <input type="text" [(ngModel)]="payernodecodeSearchQuery" (keyup)="filter()" matInput>
+              <input type="text" [(ngModel)]="payerNodeCodeSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
 
@@ -191,16 +191,16 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="example-full-width">
-              <input type="text" [(ngModel)]="pnInputs.payernodecode" matInput (keyup.enter)="confirmEdit()"
-                [formControl]="formpayernodecode">
-              <mat-error *ngIf="formpayernodecode.invalid">
-                {{ 'Payernodecode' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
+              <input type="text" [(ngModel)]="pnInputs.payerNodeCode" matInput (keyup.enter)="confirmEdit()"
+                [formControl]="formpayerNodeCode">
+              <mat-error *ngIf="formpayerNodeCode.invalid">
+                {{ 'payerNodeCode' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <ng-template #simpleDisplay>
             <div>
-              {{ element.payernodecode }}
+              {{ element.payerNodeCode }}
             </div>
           </ng-template>
         </td>

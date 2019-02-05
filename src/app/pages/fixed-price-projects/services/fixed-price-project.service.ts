@@ -10,30 +10,26 @@ const httpOptions = {
 @Injectable()
 export class FixedPriceProjectService {
 
-  private fixedPriceProjectUrl = '/fixedPriceProject';
-  private readAllPath = '/readAll';
-  private savePath = '/create';
-  private updatePath = '/update';
-
+  private fixedPriceProjectUrl = '/fixed-price-projects';
   constructor(
     private http: HttpClient,
     private userActionsCreateService: UserActionsCreateService
   ) { }
 
   public getFixedPriceProjects() {
-    return this.http.get<FixedPriceProject[]>(this.fixedPriceProjectUrl + this.readAllPath);
+    return this.http.get<FixedPriceProject[]>(this.fixedPriceProjectUrl);
   }
 
   public createFixedPriceProject(fixedPriceProject) {
     this.userActionsCreateService.createUserAction('FPPCreate');
-    return this.http.post<FixedPriceProject>(this.fixedPriceProjectUrl + this.savePath,
+    return this.http.post<FixedPriceProject>(this.fixedPriceProjectUrl,
       JSON.stringify(fixedPriceProject), httpOptions)
       .subscribe(res => console.log(res));
   }
 
   public updateFixedPriceProject(fixedPriceProject: FixedPriceProject) {
     this.userActionsCreateService.createUserAction('FPPEdit');
-    return this.http.put<FixedPriceProject>(this.fixedPriceProjectUrl + this.updatePath,
+    return this.http.put<FixedPriceProject>(this.fixedPriceProjectUrl,
       JSON.stringify(fixedPriceProject), httpOptions)
       .subscribe(response => console.log(response));
   }
