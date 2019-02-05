@@ -5,7 +5,7 @@
 <mat-dialog-content>
   <form [formGroup]="fppForm">
     <mat-form-field class="full-width">
-      <input type="text" [(ngModel)]="fppInputs.projectPlanmillNumber" placeholder="{{ 'PlanmillProjektnummer' | translate }}"
+      <input type="text" maxlength="20" [(ngModel)]="fppInputs.projectPlanmillNumber" placeholder="{{ 'PlanmillProjektnummer' | translate }}"
         matInput [formControl]="formprojectPlanmillNumber">
       <mat-error *ngIf="formprojectPlanmillNumber">
         {{ 'PlanmillProjektnummer' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
@@ -13,7 +13,7 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input type="text" [(ngModel)]="fppInputs.projectIdTagetik" placeholder="Tagetik Projekt ID" [formControl]="formprojectIdTagetik"
+      <input type="text" maxlength="20" [(ngModel)]="fppInputs.projectIdTagetik" placeholder="Tagetik Projekt ID" [formControl]="formprojectIdTagetik"
         matInput (keyup.enter)="confirmEdit()">
       <mat-error *ngIf="formprojectIdTagetik.invalid">
         {{ 'TagetikProjektID' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
@@ -21,7 +21,7 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <textarea [(ngModel)]="fppInputs.projectDescription" type="text" matInput placeholder="Projekt Bezeichnung"
+      <textarea [(ngModel)]="fppInputs.projectDescription" type="text" maxlength="200" matInput placeholder="Projekt Bezeichnung"
         [formControl]="formprojectDescription"></textarea>
       <mat-error *ngIf="formprojectDescription.invalid">
         {{ 'ProjBez' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
@@ -29,14 +29,14 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input type="number" [(ngModel)]="fppInputs.customerNumber" matInput placeholder="Kunden Nummer" [formControl]="formcustomerNumber">
+      <input type="number" max="9999999999999999999" onKeyPress="if(this.value.length==20) return false;" [(ngModel)]="fppInputs.customerNumber" matInput placeholder="Kunden Nummer" [formControl]="formcustomerNumber">
       <mat-error *ngIf="formcustomerNumber.invalid">
         {{ 'KundenNr' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input type="number" [(ngModel)]="fppInputs.price" matInput placeholder="Fixpreis" [formControl]="formPrice">
+      <input type="number" max="9999999999999999999" onKeyPress="if(this.value.length==20) return false;"  [(ngModel)]="fppInputs.price" matInput placeholder="Fixpreis" [formControl]="formPrice">
       <mat-error *ngIf="formPrice.invalid">
         {{ 'Fixpreis' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
       </mat-error>

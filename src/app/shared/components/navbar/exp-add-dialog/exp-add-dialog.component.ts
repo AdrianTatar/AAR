@@ -1,8 +1,8 @@
+import { ExportActionsService } from './../../../../pages/export-actions/services/export-actions.service';
 import { UserActionsCreateService } from './../../../services/user-actions-create.service';
 import { Component, Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { Scenario } from 'src/app/shared/models/scenario';
-import { ExportService } from 'src/app/pages/export/services/export.service';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpHeaders } from '@angular/common/http';
 
@@ -32,13 +32,11 @@ export class ExpAddDialogComponent {
     checkTab;
 
     constructor(
-        private exportService: ExportService,
+        private exportService: ExportActionsService,
         public snackBar: MatSnackBar,
         private cookieService: CookieService,
         private userActionsCreateService: UserActionsCreateService
     ) {}
-
-    private exportProjectUrl = '/export';
 
     async changeScenarios(year) {
         await this.exportService.getScenarios(year).subscribe(data => {

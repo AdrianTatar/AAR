@@ -20,7 +20,7 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field>
-              <input type="number" [(ngModel)]="cbInputs.blz" matInput (keyup.enter)="confirmEdit()" [formControl]="formblz">
+              <input type="number" max="9999999999" onKeyPress="if(this.value.length==10) return false;" [(ngModel)]="cbInputs.blz" matInput (keyup.enter)="confirmEdit()" [formControl]="formblz">
               <mat-error *ngIf="formblz.invalid">
                 {{ 'BLZ' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
               </mat-error>
@@ -53,7 +53,7 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field>
-              <input type="text" [(ngModel)]="cbInputs.block" [formControl]="formblock" matInput (keyup.enter)="confirmEdit()">
+              <input type="text" maxlength = '20' [(ngModel)]="cbInputs.block" [formControl]="formblock" matInput (keyup.enter)="confirmEdit()">
               <mat-error *ngIf="formblock.invalid">
                 {{ 'Block' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
               </mat-error>
@@ -85,7 +85,7 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="full-width">
-              <input type="text" [(ngModel)]="cbInputs.node" [formControl]="formnode" type="text" matInput
+              <input type="text" maxlength = '30' [(ngModel)]="cbInputs.node" [formControl]="formnode" type="text" matInput
                 (keyup.enter)="confirmEdit()">
               <mat-error *ngIf="formnode.invalid">
                 {{ 'Node'| translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
@@ -118,7 +118,7 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="example-full-width">
-              <input type="text" [(ngModel)]="cbInputs.customerName" matInput (keyup.enter)="confirmEdit()"
+              <input type="text" maxlength = '100' [(ngModel)]="cbInputs.customerName" matInput (keyup.enter)="confirmEdit()"
                 [formControl]="formcustomerName">
               <mat-error *ngIf="formcustomerName.invalid">
                 {{ 'customerName' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
@@ -151,7 +151,7 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="example-full-width">
-              <input type="text" [(ngModel)]="cbInputs.bankGroup" matInput (keyup.enter)="confirmEdit()" [formControl]="formbankGroup">
+              <input type="text" maxlength = '50' [(ngModel)]="cbInputs.bankGroup" matInput (keyup.enter)="confirmEdit()" [formControl]="formbankGroup">
               <mat-error *ngIf="formbankGroup.invalid">
                 {{ 'bankGroup' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
               </mat-error>
@@ -183,7 +183,7 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="example-full-width">
-              <input type="text" [(ngModel)]="cbInputs.cluster" matInput (keyup.enter)="confirmEdit()" [formControl]="formcluster">
+              <input type="text" maxlength = '20' [(ngModel)]="cbInputs.cluster" matInput (keyup.enter)="confirmEdit()" [formControl]="formcluster">
               <mat-error *ngIf="formcluster.invalid">
                 {{ 'Cluster' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
               </mat-error>

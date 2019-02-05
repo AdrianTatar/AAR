@@ -14,7 +14,6 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ExpAddDialogComponent } from './shared/components/navbar/exp-add-dialog/exp-add-dialog.component';
-import { ExportService } from './pages/export/services/export.service';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -45,7 +44,6 @@ export function createTranslateLoader(http: HttpClient) {
     })
   ],
   providers: [
-    ExportService
   ],
   entryComponents: [ExpAddDialogComponent],
   bootstrap: [AppComponent]

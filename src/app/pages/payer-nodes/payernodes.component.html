@@ -20,7 +20,7 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field>
-              <input type="text" [(ngModel)]="pnInputs.customerNumber" matInput (keyup.enter)="confirmEdit()"
+              <input type="text" maxlength = '10' [(ngModel)]="pnInputs.customerNumber" matInput (keyup.enter)="confirmEdit()"
                 [formControl]="formcustomerNumber">
               <mat-error *ngIf="formcustomerNumber.invalid">
                 {{ 'customerNumber' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
@@ -54,8 +54,8 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field>
-              <textarea type="text" [(ngModel)]="pnInputs.customerName" [formControl]="formcustomerName" matInput
-                (keyup.enter)="confirmEdit()"></textarea>
+              <input type="text" maxlength = '100' [(ngModel)]="pnInputs.customerName" [formControl]="formcustomerName" matInput
+                (keyup.enter)="confirmEdit()">
               <mat-error *ngIf="formcustomerName.invalid">
                 {{ 'customerName' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
               </mat-error>
@@ -89,7 +89,7 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="full-width">
-              <input type="text" [(ngModel)]="pnInputs.hierarchy" [formControl]="formhierarchy" type="text" matInput
+              <input type="text" maxlength = '5' [(ngModel)]="pnInputs.hierarchy" [formControl]="formhierarchy" type="text" matInput
                 (keyup.enter)="confirmEdit()">
               <mat-error *ngIf="formhierarchy.invalid">
                 {{ 'Hierarchy' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
@@ -123,7 +123,7 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="example-full-width">
-              <input type="number" [(ngModel)]="pnInputs.payerNodeNumber" matInput (keyup.enter)="confirmEdit()"
+              <input type="number" max="9999999999" onKeyPress="if(this.value.length==10) return false;" [(ngModel)]="pnInputs.payerNodeNumber" matInput (keyup.enter)="confirmEdit()"
                 [formControl]="formpayerNodeNumber">
               <mat-error *ngIf="formpayerNodeNumber.invalid">
                 {{ 'payerNodeNumber' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
@@ -157,7 +157,7 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="example-full-width">
-              <input type="text" [(ngModel)]="pnInputs.payerNodeDescription" matInput (keyup.enter)="confirmEdit()"
+              <input type="text" maxlength = '50' [(ngModel)]="pnInputs.payerNodeDescription" matInput (keyup.enter)="confirmEdit()"
                 [formControl]="formpayerNodeDescription">
               <mat-error *ngIf="formpayerNodeDescription.invalid">
                 {{ 'payerNodeDescription' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
@@ -183,7 +183,7 @@
           </button>
           <div *ngIf="payerNodeCodeSearch === true" class="search-input">
             <mat-form-field>
-              <input type="text" [(ngModel)]="payerNodeCodeSearchQuery" (keyup)="filter()" matInput>
+              <input type="text" maxlength = '30' [(ngModel)]="payerNodeCodeSearchQuery" (keyup)="filter()" matInput>
             </mat-form-field>
           </div>
 
@@ -191,7 +191,7 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="example-full-width">
-              <input type="text" [(ngModel)]="pnInputs.payerNodeCode" matInput (keyup.enter)="confirmEdit()"
+              <input type="text" maxlength = '30' [(ngModel)]="pnInputs.payerNodeCode" matInput (keyup.enter)="confirmEdit()"
                 [formControl]="formpayerNodeCode">
               <mat-error *ngIf="formpayerNodeCode.invalid">
                 {{ 'payerNodeCode' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>

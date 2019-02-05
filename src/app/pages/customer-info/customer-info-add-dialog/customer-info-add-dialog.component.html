@@ -8,7 +8,7 @@
     <!-- BLZ Input Form -->
 
     <mat-form-field class="full-width">
-      <input type="number" [(ngModel)]="cbInputs.blz" placeholder="{{ 'BLZ' | translate }}" matInput [formControl]="formblz">
+      <input type="number" max="9999999999" onKeyPress="if(this.value.length==10) return false;" [(ngModel)]="cbInputs.blz" placeholder="{{ 'BLZ' | translate }}" matInput [formControl]="formblz">
       <mat-error *ngIf="formblz.invalid">
         {{ 'BLZ' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
       </mat-error>
@@ -17,7 +17,7 @@
     <!-- Block Input Form -->
 
     <mat-form-field class="full-width">
-      <input type="text" [(ngModel)]="cbInputs.block" placeholder="{{ 'Block' | translate }}" [formControl]="formblock" matInput
+      <input type="text" maxlength = '20' [(ngModel)]="cbInputs.block" placeholder="{{ 'Block' | translate }}" [formControl]="formblock" matInput
         (keyup.enter)="confirmEdit()">
       <mat-error *ngIf="formblock.invalid">
         {{ 'Block' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
@@ -27,7 +27,7 @@
     <!-- Node Input Form -->
 
     <mat-form-field class="full-width">
-      <input type="text" [(ngModel)]="cbInputs.node" type="text" matInput placeholder="{{ 'Node' | translate }}" [formControl]="formnode">
+      <input type="text" maxlength = '30' [(ngModel)]="cbInputs.node" type="text" matInput placeholder="{{ 'Node' | translate }}" [formControl]="formnode">
       <mat-error *ngIf="formnode.invalid">
         {{ 'Node' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
       </mat-error>
@@ -36,7 +36,7 @@
     <!-- Customer Name Input Form -->
 
     <mat-form-field class="full-width">
-      <input type="text" [(ngModel)]="cbInputs.customerName" matInput placeholder="{{ 'customerName' | translate }}" [formControl]="formcustomerName">
+      <input type="text" maxlength = '100' [(ngModel)]="cbInputs.customerName" matInput placeholder="{{ 'customerName' | translate }}" [formControl]="formcustomerName">
       <mat-error *ngIf="formcustomerName.invalid">
         {{ 'customerName' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
       </mat-error>
@@ -45,7 +45,7 @@
     <!-- Bank Group Input Form -->
 
     <mat-form-field class="full-width">
-      <input type="text" [(ngModel)]="cbInputs.bankGroup" matInput placeholder="{{ 'bankGroup' | translate }}" [formControl]="formbankGroup">
+      <input type="text" maxlength = '50' [(ngModel)]="cbInputs.bankGroup" matInput placeholder="{{ 'bankGroup' | translate }}" [formControl]="formbankGroup">
       <mat-error *ngIf="formbankGroup.invalid">
         {{ 'bankGroup' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
       </mat-error>
@@ -54,7 +54,7 @@
     <!-- Cluster Input Form -->
 
     <mat-form-field class="full-width">
-      <input type="text" [(ngModel)]="cbInputs.cluster" matInput placeholder="{{ 'Cluster' | translate }}" [formControl]="formcluster">
+      <input type="text" maxlength = '20'[(ngModel)]="cbInputs.cluster" matInput placeholder="{{ 'Cluster' | translate }}" [formControl]="formcluster">
       <mat-error *ngIf="formcluster.invalid">
         {{ 'Cluster' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
       </mat-error>

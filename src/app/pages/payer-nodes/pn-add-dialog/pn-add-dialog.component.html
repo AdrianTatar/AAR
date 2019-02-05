@@ -5,7 +5,7 @@
 <mat-dialog-content>
   <form [formGroup]="pnForm">
     <mat-form-field class="full-width">
-      <input type="number" [(ngModel)]="pnInputs.customerNumber" placeholder="{{ 'customerNumber' | translate }}" matInput (keyup.enter)="confirmEdit()"
+      <input type="text" maxlength = '10' [(ngModel)]="pnInputs.customerNumber" placeholder="{{ 'customerNumber' | translate }}" matInput (keyup.enter)="confirmEdit()"
         [formControl]="formcustomerNumber">
       <mat-error *ngIf="formcustomerNumber.invalid">
         {{ 'customerNumber' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
@@ -13,7 +13,7 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input type="text" [(ngModel)]="pnInputs.customerName" placeholder="{{ 'customerName' | translate }}" [formControl]="formcustomerName"
+      <input type="text" maxlength = '100' [(ngModel)]="pnInputs.customerName" placeholder="{{ 'customerName' | translate }}" [formControl]="formcustomerName"
         matInput>
       <mat-error *ngIf="formcustomerName.invalid">
         {{ 'customerName' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
@@ -21,14 +21,14 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input type="text" [(ngModel)]="pnInputs.hierarchy" matInput placeholder="{{ 'Hierarchy' | translate }}" [formControl]="formhierarchy">
+      <input type="text" maxlength = '5' [(ngModel)]="pnInputs.hierarchy" matInput placeholder="{{ 'Hierarchy' | translate }}" [formControl]="formhierarchy">
       <mat-error *ngIf="formhierarchy.invalid">
         {{ 'Hierarchy' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input type="number" [(ngModel)]="pnInputs.payerNodeNumber" placeholder="{{ 'payerNodeNumber' | translate }}" matInput (keyup.enter)="confirmEdit()"
+      <input type="number" max="9999999999" onKeyPress="if(this.value.length==10) return false;" [(ngModel)]="pnInputs.payerNodeNumber" placeholder="{{ 'payerNodeNumber' | translate }}" matInput (keyup.enter)="confirmEdit()"
         [formControl]="formpayerNodeNumber">
       <mat-error *ngIf="formpayerNodeNumber.invalid">
         {{ 'payerNodeNumber' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
@@ -36,7 +36,7 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input type="text" [(ngModel)]="pnInputs.payerNodeDescription" matInput placeholder="{{ 'payerNodeDescription' | translate }}"
+      <input type="text" maxlength = '50' [(ngModel)]="pnInputs.payerNodeDescription" matInput placeholder="{{ 'payerNodeDescription' | translate }}"
         [formControl]="formpayerNodeDescription">
       <mat-error *ngIf="formpayerNodeDescription.invalid">
         {{ 'payerNodeDescription' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
@@ -44,7 +44,7 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input type="text" [(ngModel)]="pnInputs.payerNodeCode" matInput placeholder="{{ 'payerNodeCode' | translate }}" [formControl]="formpayerNodeCode">
+      <input type="text" maxlength = '30' [(ngModel)]="pnInputs.payerNodeCode" matInput placeholder="{{ 'payerNodeCode' | translate }}" [formControl]="formpayerNodeCode">
       <mat-error *ngIf="formpayerNodeCode.invalid">
         {{ 'payerNodeCode' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
       </mat-error>

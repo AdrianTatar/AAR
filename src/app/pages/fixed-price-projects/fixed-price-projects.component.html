@@ -20,7 +20,7 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field>
-              <input type="text" [(ngModel)]="fppInputs.projectPlanmillNumber" matInput (keyup.enter)="confirmEdit()"
+              <input type="text" maxlength="20" [(ngModel)]="fppInputs.projectPlanmillNumber" matInput (keyup.enter)="confirmEdit()"
                 [formControl]="formprojectPlanmillNumber">
               <mat-error *ngIf="formprojectPlanmillNumber.invalid">
                 {{ 'PlanmillProjektnummer' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
@@ -54,7 +54,7 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field>
-              <input type="text" [(ngModel)]="fppInputs.projectIdTagetik" [formControl]="formprojectIdTagetik" matInput
+              <input type="text" maxlength="20" [(ngModel)]="fppInputs.projectIdTagetik" [formControl]="formprojectIdTagetik" matInput
                 (keyup.enter)="confirmEdit()">
               <mat-error *ngIf="formprojectIdTagetik.invalid">
                 {{ 'TagetikProjektID' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
@@ -88,7 +88,7 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="full-width">
-              <textarea [(ngModel)]="fppInputs.projectDescription" type="text" matInput (keyup.enter)="confirmEdit()"
+              <textarea maxlength="200" [(ngModel)]="fppInputs.projectDescription" type="text" matInput (keyup.enter)="confirmEdit()"
                 [formControl]="formprojectDescription"></textarea>
               <mat-error *ngIf="formprojectDescription.invalid">
                 {{ 'ProjBez' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
@@ -122,7 +122,7 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="example-full-width">
-              <input type="number" [(ngModel)]="fppInputs.customerNumber" matInput (keyup.enter)="confirmEdit()"
+              <input type="number"max="9999999999999999999" onKeyPress="if(this.value.length==20) return false;" [(ngModel)]="fppInputs.customerNumber" matInput (keyup.enter)="confirmEdit()"
                 [formControl]="formcustomerNumber">
               <mat-error *ngIf="formcustomerNumber.invalid">
                 {{ 'KundenNr' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
@@ -156,7 +156,7 @@
         <td mat-cell *matCellDef="let element">
           <div *ngIf="selectedRowToEdit === mapToDataSource(element.id); else simpleDisplay">
             <mat-form-field class="example-full-width">
-              <input type="number" [(ngModel)]="fppInputs.price" matInput (keyup.enter)="confirmEdit()" [formControl]="formPrice">
+              <input type="number" max="9999999999999999999" onKeyPress="if(this.value.length==20) return false;" [(ngModel)]="fppInputs.price" matInput (keyup.enter)="confirmEdit()" [formControl]="formPrice">
               <mat-error *ngIf="formPrice.invalid">
                 {{ 'Fixpreis' | translate }} {{ 'ToBe' | translate }} <strong>{{ 'Required' | translate }}</strong>
               </mat-error>

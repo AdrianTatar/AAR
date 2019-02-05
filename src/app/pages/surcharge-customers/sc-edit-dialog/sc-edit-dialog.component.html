@@ -5,7 +5,7 @@
 <mat-dialog-content>
   <form [formGroup]="scForm">
     <mat-form-field class="full-width">
-      <input [(ngModel)]="scInputs.debitorNumber" matInput placeholder="{{ 'debitorNumber' | translate }}"
+      <input [(ngModel)]="scInputs.debitorNumber" max="9999999999" onKeyPress="if(this.value.length==10) return false;" matInput placeholder="{{ 'debitorNumber' | translate }}"
         [formControl]="formdebitorNumber">
       <mat-error *ngIf="formdebitorNumber">
         {{ 'debitorNumber' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
@@ -13,7 +13,7 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input [(ngModel)]="scInputs.debitorName" matInput placeholder="{{ 'Debitor' | translate }}" [formControl]="formdebitorName">
+      <input type='text' [(ngModel)]="scInputs.debitorName" maxlength = '100' matInput placeholder="{{ 'Debitor' | translate }}" [formControl]="formdebitorName">
       <mat-error *ngIf="formdebitorName">
         {{ 'Debitor' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
       </mat-error>
@@ -33,14 +33,14 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input [(ngModel)]="scInputs.customerNumber" placeholder="{{ 'CustomerId' | translate }}" matInput [formControl]="formcustomerNumber">
+      <input [(ngModel)]="scInputs.customerNumber" max="9999999999" onKeyPress="if(this.value.length==10) return false;" placeholder="{{ 'CustomerId' | translate }}" matInput [formControl]="formcustomerNumber">
       <mat-error *ngIf="formcustomerNumber">
         {{ 'CustomerId' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input [(ngModel)]="scInputs.customerName" placeholder="{{ 'customerName' | translate }}" matInput [formControl]="formcustomerName">
+      <input [(ngModel)]="scInputs.customerName" maxlength = '100' placeholder="{{ 'customerName' | translate }}" matInput [formControl]="formcustomerName">
       <mat-error *ngIf="formcustomerName">
         {{ 'customerName' | translate }} {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
       </mat-error>
@@ -61,28 +61,28 @@
     </mat-form-field>
 
     <mat-form-field class="width-rates-input">
-      <input type="number" [(ngModel)]="scrInputs.at" placeholder="AT" matInput [formControl]="formAT">
+      <input type="number" max="9999999999" onKeyPress="if(this.value.length==10) return false;" [(ngModel)]="scrInputs.at" placeholder="AT" matInput [formControl]="formAT">
       <mat-error *ngIf="formAT">
         AT {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="width-rates-input">
-      <input type="number" [(ngModel)]="scrInputs.hu" placeholder="HU" matInput [formControl]="formHU">
+      <input type="number" max="9999999999" onKeyPress="if(this.value.length==10) return false;" [(ngModel)]="scrInputs.hu" placeholder="HU" matInput [formControl]="formHU">
       <mat-error *ngIf="formHU">
         HU {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="width-rates-input">
-      <input type="number" [(ngModel)]="scrInputs.sk" placeholder="SK" matInput [formControl]="formSK">
+      <input type="number" max="9999999999" onKeyPress="if(this.value.length==10) return false;" [(ngModel)]="scrInputs.sk" placeholder="SK" matInput [formControl]="formSK">
       <mat-error *ngIf="formSK">
         SK {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="width-rates-input">
-      <input type="number" [(ngModel)]="scrInputs.ro" placeholder="RO" matInput [formControl]="formRO">
+      <input type="number" max="9999999999" onKeyPress="if(this.value.length==10) return false;" [(ngModel)]="scrInputs.ro" placeholder="RO" matInput [formControl]="formRO">
       <mat-error *ngIf="formRO">
         RO {{ 'ToBe' | translate}} <strong>{{ 'Required' | translate}}</strong>
       </mat-error>
